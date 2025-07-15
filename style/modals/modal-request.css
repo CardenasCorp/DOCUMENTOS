@@ -1,0 +1,132 @@
+/* Estilo del Modal */
+.myModalRequest {
+    display: none;
+    /* Inicialmente oculto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Fondo oscuro */
+    padding-top: 60px;
+}
+
+/* Estilo del contenido del Modal */
+.myModalRequest .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Puedes ajustar el tamaño según prefieras */
+}
+
+/* Estilo del botón de cierre */
+.myModalRequest .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.myModalRequest .close:hover,
+.myModalRequest .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.myModalRequest .modal-form-request {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.myModalRequest .modal-form-request .form-modal {
+    margin-top: 20px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.myModalRequest .modal-form-request input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.myModalRequest .modal-form-request button {
+    padding: 8px 12px;
+    background-color: rgb(230, 144, 34);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.myModalRequest .modal-form-request button:hover {
+    background-color: rgb(200, 144, 34);
+}
+
+.myModalRequest .table-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myModalRequest .modal-form-request th,
+.myModalRequest .modal-form-request td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.myModalRequest .modal-form-request th {
+    background-color: #f2f2f2;
+}
+
+
+.myModalRequest .modal-form-request input[type="text"] {
+    width: calc(100% - 22px);
+    /* Adjust for padding and border */
+    margin-bottom: 10px;
+}
+
+.myModalRequest table.request-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.myModalRequest .request-table th,
+.myModalRequest .request-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.myModalRequest .modal-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.myModalRequest .modal-button button {
+    padding: 10px 20px;
+    background-color: rgb(230, 144, 34);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
