@@ -1,0 +1,92 @@
+.modal-form-request{
+  width: 80%;
+}
+.modal-form-request input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.modal-form-request button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-form-request button:hover {
+  background-color: #218838;
+}
+.modal-form-request .table-container {
+  margin-top: 20px;
+}
+.modal-form-request table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.modal-form-request th,
+.modal-form-request td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+} 
+.modal-form-request th {
+  background-color: #f2f2f2;
+}
+.modal-form-request .accept-modal {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-form-request .accept-modal:hover {
+  background-color: #0056b3;
+}
+.modal-form-request .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal-form-request .close:hover,
+.modal-form-request .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+.modal-form-request h2 {
+  margin-top: 0;
+  color: #333;
+}
+.modal-form-request label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.modal-form-request input[type="text"] {
+  width: calc(100% - 22px); /* Adjust for padding and border */
+  margin-bottom: 10px;
+}
+table.request-table {
+  width: 80%;
+  border-collapse: collapse;
+}
+.request-table th,
+.request-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.request-table th {
+  background-color: #f2f2f2;
+}
+.modal-form-request .search-request {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+}
