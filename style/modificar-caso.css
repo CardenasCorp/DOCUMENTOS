@@ -1,60 +1,4 @@
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-}
-
-.container {
-    display: flex;
-    width: 100%;
-}
-
-/* Estilos del sidebar */
-.sidebar {
-    background-color: #010101;
-    color: white;
-    width: 250px;
-    padding: 20px;
-    height: 100vh;
-}
-
-.sidebar h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.sidebar ul li {
-    margin: 15px 0;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.sidebar ul li a:hover {
-    color: rgb(230, 144, 34);
-}
-
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #ffffff;
-}
 
 .form-section {
     margin-top: 20px;
@@ -74,7 +18,8 @@ body {
 .form-group-5,
 .form-group-6,
 .form-group-7,
-.form-group-8 {
+.form-group-8,
+.form-group-9 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -85,7 +30,8 @@ body {
 .form-group-3 .form-control,
 .form-group-4 .form-control,
 .form-group-5 .form-control,
-.form-group-8 .form-control {
+.form-group-8 .form-control,
+.form-group-9 .form-control {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -144,7 +90,9 @@ body {
 .form-group-4 label,
 .form-group-5 label,
 .form-group-6 label,
-.form-group-7 label .form-group-8 label {
+.form-group-7 label,
+.form-group-8 label,
+.form-group-9 label {
     font-weight: bold;
     margin-left: 15px;
 }
@@ -189,3 +137,10 @@ body {
     background-color: rgb(200, 120, 30);
 }
 
+
+.form-group-9 select {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

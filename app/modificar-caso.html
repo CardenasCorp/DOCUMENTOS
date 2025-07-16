@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Formulario con Sidebar</title>
-    <link rel="stylesheet" href="../style/modals/modal-request.css">
+    <link rel="stylesheet" href="../style/modals/modal-doc.css">
     <link rel="stylesheet" href="../style/modificar-caso.css">
     <link rel="stylesheet" href="../style/modals/modal-business.css">
-
+    <link rel="stylesheet" href="../style/modals/sidebar.css">
+    <link rel="stylesheet" href="../style/modals/menu-container.css">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
                             <div class="input-container">
                                 <input type="text" id="number" name="number" placeholder="Busque el número de documento"
                                     required disabled>
-                                <button type="button" class="search-request" id="openModalButtonRequest">
+                                <button type="button" class="search-request" id="openModalButtonDoc">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -76,14 +77,27 @@
                                 required disabled>
                         </div>
                     </div>
+                    <div class="form-group-9">
+                        <div class="fecha-presentado form-control">
+                            <label for="fecha-presentado">Estado</label>
+                            <select name="estado" id="estado-select" onchange="toggleFechaFields()">
+                                <option value="" disabled selected>Escoge el estado</option>
+                                <option value="Prorroga">Prórroga</option>
+                                <option value="Presentado">Presentado</option>
+                            </select>
+                        </div>
+                        <div class="">
+
+                        </div>
+                    </div>
                     <div class="form-group-8">
                         <div class="fecha-presentado form-control">
                             <label for="fecha-presentado">Fecha presentado</label>
-                            <input type="date" id="fecha-presentado" name="fecha-presentado" required>
+                            <input type="date" id="fecha-presentado" name="fecha-presentado" disabled>
                         </div>
                         <div class="fecha-prórroga form-control">
                             <label for="fecha-prórroga">Fecha de prórroga</label>
-                            <input type="date" id="fecha-prórroga" name="fecha-prórroga" required>
+                            <input type="date" id="fecha-prórroga" name="fecha-prórroga" disabled>
                         </div>
                     </div>
                     <div class="form-group-4">
@@ -142,10 +156,10 @@
             </div>
         </div>
     </div>
-    <div id="myModalRequest" class="myModalRequest modal">
+    <div id="myModalDoc" class="myModalDoc modal">
         <div class="modal-content">
-            <span class="close" id="closeModalRequest">&times;</span> <!-- Cierre único -->
-            <h2>Requerimiento Principal</h2>
+            <span class="close" id="closeModalDoc">&times;</span> <!-- Cierre único -->
+            <h2>Buscar documento</h2>
             <form class="modal-form-request" action="">
                 <div class="form-modal">
                     <label for="search-number">Numero</label>
@@ -218,9 +232,10 @@
                 <table class="request-table">
                     <thead>
                         <tr>
-                            <th>Número</th>
-                            <th>Cliente</th>
-                            <th>Periodo</th>
+                            <th>RUC</th>
+                            <th>Razón Social</th>
+                            <th>Propiedad</th>
+                            <th>sede</th>
                             <th>Seleccionar</th>
                         </tr>
                     </thead>
@@ -229,6 +244,7 @@
                             <td>001</td>
                             <td>Requerimiento de prueba</td>
                             <td>2023-10</td>
+                            <td>Lima</td>
                             <td>
                                 <input type="radio" name="request-select" value="001">
                             </td>
@@ -237,6 +253,7 @@
                             <td>002</td>
                             <td>Otro requerimiento</td>
                             <td>2023-10</td>
+                            <td>Lima</td>
                             <td>
                                 <input type="radio" name="request-select" value="001">
                             </td>
@@ -250,8 +267,9 @@
         </div>
     </div>
     <script src="../script/modals/modal-business.js"></script>
-    <script src="../script/modals/modal-request.js"></script>
+    <script src="../script/modals/modal-doc.js"></script>
     <script src="../script/registrar-caso.js"></script>
+    <script src="../script/modals/group-9.js"></script>
 
 </body>
 
