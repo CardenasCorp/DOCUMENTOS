@@ -1,0 +1,111 @@
+.content-employees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.employees-list {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.search-employee {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-employee label {
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.search-employee input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 10%;
+}
+
+.search-employee button {
+    padding: 10px 20px;
+    background-color: rgb(230, 144, 34);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-employee button:hover {
+    background-color: rgb(200, 144, 34);
+}
+
+
+
+.employee-container {
+    width: 80%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+.employee-container h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 20px;
+
+}
+
+.employee-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+}
+.employee-info {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 8fr 1fr 1fr;
+}
+
+.employee-info span {
+    display: flex;
+    align-items: center;
+}
+.employee-info p {
+    margin: 5px 3px;
+}
+
+.employee-info button {
+    padding: 5px 10px;
+    margin: 0px 5%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.employee-info .edit-btn {
+    background-color: rgb(0, 0, 0);
+}
+
+.employee-info .delete-btn {
+    background-color: rgb(230, 144, 34);
+}
+
+.employee-info .edit-btn:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.employee-info .delete-btn:hover {
+    background-color: rgb(200, 144, 34);
+}
