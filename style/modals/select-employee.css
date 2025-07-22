@@ -1,0 +1,209 @@
+#employeeModal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#employeeModal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#employeeModal .close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#employeeModal .close:hover {
+    color: #333;
+}
+
+#employeeModal h2 {
+    color: #2a5298;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+#employeeSearch {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border 0.3s;
+}
+
+#employeeSearch:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 2px rgba(42, 82, 152, 0.1);
+}
+
+#employeeTableBody {
+    font-size: 14px;
+}
+
+#employeeTableBody tr {
+    transition: background-color 0.2s;
+}
+
+#employeeTableBody tr:hover {
+    background-color: #f5f7ff;
+}
+
+#employeeTableBody td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+#employeeTableBody .select-employee {
+    background: linear-gradient(135deg, #1a2a6c, #2a5298);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#employeeTableBody .select-employee:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(26, 42, 108, 0.3);
+}
+
+#selectEmployeeButton {
+    background: linear-gradient(135deg, #1a2a6c, #2a5298);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+#selectEmployeeButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(26, 42, 108, 0.3);
+}
+
+/* Estilos para los contenedores de verificadores */
+.verificador-container {
+    margin-bottom: 15px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.space {
+    height: 15px;
+}
+
+.input-container button.search {
+    right: 75px;
+
+}
+
+.input-container button.search:hover {
+    background-color: #f0f0f0;
+    color: #2a5298;
+}
+
+.input-container button.dash {
+    right: 40px;
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.input-container button.dash:hover {
+    background-color: #ff5252;
+}
+
+
+/* Estilos para la tabla de empleados */
+#employeeTableBody tr {
+    cursor: pointer;
+}
+
+#employeeTableBody tr.selected {
+    background-color: #e6f0ff !important;
+}
+
+/* Indicador de carga */
+.loader {
+    text-align: center;
+    padding: 20px;
+    color: #2a5298;
+}
+
+.bi-arrow-repeat {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensajes de error */
+.error-message {
+    background-color: #ffdddd;
+    color: #d8000c;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #employeeModal .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .input-container button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .input-container button.search {
+        right: 65px;
+    }
+    
+    .input-container button.dash {
+        right: 35px;
+    }
+    
+}

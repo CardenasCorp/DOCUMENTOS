@@ -10,6 +10,12 @@
 .sidebar h2 {
     text-align: center;
     margin-bottom: 20px;
+
+}
+
+.sidebar h2 a {
+    color: white;
+    text-decoration: none;
 }
 
 .sidebar ul {

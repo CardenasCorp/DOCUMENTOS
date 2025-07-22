@@ -2,6 +2,13 @@
     margin-top: 20px;
 }
 
+
+.form-section a {
+    text-decoration: none;
+    color: rgb(230, 144, 34);
+    font-size: 30px;
+}
+
 .form-container {
     display: block;
     width: 80%;
@@ -25,7 +32,8 @@
 .form-group-1 .form-control,
 .form-group-3 .form-control,
 .form-group-4 .form-control,
-.form-group-5 .form-control {
+.form-group-5 .form-control,
+.form-group-7 .form-control-2    {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -36,8 +44,7 @@
 
 .form-group-2 .form-control-2,
 .form-group-1 .form-control-2,
-.form-group-6 .form-control-2,
-.form-group-7 .form-control-2 {
+.form-group-6 .form-control-2{
     display: grid;
     grid-template-columns: 2fr 3fr;
     gap: 20px;
@@ -63,7 +70,7 @@
 
 .form-control-2 .search-request,
 .form-control-2 .search-business,
-.form-control-2 .search {
+.form-control-2 .search-employee {
     width: 17%;
     padding: 10px 10px;
     background-color: rgb(230, 144, 34);
@@ -112,19 +119,18 @@
     background-color: rgb(200, 120, 30);
 }
 
-.form-control-2 .dash,
+
 .form-control-2 .plus {
-    width: 30px;
-    height: 30px;
     text-align: center;
-    padding: 5px 5px;
+    padding: 5px 10px;
     background-color: rgb(230, 144, 34);
     color: white;
     border: none;
-    border-radius: 100%;
-    cursor: pointer;    
+    cursor: pointer;   
+    border-radius: 5px; 
 }
-.form-control-2 .dash:hover,
-.form-control-2 .plus:hover {
-    background-color: rgb(200, 120, 30);
+
+.form-group-7 .search{
+    background-color: rgb(230, 144, 34);
+    color: white;
 }

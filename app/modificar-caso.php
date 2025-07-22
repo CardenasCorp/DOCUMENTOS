@@ -17,21 +17,25 @@
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2>Menú Principal</h2>
+            <h2><a href="">Menú Principal</a></h2>
             <hr>
             <ul>
-                <li><a href="#">Registrar</a></li>
-                <li><a href="#">Modificar</a></li>
-                <li><a href="#">Eliminar</a></li>
-                <hr>
-                <li><a href="#">SUNAT</a></li>
-                <hr>
-                <li><a href="#">Empresa</a></li>
+                    <li><a href="registrar-caso.php">Registrar</a></li>
+                    <li><a href="modificar-caso.php">Modificar</a></li>
+                    <li><a href="#">Eliminar</a></li>
+                    <hr>
+                    <li><a href="empleados.php">SUNAT</a></li>
+                    <hr>
+                    <li><a href="empresas.php">Empresa</a></li>
             </ul>
         </div>
+          
         <!-- Formulario -->
         <div class="main-content">
             <div class="form-section">
+                <a href="../index.php"><i class="bi bi-arrow-left-square-fill"></i></a>
+                    <hr>
+                    <br>
                 <h1>Modificar Caso</h1>
                 <form class="form-container">
                     <div class="form-group-1">

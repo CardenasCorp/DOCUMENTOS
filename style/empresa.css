@@ -1,11 +1,11 @@
-.content-employees {
+.content-business {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
 
-.employees-list {
+.business-list {
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -13,20 +13,20 @@
     width: 80%;
 }
 
-.search-employee {
+.search-business {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.search-employee label {
+.search-business label {
     padding: 10px;
     font-weight: bold;
 
 }
 
-.search-employee input[type="text"] {
+.search-business input[type="text"] {
     width: 50%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -35,7 +35,7 @@
     margin-right: 10%;
 }
 
-.search-employee button {
+.search-business button {
     padding: 10px 20px;
     background-color: rgb(230, 144, 34);
     color: white;
@@ -44,26 +44,26 @@
     cursor: pointer;
 }
 
-.search-employee button:hover {
+.search-business button:hover {
     background-color: rgb(200, 144, 34);
 }
 
 
 
-.employee-container {
+.business-container {
     width: 80%;
     margin-top: 20px;
     border: 1px solid #ddd;
 }
 
-.employee-container h4 {
+.business-container h4 {
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px 20px;
 
 }
 
-.employee-item {
+.business-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,28 +72,27 @@
     border-radius: 4px;
 }
 
-.employee-info {
+.business-info {
     width: 100%;
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
 
-.employee-actions{
-
+.client-actions{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.employee-info span {
+.client-info span {
     display: flex;
     align-items: center;
 }
 
-.employee-info p {
+.client-info p {
     margin: 5px 3px;
 }
 
-.employee-info button {
+.client-info button {
     padding: 0px 0px;
     margin: 0px 5%;
     color: white;
@@ -102,23 +101,23 @@
     cursor: pointer;
 }
 
-.employee-info .edit-btn {
+.client-info .edit-btn {
     background-color: rgb(0, 0, 0);
 }
 
-.employee-info .delete-btn {
+.client-info .delete-btn {
     background-color: rgb(230, 144, 34);
 }
 
-.employee-info .edit-btn:hover {
+.client-info .edit-btn:hover {
     background-color: rgb(50, 50, 50);
 }
 
-.employee-info .delete-btn:hover {
+.client-info .delete-btn:hover {
     background-color: rgb(200, 144, 34);
 }
 
-.content-employees .pagination {
+.content-business .pagination {
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -126,7 +125,7 @@
     flex-wrap: wrap;
 }
 
-.content-employees .pagination-btn {
+.content-business .pagination-btn {
     padding: 8px 12px;
     color: #fff;
     border: 1px solid #ddd;
@@ -136,12 +135,12 @@
     transition: all 0.3s ease;
 }
 
-.content-employees .pagination-btn:hover:not(.active) {
-    background: rgb(200, 144, 34);
+.content-business .pagination-btn:hover:not(.active) {
+    background: rgb(230, 144, 34);
 }
 
-.content-employees .pagination-btn.active {
-    background: rgb(200, 144, 34);
+.content-business .pagination-btn.active {
+    background: rgb(230, 144, 34);
     color: white;
-    border-color: rgb(200, 144, 34);
+    border-color: rgb(230, 144, 34);
 }

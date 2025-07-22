@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../app/login.php'); 
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +16,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/modals/navbar.css">
     <title>Document</title>
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="/app/login.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <div>
+            <li><a href="index.php"><img src="../img/logo2.png" alt=""></a></li>
+            </div>
+            <div>
+            <li><a href="app/registrar-caso.php">Documentos</a></li>
+            </div>
+            <div>
+            <li><a href="app/logout.php" class="close">Cerrar Sesion</a></li>
+            </div>
         </ul>
 
     </nav>
