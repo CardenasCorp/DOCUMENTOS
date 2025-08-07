@@ -1,0 +1,294 @@
+/* Estilos generales para la lista de casos */
+.content-complaint {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-complaint h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid rgb(230, 144, 34);
+    padding-bottom: 10px;
+}
+
+/* Barra de búsqueda */
+.search-business {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: rgb(230, 144, 34);
+    box-shadow: 0 0 0 3px rgb(230, 144, 34, 0.2);
+}
+
+/* Contenedor de casos */
+.employee-container {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.employee-container h4 {
+    padding: 15px 20px;
+    background-color: rgb(230, 144, 34);
+    color: white;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Items de casos */
+.client-item {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.client-item:hover {
+    background-color: #f8fafd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.client-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.client-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.client-details h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.client-details p {
+    margin: 6px 0;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.client-details strong {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Botones de acción */
+.client-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.edit-btn, 
+.complaint-btn, 
+.delete-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.edit-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.complaint-btn {
+    background-color: #e67e22;
+    color: white;
+}
+
+.complaint-btn:hover {
+    background-color: #d35400;
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Iconos */
+.bi-award-fill {
+    color: #f1c40f;
+    font-size: 1.1em;
+}
+
+.bi-pencil, 
+.bi-emoji-frown-fill, 
+.bi-trash {
+    font-size: 0.9em;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: rgb(230, 144, 34);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    text-align: center;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #fefbf1;
+    border-color: rgb(230, 144, 34);
+}
+
+.pagination button.active {
+    background-color: rgb(230, 144, 34);
+    color: white;
+    border-color: rgb(230, 144, 34);
+    font-weight: bold;
+}
+
+/* Mensajes de estado */
+.no-results {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 30px;
+    font-style: italic;
+}
+
+.error-message {
+    background-color: #fdecea;
+    color: #c0392b;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Efectos de carga */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .client-info {
+        flex-direction: column;
+    }
+    
+    .client-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 15px;
+    }
+    
+    .edit-btn, 
+    .complaint-btn, 
+    .delete-btn {
+        width: 100%;
+    }
+    
+    .search-business {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-complaint {
+        padding: 15px;
+    }
+    
+    .client-item {
+        padding: 15px;
+    }
+    
+    .pagination button {
+        padding: 6px 10px;
+        min-width: 30px;
+    }
+}

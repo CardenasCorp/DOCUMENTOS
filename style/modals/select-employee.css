@@ -114,11 +114,6 @@
     box-shadow: 0 4px 10px rgba(26, 42, 108, 0.3);
 }
 
-/* Estilos para los contenedores de verificadores */
-.verificador-container {
-    margin-bottom: 15px;
-    animation: fadeIn 0.3s ease-out;
-}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -134,16 +129,6 @@
 
 }
 
-.input-container button.search:hover {
-    background-color: #f0f0f0;
-    color: #2a5298;
-}
-
-.input-container button.dash {
-    right: 40px;
-    background-color: #ff6b6b;
-    color: white;
-}
 
 .input-container button.dash:hover {
     background-color: #ff5252;
@@ -155,9 +140,9 @@
     cursor: pointer;
 }
 
-#employeeTableBody tr.selected {
-    background-color: #e6f0ff !important;
-}
+    #employeeTableBody tr.selected {
+        background-color: #e6f0ff !important;
+    }
 
 /* Indicador de carga */
 .loader {

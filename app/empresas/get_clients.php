@@ -22,13 +22,14 @@ try {
     
     // Consulta SQL simplificada y sin comentarios internos
     $sql = "SELECT 
-            id_cliente as id, 
-            RUC, 
-            razon_social, 
-            direccion_fiscal,
-            departamento 
-            FROM cliente 
-            ORDER BY razon_social ASC";
+        id_cliente as id, 
+        RUC, 
+        razon_social, 
+        direccion_fiscal,
+        departamento,
+        propietario  
+        FROM cliente 
+        ORDER BY razon_social ASC";
     
     $stmt = $conn->query($sql);
     $clients = $stmt->fetchAll();

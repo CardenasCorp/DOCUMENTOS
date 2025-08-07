@@ -1,88 +1,114 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Elementos del DOM
+document.addEventListener('DOMContentLoaded', function () {
+    // Elementos del DOM para el modal de empresas
     const openModalButton = document.getElementById('openModalButtonBusiness');
     const closeModalButton = document.getElementById('closeModalBusiness');
     const modal = document.getElementById('myModalBusiness');
-    const empresaInput = document.querySelector('.empresa input[type="text"]');
-    const searchRucInput = document.querySelector('#myModalBusiness input[name="ruc"]');
-    const searchRazonSocialInput = document.querySelector('#myModalBusiness input[name="nombre"]');
-    const acceptButton = document.querySelector('#myModalBusiness .accept-modal');
-    const tableBody = document.querySelector('#myModalBusiness tbody');
-    
-    // Campos ocultos
+    const searchRucInput = document.getElementById('search-ruc');
+    const searchRazonInput = document.getElementById('search-razon-social');
+    const acceptButton = document.getElementById('acceptBusiness');
+    const tableBody = document.getElementById('business-table-body');
+
+    // Campos del formulario principal
+    const empresaInput = document.getElementById('empresa_input');
     const empresaIdInput = document.getElementById('empresa_id');
     const empresaRucInput = document.getElementById('empresa_ruc');
     const empresaDireccionInput = document.getElementById('empresa_direccion');
     const empresaDepartamentoInput = document.getElementById('empresa_departamento');
-    
+
     // Variables de estado
     let selectedCompany = null;
     let companiesData = [];
-    
-    // Abrir modal
-    openModalButton.addEventListener('click', function() {
-        modal.style.display = 'block';
-        loadCompanies(); // Cargar todas las empresas al abrir el modal
-    });
-    
-    // Cerrar modal
-    closeModalButton.addEventListener('click', function() {
-        closeModal();
-    });
-    
-    // Cerrar modal al hacer clic fuera
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            closeModal();
+
+    // URL base para las peticiones
+    const BASE_URL = 'http://localhost:8000/app/registrar';
+
+
+    // Event Listeners
+    if (openModalButton) {
+        openModalButton.addEventListener('click', openModal);
+    }
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeModal);
+    }
+
+    if (acceptButton) {
+        acceptButton.addEventListener('click', handleAccept);
+    }
+
+    if (searchRucInput) {
+        searchRucInput.addEventListener('input', function () {
+            debounceSearch('ruc', this.value.trim());
+        });
+    }
+
+    if (searchRazonInput) {
+        searchRazonInput.addEventListener('input', function () {
+            debounceSearch('nombre', this.value.trim()); // Cambiado a 'nombre'
+        });
+    }
+
+    if (tableBody) {
+        tableBody.addEventListener('change', function (event) {
+            if (event.target.name === 'business-select') {
+                const selectedId = parseInt(event.target.value);
+                selectedCompany = companiesData.find(company => company.id_cliente === selectedId);
+                highlightSelectedRow(event.target);
+            }
+        });
+    }
+
+    let debounceTimer;
+
+    function debounceSearch(type, value) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            if (type === 'ruc') {
+                searchRucInput.value = value;
+                searchCompanies('ruc');
+            } else {
+                searchRazonInput.value = value;
+                searchCompanies('nombre');
+            }
+        }, 300);
+    }
+    // Funciones principales
+    function openModal() {
+        if (modal) {
+            modal.style.display = 'block';
+            loadCompanies();
         }
-    });
-    
-    // Buscar empresas al escribir en los campos de búsqueda
-    searchRucInput.addEventListener('input', debounce(searchCompanies, 300));
-    searchRazonSocialInput.addEventListener('input', debounce(searchCompanies, 300));
-    
-    // Seleccionar empresa
-    tableBody.addEventListener('change', function(event) {
-        if (event.target.name === 'request-select') {
-            const selectedId = parseInt(event.target.value);
-            selectedCompany = companiesData.find(company => company.id_cliente === selectedId);
-            highlightSelectedRow(event.target);
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+            resetModal();
         }
-    });
-    
-    // Aceptar selección
-    acceptButton.addEventListener('click', function() {
+    }
+
+    function handleAccept() {
         if (selectedCompany) {
-            // Llenar el input visible con la razón social
-            empresaInput.value = selectedCompany.razon_social;
-            
-            // Llenar los campos ocultos
-            empresaIdInput.value = selectedCompany.id_cliente;
-            empresaRucInput.value = selectedCompany.RUC;
-            empresaDireccionInput.value = selectedCompany.direccion_fiscal;
-            empresaDepartamentoInput.value = selectedCompany.departamento;
-            
-            // Cerrar modal y resetear
+            // Actualizar campos en el formulario principal
+            if (empresaInput) empresaInput.value = selectedCompany.razon_social;
+            if (empresaIdInput) empresaIdInput.value = selectedCompany.id_cliente;
+            if (empresaRucInput) empresaRucInput.value = selectedCompany.RUC;
+            if (empresaDireccionInput) empresaDireccionInput.value = selectedCompany.direccion_fiscal;
+            if (empresaDepartamentoInput) empresaDepartamentoInput.value = selectedCompany.departamento;
+
             closeModal();
         } else {
             showAlert('Por favor seleccione una empresa');
         }
-    });
-    
-    // Función para cargar empresas
+    }
+
     function loadCompanies() {
         showLoader();
-        
-        // URL del servicio PHP
-        const url = 'registrar/get_companies.php';
-        
-        fetch(url)
+
+        fetch(`${BASE_URL}/get_companies.php`)
             .then(response => {
                 if (!response.ok) {
-                    // Si la respuesta no es OK, intentar leer el cuerpo como texto
-                    return response.text().then(text => {
-                        throw new Error(`HTTP ${response.status}: ${text || response.statusText}`);
-                    });
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
@@ -91,90 +117,69 @@ document.addEventListener('DOMContentLoaded', function() {
                     companiesData = data.data;
                     renderCompanies(companiesData);
                 } else {
-                    const errorMsg = data && data.message ? data.message : 'Respuesta inesperada del servidor';
-                    throw new Error(errorMsg);
+                    throw new Error(data.message || 'Error al cargar empresas');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showError('Error de conexión: ' + error.message);
-                
-                // Mostrar datos de ejemplo como fallback
-                renderCompanies([
-                    {
-                        id_cliente: 15,
-                        RUC: "9988776655443",
-                        razon_social: "Aventura y Turismo S.A.C.",
-                        direccion_fiscal: "Calle Los Andes 880, Urbanización Central",
-                        departamento: "Cusco"
-                    },
-                    {
-                        id_cliente: 16,
-                        RUC: "9876543210987",
-                        razon_social: "Comercial ABC Ltda.",
-                        direccion_fiscal: "Calle Ficticia 456, Distrito Norte",
-                        departamento: "Arequipa"
-                    }
-                ]);
+                showError(error.message);
+                // Datos de ejemplo para desarrollo
+                renderCompanies(getSampleData());
             })
-            .finally(() => {
-                hideLoader();
-            });
+            .finally(hideLoader);
     }
-    
-    // Función para buscar empresas con filtros
-    function searchCompanies() {
-        const params = new URLSearchParams();
-        
-        if (searchRucInput.value.trim()) {
-            params.append('ruc', searchRucInput.value.trim());
+
+    function searchCompanies(field) {
+        const searchTerm = field === 'ruc'
+            ? searchRucInput.value.trim()
+            : searchRazonInput.value.trim();
+
+        if (!searchTerm) {
+            loadCompanies(); // Recargar todos si no hay término
+            return;
         }
-        
-        if (searchRazonSocialInput.value.trim()) {
-            params.append('nombre', searchRazonSocialInput.value.trim());
-        }
-        
+
         showLoader();
-          
-        // URL del servicio PHP con parámetros
-        const url = `registrar/get_companies.php?${params.toString()}`;
-        
-        fetch(url)
+
+        // Construir parámetros según el PHP
+        const params = new URLSearchParams();
+        if (field === 'ruc') {
+            params.append('ruc', searchTerm);
+        } else {
+            params.append('nombre', searchTerm);
+        }
+
+        fetch(`${BASE_URL}/get_companies.php?${params.toString()}`)
             .then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        throw new Error(`HTTP ${response.status}: ${text || response.statusText}`);
-                    });
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
             })
             .then(data => {
-                if (data && data.success) {
+                if (data?.success) {
                     companiesData = data.data;
-                    renderCompanies(companiesData);
+                    renderCompanies(data.data);
                 } else {
-                    const errorMsg = data && data.message ? data.message : 'Sin resultados';
-                    throw new Error(errorMsg);
+                    throw new Error(data?.message || 'Sin resultados');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showError('Error de búsqueda: ' + error.message);
+                showError(error.message);
+                renderCompanies([]);
             })
-            .finally(() => {
-                hideLoader();
-            });
+            .finally(hideLoader);
     }
-    
-    // Función para renderizar empresas en la tabla
+
     function renderCompanies(companies) {
+        if (!tableBody) return;
+
         tableBody.innerHTML = '';
-        
+
         if (!companies || companies.length === 0) {
             tableBody.innerHTML = '<tr><td colspan="5" class="no-results">No se encontraron empresas</td></tr>';
             return;
         }
-        
+
         companies.forEach(company => {
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -183,47 +188,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${company.direccion_fiscal || 'N/A'}</td>
                 <td>${company.departamento || 'N/A'}</td>
                 <td>
-                    <input type="radio" name="request-select" value="${company.id_cliente}">
+                    <input type="radio" name="business-select" value="${company.id_cliente}">
                 </td>
             `;
             tableBody.appendChild(row);
         });
     }
-    
-    // Función para cerrar el modal
-    function closeModal() {
-        modal.style.display = 'none';
-        resetModal();
-    }
-    
-    // Función para resetear el modal
+
     function resetModal() {
-        searchRucInput.value = '';
-        searchRazonSocialInput.value = '';
+        if (searchRucInput) searchRucInput.value = '';
+        if (searchRazonInput) searchRazonInput.value = '';
         selectedCompany = null;
-        
-        // Remover cualquier fila seleccionada
-        const rows = tableBody.querySelectorAll('tr');
-        rows.forEach(row => row.classList.remove('selected-row'));
+
+        if (tableBody) {
+            const rows = tableBody.querySelectorAll('tr');
+            rows.forEach(row => row.classList.remove('selected-row'));
+        }
     }
-    
-    // Función para resaltar la fila seleccionada
+
     function highlightSelectedRow(radioButton) {
-        // Remover selección anterior
+        if (!tableBody) return;
+
         const rows = tableBody.querySelectorAll('tr');
         rows.forEach(row => row.classList.remove('selected-row'));
-        
-        // Resaltar nueva selección
+
         const selectedRow = radioButton.closest('tr');
-        selectedRow.classList.add('selected-row');
+        if (selectedRow) {
+            selectedRow.classList.add('selected-row');
+        }
     }
-    
-    // Función para mostrar alerta
+
     function showAlert(message) {
-        // Eliminar alertas previas
-        const existingAlert = document.querySelector('#myModalBusiness .alert');
-        if (existingAlert) existingAlert.remove();
-        
+        const modalContent = document.querySelector('#myModalBusiness .modal-content');
+        if (!modalContent) return;
+
+        // Eliminar alertas anteriores
+        const existingAlerts = modalContent.querySelectorAll('.alert');
+        existingAlerts.forEach(alert => alert.remove());
+
         const alert = document.createElement('div');
         alert.className = 'alert';
         alert.textContent = message;
@@ -231,74 +233,74 @@ document.addEventListener('DOMContentLoaded', function() {
             background-color: #ffdddd;
             color: #d8000c;
             padding: 10px;
-            margin-top: 10px;
+            margin: 15px 0;
             border-radius: 4px;
             text-align: center;
         `;
-        
-        const modalButton = document.querySelector('#myModalBusiness .modal-button');
-        if (modalButton) {
-            modalButton.insertAdjacentElement('beforebegin', alert);
-        }
-        
-        // Auto-eliminar después de 3 segundos
+
+        modalContent.insertBefore(alert, modalContent.querySelector('.modal-button'));
+
         setTimeout(() => {
             if (alert.parentNode) {
                 alert.remove();
             }
         }, 3000);
     }
-    
-    // Función para mostrar loader
+
     function showLoader() {
-        // Eliminar loaders previos
-        const existingLoader = document.querySelector('#myModalBusiness .loader');
-        if (existingLoader) existingLoader.remove();
-        
-        // Eliminar mensajes de error
-        const existingError = document.querySelector('#myModalBusiness .error');
-        if (existingError) existingError.remove();
-        
+        if (!tableBody || !tableBody.parentNode) return;
+
+        // Eliminar loaders anteriores
+        const existingLoaders = document.querySelectorAll('#myModalBusiness .loader');
+        existingLoaders.forEach(loader => loader.remove());
+
         const loader = document.createElement('div');
         loader.className = 'loader';
-        loader.style.cssText = `
-            text-align: center;
-            padding: 20px;
-            color: #2a5298;
+        loader.innerHTML = `
+            <div class="spinner"></div>
+            <p>Cargando empresas...</p>
         `;
-        loader.innerHTML = `<i class="bi bi-arrow-repeat" style="font-size: 24px; animation: spin 1s linear infinite;"></i>
-                            <p style="margin-top: 10px;">Buscando empresas...</p>`;
-        
-        tableBody.parentNode.insertBefore(loader, tableBody);
-        
-        // Agregar animación CSS si no existe
-        if (!document.getElementById('spin-animation')) {
-            const style = document.createElement('style');
-            style.id = 'spin-animation';
-            style.innerHTML = `
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                }
+        loader.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 10px;
+        `;
+
+        const spinner = loader.querySelector('.spinner');
+        if (spinner) {
+            spinner.style.cssText = `
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 1s linear infinite;
             `;
-            document.head.appendChild(style);
         }
+
+        tableBody.parentNode.insertBefore(loader, tableBody);
     }
-    
-    // Función para ocultar loader
+
     function hideLoader() {
-        const loader = document.querySelector('#myModalBusiness .loader');
-        if (loader && loader.parentNode) {
-            loader.remove();
-        }
+        const loaders = document.querySelectorAll('#myModalBusiness .loader');
+        loaders.forEach(loader => {
+            if (loader.parentNode) {
+                loader.remove();
+            }
+        });
     }
-    
-    // Función para mostrar error
+
     function showError(message) {
-        // Eliminar errores previos
-        const existingError = document.querySelector('#myModalBusiness .error');
-        if (existingError) existingError.remove();
-        
+        const modalContent = document.querySelector('#myModalBusiness .modal-content');
+        if (!modalContent) return;
+
+        // Eliminar errores anteriores
+        const existingErrors = modalContent.querySelectorAll('.error');
+        existingErrors.forEach(error => error.remove());
+
         const error = document.createElement('div');
         error.className = 'error';
         error.textContent = message;
@@ -306,23 +308,56 @@ document.addEventListener('DOMContentLoaded', function() {
             background-color: #ffdddd;
             color: #d8000c;
             padding: 10px;
-            margin-top: 10px;
+            margin: 15px 0;
             border-radius: 4px;
             text-align: center;
         `;
-        
-        tableBody.parentNode.insertBefore(error, tableBody);
+
+        modalContent.insertBefore(error, modalContent.querySelector('.modal-button'));
     }
-    
-    // Función debounce para optimizar búsquedas
+
+    function getSampleData() {
+        return [
+            {
+                id_cliente: 15,
+                RUC: "9988776655443",
+                razon_social: "Aventura y Turismo S.A.C.",
+                direccion_fiscal: "Calle Los Andes 880, Urbanización Central",
+                departamento: "Cusco"
+            },
+            {
+                id_cliente: 16,
+                RUC: "9876543210987",
+                razon_social: "Comercial ABC Ltda.",
+                direccion_fiscal: "Calle Ficticia 456, Distrito Norte",
+                departamento: "Arequipa"
+            }
+        ];
+    }
+
     function debounce(func, wait) {
         let timeout;
-        return function() {
-            const context = this, args = arguments;
+        return function () {
+            const context = this;
+            const args = arguments;
             clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                func.apply(context, args);
-            }, wait);
+            timeout = setTimeout(() => func.apply(context, args), wait);
         };
+    }
+
+    // Cerrar modal al presionar Escape
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+
+    // Cerrar al hacer clic fuera del contenido del modal
+    if (modal) {
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
     }
 });

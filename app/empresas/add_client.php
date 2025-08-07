@@ -15,13 +15,14 @@ try {
 
     $data = json_decode(file_get_contents('php://input'), true);
     
-    $stmt = $conn->prepare("INSERT INTO cliente (RUC, razon_social, direccion_fiscal, departamento) 
-                           VALUES (:ruc, :razon_social, :direccion_fiscal, :departamento)");
+    $stmt = $conn->prepare("INSERT INTO cliente (RUC, razon_social, direccion_fiscal, departamento, propietario) 
+                       VALUES (:ruc, :razon_social, :direccion_fiscal, :departamento, :propietario)");
     
     $stmt->bindParam(':ruc', $data['RUC']);
     $stmt->bindParam(':razon_social', $data['razon_social']);
     $stmt->bindParam(':direccion_fiscal', $data['direccion_fiscal']);
     $stmt->bindParam(':departamento', $data['departamento']);
+    $stmt->bindParam(':propietario', $data['propietario']);
     
     if ($stmt->execute()) {
         echo json_encode([

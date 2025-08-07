@@ -1,11 +1,10 @@
 <?php
-// guardar_fiscalization.php
+// guardar_fiscalizacion.php
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Configuración de la base de datos
 $host = 'localhost';
 $db   = 'Documentos';
 $user = 'root';
@@ -22,19 +21,28 @@ $options = [
 try {
     $conn = new PDO($dsn, $user, $pass, $options);
     
-    // Obtener datos del POST
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
     
-    // Validar que tenemos datos
     if (!$data) {
         throw new Exception('Datos inválidos o vacíos');
     }
     
-    // Validar campos requeridos
-    $requiredFields = ['numero', 'id_cliente', 'fecha_notificacion', 'fecha_presentacion', 
-                      'id_etapa', 'periodo_inicio', 'periodo_final', 'IGV', 'supervisor_id'];
+    // Campos requeridos básicos
+    $requiredFields = [
+        'numero', 
+        'id_cliente', 
+        'fecha_notificacion', 
+        'fecha_presentacion',
+        'id_etapa', 
+        'periodo_inicio', 
+        'periodo_final', 
+        'IGV', 
+        'supervisor_id',
+        'tipo'
+    ];
     
+    // Validar campos requeridos
     $missingFields = [];
     foreach ($requiredFields as $field) {
         if (empty($data[$field])) {
@@ -46,45 +54,87 @@ try {
         throw new Exception('Campos requeridos faltantes: ' . implode(', ', $missingFields));
     }
     
-    // Iniciar transacción
+    // Validación específica para requerimiento padre
+    if ($data['id_etapa'] != 1 && empty($data['id_fiscalizacion_padre'])) {
+        throw new Exception('Debe seleccionar un requerimiento padre para esta etapa');
+    }
+    
+    // Validar que no tenga padre si es 1er Requerimiento
+    if ($data['id_etapa'] == 1 && !empty($data['id_fiscalizacion_padre'])) {
+        throw new Exception('No se puede asignar requerimiento padre al 1er Requerimiento');
+    }
+    
+    // Validar y formatear IGV
+    $igv = str_replace(',', '.', $data['IGV']);
+    $igv = (float) $igv;
+    
+    if ($igv <= 0) {
+        throw new Exception('El IGV debe ser un valor mayor a 0');
+    }
+    
+    $igv = number_format($igv, 2, '.', '');
+    
+    // Mapeo de tipos de fiscalización
+    $tiposMap = [
+        'esquela' => 1,
+        'FP-IGV' => 2,
+        'FT-IGV' => 3,
+        'FP-RENTA' => 4,
+        'FT-RENTA' => 5
+    ];
+    
+    if (!isset($tiposMap[$data['tipo']])) {
+        throw new Exception('Tipo de fiscalización inválido: ' . $data['tipo']);
+    }
+    
+    $id_tipo = $tiposMap[$data['tipo']];
+    
     $conn->beginTransaction();
     
-    // CORRECCIÓN: Eliminar comentarios dentro de la cadena SQL
+    // Insertar fiscalización
     $sqlFiscalizacion = "INSERT INTO fiscalizacion (
         numero, 
-        id_cliente_real,
+        id_cliente,
         fecha_notificacion, 
         fecha_presentacion, 
         id_etapa, 
         periodo_inicio, 
         periodo_final, 
-        IGV
+        IGV,
+        id_estado,
+        id_tipo,
+        id_fiscalizacion_padre
     ) VALUES (
         :numero, 
-        :id_cliente_real,
+        :id_cliente,
         :fecha_notificacion, 
         :fecha_presentacion, 
         :id_etapa, 
         :periodo_inicio, 
         :periodo_final, 
-        :IGV
+        :IGV,
+        1,  -- Estado activo
+        :id_tipo,
+        :id_fiscalizacion_padre
     )";
     
     $stmtFiscal = $conn->prepare($sqlFiscalizacion);
     $stmtFiscal->execute([
         ':numero' => $data['numero'],
-        ':id_cliente_real' => $data['id_cliente'],
+        ':id_cliente' => $data['id_cliente'],
         ':fecha_notificacion' => $data['fecha_notificacion'],
         ':fecha_presentacion' => $data['fecha_presentacion'],
         ':id_etapa' => $data['id_etapa'],
         ':periodo_inicio' => $data['periodo_inicio'],
         ':periodo_final' => $data['periodo_final'],
-        ':IGV' => $data['IGV']
+        ':IGV' => $igv,
+        ':id_tipo' => $id_tipo,
+        ':id_fiscalizacion_padre' => ($data['id_etapa'] != 1) ? $data['id_fiscalizacion_padre'] : null
     ]);
     
     $id_fiscalizacion = $conn->lastInsertId();
     
-    // Insertar supervisor y verificadores en agente_sunat
+    // Insertar agentes SUNAT (supervisor y verificadores)
     $sqlAgente = "INSERT INTO agente_sunat (
         id_fiscalizacion, 
         id_personal, 
@@ -98,24 +148,35 @@ try {
     $stmtAgente = $conn->prepare($sqlAgente);
     
     // Insertar supervisor
-    $stmtAgente->execute([
-        ':id_fiscalizacion' => $id_fiscalizacion,
-        ':id_personal' => $data['supervisor_id'],
-        ':cargo' => 'supervisor'
-    ]);
+    try {
+        $stmtAgente->execute([
+            ':id_fiscalizacion' => $id_fiscalizacion,
+            ':id_personal' => $data['supervisor_id'],
+            ':cargo' => 'supervisor'
+        ]);
+    } catch (PDOException $e) {
+        if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
+            throw $e;
+        }
+    }
     
     // Insertar verificadores
     if (!empty($data['verificadores_ids'])) {
         foreach ($data['verificadores_ids'] as $verificador_id) {
-            $stmtAgente->execute([
-                ':id_fiscalizacion' => $id_fiscalizacion,
-                ':id_personal' => $verificador_id,
-                ':cargo' => 'verificador'
-            ]);
+            try {
+                $stmtAgente->execute([
+                    ':id_fiscalizacion' => $id_fiscalizacion,
+                    ':id_personal' => $verificador_id,
+                    ':cargo' => 'verificador'
+                ]);
+            } catch (PDOException $e) {
+                if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
+                    throw $e;
+                }
+            }
         }
     }
     
-    // Confirmar transacción
     $conn->commit();
     
     echo json_encode([
@@ -125,7 +186,6 @@ try {
     ]);
     
 } catch (PDOException $e) {
-    // Revertir transacción en caso de error
     if (isset($conn) && $conn->inTransaction()) {
         $conn->rollBack();
     }
@@ -134,7 +194,7 @@ try {
     echo json_encode([
         'success' => false,
         'message' => 'Error de base de datos: ' . $e->getMessage(),
-        'error_details' => $e->getMessage()
+        'error_code' => $e->errorInfo[1] ?? null
     ]);
 } catch (Exception $e) {
     http_response_code(400);

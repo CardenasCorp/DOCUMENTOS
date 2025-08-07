@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const dashButton = document.createElement('button');
         dashButton.type = 'button';
         dashButton.classList.add('dash');
-        dashButton.innerHTML = '<i class="bi bi-dash"></i>';
+        dashButton.innerHTML = '<i class="bi bi-trash"></i> ';
         dashButton.onclick = function () {
             eliminarVerificador(this);
         };

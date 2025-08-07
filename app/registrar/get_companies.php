@@ -2,45 +2,77 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Content-Type');
 
+// Configuración de la base de datos
 $host = 'localhost';
 $db   = 'Documentos';
 $user = 'root';
 $pass = 'root';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $user, $pass, $options);
 
-    // Construir consulta basada en parámetros
-    $sql = "SELECT id_cliente, RUC, razon_social, direccion_fiscal, departamento FROM cliente";
+    // Construir consulta base
+    $sql = "SELECT 
+                id_cliente, 
+                RUC, 
+                razon_social, 
+                direccion_fiscal, 
+                departamento 
+            FROM cliente";
     
-    // Filtros
+    // Inicializar parámetros
+    $where = [];
     $params = [];
-    if (isset($_GET['ruc'])) {
-        $sql .= " WHERE RUC LIKE :ruc";
+    
+    // Filtro por RUC
+    if (isset($_GET['ruc']) && !empty($_GET['ruc'])) {
+        $where[] = "RUC LIKE :ruc";
         $params[':ruc'] = '%' . $_GET['ruc'] . '%';
     }
-    elseif (isset($_GET['nombre'])) {
-        $sql .= " WHERE razon_social LIKE :nombre";
+    
+    // Filtro por razón social
+    if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
+        $where[] = "razon_social LIKE :nombre";
         $params[':nombre'] = '%' . $_GET['nombre'] . '%';
     }
     
-    $sql .= " ORDER BY razon_social LIMIT 50";
-
+    // Combinar condiciones WHERE si existen
+    if (!empty($where)) {
+        $sql .= " WHERE " . implode(' AND ', $where);
+    }
+    
+    // Ordenar y limitar resultados
+    $sql .= " ORDER BY razon_social ASC LIMIT 50";
+    
+    // Preparar y ejecutar consulta
     $stmt = $conn->prepare($sql);
     $stmt->execute($params);
-    $empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $empresas = $stmt->fetchAll();
 
+    // Respuesta exitosa
     echo json_encode([
         'success' => true,
-        'data' => $empresas
+        'data' => $empresas,
+        'count' => count($empresas)
     ]);
 
 } catch (PDOException $e) {
+    // Manejo de errores
+    http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Error de base de datos: ' . $e->getMessage()
+        'message' => 'Error de base de datos: ' . $e->getMessage(),
+        'error_code' => $e->getCode()
     ]);
 }
 ?>

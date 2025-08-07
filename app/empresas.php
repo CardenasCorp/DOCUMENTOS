@@ -18,13 +18,13 @@
             <h2><a href="">Menú Principal</a></h2>
             <hr>
             <ul>
-                <li><a href="registrar-caso.php">Registrar</a></li>
-                <li><a href="modificar-caso.php">Modificar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
+                <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
+                <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
                 <hr>
-                <li><a href="empleados.php">SUNAT</a></li>
+                <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                 <hr>
-                <li><a href="empresas.php">Empresa</a></li>
+                <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
             </ul>
         </div>
         <div class="main-content">
@@ -32,7 +32,7 @@
                     <hr>
                     <br>
             <div class="content-business">
-                <h1>Lista de Empresas</h1>  <!-- Corregido "emplados" a "Empresas" -->
+                <h1>Lista de Empresas</h1> 
                 <div class="business-list">
                     <div class="search-business">
                         <input type="text" id="searchClientInput" placeholder="Buscar por nombre... 🔎" class="search-input">
@@ -62,6 +62,10 @@
                 <div class="form-modal">
                     <label for="razon_social">Razón Social</label>
                     <input type="text" id="razon_social" name="razon_social" placeholder="Razón social" required>
+                </div>
+                <div class="form-modal">
+                    <label for="propietario">Propietario</label>
+                    <input type="text" id="propietario" name="propietario" placeholder="Nombre del propietario">
                 </div>
                 <div class="form-modal">
                     <label for="direccion_fiscal">Dirección Fiscal</label>

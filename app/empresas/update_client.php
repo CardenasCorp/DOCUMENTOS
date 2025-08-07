@@ -16,17 +16,19 @@ try {
     $data = json_decode(file_get_contents('php://input'), true);
     
     $stmt = $conn->prepare("UPDATE cliente SET 
-                           RUC = :ruc, 
-                           razon_social = :razon_social, 
-                           direccion_fiscal = :direccion_fiscal, 
-                           departamento = :departamento
-                           WHERE id_cliente = :id");
+                       RUC = :ruc, 
+                       razon_social = :razon_social, 
+                       direccion_fiscal = :direccion_fiscal, 
+                       departamento = :departamento,
+                       propietario = :propietario
+                       WHERE id_cliente = :id");
     
     $stmt->bindParam(':id', $data['id']);
     $stmt->bindParam(':ruc', $data['RUC']);
     $stmt->bindParam(':razon_social', $data['razon_social']);
     $stmt->bindParam(':direccion_fiscal', $data['direccion_fiscal']);
     $stmt->bindParam(':departamento', $data['departamento']);
+    $stmt->bindParam(':propietario', $data['propietario']);
     
     if ($stmt->execute()) {
         echo json_encode([

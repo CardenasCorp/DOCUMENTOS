@@ -1,136 +1,277 @@
+/* ===== ESTILOS GENERALES ===== */
 .form-section {
-    margin-top: 20px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-
-.form-section a {
-    text-decoration: none;
-    color: rgb(230, 144, 34);
-    font-size: 30px;
+.form-section h1 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 3px solid #e69022;
 }
 
+/* ===== ESTRUCTURA DEL FORMULARIO ===== */
 .form-container {
-    display: block;
-    width: 80%;
-    margin: auto;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 
 .form-group-1,
-.form-group-2,
 .form-group-3,
 .form-group-4,
 .form-group-5,
 .form-group-6,
 .form-group-7 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: grid;
+  gap: 1.5rem;
 }
 
-.form-group-1 .form-control,
-.form-group-3 .form-control,
-.form-group-4 .form-control,
-.form-group-5 .form-control,
-.form-group-7 .form-control-2    {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+.form-group-1 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.form-group-3 { grid-template-columns: repeat(2, 1fr); }
+.form-group-4 { grid-template-columns: repeat(2, 1fr); }
+.form-group-5 { grid-template-columns: repeat(2, 1fr); }
+.form-group-6 { grid-template-columns: 1fr; }
+.form-group-7 { grid-template-columns: 1fr; }
+
+/* ===== COMPONENTES DEL FORMULARIO ===== */
+.form-control,
+.form-control-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.form-group-2 .form-control-2,
-.form-group-1 .form-control-2,
-.form-group-6 .form-control-2{
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 20px;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+.form-control label,
+.form-control-2 label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
 }
 
-.form-control input {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-
-}
-
+.form-control input,
+.form-control select,
 .form-control-2 input {
-    width: 65%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  width: 100%;
 }
 
-.form-control-2 .search-request,
-.form-control-2 .search-business,
-.form-control-2 .search-employee {
-    width: 17%;
-    padding: 10px 10px;
-    background-color: rgb(230, 144, 34);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.form-control input:focus,
+.form-control select:focus,
+.form-control-2 input:focus {
+  outline: none;
+  border-color: #e69022;
+  box-shadow: 0 0 0 3px rgba(230, 144, 34, 0.2);
+  background-color: #fff;
 }
 
-.form-control-2 .search-request:hover,
-.form-control-2 .search-business:hover,
-.form-control-2 .search:hover {
-    background-color: rgb(200, 120, 30);
+/* ===== INPUT CON BOTONES ===== */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.form-group-1 label,
-.form-group-2 label,
-.form-group-3 label,
-.form-group-4 label,
-.form-group-5 label,
-.form-group-6 label,
-.form-group-7 label {
-    font-weight: bold;
-    margin-left: 15px;
+.input-container input {
+  padding-right: 2.5rem;
 }
 
-.form-group-4 select {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.input-container button {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+  padding: 0.5rem;
 }
 
+.input-container button:hover {
+  color: #e69022;
+}
+
+/* ===== BOTONES ESPECIALES ===== */
+.search-business,
+.search-request,
+.search-employee {
+  background-color: #f0f0f0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.search-business:hover,
+.search-request:hover,
+.search-employee:hover {
+  background-color: #e0e0e0;
+}
+
+/* ===== VERIFICADORES ===== */
+.verificador-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.verificador-container .input-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.verificador-name {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.verificador-container .search,
+.verificador-container .dash {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.verificador-container .dash {
+  background-color: #ffecec;
+  color: #e74c3c;
+}
+
+.verificador-container .dash:hover {
+  background-color: #f8d7d7;
+}
+
+/* ===== BOTÓN AGREGAR ===== */
+.plus {
+  background-color: #e69022;
+  margin-top: 1rem;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  width: 100%;
+  justify-content: center;
+} 
+
+.plus:hover {
+  background-color: #d6821e;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(230, 144, 34, 0.3);
+}
+
+/* ===== BOTÓN ENVIAR ===== */
 .post {
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(230, 144, 34);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
+  background-color: #e69022;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .post:hover {
-    background-color: rgb(200, 120, 30);
+  background-color: #d6821e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 144, 34, 0.3);
 }
 
-
-.form-control-2 .plus {
-    text-align: center;
-    padding: 5px 10px;
-    background-color: rgb(230, 144, 34);
-    color: white;
-    border: none;
-    cursor: pointer;   
-    border-radius: 5px; 
+/* ===== ESTADOS ===== */
+input:disabled,
+select:disabled {
+  background-color: #f0f0f0 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-.form-group-7 .search{
-    background-color: rgb(230, 144, 34);
-    color: white;
+input[readonly] {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+/* ===== VALIDACIÓN ===== */
+input:invalid {
+  border-left: 4px solid #e74c3c;
+}
+
+input:valid {
+  border-left: 4px solid #2ecc71;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form-section {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .form-group-1,
+  .form-group-3,
+  .form-group-4,
+  .form-group-5 {
+    grid-template-columns: 1fr;
+  }
+  
+  .post {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .form-section h1 {
+    font-size: 1.5rem;
+  }
+  
+  .input-container button {
+    font-size: 1rem;
+  }
+  
+  .verificador-container .input-container {
+    flex-wrap: wrap;
+  }
+  
+  .verificador-name {
+    width: 100%;
+  }
 }

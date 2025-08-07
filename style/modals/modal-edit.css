@@ -1,78 +1,191 @@
-/* Estilo del Modal */
+/* Estilos base del modal */
 .myModalEditEmpoyee {
     display: none;
-    /* Inicialmente oculto */
     position: fixed;
-    z-index: 1;
+    z-index: 1050;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Fondo oscuro */
-    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
 }
 
-/* Estilo del contenido del Modal */
-.myModalEditEmpoyee .modal-content {
-    background-color: #fefefe;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fff;
     margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 40%;
-    /* Puedes ajustar el tamaño según prefieras */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slideDown 0.4s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Estilo del botón de cierre */
-.myModalEditEmpoyee .close {
+@keyframes slideDown {
+    from { 
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1;
+    }
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 20px;
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.myModalEditEmpoyee .close:hover,
-.myModalEditEmpoyee .close:focus {
-    color: black;
-    text-decoration: none;
     cursor: pointer;
+    transition: color 0.2s;
 }
 
-.myModalEditEmpoyee .modal-form-EditEmpoyee {
-    width: 100%;
-    display: flex;
+.close:hover {
+    color: #333;
+}
+
+/* Título del modal */
+.modal-content h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f1f1;
+    font-size: 1.8rem;
     text-align: center;
-    align-items: center;
+}
+
+/* Formulario del modal */
+.modal-form-EditEmpoyee {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-modal label {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-modal input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.form-modal input:focus {
+    outline: none;
+    border-color: rgb(230, 144, 34);
+    box-shadow: 0 0 0 3px rgba(230, 144, 34, 0.2);
+    background-color: #fff;
+}
+
+/* Botón de aceptar */
+.modal-button {
+    margin-top: 15px;
+    display: flex;
     justify-content: center;
 }
 
-.myModalEditEmpoyee .modal-form-EditEmpoyee .form-modal {
-    width: 100%;
-    margin-top: 20px;
-}
-.myModalEditEmpoyee .modal-form-EditEmpoyee label {
-    margin-bottom: 10px;
-    font: bold;
-    margin-right: 20px;
-}
-.myModalEditEmpoyee .modal-form-EditEmpoyee input {
-    width: 50%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.myModalEditEmpoyee .modal-form-EditEmpoyee button {
-    margin-top: 20px;
-    padding: 10px 20px;
+.accept-modal {
     background-color: rgb(230, 144, 34);
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 12px 25px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    min-width: 150px;
+    text-align: center;
 }
-.myModalEditEmpoyee .modal-form-EditEmpoyee button:hover {
-    background-color: rgb(200, 120, 30);
+
+.accept-modal:hover {
+    background-color: rgb(200, 144, 34);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(230, 144, 34, 0.2);
+}
+
+.accept-modal:active {
+    transform: translateY(0);
+}
+
+/* Validación visual */
+.form-modal input:invalid {
+    border-left: 4px solid #6f6f6f;
+}
+
+.form-modal input:valid {
+    border-left: 4px solid rgb(230, 144, 34);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 25px;
+        width: 85%;
+    }
+    
+    .modal-form-EditEmpoyee {
+        gap: 15px;
+    }
+    
+    .form-modal input {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 15% auto;
+        padding: 20px;
+        width: 90%;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .close {
+        right: 15px;
+        top: 15px;
+        font-size: 24px;
+    }
+    
+    .form-modal label {
+        font-size: 0.9rem;
+    }
+    
+    .accept-modal {
+        padding: 10px 20px;
+        width: 100%;
+    }
 }

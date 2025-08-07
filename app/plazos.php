@@ -17,9 +17,9 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/modals/navbar.css">
-    <link rel="stylesheet" href="./style/dashboard/tables.css">
     <title>Document</title>
 </head>
+
 <body>
     <nav>
         <ul>
@@ -31,49 +31,74 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div>
                 <li><a href="app/logout.php" class="close">Cerrar Sesion</a></li>
-            </div>  
+            </div>
         </ul>
 
     </nav>
 
     <div class="container">
-        <!-- Tabla Por Vencer -->
         <div class="vencer">
-            <div class="table-header vencer-header">
-                <h2>Por vencer</h2>
-                <p>0</p>
+            <div class="vencer-header">
+                <h2>
+                    Por vencer
+                </h2>
+                <p>7</p>
             </div>
-            <table id="vencer-table" class="vencer-table">
-                <thead>
-                    <tr>
-                        <th>Nro</th>
-                        <th>Tipo</th>
-                        <th>Etapa</th>
-                        <th>Fecha a presentar</th>
-                        <th>Estado</th>
-                        <th>IGV</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Datos se cargarán dinámicamente -->
-                </tbody>
-            </table>
+            <div>
+                <table class="vencer-table">
+                    <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Tipo</th>
+                            <th>Etapa</th>
+                            <th>Fecha a presentar</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conta de Luz</td>
+                            <td>15/10/2023</td>
+                            <td>R$ 150,00</td>
+                            <td>10/10/2023</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Conta de Água</td>
+                            <td>20/10/2023</td>
+                            <td>R$ 80,00</td>
+                            <td>15/10/2023</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Internet</td>
+                            <td>25/10/2023</td>
+                            <td>R$ 120,00</td>
+                            <td>20/10/2023</td>
+                            <td>Pago</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="table-footer">
                 <div class="pagination-controls">
-                    <!-- Paginación se generará dinámicamente -->
+                    <button class="pagination-btn" disabled>«</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">»</button>
                 </div>
             </div>
         </div>
-
-        <!-- Tablas Por Reclamar y Por Apelar -->
         <div class="tables">
-            <!-- Tabla Por Reclamar -->
             <div class="reclamar">
-                <div class="table-header reclamar-header">
-                    <h2>Por reclamar</h2>
-                    <p>0</p>
+                <div class="reclamar-header">
+                    <h2>
+                        Por reclamar
+                    </h2>
+                    <p>3</p>
                 </div>
-                <table id="reclamar-table" class="reclamar-table">
+                <table class="reclamar-table">
                     <thead>
                         <tr>
                             <th>Nro</th>
@@ -83,23 +108,44 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Datos se cargarán dinámicamente -->
+                        <tr>
+                            <td>Conta de Luz</td>
+                            <td>10/10/2023</td>
+                            <td>R$ 150,00</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Conta de Água</td>
+                            <td>05/10/2023</td>
+                            <td>R$ 80,00</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Conta de Água</td>
+                            <td>02/10/2023</td>
+                            <td>R$ 80,00</td>
+                            <td>Pago</td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="table-footer">
                     <div class="pagination-controls">
-                        <!-- Paginación se generará dinámicamente -->
+                        <button class="pagination-btn" disabled>«</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">»</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Tabla Por Apelar -->
             <div class="apelar">
-                <div class="table-header apelar-header">
-                    <h2>Por apelar</h2>
-                    <p>0</p>
+                <div class="apelar-header">
+                    <h2>
+                        Por apelar
+                    </h2>
+                    <p>3</p>
                 </div>
-                <table id="apelar-table" class="apelar-table">
+                <table class="apelar-table">
                     <thead>
                         <tr>
                             <th>Nro</th>
@@ -109,12 +155,33 @@ if (!isset($_SESSION['user_id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Datos se cargarán dinámicamente -->
+                        <tr>
+                            <td>Conta de Luz</td>
+                            <td>01/10/2023</td>
+                            <td>R$ 150,00</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Conta de Água</td>
+                            <td>02/10/2023</td>
+                            <td>R$ 80,00</td>
+                            <td>Pago</td>
+                        </tr>
+                        <tr>
+                            <td>Conta de Água</td>
+                            <td>02/10/2023</td>
+                            <td>R$ 80,00</td>
+                            <td>Pago</td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="table-footer">
                     <div class="pagination-controls">
-                        <!-- Paginación se generará dinámicamente -->
+                        <button class="pagination-btn" disabled>«</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">»</button>
                     </div>
                 </div>
             </div>
@@ -135,7 +202,6 @@ if (!isset($_SESSION['user_id'])) {
                         <th>Etapa</th>
                         <th>Estado</th>
                         <th>Fecha a presentar</th>
-                        <th>Fecha de presentacion</th>
                         <th>IGV</th>
                         <th>SUNAT</th>
                         <th>Ver</th>
@@ -148,7 +214,6 @@ if (!isset($_SESSION['user_id'])) {
                         <td>1er Requerimiento</td>
                         <td>Pendiente</td>
                         <td>15/10/2023</td>
-                        <td>10/10/2023</td>
                         <td>S/ 15,000</td>
                         <td>123456789</td>
                         <td><i class="bi bi-eye"></i></td>
@@ -159,7 +224,6 @@ if (!isset($_SESSION['user_id'])) {
                         <td>2do Requerimiento</td>
                         <td>En proceso</td>
                         <td>20/10/2023</td>
-                        <td>15/10/2023</td> 
                         <td>S/ 8,500</td>
                         <td>987654321</td>
                         <td><i class="bi bi-eye"></i></td>
@@ -177,31 +241,6 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-    <!-- Modal para Requerimientos Hijos -->
-    <div id="requerimientosModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>Requerimientos Relacionados</h3>
-        <div class="modal-body">
-          <table class="modal-table">
-            <thead>
-              <tr>
-                <th>Nro</th>
-                <th>Etapa</th>
-                <th>Fecha Presentación</th>
-                <th>Estado</th>
-                <th>IGV</th>
-              </tr>
-            </thead>
-            <tbody id="modalRequerimientosBody">
-              <!-- Datos se cargarán dinámicamente -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <script src="./script/dashboard/tables.js"></script>
-
 </body>
 
 </html>

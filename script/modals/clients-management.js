@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModalButton = document.getElementById('closeModalEditBusiness');
     const rucInput = document.getElementById('f-RUC');
     const razonSocialInput = document.getElementById('razon_social');
+    const propietarioInput = document.getElementById('propietario');
     const direccionFiscalInput = document.getElementById('direccion_fiscal');
     const departamentoInput = document.getElementById('Departamento');
     const acceptButton = document.querySelector('.accept-modal');
@@ -25,13 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
         if (client) {
             rucInput.value = client.RUC || '';
             razonSocialInput.value = client.razon_social || '';
-            // Asegúrate que este selector coincide con tu HTML
+            propietarioInput.value = client.propietario || ''; // Nuevo campo
             direccionFiscalInput.value = client.direccion_fiscal || '';
             departamentoInput.value = client.departamento || '';
             modal.dataset.clientId = client.id;
         } else {
             rucInput.value = '';
             razonSocialInput.value = '';
+            propietarioInput.value = ''; // Nuevo campo
             direccionFiscalInput.value = '';
             departamentoInput.value = '';
             delete modal.dataset.clientId;
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="client-details">
                 <h3>${client.razon_social || 'N/A'}</h3>
                 <p><strong>RUC:</strong> ${client.RUC || 'N/A'}</p>
+                <p><strong>Propietario:</strong> ${client.propietario || 'N/A'}</p>
                 <p><strong>Dirección Fiscal:</strong> ${client.direccion_fiscal || 'N/A'}</p>
                 <p><strong>Departamento:</strong> ${client.departamento || 'N/A'}</p>
             </div>
@@ -252,7 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const clientData = {
             RUC: rucInput.value.trim(),
             razon_social: razonSocialInput.value.trim(),
-            direccion_fiscal: direccionFiscalInput.value.trim(),  // Nombre exacto
+            propietario: propietarioInput.value.trim(), 
+            direccion_fiscal: direccionFiscalInput.value.trim(),
             departamento: departamentoInput.value.trim()
         };
 

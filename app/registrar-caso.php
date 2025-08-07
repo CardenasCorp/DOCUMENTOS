@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Formulario con Sidebar</title>
     <link rel="stylesheet" href="../style/modals/modal-request.css">
-    <link rel="stylesheet" href="../style/registrar-caso.css">
     <link rel="stylesheet" href="../style/modals/modal-business.css">
     <link rel="stylesheet" href="../style/modals/sidebar.css">
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/modals/select-employee.css">
+    <link rel="stylesheet" href="../style/registrar-caso.css">
     
 </head>
 
@@ -22,13 +22,13 @@
             <h2><a href="">Menú Principal</a></h2>
             <hr>
             <ul>
-                <li><a href="registrar-caso.php">Registrar</a></li>
-                <li><a href="modificar-caso.php">Modificar</a></li>
-                <li><a href="#">Eliminar</a></li>
+                <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
+                <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
+                <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
                 <hr>
-                <li><a href="empleados.php">SUNAT</a></li>
+                <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                 <hr>
-                <li><a href="empresas.php">Empresa</a></li>
+                <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
             </ul>
         </div>
         <!-- Formulario -->
@@ -40,29 +40,29 @@
                 <br>
                 <h1>Registrar caso</h1>
                 <form class="form-container" id="mainForm">
+                    <div class="form-group-4">
+                        <div class="form-control ">
+                            <label for="tipo">Tipo</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="esquela">Esquela</option>
+                                <option value="FP-IGV">Fiscalización Parcial - igv</option>
+                                <option value="FT-IGV">Fiscalizacón total - igv</option>
+                                <option value="FP-RENTA">Fiscalización Parcial - Renta</option>
+                                <option value="FT-RENTA">Fiscalizacón total - Renta</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group-1">
-                        <div class="number form-control">
+                        <div class="etapa form-control">
                             <label for="number">Número</label>
                             <input type="text" id="number" name="number" placeholder="Ingrese el número de caso" required>
                         </div>
-                        <div class="requerimiento form-control-2">
-                            <label for="requerimiento">Requerimiento</label>
-                            <div class="input-container">
-                                <input type="text" id="requerimiento" name="requerimiento"
-                                    placeholder="Ingrese el requerimiento" required disabled>
-                                <button type="button" class="search-request" id="openModalButtonRequest">
-                                    <i class="bi bi-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-2">
-                        <div class="empresa form-control-2">
+                        <div class="empresa form-control">
                             <label for="empresa">Empresa</label>
-                            <div class="input-container">
-                                <input type="text" id="empresa_input" name="empresa" class="form-control"
+                            <div class="input-container"> 
+                                <input type="text" id="empresa_input" name="empresa"
                                     placeholder="Ingrese la empresa" required disabled>
-                                <button type="button" class="search-business" id="openModalButtonBusiness">
+                               <button type="button" class="search-business" id="openModalButtonBusiness">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
@@ -71,16 +71,6 @@
                             <input type="hidden" id="empresa_ruc" name="empresa_ruc">
                             <input type="hidden" id="empresa_direccion" name="empresa_direccion">
                             <input type="hidden" id="empresa_departamento" name="empresa_departamento">
-                        </div>
-                    </div>
-                    <div class="form-group-3">
-                        <div class="fecha-notificacion form-control">
-                            <label for="fecha-notificacion">Fecha notificación</label>
-                            <input type="date" id="fecha-notificacion" name="fecha-notificacion" required>
-                        </div>
-                        <div class="fecha-presentar form-control">
-                            <label for="fecha-presentar">Fecha a presentar</label>
-                            <input type="date" id="fecha-presentar" name="fecha-presentar" required>
                         </div>
                     </div>
                     <div class="form-group-4">
@@ -94,14 +84,37 @@
                                 <option value="Cierre">Cierre</option>
                                 <option value="Reclamación">Reclamación</option>
                                 <option value="Apelación">Apelación</option>
-                                <option value="Proceso">Proceso</option>
-                                <option value="Contencioso">Contencioso</option>
+                                <option value="Proceso">Proceso Contencioso</option>
                                 <option value="Finalizado">Finalizado</option>
                             </select>
                         </div>
+                        <div class="requerimiento form-control">
+                            <label for="requerimiento">Requerimiento Principal</label>
+                            <div class="input-container">
+                                <input type="text" id="requerimiento" name="requerimiento"
+                                       placeholder="Ingrese el requerimiento" required disabled>
+                                <button type="button" class="search-request" id="openModalButtonRequest">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                            <!-- Campo oculto para almacenar el ID del padre -->
+                            <input type="hidden" id="id_fiscalizacion_padre" name="id_fiscalizacion_padre">
+                        </div>
+                    </div>
+                    <div class="form-group-3">
+                        <div class="fecha-notificacion form-control">
+                            <label for="fecha-notificacion">Fecha notificación</label>
+                            <input type="date" id="fecha-notificacion" name="fecha-notificacion" required>
+                        </div>
+                        <div class="fecha-presentar form-control">
+                            <label for="fecha-presentar">Fecha a presentar</label>
+                            <input type="date" id="fecha-presentar" name="fecha-presentar" required>
+                        </div>
+                    </div>
+                    <div class="form-group-4">
                         <div class="IGV form-control">
                             <label for="IGV">IGV</label>
-                            <input type="number" id="IGV" name="IGV" placeholder="IGV" required>
+                            <input type="number" step="0.01" inputmode="decimal" id="IGV" name="IGV" placeholder="IGV" required>
                         </div>
                     </div>
                     <div class="form-group-5">
@@ -130,22 +143,21 @@
                             <label for="verificador">Verificadores</label>
                             <!-- Verificador 1 -->
                             <div class="verificador-container">
-                                <div class="input-container">
-                                    
-                                    <button type="button" class="search plus" onclick="agregarVerificador()">Agregar<i
-                                            class="bi bi-plus-lg"></i></button>
+                                <div class="input-container">    
+                                    <button type="button" class="plus" onclick="agregarVerificador()">Agregar<i
+                                            class="bi bi-plus-lg"></i><i class="bi bi-trash"></i></button>      
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="post">Enviar</button>
+                    <button type="submit" class="post">Guardar</button>
                 </form>
             </div>
         </div>
     </div>
     
     <!-- Modal de Empresas -->
-    <div id="myModalBusiness" class="myModalBusiness modal">
+    <div id="myModalBusiness" class="myModalBusiness custom-modal">
         <div class="modal-content">
             <span class="close" id="closeModalBusiness">&times;</span>
             <h2>Empresa</h2>
@@ -182,6 +194,43 @@
             </div>
         </div>
     </div>
+    <div id="myModalRequest" class="myModalRequest custom-modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalRequest">&times;</span>
+            <h2>Solicitudes</h2>
+            <form class="modal-form-request" id="searchRequestForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="search-numero">Número</label>
+                        <input type="text" id="search-numero" name="numero" placeholder="Ingrese número">
+                    </div>
+                    <div class="form-group">
+                        <label for="search-cliente">Cliente</label>
+                        <input type="text" id="search-cliente" name="cliente" placeholder="Ingrese cliente">
+                    </div>
+                </div>
+            </form>
+            <div class="table-container">
+                <table class="request-table">
+                    <thead>
+                        <tr>
+                            <th width="20%">Número</th>
+                            <th width="40%">Cliente</th>
+                            <th width="30%">Periodo</th>
+                            <th width="10%">Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="request-table-body">
+                        <!-- Las filas se llenarán dinámicamente con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-button">
+                <button type="button" class="accept-modal" id="acceptRequest">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../script/modals/modal-business.js"></script>
     <script src="../script/modals/modal-request.js"></script>
     <script src="../script/registrar-caso.js"></script>

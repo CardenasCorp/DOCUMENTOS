@@ -15,25 +15,25 @@
 <body>
     <div class="container">
         <div class="sidebar">
-                <h2><a href="">Menú Principal</a></h2>
+            <h2><a href="">Menú Principal</a></h2>
+            <hr>
+            <ul>
+                <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
+                <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
+                <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
                 <hr>
-                <ul>
-                    <li><a href="registrar-caso.php">Registrar</a></li>
-                    <li><a href="modificar-caso.php">Modificar</a></li>
-                    <li><a href="#">Eliminar</a></li>
-                    <hr>
-                    <li><a href="empleados.php">SUNAT</a></li>
-                    <hr>
-                    <li><a href="empresas.php">Empresa</a></li>
-                </ul>
-            </div>
+                <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
+                <hr>
+                <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
+            </ul>
+        </div>
         <div class="main-content">
             <a href="../index.php"><i class="bi bi-arrow-left-square-fill"></i></a>
                     <hr>
                     <br>
             <div class="content-employees">
                 
-                <h1>Lista de emplados</h1>
+                <h1>Lista de empleados</h1>
                 <div class="employees-list">
                     <div class="search-employee">
                         <label for="nombre">Nombre</label>
