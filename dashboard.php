@@ -12,12 +12,11 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/modals/navbar.css">
-    <link rel="stylesheet" href="./style/dashboard/tables.css">
+    <link rel="stylesheet" href="./style/dashboard/dashboard-2.css">
     <title>Document</title>
 </head>
 <body>
@@ -38,30 +37,29 @@ if (!isset($_SESSION['user_id'])) {
     <div>
         <div class="container">
             <div class="dashboard-header">
-                <a href="dashboard.php" style="text-decoration: none; color: inherit;">
-                    <h3>Resumen de Casos <i class="bi bi-caret-right-square"></i></h3>
+                <a href="index.php" style="text-decoration: none; color: inherit;">
+                    <h3><i class="bi bi-caret-left-square"> Resumen de Casos</i></h3>
                 </a>
             </div>
         </div>
     </div>
     <div class="container">
-        <!-- Tabla Por Vencer -->
-        <div class="vencer">
-            <div class="table-header vencer-header">
-                <h2>Por vencer</h2>
+        <!-- Tabla Por Cerrar -->
+        <div class="cerrar">
+            <div class="table-header cerrar-header">
+                <h2>Por cerrar</h2>
                 <p>0</p>
             </div>
-            <table id="vencer-table" class="vencer-table">
+            <table id="cerrar-table" class="cerrar-table">
                 <thead>
                     <tr>
                         <th>Nro</th>
                         <th>Tipo</th>
                         <th>Etapa</th>
-                        <th>Fecha a presentar</th>
                         <th>Estado</th>
-                        <th>IGV</th>
-                    </tr>
-                </thead>
+                        <th>Fecha de cierre</th>
+                    </tr>   
+                </thead>    
                 <tbody>
                     <!-- Datos se cargarán dinámicamente -->
                 </tbody>
@@ -73,21 +71,21 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
 
-        <!-- Tablas Por Reclamar y Por Apelar -->
+        <!-- Tablas Reclamaciones y Apelaciones -->
         <div class="tables">
-            <!-- Tabla Por Reclamar -->
-            <div class="reclamar">
-                <div class="table-header reclamar-header">
-                    <h2>Por reclamar</h2>
+            <!-- Tabla Reclamaciones -->
+            <div class="reclamaciones">
+                <div class="table-header reclamaciones-header">
+                    <h2>Reclamaciones</h2>
                     <p>0</p>
                 </div>
-                <table id="reclamar-table" class="reclamar-table">
+                <table id="reclamaciones-table" class="reclamaciones-table">
                     <thead>
                         <tr>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>
-                            <th>Estado</th>
+                            <th>Fecha máxima de resolución</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,19 +99,19 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
 
-            <!-- Tabla Por Apelar -->
-            <div class="apelar">
-                <div class="table-header apelar-header">
-                    <h2>Por apelar</h2>
+            <!-- Tabla Apelaciones -->
+            <div class="apelaciones">
+                <div class="table-header apelaciones-header">
+                    <h2>Apelaciones</h2>
                     <p>0</p>
                 </div>
-                <table id="apelar-table" class="apelar-table">
+                <table id="apelaciones-table" class="apelaciones-table">
                     <thead>
                         <tr>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>
-                            <th>Estado</th>
+                            <th>Fecha máxima de resolución</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,50 +125,33 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
         </div>
-        <div class="resumen">
-            <div class="resumen-header">
+        <div class="quejas">
+            <div class="quejas-header">
                 <h2>
-                    Resumen
+                    Quejas
                 </h2>
-                <input class="buscar-resumen" type="text" placeholder="Buscar...">
+                <input class="buscar-quejas" type="text" placeholder="Buscar...">
                 <p>2</p>
             </div>
-            <table class="resumen-table">
+            <table class="quejas-table">
                 <thead>
                     <tr>
-                        <th>Nro</th>
-                        <th>Tipo</th>
-                        <th>Etapa</th>
-                        <th>Estado</th>
-                        <th>Fecha a presentar</th>
-                        <th>Fecha de presentacion</th>
-                        <th>IGV</th>
-                        <th>SUNAT</th>
-                        <th>Ver</th>
+                        <th>Empresa</th>
+                        <th>Requerimiento</th>
+                        <th>Numero</th>
+                        <th>Resumen</th>
+                        <th>Fecha de la presentacion</th>
+                        <th>Fecha maxima de respuesta</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>128</td>
-                        <td>FT-IGV</td>
-                        <td>1er Requerimiento</td>
-                        <td>Pendiente</td>
+                        <td>Aventura S.A.C.</td>
+                        <td>F-00001</td>
+                        <td>1</td>
+                        <td>Queja por ...</td>
                         <td>15/10/2023</td>
-                        <td>10/10/2023</td>
-                        <td>S/ 15,000</td>
-                        <td>123456789</td>
-                        <td><i class="bi bi-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>129</td>
-                        <td>FP-RENTA</td>
-                        <td>2do Requerimiento</td>
-                        <td>En proceso</td>
-                        <td>20/10/2023</td>
-                        <td>15/10/2023</td> 
-                        <td>S/ 8,500</td>
-                        <td>987654321</td>
-                        <td><i class="bi bi-eye"></i></td>
+                        <td>15/12/2023</td>
                     </tr>
                 </tbody>
             </table>
@@ -185,31 +166,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-    <!-- Modal para Requerimientos Hijos -->
-    <div id="requerimientosModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>Requerimientos Relacionados</h3>
-        <div class="modal-body">
-          <table class="modal-table">
-            <thead>
-              <tr>
-                <th>Nro</th>
-                <th>Etapa</th>
-                <th>Fecha Presentación</th>
-                <th>Estado</th>
-                <th>IGV</th>
-              </tr>
-            </thead>
-            <tbody id="modalRequerimientosBody">
-              <!-- Datos se cargarán dinámicamente -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <script src="./script/dashboard/tables.js"></script>
 
+    <script src="./script/dashboard/tables-2.js"></script>
 </body>
-
 </html>

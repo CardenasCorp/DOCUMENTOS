@@ -24,50 +24,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
-nav {
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
-}
-
-nav ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-}
-
-nav ul div {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-nav img {
-  height: 40px;
-}
-
-nav a {
-  color: var(--dark-color);
-  font-weight: 500;
-  transition: color 0.3s;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-}
-
-nav a:hover {
-  color: var(--secondary-color);
-}
-
-nav a.close {
-  color: var(--danger-color);
-}
-
-nav a.close:hover {
-  background-color: #ffeeee;
-}
-
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .container {
   padding: 2rem;
@@ -77,7 +33,7 @@ nav a.close:hover {
 
 .container .dashboard-header {
   display: flex;
-  justify-content: end;
+  justify-content: start;
   align-items: center;
   padding: 1.2rem 1.5rem;
   border-bottom: 1px solid var(--gray-color);
@@ -85,7 +41,7 @@ nav a.close:hover {
 } 
 
 /* ===== SECCIONES DEL DASHBOARD ===== */
-.vencer, .reclamar, .apelar, .resumen {
+.cerrar, .reclamaciones, .apelaciones, .quejas {
   background-color: white;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -94,7 +50,7 @@ nav a.close:hover {
 }
 
 /* HEADERS DE SECCIONES */
-.vencer-header, .reclamar-header, .apelar-header, .resumen-header {
+.cerrar-header, .reclamaciones-header, .apelaciones-header, .quejas-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,12 +59,12 @@ nav a.close:hover {
   background-color: var(--light-color);
 }
 
-.vencer-header h2, .reclamar-header h2, .apelar-header h2, .resumen-header h2 {
+.cerrar-header h2, .reclamaciones-header h2, .apelaciones-header h2, .quejas-header h2 {
   color: var(--secondary-color);
   font-size: 1.3rem;
 }
 
-.vencer-header p, .reclamar-header p, .apelar-header p, .resumen-header p {
+.cerrar-header p, .reclamaciones-header p, .apelaciones-header p, .quejas-header p {
   background-color: var(--secondary-color);
   color: white;
   padding: 0.3rem 0.8rem;
@@ -117,8 +73,8 @@ nav a.close:hover {
   font-size: 0.9rem;
 }
 
-/* BUSCADOR RESUMEN */
-.buscar-resumen {
+/* BUSCADOR QUEJAS */
+.buscar-quejas {
   padding: 0.6rem 1rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
@@ -126,7 +82,7 @@ nav a.close:hover {
   font-size: 0.9rem;
 }
 
-.buscar-resumen:focus {
+.buscar-quejas:focus {
   outline: none;
   border-color: var(--secondary-color);
   box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
@@ -167,10 +123,10 @@ tbody tr:last-child {
 }
 
 /* TABLAS ESPECÍFICAS */
-.vencer-table th:nth-child(1),
-.reclamar-table th:nth-child(1),
-.apelar-table th:nth-child(1),
-.resumen-table th:nth-child(1) {
+.cerrar-table th:nth-child(1),
+.reclamaciones-table th:nth-child(1),
+.apelaciones-table th:nth-child(1),
+.quejas-table th:nth-child(1) {
   width: 10%;
 }
 
@@ -188,59 +144,6 @@ td:contains("Pago") {
   margin-bottom: 2rem;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .container {
-    padding: 1.5rem;
-  }
-  
-  .tables {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
-  
-  nav ul div {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .resumen-header {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .buscar-resumen {
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 0.8rem;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-  }
-  
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  
-  .vencer-header, .reclamar-header, .apelar-header, .resumen-header {
-    padding: 1rem;
-  }
-}
 /* ===== PAGINACIÓN ===== */
 .table-footer {
     display: flex;
@@ -291,3 +194,59 @@ td:contains("Pago") {
     cursor: not-allowed;
     background-color: #f5f5f5;
 }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .tables {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  nav ul div {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .quejas-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .buscar-quejas {
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .cerrar-header, .reclamaciones-header, .apelaciones-header, .quejas-header {
+    padding: 1rem;
+  }
+}
+
+
