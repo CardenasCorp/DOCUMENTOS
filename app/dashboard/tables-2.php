@@ -53,7 +53,8 @@ try {
                       JOIN tipo t ON f.id_tipo = t.id_tipo
                       JOIN etapa e ON f.id_etapa = e.id_etapa
                       JOIN estado es ON f.id_estado = es.id_estado
-                      WHERE f.id_etapa = 1
+                      WHERE f.id_etapa = 1 
+                      AND f.id_estado != '5'
                       AND NOT EXISTS (
                           SELECT 1 FROM fiscalizacion f2 
                           WHERE f2.id_fiscalizacion_padre = f.id_fiscalizacion 

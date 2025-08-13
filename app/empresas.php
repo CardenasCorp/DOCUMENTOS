@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +37,8 @@
                 <h1>Lista de Empresas</h1> 
                 <div class="business-list">
                     <div class="search-business">
-                        <input type="text" id="searchClientInput" placeholder="Buscar por nombre... 🔎" class="search-input">
-                        <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... 🔎" class="search-input">
+                        <input type="text" id="searchClientInput" placeholder="Buscar por nombre... " class="search-input">
+                        <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... " class="search-input">
                         <button id="addClientButton">Agregar Empresa</button>  <!-- Cambiado el ID para consistencia -->
                     </div>
                     <div class="business-container" id="clientContainer">  <!-- Añadido ID -->

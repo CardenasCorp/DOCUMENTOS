@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +39,7 @@
                 <div class="employees-list">
                     <div class="search-employee">
                         <label for="nombre">Nombre</label>
-                        <input type="text" id="searchInput" placeholder="Buscar empleado... 🔎" class="search-input">
+                        <input type="text" id="searchInput" placeholder="Buscar empleado... " class="search-input">
                         <button id="openModalButtonEditEmpoyee">Agregar</button>
                     </div>
                     <div class="employee-container">

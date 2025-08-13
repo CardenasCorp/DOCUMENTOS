@@ -1,27 +1,28 @@
 <?php
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Methods: GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // Configuración de la base de datos
-$host = 'localhost';
+$host = '34.45.106.213';
 $db   = 'Documentos';
 $user = 'root';
-$pass = 'root';
+$pass = 'CardenasCorp2025';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
+    // Activar emulación para evitar problemas con Google Cloud y LIKE
+    PDO::ATTR_EMULATE_PREPARES   => true 
 ];
 
 try {
     $conn = new PDO($dsn, $user, $pass, $options);
 
-    // Construir consulta base
+    // Consulta base
     $sql = "SELECT 
                 id_cliente, 
                 RUC, 
@@ -29,50 +30,44 @@ try {
                 direccion_fiscal, 
                 departamento 
             FROM cliente";
-    
-    // Inicializar parámetros
+
+    // Filtros dinámicos
     $where = [];
     $params = [];
-    
-    // Filtro por RUC
-    if (isset($_GET['ruc']) && !empty($_GET['ruc'])) {
+
+    if (!empty($_GET['ruc'])) {
         $where[] = "RUC LIKE :ruc";
         $params[':ruc'] = '%' . $_GET['ruc'] . '%';
     }
-    
-    // Filtro por razón social
-    if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
+
+    if (!empty($_GET['nombre'])) {
         $where[] = "razon_social LIKE :nombre";
         $params[':nombre'] = '%' . $_GET['nombre'] . '%';
     }
-    
-    // Combinar condiciones WHERE si existen
-    if (!empty($where)) {
+
+    if ($where) {
         $sql .= " WHERE " . implode(' AND ', $where);
     }
-    
-    // Ordenar y limitar resultados
+
     $sql .= " ORDER BY razon_social ASC LIMIT 50";
-    
-    // Preparar y ejecutar consulta
+
+    // Ejecutar consulta
     $stmt = $conn->prepare($sql);
     $stmt->execute($params);
     $empresas = $stmt->fetchAll();
 
-    // Respuesta exitosa
     echo json_encode([
         'success' => true,
-        'data' => $empresas,
-        'count' => count($empresas)
+        'data'    => $empresas,
+        'count'   => count($empresas)
     ]);
 
 } catch (PDOException $e) {
-    // Manejo de errores
     http_response_code(500);
     echo json_encode([
         'success' => false,
         'message' => 'Error de base de datos: ' . $e->getMessage(),
-        'error_code' => $e->getCode()
+        'error_code' => $e->getCode(),
+        'sql' => $sql ?? 'No disponible'
     ]);
 }
-?>

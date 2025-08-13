@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let companiesData = [];
 
     // URL base para las peticiones
-    const BASE_URL = 'http://localhost:8000/app/registrar';
+    const BASE_URL = '/app/registrar';
 
 
     // Event Listeners

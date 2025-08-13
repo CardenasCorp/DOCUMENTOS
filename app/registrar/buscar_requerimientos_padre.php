@@ -3,10 +3,10 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-$host = 'localhost';
+$host = '34.45.106.213';
 $db   = 'Documentos';
 $user = 'root';
-$pass = 'root';
+$pass = 'CardenasCorp2025';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -32,7 +32,7 @@ try {
                 f.periodo_final
               FROM fiscalizacion f
               JOIN cliente c ON f.id_cliente = c.id_cliente
-              WHERE f.id_etapa = 1";
+              WHERE f.id_etapa = 1 AND f.id_estado != '5'";
     
     // Añadir condiciones de búsqueda si hay parámetros
     if (!empty($search) && !empty($field)) {

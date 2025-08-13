@@ -7780,3 +7780,1637 @@ Stack trace:
 [08-Aug-2025 18:06:48 UTC] Parámetros: offset=0, perPage=5
 [08-Aug-2025 18:06:48 UTC] Registros obtenidos: 5
 [08-Aug-2025 18:06:48 UTC] Total de registros: 9, Total de páginas: 2
+[09-Aug-2025 16:41:13 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:41:13 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:41:13 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:41:13 UTC] Total de registros: 0, Total de páginas: 0
+[09-Aug-2025 16:41:14 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:41:14 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:41:14 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:41:14 UTC] Total de registros: 0, Total de páginas: 0
+[09-Aug-2025 16:41:15 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:41:15 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:41:15 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:41:15 UTC] Total de registros: 0, Total de páginas: 0
+[09-Aug-2025 16:57:43 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:57:43 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:57:43 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:57:43 UTC] Total de registros: 0, Total de páginas: 0
+[09-Aug-2025 16:57:44 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:57:44 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:57:44 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:57:44 UTC] Total de registros: 0, Total de páginas: 0
+[09-Aug-2025 16:57:46 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[09-Aug-2025 16:57:46 UTC] Parámetros: offset=0, perPage=5
+[09-Aug-2025 16:57:46 UTC] Registros obtenidos: 0
+[09-Aug-2025 16:57:46 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:16:38 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:16:38 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:16:59 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:16:59 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:17:20 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:17:20 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:17:41 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:17:41 UTC] App Error: Error al conectar con la base de datos
+[11-Aug-2025 05:18:02 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:18:02 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:18:23 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:18:23 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:18:44 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:18:44 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:19:05 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:19:05 UTC] App Error: Error al conectar con la base de datos
+[11-Aug-2025 05:19:26 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:19:26 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:20:08 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:20:08 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:20:29 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:20:29 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:20:51 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:20:51 UTC] Error de aplicación:
+Array
+(
+    [error] => Application Error
+    [message] => Error al conectar con la base de datos
+    [code] => 0
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php
+    [line] => 20
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\config\database.php(25): Database->__construct()
+#1 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(16): Database::connect()
+#2 {main}
+    [inputData] => 
+    [tableType] => 
+    [page] => 
+)
+
+[11-Aug-2025 05:21:12 UTC] Error de conexión: SQLSTATE[HY000] [2002] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder
+[11-Aug-2025 05:21:12 UTC] App Error: Error al conectar con la base de datos
+[11-Aug-2025 05:23:03 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:03 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:03 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:03 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:23:04 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:04 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:04 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:04 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:23:05 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:05 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:05 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:05 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:23:51 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:51 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:51 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:51 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:23:52 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:52 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:52 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:52 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:23:53 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:23:53 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:23:53 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:23:53 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:24:01 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:24:01 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:24:01 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:24:01 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:24:02 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:24:02 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:24:02 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:24:02 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 05:24:03 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 05:24:03 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 05:24:03 UTC] Registros obtenidos: 0
+[11-Aug-2025 05:24:03 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:04 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:04 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:04 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:04 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:05 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:05 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:05 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:05 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:06 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:06 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:07 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:07 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:34 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:34 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:34 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:34 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:35 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:35 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:35 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:35 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:37:37 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:37:37 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:37:37 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:37:37 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:19 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:19 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:19 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:19 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:21 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:21 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:21 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:21 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:22 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:22 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:22 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:22 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:30 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:30 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:30 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:30 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:32 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:32 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:32 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:32 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:33 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:33 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:33 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:33 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:42 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:42 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:42 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:42 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:43 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:43 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:43 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:43 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 17:47:44 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 17:47:44 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 17:47:44 UTC] Registros obtenidos: 0
+[11-Aug-2025 17:47:44 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:09:54 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:09:54 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:09:54 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:09:54 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:09:55 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:09:55 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:09:55 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:09:55 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:09:56 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:09:56 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:09:56 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:09:56 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:22:47 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:22:47 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:22:47 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:22:47 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:22:49 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:22:49 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:22:49 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:22:49 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:22:50 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:22:50 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:22:50 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:22:50 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:23:24 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:23:24 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:23:24 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:23:24 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:23:25 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:23:25 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:23:25 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:23:25 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:23:27 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:23:27 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:23:27 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:23:27 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:23:37 UTC] PDO Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE f.id_estado != '5'
+              AND f.id_etapa BETWEEN 2 AND 10
+       ' at line 11
+[11-Aug-2025 20:23:39 UTC] PDO Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE f.id_estado != '5'
+              AND f.id_etapa BETWEEN 2 AND 10
+       ' at line 11
+[11-Aug-2025 20:24:04 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:04 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:04 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:04 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:24:06 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:06 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:06 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:06 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:24:07 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:07 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:07 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:07 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:24:41 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:41 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:41 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:41 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:24:43 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:43 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:43 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:43 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:24:44 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:24:44 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:24:44 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:24:44 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:25:39 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:25:39 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:25:39 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:25:39 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:25:40 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:25:40 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:25:40 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:25:40 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:25:42 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:25:42 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:25:42 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:25:42 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:25:46 UTC] PDO Error: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''
+              AND f.id_etapa BETWEEN 2 AND 10
+              ORDER BY f.id_et' at line 11
+[11-Aug-2025 20:26:12 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:26:12 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:26:12 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:26:12 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:26:13 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:26:13 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:26:13 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:26:13 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:26:15 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE() AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:26:15 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:26:15 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:26:15 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:52:11 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:52:11 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:52:11 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:52:11 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:52:13 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:52:13 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:52:13 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:52:13 UTC] Total de registros: 0, Total de páginas: 0
+[11-Aug-2025 20:52:14 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[11-Aug-2025 20:52:14 UTC] Parámetros: offset=0, perPage=5
+[11-Aug-2025 20:52:14 UTC] Registros obtenidos: 0
+[11-Aug-2025 20:52:14 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 13:58:12 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 13:58:12 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 13:58:12 UTC] Registros obtenidos: 0
+[12-Aug-2025 13:58:12 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 13:58:14 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 13:58:14 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 13:58:14 UTC] Registros obtenidos: 0
+[12-Aug-2025 13:58:14 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 13:58:15 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 13:58:15 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 13:58:15 UTC] Registros obtenidos: 0
+[12-Aug-2025 13:58:15 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 14:04:58 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 14:04:58 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 14:04:58 UTC] Registros obtenidos: 0
+[12-Aug-2025 14:04:58 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 14:04:59 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 5 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 14:04:59 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 14:04:59 UTC] Registros obtenidos: 0
+[12-Aug-2025 14:04:59 UTC] Total de registros: 0, Total de páginas: 0
+[12-Aug-2025 14:05:01 UTC] Consulta ejecutada: SELECT 
+                f.id_fiscalizacion AS id,
+                f.numero AS Nro,
+                t.descripcion AS Tipo,
+                e.descripcion AS Etapa,
+                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+                es.descripcion AS Estado,
+                f.IGV,
+                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+              FROM fiscalizacion f
+              JOIN tipo t ON f.id_tipo = t.id_tipo
+              JOIN etapa e ON f.id_etapa = e.id_etapa
+              JOIN estado es ON f.id_estado = es.id_estado
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5' AND f.id_etapa = 6 ORDER BY 
+                CASE 
+                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+[12-Aug-2025 14:05:01 UTC] Parámetros: offset=0, perPage=5
+[12-Aug-2025 14:05:01 UTC] Registros obtenidos: 0
+[12-Aug-2025 14:05:01 UTC] Total de registros: 0, Total de páginas: 0

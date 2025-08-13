@@ -1,7 +1,17 @@
 <?php
+// Configuración especial para App Engine
+if (getenv('GAE_ENV') !== false) {
+    ini_set('session.save_handler', 'files');
+    ini_set('session.save_path', sys_get_temp_dir() . '/sessions');
+}
+
 session_start();
-session_unset(); // Limpiar las variables de sesión
-session_destroy(); // Destruir la sesión
-header('Location: login.php'); // Redirigir a la página de login
+
+// Destruir la sesión
+$_SESSION = array();
+session_destroy();
+
+// Redirigir al login
+header('Location: /app/login.php');
 exit();
 ?>

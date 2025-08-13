@@ -6,8 +6,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,22 +13,22 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/modals/navbar.css">
-    <link rel="stylesheet" href="./style/dashboard/tables.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/modals/navbar.css">
+    <link rel="stylesheet" href="/style/dashboard/tables.css">
     <title>Document</title>
 </head>
 <body>
     <nav>
         <ul>
             <div>
-                <li><a href="index.php"><img src="../img/logo2.png" alt=""></a></li>
+                <li><a href="/index.php"><img src="/img/logo2.png" alt=""></a></li>
             </div>
             <div>
-                <li><a href="app/registrar-caso.php">Gestionar Casos</a></li>
+                <li><a href="/app/registrar-caso.php">Gestionar Casos</a></li>
             </div>
             <div>
-                <li><a href="app/logout.php" class="close">Cerrar Sesion</a></li>
+                <li><a href="/app/logout.php" class="close">Cerrar Sesión</a></li>
             </div>  
         </ul>
 
@@ -38,7 +36,8 @@ if (!isset($_SESSION['user_id'])) {
     <div>
         <div class="container">
             <div class="dashboard-header">
-                <a href="dashboard.php" style="text-decoration: none; color: inherit;">
+                <a href="/dashboard.php" style="text-decoration: none; color: inherit;">
+
                     <h3>Resumen de Casos <i class="bi bi-caret-right-square"></i></h3>
                 </a>
             </div>
@@ -150,37 +149,11 @@ if (!isset($_SESSION['user_id'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>128</td>
-                        <td>FT-IGV</td>
-                        <td>1er Requerimiento</td>
-                        <td>Pendiente</td>
-                        <td>15/10/2023</td>
-                        <td>10/10/2023</td>
-                        <td>S/ 15,000</td>
-                        <td>123456789</td>
-                        <td><i class="bi bi-eye"></i></td>
-                    </tr>
-                    <tr>
-                        <td>129</td>
-                        <td>FP-RENTA</td>
-                        <td>2do Requerimiento</td>
-                        <td>En proceso</td>
-                        <td>20/10/2023</td>
-                        <td>15/10/2023</td> 
-                        <td>S/ 8,500</td>
-                        <td>987654321</td>
-                        <td><i class="bi bi-eye"></i></td>
-                    </tr>
                 </tbody>
             </table>
             <div class="table-footer">
                 <div class="pagination-controls">
-                    <button class="pagination-btn" disabled>«</button>
-                    <button class="pagination-btn active">1</button>
-                    <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn">»</button>
+                    
                 </div>
             </div>
         </div>
@@ -208,7 +181,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
       </div>
     </div>
-    <script src="./script/dashboard/tables.js"></script>
+    <script src="/script/dashboard/tables.js"></script>
 
 </body>
 

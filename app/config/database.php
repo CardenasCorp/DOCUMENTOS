@@ -6,9 +6,9 @@ class Database {
     private function __construct() {
         try {
             $this->pdo = new PDO(
-                'mysql:host=localhost;dbname=Documentos;charset=utf8mb4',
+                'mysql:host=34.45.106.213;dbname=Documentos;charset=utf8mb4',
                 'root',
-                'root',
+                'CardenasCorp2025',
                 [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -20,7 +20,6 @@ class Database {
             throw new Exception("Error al conectar con la base de datos");
         }
     }
-
     public static function connect() {
         if (!self::$instance) {
             self::$instance = new Database();

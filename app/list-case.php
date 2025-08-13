@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,28 +37,13 @@
                 <h1>Lista de casos</h1> 
                 <div class="complaint-list">
                     <div class="search-business">
-                        <input type="text" id="searchClientInput" placeholder="Buscar por nombre... 🔎"
+                        <input type="text" id="searchClientInput" placeholder="Buscar por nombre... "
                             class="search-input">
-                        <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... 🔎" class="search-input">
+                        <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... " class="search-input">
                     </div>
                     <div class="employee-container">
                         <h4>Lista de casos</h4>
-                        <div class="client-item" data-client-id="15">
-                            <div class="client-info">
-                                <div class="client-details">
-                                    <h3>Aventura y Turismo <i class="bi bi-award-fill"></i></h3>
-                                    <p><strong>RUC:</strong> 12345678911</p>
-                                    <p><strong>Tipo</strong> Esquela</p>
-                                    <p><strong>Estado</strong> Notificado</p>
-                        
-                                </div>
-                                <div class="client-actions">
-                                    <button class="edit-btn"><i class="bi bi-pencil"></i> Editar</button>
-                                    <button class="complaint-btn"><i class="bi bi-emoji-frown-fill"></i> Quejas</button>
-                                    <button class="delete-btn"><i class="bi bi-trash"></i> Eliminar</button>
-                                </div>
-                            </div>
-                        </div>
+    
                     </div>
                 </div>
                 <div class="pagination" id="pagination">

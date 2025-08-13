@@ -73,7 +73,8 @@ try {
               JOIN tipo t ON f.id_tipo = t.id_tipo
               JOIN etapa e ON f.id_etapa = e.id_etapa
               JOIN estado es ON f.id_estado = es.id_estado
-              WHERE f.fecha_presentacion >= CURDATE()";
+              WHERE f.fecha_presentacion >= CURDATE()
+              AND f.id_estado != '5'"; 
 
     // Aplicar mismos filtros que en countQuery
     switch ($tableType) {

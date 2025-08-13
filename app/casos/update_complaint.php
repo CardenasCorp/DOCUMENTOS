@@ -4,10 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: PUT');
 header('Access-Control-Allow-Headers: Content-Type');
 
-$host = 'localhost';
+$host = '34.45.106.213';
 $db   = 'Documentos';
 $user = 'root';
-$pass = 'root';
+$pass = 'CardenasCorp2025';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

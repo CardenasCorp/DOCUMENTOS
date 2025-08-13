@@ -1,0 +1,25 @@
+runtime: php82
+instance_class: F1
+
+automatic_scaling:
+  max_instances: 1
+  min_instances: 0
+
+handlers:
+  # Archivos HTML estáticos
+  - url: /(.*\.html)$
+    static_files: www/\1
+    upload: www/.*\.html$
+
+  # Archivos estáticos (CSS, JS, imágenes, fuentes, etc.)
+  - url: /(.*\.(js|css|png|jpg|jpeg|map|woff))$
+    static_files: www/\1
+    upload: www/.*\.(js|css|png|jpg|jpeg|map|woff)$
+
+  # Archivos PHP (todos ejecutables)
+  - url: /(.+\.php)$
+    script: \1
+
+  # Página principal
+  - url: /.*
+    script: index.php

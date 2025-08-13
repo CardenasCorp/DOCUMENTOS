@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Variables globales
     let currentPage = 1;
-    const clientsPerPage = 4;
+    const clientsPerPage = 6;
     let filteredClients = [];
     let clientsData = [];
 

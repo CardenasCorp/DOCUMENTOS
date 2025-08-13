@@ -6,8 +6,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,21 +13,21 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./style/modals/navbar.css">
-    <link rel="stylesheet" href="./style/dashboard/dashboard-2.css">
+    <link rel="stylesheet" href="/style/modals/navbar.css">
+    <link rel="stylesheet" href="/style/dashboard/dashboard-2.css">
     <title>Document</title>
 </head>
 <body>
     <nav>
         <ul>
             <div>
-                <li><a href="index.php"><img src="../img/logo2.png" alt=""></a></li>
+                <li><a href="index.php"><img src="/img/logo2.png" alt=""></a></li>
             </div>
             <div>
-                <li><a href="app/registrar-caso.php">Gestionar Casos</a></li>
+                <li><a href="/app/registrar-caso.php">Gestionar Casos</a></li>
             </div>
             <div>
-                <li><a href="app/logout.php" class="close">Cerrar Sesion</a></li>
+                <li><a href="/app/logout.php" class="close">Cerrar Sesion</a></li>
             </div>  
         </ul>
 
@@ -37,7 +35,7 @@ if (!isset($_SESSION['user_id'])) {
     <div>
         <div class="container">
             <div class="dashboard-header">
-                <a href="index.php" style="text-decoration: none; color: inherit;">
+                <a href="/index.php" style="text-decoration: none; color: inherit;">
                     <h3><i class="bi bi-caret-left-square"> Resumen de Casos</i></h3>
                 </a>
             </div>
@@ -169,4 +167,4 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="./script/dashboard/tables-2.js"></script>
 </body>
-</html>
+</html> 

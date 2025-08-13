@@ -55,7 +55,8 @@ try {
               JOIN etapa e ON f.id_etapa = e.id_etapa
               JOIN estado es ON f.id_estado = es.id_estado
               JOIN cliente c ON f.id_cliente = c.id_cliente
-              WHERE f.id_etapa = 1";  // Solo primer requerimiento
+              WHERE f.id_etapa = 1
+              AND f.id_estado != '5'";  // Solo primer requerimiento
 
     $conditions = [];
     $params = [];
