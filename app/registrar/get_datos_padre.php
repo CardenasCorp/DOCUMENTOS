@@ -19,46 +19,30 @@ $options = [
 try {
     $conn = new PDO($dsn, $user, $pass, $options);
     
-    $documentId = $_GET['id'] ?? null;
-    if (!$documentId) {
-        throw new Exception('ID de documento no proporcionado');
+    $idPadre = $_GET['id_padre'] ?? null;
+    if (!$idPadre) {
+        throw new Exception('ID de documento padre no proporcionado');
     }
 
-    // 1. Consulta principal del documento
+    // 1. Consulta principal del documento padre
     $query = "SELECT 
                 f.id_fiscalizacion,
                 f.numero,
-                f.fecha_notificacion,
-                f.fecha_presentacion,
-                f.id_estado,
-                f.fecha_prorroga,
-                f.id_etapa,
+                f.IGV,
                 f.periodo_inicio,
                 f.periodo_final,
-                f.IGV,
-                f.id_cliente,
-                f.id_fiscalizacion_padre,
-                f.id_tipo, 
-                c.razon_social,
-                c.RUC,
-                c.direccion_fiscal,
-                c.departamento,
-                fp.numero AS numero_padre,
-                t.descripcion AS tipo_descripcion  
+                f.id_cliente
               FROM fiscalizacion f
-              JOIN cliente c ON f.id_cliente = c.id_cliente
-              LEFT JOIN fiscalizacion fp ON f.id_fiscalizacion_padre = fp.id_fiscalizacion
-              JOIN tipo t ON f.id_tipo = t.id_tipo  
               WHERE f.id_fiscalizacion = :id";
-              
+    
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':id', $documentId, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $idPadre, PDO::PARAM_INT);
     $stmt->execute();
     
-    $document = $stmt->fetch();
+    $documentoPadre = $stmt->fetch();
     
-    if (!$document) {
-        throw new Exception('Documento no encontrado');
+    if (!$documentoPadre) {
+        throw new Exception('Documento padre no encontrado');
     }
 
     // 2. Consulta para agentes SUNAT (supervisor y verificadores)
@@ -72,7 +56,7 @@ try {
                      ORDER BY a.cargo";
     
     $agentesStmt = $conn->prepare($agentesQuery);
-    $agentesStmt->bindParam(':id_fiscalizacion', $documentId, PDO::PARAM_INT);
+    $agentesStmt->bindParam(':id_fiscalizacion', $idPadre, PDO::PARAM_INT);
     $agentesStmt->execute();
     $agentes = $agentesStmt->fetchAll();
 
@@ -92,7 +76,7 @@ try {
     $response = [
         'success' => true,
         'data' => [
-            'documento' => $document,
+            'documento' => $documentoPadre,
             'agentes' => [
                 'supervisor' => $supervisor,
                 'verificadores' => $verificadores

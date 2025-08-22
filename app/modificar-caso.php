@@ -7,13 +7,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <title>Formulario con Sidebar</title>
+    <title>Modificar caso</title>
     <link rel="stylesheet" href="../style/modals/modal-doc.css">
     <link rel="stylesheet" href="../style/modificar-caso.css">
     <link rel="stylesheet" href="../style/modals/modal-business.css">
     <link rel="stylesheet" href="../style/modals/sidebar.css">
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/modals/select-employee.css">
+    <link rel="icon" href="../img/favicon.ico" >
 </head>
 
 <body>
@@ -52,6 +53,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group-4">
+                        <div class="form-control ">
+                            <label for="tipo">Tipo</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="esquela">Esquela</option>
+                                <option value="FP-IGV">Fiscalización Parcial - IGV</option>
+                                <option value="FT-IGV">Fiscalizacón Total - IGV</option>
+                                <option value="FP-RENTA">Fiscalización Parcial - Renta</option>
+                                <option value="FT-RENTA">Fiscalizacón Total - Renta</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group-1">
                         <div class="empresa form-control-2">
                             <label for="empresa">Empresa</label>
@@ -84,18 +97,18 @@
                                 <option value="2do Requerimiento">2do Requerimiento</option>
                                 <option value="3ro Requerimiento">3ro Requerimiento</option>
                                 <option value="4to Requerimiento">4to Requerimiento</option>
-                                <option value="Cierre">Cierre</option>
-                                <option value="Reclamación">Reclamación</option>
-                                <option value="Apelación">Apelación</option>
+                                <option value="Cierre">Cierre / Valores</option>
+                                <option value="Reclamación">R. Reclamación</option>
+                                <option value="Apelación">R. Apelación</option>
                                 <option value="Proceso">Proceso Contencioso</option>
                                 <option value="Finalizado">Finalizado</option>
                             </select>
                         </div>
                         <div class="IGV form-control">
                             <label for="IGV">IGV</label>
-                            <input type="number" id="IGV" name="IGV" placeholder="IGV" required>
+                            <input type="number" id="IGV" name="IGV" placeholder="IGV" step="0.01">
                         </div>
-                    </div>
+                    </div>  
                     <div class="form-group-3">
                         <div class="fecha-notificacion form-control">
                             <label for="fecha-notificacion">Fecha notificacion</label>
@@ -124,7 +137,7 @@
                             <label for="fecha-presentado">Estado</label>
                             <select name="estado" id="estado-select" onchange="toggleFechaFields()">
                                 <option value="" disabled selected>Escoge el estado</option>
-                                <option value="Prorroga">Prórroga</option>
+                                <option value="Prorroga">Nueva fecha</option>
                                 <option value="Presentado">Presentado</option>
                                 <option value="Presentado">Anulado</option>
                             </select>
@@ -139,7 +152,7 @@
                             <input type="date" id="fecha-presentado" name="fecha-presentado" disabled>
                         </div>
                         <div class="fecha-prórroga form-control">
-                            <label for="fecha-prórroga">Fecha de prórroga</label>
+                            <label for="fecha-prórroga">Nueva fecha</label>
                             <input type="date" id="fecha-prórroga" name="fecha-prórroga" disabled>
                         </div>
                     </div>
@@ -191,12 +204,13 @@
                         <tr>
                             <th width="20%">Número</th>
                             <th width="40%">Cliente</th>
-                            <th width="30%">Periodo</th>
-                            <th width="10%">Seleccionar</th>    
+                            <th width="20%">Tipo</th>
+                            <th width="15%">Periodo</th>
+                            <th width="5%">Seleccionar</th>    
                         </tr>
                     </thead>
                     <tbody id="doc-table-body">
-                        <!-- Las filas se llenarán dinámicamente con JavaScript -->
+                        <!-- Las filas se llenarán dinámicamente con JavaScript de modal-doc.js -->
                     </tbody>
                 </table>
             </div>
@@ -204,7 +218,7 @@
                 <button type="button" class="accept-modal" id="acceptDoc">Aceptar</button>
             </div>
         </div>
-    </div>  
+    </div>      
     <div id="myModalBusiness" class="myModalBusiness custom-modal">
         <div class="modal-content">
             <span class="close" id="closeModalBusiness">&times;</span>
@@ -242,11 +256,24 @@
             </div>
         </div>
     </div>
+    <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="text-align: center;">
+            <div style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+            <p style="margin-top: 15px;">Cargando datos del caso...</p>
+        </div>
+    </div>
+    <style>
+        @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+        }
+    </style>
     <script src="../script/modals/modal-business.js"></script>
     <script src="../script/modals/modal-doc.js"></script>
     <script src="../script/modificar.js"></script>
     <script src="../script/modals/group-9.js"></script>
     <script src="../script/modals/modficar-fiscalizacion.js"></script>  
+    <script src="../script/modals/direct_load.js"></script>
 </body>
 
 </html> 

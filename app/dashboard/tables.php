@@ -43,10 +43,10 @@ try {
     // Aplicar filtros adicionales según tipo de tabla
     switch ($tableType) {
         case 'reclamar':
-            $countQuery .= " AND f.id_etapa = 5";
+            $countQuery .= " AND f.id_etapa = 6";
             break;
         case 'apelar':
-            $countQuery .= " AND f.id_etapa = 6";
+            $countQuery .= " AND f.id_etapa = 7";
             break;
     }
 
@@ -61,28 +61,29 @@ try {
 
     // Consulta principal con mismo filtro y ordenamiento
     $query = "SELECT 
-                f.id_fiscalizacion AS id,
-                f.numero AS Nro,
-                t.descripcion AS Tipo,
-                e.descripcion AS Etapa,
-                DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
-                es.descripcion AS Estado,
-                f.IGV,
-                DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
-              FROM fiscalizacion f
-              JOIN tipo t ON f.id_tipo = t.id_tipo
-              JOIN etapa e ON f.id_etapa = e.id_etapa
-              JOIN estado es ON f.id_estado = es.id_estado
-              WHERE f.fecha_presentacion >= CURDATE()
-              AND f.id_estado != '5'"; 
+            f.id_fiscalizacion AS id,
+            f.numero AS Nro,
+            t.descripcion AS Tipo,
+            e.descripcion AS Etapa,
+            DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+            DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
+            es.descripcion AS Estado,
+            f.IGV,
+            DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+          FROM fiscalizacion f
+          JOIN tipo t ON f.id_tipo = t.id_tipo
+          JOIN etapa e ON f.id_etapa = e.id_etapa
+          JOIN estado es ON f.id_estado = es.id_estado
+          WHERE f.fecha_presentacion >= CURDATE()
+          AND f.id_estado IN ('1', '3')";
 
     // Aplicar mismos filtros que en countQuery
     switch ($tableType) {
         case 'reclamar':
-            $query .= " AND f.id_etapa = 5";
+            $query .= " AND f.id_etapa = 6";
             break;
         case 'apelar':
-            $query .= " AND f.id_etapa = 6";
+            $query .= " AND f.id_etapa = 7";
             break;
     }
 

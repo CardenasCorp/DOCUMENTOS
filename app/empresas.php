@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/empresa.css">
     <link rel="stylesheet" href="../style/modals/modal-edit-business.css">
-    <title>Document</title>
+    <link rel="icon" href="../img/favicon.ico" >
+    <title>Empresas</title>
 </head>
 
 <body>

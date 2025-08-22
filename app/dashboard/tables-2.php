@@ -74,7 +74,7 @@ try {
                         DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
                       JOIN tipo t ON f.id_tipo = t.id_tipo
-                      WHERE f.id_etapa = 6 AND f.id_estado = 2";
+                      WHERE f.id_etapa = '6' AND f.id_estado = '2'";
             $orderBy = "ORDER BY DiasRestantes ASC";
             break;
 
@@ -89,7 +89,7 @@ try {
                         DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
                       JOIN tipo t ON f.id_tipo = t.id_tipo
-                      WHERE f.id_etapa = 7 AND f.id_estado = 2";
+                      WHERE f.id_etapa = '7' AND f.id_estado = '2'";
             $orderBy = "ORDER BY DiasRestantes ASC";
             break;
 
@@ -105,7 +105,8 @@ try {
                         q.resumen AS Resumen
                       FROM queja q
                       JOIN fiscalizacion f ON q.id_fiscalizacion = f.id_fiscalizacion
-                      JOIN cliente c ON f.id_cliente = c.id_cliente";
+                      JOIN cliente c ON f.id_cliente = c.id_cliente
+                      WHERE q.fecha_resolucion IS NULL";
 
             if (!empty($search)) {
                 $conditions[] = "(c.propietario LIKE ? OR f.numero LIKE ? OR q.resumen LIKE ?)";

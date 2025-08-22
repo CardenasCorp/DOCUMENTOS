@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
           documentId: selectedDocument.id_fiscalizacion,
           documentNumber: selectedDocument.numero,
           client: selectedDocument.cliente || selectedDocument.razon_social,
+          tipo: selectedDocument.tipo, // Nuevo campo agregado
           periodoInicio: selectedDocument.periodo_inicio,
           periodoFinal: selectedDocument.periodo_final,
           etapa: selectedDocument.id_etapa,
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tableBody.innerHTML = '';
 
     if (!documents || documents.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="4" class="no-results">No se encontraron documentos</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="5" class="no-results">No se encontraron documentos</td></tr>';
       return;
     }
 
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       row.innerHTML = `
         <td>${doc.numero || 'N/A'}</td>
         <td>${doc.cliente || doc.razon_social || 'N/A'}</td>
+        <td>${doc.tipo || 'N/A'}</td> <!-- Nueva columna agregada -->
         <td>${formatPeriodo(doc.periodo_inicio, doc.periodo_final)}</td>
         <td><input type="radio" name="document-select" value="${doc.id_fiscalizacion}"></td>
       `;

@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/style/modals/navbar.css">
     <link rel="stylesheet" href="/style/dashboard/dashboard-2.css">
+    <link rel="icon" href="/img/favicon.ico" >
     <title>Document</title>
 </head>
 <body>
@@ -100,7 +101,7 @@ if (!isset($_SESSION['user_id'])) {
             <!-- Tabla Apelaciones -->
             <div class="apelaciones">
                 <div class="table-header apelaciones-header">
-                    <h2>Apelaciones</h2>
+                    <h2>Apelaciones</h2>g
                     <p>0</p>
                 </div>
                 <table id="apelaciones-table" class="apelaciones-table">
@@ -155,16 +156,10 @@ if (!isset($_SESSION['user_id'])) {
             </table>
             <div class="table-footer">
                 <div class="pagination-controls">
-                    <button class="pagination-btn" disabled>«</button>
-                    <button class="pagination-btn active">1</button>
-                    <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn">»</button>
                 </div>
             </div>
         </div>
-    </div>
-
+    </div>  
     <script src="./script/dashboard/tables-2.js"></script>
 </body>
 </html> 

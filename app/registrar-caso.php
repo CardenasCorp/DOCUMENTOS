@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/modals/select-employee.css">
     <link rel="stylesheet" href="../style/registrar-caso.css">
+    <link rel="icon" href="../img/favicon.ico" >
     
 </head>
 
@@ -46,10 +47,10 @@
                             <label for="tipo">Tipo</label>
                             <select id="tipo" name="tipo" required>
                                 <option value="esquela">Esquela</option>
-                                <option value="FP-IGV">Fiscalización Parcial - igv</option>
-                                <option value="FT-IGV">Fiscalizacón total - igv</option>
+                                <option value="FP-IGV">Fiscalización Parcial - IGV</option>
+                                <option value="FT-IGV">Fiscalizacón Total - IGV</option>
                                 <option value="FP-RENTA">Fiscalización Parcial - Renta</option>
-                                <option value="FT-RENTA">Fiscalizacón total - Renta</option>
+                                <option value="FT-RENTA">Fiscalizacón Total - Renta</option>
                             </select>
                         </div>
                     </div>
@@ -82,9 +83,9 @@
                                 <option value="2do Requerimiento">2do Requerimiento</option>
                                 <option value="3ro Requerimiento">3ro Requerimiento</option>
                                 <option value="4to Requerimiento">4to Requerimiento</option>
-                                <option value="Cierre">Cierre</option>
-                                <option value="Reclamación">Reclamación</option>
-                                <option value="Apelación">Apelación</option>
+                                <option value="Cierre">Cierre / Valores</option>
+                                <option value="Reclamación">R. Reclamación</option>
+                                <option value="Apelación">R. Apelación</option>
                                 <option value="Proceso">Proceso Contencioso</option>
                                 <option value="Finalizado">Finalizado</option>
                             </select>
@@ -115,7 +116,7 @@
                     <div class="form-group-4">
                         <div class="IGV form-control">
                             <label for="IGV">IGV</label>
-                            <input type="number" step="0.01" inputmode="decimal" id="IGV" name="IGV" placeholder="IGV" required>
+                            <input type="number" step="0.01" inputmode="decimal" id="IGV" name="IGV" placeholder="IGV">
                         </div>
                     </div>
                     <div class="form-group-5">

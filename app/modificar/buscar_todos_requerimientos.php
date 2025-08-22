@@ -28,6 +28,7 @@ try {
                 f.id_fiscalizacion, 
                 f.numero, 
                 c.razon_social AS cliente,
+                t.descripcion AS tipo,  
                 f.periodo_inicio,
                 f.periodo_final,
                 f.id_etapa,
@@ -36,12 +37,13 @@ try {
                 f.IGV
               FROM fiscalizacion f
               JOIN cliente c ON f.id_cliente = c.id_cliente
+              LEFT JOIN tipo t ON f.id_tipo = t.id_tipo  -- Nueva JOIN agregada
               WHERE 1=1 AND f.id_estado != '5'";
     
     // Añadir condiciones de búsqueda si hay parámetros
     if (!empty($search)) {
         if ($field === 'tipo') {
-            $query .= " AND f.numero LIKE :search";
+            $query .= " AND t.nombre LIKE :search";
         } elseif ($field === 'referencia') {
             $query .= " AND c.razon_social LIKE :search";
         }
@@ -71,4 +73,4 @@ try {
         'message' => 'Error de base de datos: ' . $e->getMessage()
     ]);
 }
-?>  
+?>

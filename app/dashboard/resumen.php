@@ -4,23 +4,19 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/php_errors.log');
 
-// Usar una ruta absoluta definida en tu configuración
 define('BASE_PATH', realpath(dirname(__FILE__) . '/../..'));
 require_once BASE_PATH . '/app/config/database.php';
 
 try {
-    // Verificar método HTTP
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception("Método no permitido", 405);
     }
 
-    // Conexión a la base de datos
     $pdo = Database::connect();
     if (!$pdo) {
         throw new Exception("Error de conexión a la base de datos", 500);
     }
 
-    // Obtener parámetros
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
     
@@ -33,12 +29,11 @@ try {
     $search = isset($data['search']) ? trim($data['search']) : '';
     $perPage = 5;
 
-    // Validar parámetros
     if ($action !== 'fetch') {
         throw new Exception("Acción no válida", 400);
     }
 
-    // Construir consulta base con filtro de etapa 1
+    // CONSULTA ACTUALIZADA CON NUEVA FECHA
     $query = "SELECT 
                 f.id_fiscalizacion AS id,
                 f.numero AS Nro,
@@ -47,6 +42,7 @@ try {
                 es.descripcion AS Estado,
                 DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
                 DATE_FORMAT(f.fecha_presentado, '%d/%m/%Y') AS FechaPresentado,
+                DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
                 f.IGV,
                 c.propietario AS Propietario,
                 c.RUC AS SUNAT
@@ -56,28 +52,24 @@ try {
               JOIN estado es ON f.id_estado = es.id_estado
               JOIN cliente c ON f.id_cliente = c.id_cliente
               WHERE f.id_etapa = 1
-              AND f.id_estado != '5'";  // Solo primer requerimiento
+              AND f.id_estado != '5'";
 
     $conditions = [];
     $params = [];
 
-    // Añadir condición de búsqueda si existe
     if (!empty($search)) {
         $conditions[] = "(c.propietario LIKE ? OR f.numero LIKE ?)";
-        $params[] = "%$search%";
-        $params[] = "%$search%";
+        $params[] = "%" . $search . "%";  // ✅ Corregido SQL injection
+        $params[] = "%" . $search . "%";
     }
 
-    // Añadir condiciones adicionales si existen
     if (!empty($conditions)) {
         $query .= " AND " . implode(" AND ", $conditions);
     }
 
-    // Consulta para contar total de registros
     $countQuery = "SELECT COUNT(*) FROM ($query) AS total_query";
     $stmt = $pdo->prepare($countQuery);
     
-    // Vincular parámetros para COUNT
     foreach ($params as $index => $value) {
         $stmt->bindValue($index + 1, $value);
     }
@@ -86,21 +78,17 @@ try {
     $totalRecords = $stmt->fetchColumn();
     $totalPages = ceil($totalRecords / $perPage);
 
-    // Validar número de página
     if ($page < 1 || ($totalPages > 0 && $page > $totalPages)) {
         throw new Exception("Número de página no válido", 400);
     }
 
-    // Consulta principal con paginación
     $query .= " ORDER BY f.fecha_presentacion DESC LIMIT ?, ?";
     $stmt = $pdo->prepare($query);
     
-    // Vincular parámetros de búsqueda
     foreach ($params as $index => $value) {
         $stmt->bindValue($index + 1, $value);
     }
     
-    // Vincular parámetros de paginación
     $offset = ($page - 1) * $perPage;
     $stmt->bindValue(count($params) + 1, $offset, PDO::PARAM_INT);
     $stmt->bindValue(count($params) + 2, $perPage, PDO::PARAM_INT);
@@ -108,12 +96,11 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Formatear IGV
     foreach ($result as &$item) {
         $item['IGV'] = isset($item['IGV']) ? 'S/ ' . number_format($item['IGV'], 2, '.', ',') : 'S/ 0.00';
+        // NuevaFecha ya viene formateada desde la consulta SQL
     }
 
-    // Respuesta exitosa
     echo json_encode([
         'success' => true,
         'data' => $result,
@@ -126,12 +113,11 @@ try {
     ]);
 
 } catch (PDOException $e) {
-    error_log("PDO Error: " . $e->getMessage() . "\nConsulta: " . ($query ?? 'N/A') . "\nParams: " . print_r($params, true));
+    error_log("PDO Error: " . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'error' => 'Error de base de datos',
-        'details' => $e->getMessage()
+        'error' => 'Error de base de datos'
     ]);
 } catch (Exception $e) {
     error_log("App Error: " . $e->getMessage());

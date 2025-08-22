@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/empleados.css">
     <link rel="stylesheet" href="../style/modals/modal-edit.css">
-    <title>Documentos</title>
+    <link rel="icon" href="../img/favicon.ico" >
+    <title>Empleados</title>
 </head>
 
 <body>

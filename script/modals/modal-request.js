@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const clienteInput = document.getElementById('search-cliente');
     const acceptButton = document.getElementById('acceptRequest');
     const tableBody = document.getElementById('request-table-body');
+    const mainForm = document.getElementById('mainForm');
 
     // Variables de estado
     let selectedRequest = null;
     let requestsData = [];
+    let verificadoresCount = 0;
 
     // URL base para las peticiones
     const BASE_URL = 'registrar';
@@ -19,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
     openModalButton.addEventListener('click', openModal);
     closeModalButton.addEventListener('click', closeModal);
     acceptButton.addEventListener('click', handleAccept);
+
+    // Evento de envío del formulario principal
+    if (mainForm) {
+        mainForm.addEventListener('submit', handleFormSubmit);
+    }
 
     // Eventos de búsqueda
     if (numeroInput) {
@@ -123,15 +130,106 @@ document.addEventListener('DOMContentLoaded', function () {
                     idPadreInput = document.createElement('input');
                     idPadreInput.type = 'hidden';
                     idPadreInput.id = 'id_fiscalizacion_padre';
+                    idPadreInput.name = 'id_fiscalizacion_padre';
                     requerimientoInput.parentNode.appendChild(idPadreInput);
                 }
                 idPadreInput.value = selectedRequest.id_fiscalizacion;
+                
+                // Llamar a la función para cargar datos del padre
+                cargarDatosPadre(selectedRequest.id_fiscalizacion);
             }
 
             closeModal();
         } else {
             showAlert('Por favor seleccione un requerimiento');
         }
+    }
+
+    // Nueva función para cargar datos del padre
+    async function cargarDatosPadre(idPadre) {
+        try {
+            showLoading(true);
+            const response = await fetch(`registrar/get_datos_padre.php?id_padre=${idPadre}`);
+            const result = await response.json();
+
+            if (result.success) {
+                // Llenar los campos con los datos del padre
+                llenarCamposConDatosPadre(result.data);
+                showSuccess('Datos del padre cargados correctamente');
+            } else {
+                throw new Error(result.message || 'Error al cargar datos del padre');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showError('Error al cargar datos del padre: ' + error.message);
+        } finally {
+            showLoading(false);
+        }
+    }
+
+    // Función para llenar los campos con los datos del padre
+    function llenarCamposConDatosPadre(datos) {
+        const documento = datos.documento;
+        const agentes = datos.agentes;
+        
+        // Llenar IGV
+        if (documento.IGV) {
+            document.getElementById('IGV').value = documento.IGV;
+        }
+        
+        // Llenar periodos
+        if (documento.periodo_inicio) {
+            document.getElementById('periodo-inicio').value = formatPeriodForInput(documento.periodo_inicio);
+        }
+        
+        if (documento.periodo_final) {
+            document.getElementById('periodo-fin').value = formatPeriodForInput(documento.periodo_final);
+        }
+        
+        // Llenar supervisor
+        if (agentes.supervisor) {
+            document.getElementById('supervisor').value = agentes.supervisor.nombre_completo || '';
+            document.getElementById('supervisor_id').value = agentes.supervisor.id_personal || '';
+        }
+        
+        // Llenar verificadores
+        if (agentes.verificadores && agentes.verificadores.length > 0) {
+            // Limpiar verificadores existentes
+            const verificadoresContainer = document.getElementById('verificadores');
+            const addButton = verificadoresContainer.querySelector('.add-verificador');
+            
+            verificadoresContainer.querySelectorAll('.verificador-container:not(.add-verificador)').forEach(c => c.remove());
+            
+            // Agregar verificadores del padre
+            agentes.verificadores.forEach(verificador => {
+                agregarVerificador(verificador.nombre_completo, verificador.id_personal);
+            });
+            
+            // Asegurar que el botón de agregar esté al final
+            if (addButton) {
+                verificadoresContainer.appendChild(addButton);
+            }
+        }
+    }
+
+    // Función auxiliar para formatear periodos
+    function formatPeriodForInput(period) {
+        return period?.length === 6 ? `${period.substring(2, 6)}-${period.substring(0, 2)}` : '';
+    }
+
+    // Función para mostrar loading
+    function showLoading(show) {
+        const submitButton = document.querySelector('.post');
+        if (submitButton) {
+            submitButton.disabled = show;
+            submitButton.innerHTML = show ? '<i class="bi bi-arrow-repeat spin"></i> Cargando...' : 'Guardar';
+        }
+    }
+
+    // Función para manejar el envío del formulario principal
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        guardarFiscalizacion();
     }
 
     function loadRequests() {
@@ -150,44 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     renderRequests(requestsData);
                 } else {
                     throw new Error(data.message || 'Error al cargar requerimientos');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showError(error.message);
-            })
-            .finally(hideLoader);
-    }
-
-    function searchRequests(field) {
-        const searchTerm = field === 'numero'
-            ? numeroInput.value.trim()
-            : clienteInput.value.trim();
-
-        if (!searchTerm) {
-            loadRequests(); // Recargar todos si no hay término
-            return;
-        }
-
-        showLoader();
-
-        const params = new URLSearchParams();
-        params.append('search', searchTerm);
-        params.append('field', field);
-
-        fetch(`${BASE_URL}/buscar_requerimientos_padre.php?${params.toString()}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data && data.success) {
-                    requestsData = data.data;
-                    renderRequests(requestsData);
-                } else {
-                    throw new Error(data.message || 'Sin resultados');
                 }
             })
             .catch(error => {
@@ -344,4 +404,77 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     });
+
+    // Funciones para mostrar mensajes
+    function showSuccess(message) {
+        // Crear elemento de alerta de éxito
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success';
+        alertDiv.textContent = message;
+        alertDiv.style.cssText = `
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 4px;
+            text-align: center;
+        `;
+
+        // Insertar al inicio del formulario
+        const formSection = document.querySelector('.form-section');
+        if (formSection) {
+            formSection.insertBefore(alertDiv, formSection.firstChild);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.parentNode.removeChild(alertDiv);
+                }
+            }, 3000);
+        }
+    }
+
+    // Función para agregar verificadores (debe ser global para que funcione onclick)
+    window.agregarVerificador = function(nombre = '', id = '') {
+        verificadoresCount++;
+        const container = document.createElement('div');
+        container.className = 'verificador-container';
+        container.innerHTML = `
+            <div class="input-container">
+                <input type="hidden" name="verificadores[${verificadoresCount}][id]" class="verificador-id" value="${id}">
+                <input type="text" name="verificadores[${verificadoresCount}][nombre]" class="verificador-name" 
+                       placeholder="Nombre del verificador" value="${nombre}" readonly required>
+                <button type="button" class="search verificador-search">
+                    <i class="bi bi-search"></i>
+                </button>
+                <button type="button" class="delete">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        `;
+
+        const addButton = document.querySelector('.add-verificador');
+        if (addButton) {
+            addButton.parentNode.insertBefore(container, addButton);
+        } else {
+            document.getElementById('verificadores').appendChild(container);
+        }
+
+        // Agregar evento al botón de búsqueda del verificador recién creado
+        const searchBtn = container.querySelector('.verificador-search');
+        searchBtn.addEventListener('click', function() {
+            // Aquí deberías implementar la lógica para buscar verificadores
+            console.log('Búsqueda de verificador');
+        });
+
+        // Agregar evento al botón de eliminar
+        const deleteBtn = container.querySelector('.delete');
+        deleteBtn.addEventListener('click', function() {
+            this.closest('.verificador-container').remove();
+            verificadoresCount--;
+        });
+    };
+
+    // Inicializar con al menos un verificador
+    agregarVerificador();
 });

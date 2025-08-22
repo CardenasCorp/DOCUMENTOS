@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Agregar evento al botón de búsqueda del verificador recién creado
         const searchBtn = container.querySelector('.verificador-search');
-        searchBtn.addEventListener('click', function() {
+        searchBtn.addEventListener('click', function () {
             currentContext = 'verificador';
             currentVerificadorInput = {
                 name: this.previousElementSibling,
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Agregar evento al botón de eliminar
         const deleteBtn = container.querySelector('.delete');
-        deleteBtn.addEventListener('click', function() {
+        deleteBtn.addEventListener('click', function () {
             this.closest('.verificador-container').remove();
             verificadoresCount--;
         });
@@ -250,9 +250,26 @@ document.addEventListener('DOMContentLoaded', function () {
         setValue('fecha-notificacion', data.fecha_notificacion || '');
         setValue('fecha-presentar', data.fecha_presentacion || '');
         setValue('fecha-prórroga', data.fecha_prorroga || '');
-        setValue('IGV', data.IGV || '0.00');
+        setValue('IGV', data.IGV || '0');
         setValue('periodo-inicio', formatPeriodForInput(data.periodo_inicio) || '');
         setValue('periodo-fin', formatPeriodForInput(data.periodo_final) || '');
+
+        // Manejar el campo tipo
+        if (data.id_tipo) {
+            // Mapeo de id_tipo a los valores del select
+            const tipoMap = {
+                1: "esquela",
+                2: "FP-IGV",
+                3: "FT-IGV",
+                4: "FP-RENTA",
+                5: "FT-RENTA"
+            };
+
+            const tipoValue = tipoMap[data.id_tipo];
+            if (tipoValue) {
+                document.getElementById('tipo').value = tipoValue;
+            }
+        }
 
         if (data.id_estado) {
             estadoSelect.value = estadoMap[data.id_estado] || '';

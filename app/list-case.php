@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../style/modals/menu-container.css">
     <link rel="stylesheet" href="../style/quejas.css">
     <link rel="stylesheet" href="../style/modals/modal-complaint.css">
-    <title>Documentos</title>
+    <link rel="icon" href="../img/favicon.ico" >
+    <title>Lista de documentos</title>
 </head>
 
 <body>
@@ -43,11 +44,11 @@
                     </div>
                     <div class="employee-container">
                         <h4>Lista de casos</h4>
-    
+                        <!-- Los casos se generan automaticamente -->
                     </div>
                 </div>
                 <div class="pagination" id="pagination">
-                    <!-- Los botones de paginación se generarán dinámicamente -->
+                    <!-- Los botones de paginación se generarán dinámiacamente -->
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/modals/navbar.css">
     <link rel="stylesheet" href="/style/dashboard/tables.css">
+    <link rel="icon" href="/img/favicon.ico" >
     <title>Document</title>
 </head>
 <body>
@@ -57,6 +58,7 @@ if (!isset($_SESSION['user_id'])) {
                         <th>Tipo</th>
                         <th>Etapa</th>
                         <th>Fecha a presentar</th>
+                        <th>Nueva Fecha</th>  <!-- ← NUEVA COLUMNA -->
                         <th>Estado</th>
                         <th>IGV</th>
                     </tr>
@@ -143,6 +145,7 @@ if (!isset($_SESSION['user_id'])) {
                         <th>Estado</th>
                         <th>Fecha a presentar</th>
                         <th>Fecha de presentacion</th>
+                        <th>Nueva Fecha</th>
                         <th>IGV</th>
                         <th>SUNAT</th>
                         <th>Ver</th>
@@ -169,7 +172,9 @@ if (!isset($_SESSION['user_id'])) {
               <tr>
                 <th>Nro</th>
                 <th>Etapa</th>
-                <th>Fecha Presentación</th>
+                <th>Fecha a Presentar</th>  
+                <th>Fecha de Presentación</th>
+                <th>Nueva Fecha</th>
                 <th>Estado</th>
                 <th>IGV</th>
               </tr>

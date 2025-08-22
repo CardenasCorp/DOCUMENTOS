@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Elementos del DOM
     const searchClientInput = document.getElementById('searchClientInput');
     const searchRUCInput = document.getElementById('searchRUCInput');
     const employeeContainer = document.querySelector('.employee-container');
     const paginationContainer = document.getElementById('pagination');
-    
+
     // Variables de estado
     let currentPage = 1;
     const itemsPerPage = 4;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showLoading(true);
             const response = await fetch('../app/casos/get_cases.php');
             const data = await response.json();
-            
+
             if (data.success) {
                 allCases = data.data;
                 filteredCases = allCases.filter(caso => caso.id_estado != 5); // Excluir eliminados
@@ -67,22 +67,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         const casesToShow = filteredCases.slice(start, end);
-        
+
         employeeContainer.innerHTML = '<h4>Lista de casos</h4>';
-        
+
         if (casesToShow.length === 0) {
             employeeContainer.innerHTML += '<p class="no-results">No se encontraron casos</p>';
             return;
         }
-        
+
         casesToShow.forEach(caso => {
             const caseElement = document.createElement('div');
             caseElement.className = 'client-item';
             caseElement.dataset.caseId = caso.id_fiscalizacion;
-            
+
             // Icono de premio solo para etapa 1
             const awardIcon = caso.id_etapa == 1 ? '<i class="bi bi-award-fill"></i>' : '';
-            
+
             caseElement.innerHTML = `
                 <div class="client-info">
                     <div class="client-details">
@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><strong>Tipo:</strong> ${tipoMap[caso.id_tipo] || 'Desconocido'}</p>
                         <p><strong>Estado:</strong> ${estadoMap[caso.id_estado] || 'Desconocido'}</p>
                         <p><strong>Etapa:</strong> ${etapaMap[caso.id_etapa] || 'Desconocida'}</p>
+                        <p><strong>Periodo:</strong> ${formatPeriod(caso.periodo_inicio, caso.periodo_final)}</p>  
                         <p><strong>Fecha Notif.:</strong> ${formatDate(caso.fecha_notificacion) || 'Sin fecha'}</p>
                     </div>
                     <div class="client-actions">
@@ -101,11 +102,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
+
             employeeContainer.appendChild(caseElement);
         });
-        
+
         addEventListeners();
+    }
+
+
+
+    // Función para formatear el periodo (inicio - fin)
+    function formatPeriod(start, end) {
+        if (!start || !end) return 'Sin periodo';
+        return `${start} - ${end}`;  // Ej: "082025 - 122025"
     }
 
     // Función para formatear fechas
@@ -119,13 +128,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function filterCases() {
         const clientSearch = searchClientInput.value.toLowerCase();
         const rucSearch = searchRUCInput.value.toLowerCase();
-        
+
         filteredCases = allCases.filter(caso => {
             const matchesClient = caso.razon_social?.toLowerCase().includes(clientSearch) || !clientSearch;
             const matchesRUC = caso.RUC?.includes(rucSearch) || !rucSearch;
             return matchesClient && matchesRUC;
         });
-        
+
         currentPage = 1;
         renderCases();
         renderPagination();
@@ -135,9 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderPagination() {
         const totalPages = Math.ceil(filteredCases.length / itemsPerPage);
         paginationContainer.innerHTML = '';
-        
+
         if (totalPages <= 1) return;
-        
+
         // Botón Anterior
         if (currentPage > 1) {
             const prevBtn = document.createElement('button');
@@ -149,11 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             paginationContainer.appendChild(prevBtn);
         }
-        
+
         // Botones de página
         const startPage = Math.max(1, currentPage - 2);
         const endPage = Math.min(totalPages, currentPage + 2);
-        
+
         for (let i = startPage; i <= endPage; i++) {
             const pageBtn = document.createElement('button');
             pageBtn.textContent = i;
@@ -165,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             paginationContainer.appendChild(pageBtn);
         }
-        
+
         // Botón Siguiente
         if (currentPage < totalPages) {
             const nextBtn = document.createElement('button');
@@ -194,15 +203,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function addEventListeners() {
         // Editar
         document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const caseId = this.closest('.client-item').dataset.caseId;
+                // Redirigir directamente a modificar.php con el ID
                 window.location.href = `modificar-caso.php?id=${caseId}`;
             });
         });
-        
+
         // Quejas (solo para etapa 1)
         document.querySelectorAll('.complaint-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 const caseId = this.closest('.client-item').dataset.caseId;
                 if (typeof window.openComplaintModal === 'function') {
@@ -214,11 +224,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+
         // Eliminar (borrado lógico)
         document.querySelectorAll('.delete-btn').forEach(btn => {
             if (!btn.textContent.includes('Eliminado')) {
-                btn.addEventListener('click', async function() {
+                btn.addEventListener('click', async function () {
                     const caseId = this.closest('.client-item').dataset.caseId;
                     if (confirm('¿Estás seguro de marcar este caso como eliminado?')) {
                         await updateCaseStatus(caseId, 5); // 5 = Estado "Eliminado"
@@ -242,9 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     id_estado: status
                 })
             });
-            
+
             const result = await response.json();
-            
+
             if (result.success) {
                 loadCases(); // Recargar lista
                 showSuccess('Estado del caso actualizado correctamente');

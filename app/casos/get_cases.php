@@ -19,20 +19,22 @@ try {
     $conn = new PDO($dsn, $user, $pass, $options);
     
     $query = "SELECT 
-            f.id_fiscalizacion,
-            f.numero,
-            f.id_tipo,
-            f.fecha_notificacion,
-            f.fecha_presentacion,
-            f.id_estado,
-            f.id_etapa,
-            f.IGV,
-            c.RUC,
-            c.razon_social
-            FROM fiscalizacion f
-            LEFT JOIN cliente c ON f.id_cliente = c.id_cliente
-            WHERE f.id_estado != 5  
-            ORDER BY f.fecha_notificacion DESC";
+        f.id_fiscalizacion,
+        f.numero,
+        f.id_tipo,
+        f.fecha_notificacion,
+        f.fecha_presentacion,
+        f.id_estado,
+        f.id_etapa,
+        f.IGV,
+        f.periodo_inicio, 
+        f.periodo_final,    
+        c.RUC,
+        c.razon_social
+        FROM fiscalizacion f
+        LEFT JOIN cliente c ON f.id_cliente = c.id_cliente
+        WHERE f.id_estado != 5  
+        ORDER BY f.fecha_notificacion DESC";
     
     $stmt = $conn->query($query);
     $cases = $stmt->fetchAll();

@@ -18,7 +18,7 @@ $options = [
 ];
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db;charset=$charset", $user, $pass, $options);
+    $conn = new PDO($dsn, $user, $pass, $options);
     
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
@@ -26,6 +26,13 @@ try {
     if (!$data || !isset($data['id'])) {
         throw new Exception('Datos inválidos');
     }
+
+    // Limpiar campos: convertir cadenas vacías en null
+    $fecha_presentacion = !empty($data['fecha_presentacion']) ? $data['fecha_presentacion'] : null;
+    $fecha_max = !empty($data['fecha_max']) ? $data['fecha_max'] : null;
+    $fecha_resolucion = !empty($data['fecha_resolucion']) ? $data['fecha_resolucion'] : null;
+    $resumen = $data['resumen'] ?? null;
+    $id = $data['id'];
 
     $stmt = $conn->prepare("
         UPDATE queja SET
@@ -37,11 +44,11 @@ try {
     ");
     
     $stmt->execute([
-        ':id' => $data['id'],
-        ':fecha_presentacion' => $data['fecha_presentacion'] ?? null,
-        ':fecha_max' => $data['fecha_max'] ?? null,
-        ':fecha_resolucion' => $data['fecha_resolucion'] ?? null,
-        ':resumen' => $data['resumen'] ?? null
+        ':id' => $id,
+        ':fecha_presentacion' => $fecha_presentacion,
+        ':fecha_max' => $fecha_max,
+        ':fecha_resolucion' => $fecha_resolucion,
+        ':resumen' => $resumen
     ]);
     
     echo json_encode([
