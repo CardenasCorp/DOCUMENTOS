@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Elementos del DOM
     const supervisorSearchBtn = document.querySelector('.supervisor .search');
     const supervisorInput = document.getElementById('supervisor');
-    const verificadoresContainer = document.getElementById('verificadores');
+    const verificadoresContainer = document.querySelector('#verificadores .verificador-container');
+    const agregarBtn = document.querySelector('.plus');
     const employeeModal = document.createElement('div');
     let currentContext = null; // 'supervisor' o 'verificador'
     let currentVerificadorInput = null;
     let employeesData = [];
+    let verificadorCount = 0;
 
     // Crear modal para selección de empleados
     function createEmployeeModal() {
@@ -44,14 +46,77 @@ document.addEventListener('DOMContentLoaded', function () {
         // Eventos del modal
         document.getElementById('closeEmployeeModal').addEventListener('click', closeEmployeeModal);
         document.getElementById('employeeSearch').addEventListener('input', searchEmployees);
-        document.getElementById('selectEmployeeButton').addEventListener('click', selectEmployee);
+        document.getElementById('selectEmployeeButton').addEventListener('click', function() {
+            // Esta función se maneja con los botones individuales
+        });
     }
 
-    // Abrir modal para supervisor
-    supervisorSearchBtn.addEventListener('click', function () {
-        currentContext = 'supervisor';
-        openEmployeeModal();
-    });
+    // Función para agregar verificador
+    window.agregarVerificador = function() {
+        verificadorCount++;
+
+        const nuevoVerificadorDiv = document.createElement('div');
+        nuevoVerificadorDiv.classList.add('verificador-item');
+        nuevoVerificadorDiv.style.marginBottom = '10px';
+
+        // Campo oculto para el ID
+        const hiddenIdInput = document.createElement('input');
+        hiddenIdInput.type = 'hidden';
+        hiddenIdInput.name = `verificadores[${verificadorCount}][id]`;
+        hiddenIdInput.className = 'verificador-id';
+
+        // Input para el nombre (solo lectura)
+        const inputVerificador = document.createElement('input');
+        inputVerificador.type = 'text';
+        inputVerificador.name = `verificadores[${verificadorCount}][nombre]`;
+        inputVerificador.placeholder = 'Nombre del verificador';
+        inputVerificador.readOnly = true;
+        inputVerificador.required = true;
+        inputVerificador.className = 'verificador-name';
+        inputVerificador.style.marginRight = '10px';
+        inputVerificador.style.padding = '8px';
+        inputVerificador.style.width = '200px';
+
+        // Botón de búsqueda
+        const searchButton = document.createElement('button');
+        searchButton.type = 'button';
+        searchButton.classList.add('search', 'verificador-search');
+        searchButton.innerHTML = '<i class="bi bi-search"></i>';
+        searchButton.style.marginRight = '5px';
+        searchButton.style.padding = '8px 12px';
+        searchButton.onclick = function () {
+            currentContext = 'verificador';
+            currentVerificadorInput = {
+                name: inputVerificador,
+                id: hiddenIdInput
+            };
+            openEmployeeModal();
+        };
+
+        // Botón para eliminar
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.classList.add('delete');
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+        deleteButton.style.padding = '8px 12px';
+        deleteButton.onclick = function () {
+            nuevoVerificadorDiv.remove();
+        };
+
+        // Contenedor interno para los elementos del verificador
+        const itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.alignItems = 'center';
+        itemContainer.style.gap = '10px';
+        
+        itemContainer.appendChild(hiddenIdInput);
+        itemContainer.appendChild(inputVerificador);
+        itemContainer.appendChild(searchButton);
+        itemContainer.appendChild(deleteButton);
+
+        nuevoVerificadorDiv.appendChild(itemContainer);
+        verificadoresContainer.appendChild(nuevoVerificadorDiv);
+    };
 
     // Función para abrir modal de empleados
     function openEmployeeModal() {
@@ -154,95 +219,19 @@ document.addEventListener('DOMContentLoaded', function () {
         closeEmployeeModal();
     }
 
-    // Función modificada para agregar verificadores con búsqueda
-    function agregarVerificador() {
-        // Crear un contador global si no existe
-        if (typeof window.verificadorCount === 'undefined') {
-            window.verificadorCount = 0;
+    // Abrir modal para supervisor
+    supervisorSearchBtn.addEventListener('click', function () {
+        currentContext = 'supervisor';
+        openEmployeeModal();
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', function (event) {
+        if (event.target === employeeModal) {
+            closeEmployeeModal();
         }
-        window.verificadorCount++;
-
-        const nuevoVerificadorDiv = document.createElement('div');
-        nuevoVerificadorDiv.classList.add('verificador-container');
-
-        const inputContainer = document.createElement('div');
-        inputContainer.classList.add('input-container');
-
-        // Campo oculto para almacenar el ID del verificador
-        const hiddenIdInput = document.createElement('input');
-        hiddenIdInput.type = 'hidden';
-        hiddenIdInput.name = `verificadores_ids[${window.verificadorCount}]`;
-        hiddenIdInput.className = 'verificador-id';
-
-        // Input para el nombre del verificador (solo lectura)
-        const inputVerificador = document.createElement('input');
-        inputVerificador.type = 'text';
-        inputVerificador.placeholder = 'Nombre del verificador';
-        inputVerificador.readOnly = true;
-        inputVerificador.required = true;
-        inputVerificador.className = 'verificador-name';
-
-        // Botón de búsqueda para el verificador
-        const searchButton = document.createElement('button');
-        searchButton.type = 'button';
-        searchButton.classList.add('search');
-        searchButton.innerHTML = '<i class="bi bi-search"></i>';
-        searchButton.onclick = function () {
-            currentContext = 'verificador';
-            currentVerificadorInput = {
-                name: inputVerificador,
-                id: hiddenIdInput
-            };
-            openEmployeeModal();
-        };
-
-        // Botón para eliminar el verificador
-        const dashButton = document.createElement('button');
-        dashButton.type = 'button';
-        dashButton.classList.add('dash');
-        dashButton.innerHTML = '<i class="bi bi-trash"></i> ';
-        dashButton.onclick = function () {
-            eliminarVerificador(this);
-        };
-
-        // Botón para agregar nuevo verificador (oculto)
-        const plusButton = document.createElement('button');
-        plusButton.type = 'button';
-        plusButton.classList.add('plus');
-        plusButton.innerHTML = '<i class="bi bi-plus-lg"></i>';
-        plusButton.onclick = agregarVerificador;
-        plusButton.style.display = 'none';
-
-        // Agregar elementos al contenedor
-        inputContainer.appendChild(hiddenIdInput); // Campo oculto primero
-        inputContainer.appendChild(inputVerificador);
-        inputContainer.appendChild(searchButton);
-        inputContainer.appendChild(dashButton);
-        inputContainer.appendChild(plusButton);
-
-        nuevoVerificadorDiv.appendChild(inputContainer);
-
-        // Agregar al contenedor principal de verificadores
-        const verificadoresContainer = document.getElementById('verificadores');
-        const lastVerificador = verificadoresContainer.querySelector('.verificador-container:last-child');
-        verificadoresContainer.insertBefore(nuevoVerificadorDiv, lastVerificador);
-    }
-
-    // Función para eliminar verificador
-    function eliminarVerificador(button) {
-        const container = button.closest('.verificador-container');
-        if (container) {
-            container.remove();
-        }
-
-        // Actualizar contador si es necesario
-        const verificadores = document.querySelectorAll('.verificador-container');
-        window.verificadorCount = verificadores.length - 1; // -1 por el contenedor de agregar
-    }
+    });
 
     // Inicializar el modal
     createEmployeeModal();
-
-    // Reemplazar la función original con la nueva versión
-    window.agregarVerificador = agregarVerificador;
 });

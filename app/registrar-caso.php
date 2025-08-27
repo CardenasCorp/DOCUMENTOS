@@ -143,13 +143,13 @@
                     <div class="form-group-7">
                         <div class="verificador form-control-2" id="verificadores">
                             <label for="verificador">Verificadores</label>
-                            <!-- Verificador 1 -->
+                            <!-- Contenedor vacío inicialmente -->
                             <div class="verificador-container">
-                                <div class="input-container">    
-                                    <button type="button" class="plus" onclick="agregarVerificador()">Agregar<i
-                                            class="bi bi-plus-lg"></i><i class="bi bi-trash"></i></button>      
-                                </div>
+                                <!-- Aquí se agregarán dinámicamente los verificadores -->
                             </div>
+                        </div>
+                        <div class="input-container">    
+                            <button type="button" class="plus" onclick="agregarVerificador()">Agregar</button>      
                         </div>
                     </div>
                     <button type="submit" class="post">Guardar</button>

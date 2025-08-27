@@ -369,8 +369,8 @@ document.addEventListener('DOMContentLoaded', function () {
             plusContainer.innerHTML = `
                 <div class="input-container">
                     <button type="button" class="plus" onclick="modificarVerificador()">
-                        <i class="bi bi-plus-lg"></i> Modificar verificador
-                    </button>
+                        Agregar verificador
+                    </button>   
                 </div>
             `;
             verificadoresContainer.appendChild(plusContainer);
@@ -380,13 +380,13 @@ document.addEventListener('DOMContentLoaded', function () {
             modificarVerificador();
         }
 
-        if (supervisorSearchBtn) {
+        if (supervisorSearchBtn) {  
             supervisorSearchBtn.addEventListener('click', () => {
                 currentContext = 'supervisor';
                 openEmployeeModal();
             });
         }
     }
-
+    
     init();
 });

@@ -439,19 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
         verificadoresCount++;
         const container = document.createElement('div');
         container.className = 'verificador-container';
-        container.innerHTML = `
-            <div class="input-container">
-                <input type="hidden" name="verificadores[${verificadoresCount}][id]" class="verificador-id" value="${id}">
-                <input type="text" name="verificadores[${verificadoresCount}][nombre]" class="verificador-name" 
-                       placeholder="Nombre del verificador" value="${nombre}" readonly required>
-                <button type="button" class="search verificador-search">
-                    <i class="bi bi-search"></i>
-                </button>
-                <button type="button" class="delete">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
-        `;
+        
 
         const addButton = document.querySelector('.add-verificador');
         if (addButton) {
