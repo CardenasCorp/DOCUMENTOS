@@ -23,7 +23,7 @@ try {
     $action = $input['action'] ?? '';
     $tableType = $input['tableType'] ?? '';
     $page = isset($input['page']) ? (int)$input['page'] : 1;
-    $perPage = 5; // Registros por página
+    $perPage = 5;
 
     // Validar parámetros
     if ($action !== 'fetch') {
@@ -34,11 +34,13 @@ try {
         throw new Exception("Tipo de tabla no válido", 400);
     }
 
-    // Consulta para contar solo registros con fechas válidas
+    // CONSULTA MODIFICADA: Incluir fechas de prórroga
     $countQuery = "SELECT COUNT(*) as total 
                    FROM fiscalizacion f
                    JOIN etapa e ON f.id_etapa = e.id_etapa
-                   WHERE f.fecha_presentacion >= CURDATE()"; // Solo fechas futuras o hoy
+                   JOIN cliente c ON f.id_cliente = c.id_cliente
+                   WHERE (f.fecha_presentacion >= CURDATE() 
+                          OR f.fecha_prorroga >= CURDATE())";
 
     // Aplicar filtros adicionales según tipo de tabla
     switch ($tableType) {
@@ -59,22 +61,37 @@ try {
         throw new Exception("Número de página no válido", 400);
     }
 
-    // Consulta principal con mismo filtro y ordenamiento
+    // CONSULTA PRINCIPAL CORREGIDA - IGV SIN FORMATEO EN SQL
     $query = "SELECT 
             f.id_fiscalizacion AS id,
+            c.razon_social AS Empresa,
             f.numero AS Nro,
             t.descripcion AS Tipo,
             e.descripcion AS Etapa,
             DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
             DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
             es.descripcion AS Estado,
-            f.IGV,
-            DATEDIFF(f.fecha_presentacion, CURDATE()) AS DiasRestantes
+            -- IGV SIN FORMATEAR - lo formatearemos en PHP
+            f.IGV AS IGV_Raw,
+            -- Cálculo de días restantes considerando PRÓRROGA
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                    DATEDIFF(f.fecha_prorroga, CURDATE())
+                ELSE 
+                    DATEDIFF(f.fecha_presentacion, CURDATE())
+            END AS DiasRestantes,
+            -- Campo para saber qué fecha se está usando
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 'prorroga'
+                ELSE 'original'
+            END AS TipoFecha
           FROM fiscalizacion f
           JOIN tipo t ON f.id_tipo = t.id_tipo
           JOIN etapa e ON f.id_etapa = e.id_etapa
           JOIN estado es ON f.id_estado = es.id_estado
-          WHERE f.fecha_presentacion >= CURDATE()
+          JOIN cliente c ON f.id_cliente = c.id_cliente
+          WHERE (f.fecha_presentacion >= CURDATE() 
+                 OR f.fecha_prorroga >= CURDATE())
           AND f.id_estado IN ('1', '3')";
 
     // Aplicar mismos filtros que en countQuery
@@ -87,13 +104,26 @@ try {
             break;
     }
 
-    // Ordenar por proximidad y luego por fecha
+    // ORDENAMIENTO MEJORADO considerando prórrogas
     $query .= " ORDER BY 
+                -- Prioridad 1: Fechas que vencen HOY
                 CASE 
-                    WHEN f.fecha_presentacion = CURDATE() THEN 0
+                    WHEN (f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga = CURDATE()) 
+                         OR f.fecha_presentacion = CURDATE() THEN 0
                     ELSE 1
                 END,
-                ABS(DATEDIFF(f.fecha_presentacion, CURDATE())) ASC,
+                -- Prioridad 2: Proximidad (usando la fecha activa)
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                        ABS(DATEDIFF(f.fecha_prorroga, CURDATE()))
+                    ELSE 
+                        ABS(DATEDIFF(f.fecha_presentacion, CURDATE()))
+                END ASC,
+                -- Prioridad 3: Preferir prórrogas sobre fechas originales
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL THEN 0
+                    ELSE 1
+                END,
                 f.fecha_presentacion ASC
                LIMIT :offset, :perPage";
 
@@ -110,18 +140,46 @@ try {
         throw new Exception("Error al obtener datos de la consulta", 500);
     }
 
-    // Formatear datos numéricos
+    // **CORRECCIÓN PRINCIPAL: FORMATEO CORRECTO DEL IGV**
     array_walk($data, function(&$item) {
-        $item['IGV'] = isset($item['IGV']) ? number_format((float)$item['IGV'], 2, '.', ',') : '0.00';
+        // Obtener el valor raw del IGV
+        $igvRaw = $item['IGV_Raw'];
+        
+        // Debug logging
+        error_log("IGV Processing - Raw: " . $igvRaw . ", Type: " . gettype($igvRaw));
+        
+        // Convertir a float de manera segura
+        if ($igvRaw !== null && $igvRaw !== '') {
+            $igvValue = floatval($igvRaw);
+            
+            // Debug del valor convertido
+            error_log("IGV Processing - Float: " . $igvValue);
+            
+            // **CORRECCIÓN: Formatear correctamente sin dividir**
+            $item['IGV'] = number_format($igvValue, 2, '.', '');
+            
+            // Debug del valor formateado
+            error_log("IGV Processing - Formatted: " . $item['IGV']);
+        } else {
+            $item['IGV'] = '0.00';
+        }
+        
+        // Mantener el raw para debugging
+        $item['IGV_Raw_Debug'] = $igvRaw;
     });
 
-    // Log detallado para depuración
-    error_log("Consulta ejecutada: " . $query);
-    error_log("Parámetros: offset=$offset, perPage=$perPage");
-    error_log("Registros obtenidos: " . count($data));
-    error_log("Total de registros: $totalRecords, Total de páginas: $totalPages");
+    // Log detallado para debugging del IGV
+    error_log("=== IGV DEBUGGING ===");
+    foreach ($data as $index => $item) {
+        error_log("Registro {$index}: 
+            ID: {$item['id']}
+            Empresa: {$item['Empresa']}
+            IGV_Raw: {$item['IGV_Raw_Debug']}
+            IGV_Formatted: {$item['IGV']}
+        ");
+    }
 
-    // Respuesta con datos de paginación
+    // Respuesta
     echo json_encode([
         'success' => true,
         'data' => $data,
@@ -131,7 +189,13 @@ try {
             'totalRecords' => $totalRecords,
             'totalPages' => $totalPages,
             'showingRecords' => count($data),
-            'queryInfo' => 'Consulta ejecutada correctamente'
+            'queryInfo' => 'Consulta con IGV corregido ejecutada correctamente'
+        ],
+        'debug' => [
+            'igv_sample' => isset($data[0]) ? [
+                'raw' => $data[0]['IGV_Raw_Debug'],
+                'formatted' => $data[0]['IGV']
+            ] : 'No data'
         ]
     ]);
 

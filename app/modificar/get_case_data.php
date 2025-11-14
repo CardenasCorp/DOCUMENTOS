@@ -26,6 +26,7 @@ try {
 
     // Consulta principal del caso
     $query = "SELECT 
+                f.id_fiscalizacion AS id,
                 f.id_fiscalizacion,
                 f.numero,
                 f.fecha_notificacion,

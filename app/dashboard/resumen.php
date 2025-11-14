@@ -33,7 +33,7 @@ try {
         throw new Exception("Acción no válida", 400);
     }
 
-    // CONSULTA ACTUALIZADA CON NUEVA FECHA
+    // CONSULTA ACTUALIZADA - IGV SIN FORMATEAR
     $query = "SELECT 
                 f.id_fiscalizacion AS id,
                 f.numero AS Nro,
@@ -43,24 +43,31 @@ try {
                 DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
                 DATE_FORMAT(f.fecha_presentado, '%d/%m/%Y') AS FechaPresentado,
                 DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
-                f.IGV,
+                f.IGV AS IGV_Raw,  -- CAMBIO: IGV sin formatear
                 c.propietario AS Propietario,
-                c.RUC AS SUNAT
+                c.razon_social AS SUNAT
               FROM fiscalizacion f
               JOIN tipo t ON f.id_tipo = t.id_tipo
               JOIN etapa e ON f.id_etapa = e.id_etapa
               JOIN estado es ON f.id_estado = es.id_estado
               JOIN cliente c ON f.id_cliente = c.id_cliente
               WHERE f.id_etapa = 1
-              AND f.id_estado != '5'";
+              AND f.id_estado != '5'";  
 
     $conditions = [];
     $params = [];
 
     if (!empty($search)) {
-        $conditions[] = "(c.propietario LIKE ? OR f.numero LIKE ?)";
-        $params[] = "%" . $search . "%";  // ✅ Corregido SQL injection
-        $params[] = "%" . $search . "%";
+        $conditions[] = "(c.propietario LIKE ? OR 
+                     f.numero LIKE ? OR 
+                     c.razon_social LIKE ? OR
+                     t.descripcion LIKE ? OR
+                     es.descripcion LIKE ?)";
+
+        $searchTerm = "%" . $search . "%";
+        $params = array_merge($params, 
+        array_fill(0, 5, $searchTerm)
+        );
     }
 
     if (!empty($conditions)) {
@@ -96,9 +103,13 @@ try {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // **CORRECCIÓN: Enviar IGV sin formatear para que JavaScript lo formatee**
     foreach ($result as &$item) {
-        $item['IGV'] = isset($item['IGV']) ? 'S/ ' . number_format($item['IGV'], 2, '.', ',') : 'S/ 0.00';
-        // NuevaFecha ya viene formateada desde la consulta SQL
+        // Enviar el IGV como número para que JavaScript lo formatee
+        $item['IGV'] = isset($item['IGV_Raw']) ? floatval($item['IGV_Raw']) : 0.00;
+        
+        // Remover el campo raw si no se necesita
+        unset($item['IGV_Raw']);
     }
 
     echo json_encode([

@@ -5,16 +5,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const fechaPresentado = document.getElementById('fecha-presentado');
     const fechaProrroga = document.getElementById('fecha-prórroga');
     const verificadoresContainer = document.getElementById('verificadores');
+    const funcionariosContainer = document.getElementById('funcionarios');
     const supervisorInput = document.getElementById('supervisor');
     const supervisorSearchBtn = document.querySelector('.supervisor .search');
+    const tipoSelect = document.getElementById('tipo');
+    const supervisorSection = document.getElementById('supervisor-verificadores-section');
+    const funcionariosSection = document.getElementById('funcionarios-section');
 
     // Variables de estado
     let currentDocumentId = null;
-    let currentVerificadorInput = null;
-    let currentContext = null; // 'supervisor' o 'verificador'
+    let currentInput = null;
+    let currentContext = null; // 'supervisor', 'verificador' o 'funcionario'
     let verificadoresCount = 0;
+    let funcionariosCount = 0;
     let employeesData = [];
-    const employeeModal = document.createElement('div');
+
+    // Referencias a elementos existentes
+    const employeeModal = document.getElementById('employeeModal');
+    const closeEmployeeModalBtn = document.getElementById('closeEmployeeModal');
+    const employeeSearchInput = document.getElementById('employeeSearch');
 
     // Crear campo oculto para ID del supervisor si no existe
     let supervisorIdInput = document.getElementById('supervisor_id');
@@ -45,72 +54,132 @@ document.addEventListener('DOMContentLoaded', function () {
         10: "Finalizado"
     };
 
+    // ==================== FUNCIONES PARA MOSTRAR/OCULTAR SECCIONES ====================
+    function toggleSections() {
+        if (!tipoSelect || !supervisorSection || !funcionariosSection) return;
+        
+        if (tipoSelect.value === 'CRUCE') {
+            supervisorSection.classList.add('hidden');
+            funcionariosSection.classList.remove('hidden');
+        } else {
+            supervisorSection.classList.remove('hidden');
+            funcionariosSection.classList.add('hidden');
+        }
+    }
+
+    // ==================== FUNCIONES DE UTILIDAD PARA FECHAS ====================
+    function formatDateForInput(dateString) {
+        if (!dateString) return '';
+        
+        // Si ya está en formato YYYY-MM-DD
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+            return dateString;
+        }
+        
+        // Si está en formato DD/MM/YYYY
+        if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+            const parts = dateString.split('/');
+            return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+        }
+        
+        // Si está en formato MM/DD/YYYY (menos común)
+        if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
+            const parts = dateString.split('/');
+            return `${parts[2]}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
+        }
+        
+        return dateString; // Devolver tal cual si no se reconoce el formato
+    }
+
+    function formatPeriodForInput(period) {
+        return period?.length === 6 ? `${period.substring(2, 6)}-${period.substring(0, 2)}` : '';
+    }
+
     // ==================== MODAL DE EMPLEADOS ====================
-    function createEmployeeModal() {
-        employeeModal.id = 'employeeModal';
-        employeeModal.className = 'modal';
-        employeeModal.style.display = 'none';
-        employeeModal.innerHTML = `
-            <div class="modal-content" style="max-width: 700px;">
-                <span class="close" id="closeEmployeeModal">&times;</span>
-                <h2>Seleccionar Empleado</h2>
-                <div class="search-container" style="margin-bottom: 20px;">
-                    <input type="text" id="employeeSearch" placeholder="Buscar por nombre..." style="width: 100%; padding: 10px;">
-                </div>
-                <div class="table-container" style="max-height: 400px; overflow-y: auto;">
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Seleccionar</th>
-                            </tr>
-                        </thead>
-                        <tbody id="employeeTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(employeeModal);
+    function setupEmployeeModal() {
+        if (!employeeModal || !closeEmployeeModalBtn || !employeeSearchInput) {
+            console.error('Elementos del modal no encontrados');
+            return;
+        }
 
         // Eventos del modal
-        document.getElementById('closeEmployeeModal').addEventListener('click', closeEmployeeModal);
-        document.getElementById('employeeSearch').addEventListener('input', searchEmployees);
+        closeEmployeeModalBtn.addEventListener('click', closeEmployeeModal);
+        employeeSearchInput.addEventListener('input', searchEmployees);
+
+        // Cerrar modal al hacer clic fuera del contenido
+        employeeModal.addEventListener('click', function(event) {
+            if (event.target === employeeModal) {
+                closeEmployeeModal();
+            }
+        });
     }
 
     function openEmployeeModal() {
-        employeeModal.style.display = 'block';
-        loadEmployees();
+        if (employeeModal) {
+            employeeModal.style.display = 'block';
+            loadEmployees();
+        }
     }
 
     function closeEmployeeModal() {
-        employeeModal.style.display = 'none';
+        if (employeeModal) {
+            employeeModal.style.display = 'none';
+        }
     }
 
     function loadEmployees() {
         const tableBody = document.getElementById('employeeTableBody');
-        tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Cargando empleados...</td></tr>';
+        if (!tableBody) return;
+        
+        tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Cargando empleados...</td></tr>';
 
-        fetch('registrar/get_employees.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.success) {
-                    employeesData = data.data;
-                    renderEmployees(employeesData);
-                } else {
-                    throw new Error(data.message || 'Error al cargar empleados');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: red;">${error.message}</td></tr>`;
-            });
+        // Intentar diferentes rutas posibles
+        const possiblePaths = [
+            'registrar/get_employees.php',
+            'get_employees.php',
+            'registrar/get_employees.php',
+            '/app/registrar/get_employees.php'
+        ];
+
+        const tryFetch = (index) => {
+            if (index >= possiblePaths.length) {
+                tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: red; padding: 20px;">Error: No se pudo cargar empleados</td></tr>';
+                return;
+            }
+
+            fetch(possiblePaths[index])
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Datos recibidos:', data);
+                    if (data && data.success) {
+                        employeesData = data.data;
+                        renderEmployees(employeesData);
+                    } else {
+                        throw new Error(data.message || 'Error al cargar empleados');
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error en ruta ${possiblePaths[index]}:`, error);
+                    tryFetch(index + 1);
+                });
+        };
+
+        tryFetch(0);
     }
 
     function renderEmployees(employees) {
         const tableBody = document.getElementById('employeeTableBody');
+        if (!tableBody) return;
+        
         tableBody.innerHTML = '';
+
+        if (!employees || employees.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">No se encontraron empleados</td></tr>';
+            return;
+        }
 
         employees.forEach(employee => {
             const row = document.createElement('tr');
@@ -120,7 +189,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>${employee.last_name}</td>
                 <td>
                     <button class="select-employee" data-id="${employee.id}" 
-                            data-name="${employee.first_name} ${employee.last_name}">
+                            data-name="${employee.first_name} ${employee.last_name}"
+                            style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
                         Seleccionar
                     </button>
                 </td>
@@ -139,75 +209,195 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function searchEmployees() {
-        const searchTerm = document.getElementById('employeeSearch').value.toLowerCase();
+        const searchInput = document.getElementById('employeeSearch');
+        if (!searchInput || !employeesData.length) return;
+        
+        const searchTerm = searchInput.value.toLowerCase();
         const filtered = employeesData.filter(employee =>
+            employee.first_name.toLowerCase().includes(searchTerm) ||
+            employee.last_name.toLowerCase().includes(searchTerm) ||
             `${employee.first_name} ${employee.last_name}`.toLowerCase().includes(searchTerm)
         );
+        
         renderEmployees(filtered);
     }
 
     function selectEmployee(employeeId, employeeName) {
-        if (currentContext === 'verificador' && currentVerificadorInput) {
-            currentVerificadorInput.name.value = employeeName;
-            currentVerificadorInput.id.value = employeeId;
+        if (currentContext === 'verificador' && currentInput) {
+            currentInput.name.value = employeeName;
+            currentInput.id.value = employeeId;
+        }
+        else if (currentContext === 'funcionario' && currentInput) {
+            currentInput.name.value = employeeName;
+            currentInput.id.value = employeeId;
         }
         else if (currentContext === 'supervisor') {
             supervisorInput.value = employeeName;
             supervisorIdInput.value = employeeId;
         }
+        
         closeEmployeeModal();
     }
 
     // ==================== FUNCIONES PARA VERIFICADORES ====================
-    window.modificarVerificador = function (nombre = '', id = '') {
+    window.agregarVerificador = function (nombre = '', id = '') {
         verificadoresCount++;
-        const container = document.createElement('div');
-        container.className = 'verificador-container';
-        container.innerHTML = `
-            <div class="input-container">
-                <input type="hidden" name="verificadores[${verificadoresCount}][id]" class="verificador-id" value="${id}">
-                <input type="text" name="verificadores[${verificadoresCount}][nombre]" class="verificador-name" 
-                       placeholder="Nombre del verificador" value="${nombre}" readonly required>
-                <button type="button" class="search verificador-search">
-                    <i class="bi bi-search"></i>
-                </button>
-                <button type="button" class="delete">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
-        `;
 
-        const addButton = verificadoresContainer.querySelector('.add-verificador');
-        if (addButton) {
-            addButton.parentNode.insertBefore(container, addButton);
-        } else {
-            verificadoresContainer.appendChild(container);
-        }
+        const nuevoVerificadorDiv = document.createElement('div');
+        nuevoVerificadorDiv.classList.add('verificador-item');
+        nuevoVerificadorDiv.style.marginBottom = '10px';
 
-        // Agregar evento al botón de búsqueda del verificador recién creado
-        const searchBtn = container.querySelector('.verificador-search');
-        searchBtn.addEventListener('click', function () {
+        // Campo oculto para el ID
+        const hiddenIdInput = document.createElement('input');
+        hiddenIdInput.type = 'hidden';
+        hiddenIdInput.name = `verificadores[${verificadoresCount}][id]`;
+        hiddenIdInput.className = 'verificador-id';
+        hiddenIdInput.value = id;
+
+        // Input para el nombre (solo lectura)
+        const inputVerificador = document.createElement('input');
+        inputVerificador.type = 'text';
+        inputVerificador.name = `verificadores[${verificadoresCount}][nombre]`;
+        inputVerificador.placeholder = 'Nombre del verificador';
+        inputVerificador.readOnly = true;
+        inputVerificador.required = true;
+        inputVerificador.className = 'verificador-name';
+        inputVerificador.style.marginRight = '10px';
+        inputVerificador.style.padding = '8px';
+        inputVerificador.style.width = '200px';
+        inputVerificador.value = nombre;
+
+        // Botón de búsqueda
+        const searchButton = document.createElement('button');
+        searchButton.type = 'button';
+        searchButton.classList.add('search', 'verificador-search');
+        searchButton.innerHTML = '<i class="bi bi-search"></i>';
+        searchButton.style.marginRight = '5px';
+        searchButton.style.padding = '8px 12px';
+        searchButton.onclick = function () {
             currentContext = 'verificador';
-            currentVerificadorInput = {
-                name: this.previousElementSibling,
-                id: this.previousElementSibling.previousElementSibling
+            currentInput = {
+                name: inputVerificador,
+                id: hiddenIdInput
             };
             openEmployeeModal();
-        });
+        };
 
-        // Agregar evento al botón de eliminar
-        const deleteBtn = container.querySelector('.delete');
-        deleteBtn.addEventListener('click', function () {
-            this.closest('.verificador-container').remove();
+        // Botón para eliminar
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.classList.add('delete');
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+        deleteButton.style.padding = '8px 12px';
+        deleteButton.onclick = function () {
+            nuevoVerificadorDiv.remove();
             verificadoresCount--;
-        });
+        };
+
+        // Contenedor interno para los elementos del verificador
+        const itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.alignItems = 'center';
+        itemContainer.style.gap = '10px';
+        
+        itemContainer.appendChild(hiddenIdInput);
+        itemContainer.appendChild(inputVerificador);
+        itemContainer.appendChild(searchButton);
+        itemContainer.appendChild(deleteButton);
+
+        nuevoVerificadorDiv.appendChild(itemContainer);
+        
+        // Agregar al contenedor de verificadores
+        const container = verificadoresContainer.querySelector('.verificador-container');
+        if (container) {
+            container.appendChild(nuevoVerificadorDiv);
+        } else {
+            verificadoresContainer.appendChild(nuevoVerificadorDiv);
+        }
+    };
+
+    // ==================== FUNCIONES PARA FUNCIONARIOS ====================
+    window.agregarFuncionario = function (nombre = '', id = '') {
+        funcionariosCount++;
+
+        const nuevoFuncionarioDiv = document.createElement('div');
+        nuevoFuncionarioDiv.classList.add('funcionario-item');
+        nuevoFuncionarioDiv.style.marginBottom = '10px';
+
+        // Campo oculto para el ID
+        const hiddenIdInput = document.createElement('input');
+        hiddenIdInput.type = 'hidden';
+        hiddenIdInput.name = `funcionarios[${funcionariosCount}][id]`;
+        hiddenIdInput.className = 'funcionario-id';
+        hiddenIdInput.value = id;
+
+        // Input para el nombre (solo lectura)
+        const inputFuncionario = document.createElement('input');
+        inputFuncionario.type = 'text';
+        inputFuncionario.name = `funcionarios[${funcionariosCount}][nombre]`;
+        inputFuncionario.placeholder = 'Nombre del funcionario';
+        inputFuncionario.readOnly = true;
+        inputFuncionario.required = true;
+        inputFuncionario.className = 'funcionario-name';
+        inputFuncionario.style.marginRight = '10px';
+        inputFuncionario.style.padding = '8px';
+        inputFuncionario.style.width = '200px';
+        inputFuncionario.value = nombre;
+
+        // Botón de búsqueda
+        const searchButton = document.createElement('button');
+        searchButton.type = 'button';
+        searchButton.classList.add('search', 'funcionario-search');
+        searchButton.innerHTML = '<i class="bi bi-search"></i>';
+        searchButton.style.marginRight = '5px';
+        searchButton.style.padding = '8px 12px';
+        searchButton.onclick = function () {
+            currentContext = 'funcionario';
+            currentInput = {
+                name: inputFuncionario,
+                id: hiddenIdInput
+            };
+            openEmployeeModal();
+        };
+
+        // Botón para eliminar
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.classList.add('delete');
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+        deleteButton.style.padding = '8px 12px';
+        deleteButton.onclick = function () {
+            nuevoFuncionarioDiv.remove();
+            funcionariosCount--;
+        };
+
+        // Contenedor interno para los elementos del funcionario
+        const itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.alignItems = 'center';
+        itemContainer.style.gap = '10px';
+        
+        itemContainer.appendChild(hiddenIdInput);
+        itemContainer.appendChild(inputFuncionario);
+        itemContainer.appendChild(searchButton);
+        itemContainer.appendChild(deleteButton);
+
+        nuevoFuncionarioDiv.appendChild(itemContainer);
+        
+        // Agregar al contenedor de funcionarios
+        const container = funcionariosContainer.querySelector('.funcionarios-container');
+        if (container) {
+            container.appendChild(nuevoFuncionarioDiv);
+        } else {
+            funcionariosContainer.appendChild(nuevoFuncionarioDiv);
+        }
     };
 
     // ==================== FUNCIONES PRINCIPALES ====================
     async function loadDocument(id) {
         try {
             showLoading(true);
-            const response = await fetch(`/app/modificar/get_document.php?id=${id}`);
+            const response = await fetch(`modificar/get_document.php?id=${id}`);
             const result = await response.json();
 
             if (result.success) {
@@ -220,19 +410,32 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             console.error('Error:', error);
             showError('Error al cargar documento: ' + error.message);
-        } finally {
             showLoading(false);
         }
     }
 
     async function loadAgentesSunat(fiscalizacionId) {
         try {
-            const response = await fetch(`/app/modificar/get_agentes_sunat.php?id_fiscalizacion=${fiscalizacionId}`);
+            const response = await fetch(`modificar/get_agentes_sunat.php?id_fiscalizacion=${fiscalizacionId}`);
             const result = await response.json();
             return result.success ? result.data : [];
         } catch (error) {
             console.error('Error al cargar agentes SUNAT:', error);
             return [];
+        }
+    }
+
+    function setValue(id, value) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.value = value ?? '';
+            
+            // Si el campo está deshabilitado pero tiene valor, cambiar el fondo
+            if (element.disabled && element.value) {
+                element.style.backgroundColor = '#f0f0f0';
+            } else if (element.disabled && !element.value) {
+                element.style.backgroundColor = '';
+            }
         }
     }
 
@@ -249,30 +452,50 @@ document.addEventListener('DOMContentLoaded', function () {
         setValue('empresa_departamento', data.departamento || '');
         setValue('fecha-notificacion', data.fecha_notificacion || '');
         setValue('fecha-presentar', data.fecha_presentacion || '');
-        setValue('fecha-prórroga', data.fecha_prorroga || '');
         setValue('IGV', data.IGV || '0');
         setValue('periodo-inicio', formatPeriodForInput(data.periodo_inicio) || '');
         setValue('periodo-fin', formatPeriodForInput(data.periodo_final) || '');
 
+        // Manejar fechas de presentado y prórroga
+        if (data.fecha_presentacion) {
+            setValue('fecha-presentado', formatDateForInput(data.fecha_presentacion));
+        }
+        
+        if (data.fecha_prorroga) {
+            setValue('fecha-prórroga', formatDateForInput(data.fecha_prorroga));
+        }
+
         // Manejar el campo tipo
         if (data.id_tipo) {
-            // Mapeo de id_tipo a los valores del select
             const tipoMap = {
                 1: "esquela",
                 2: "FP-IGV",
                 3: "FT-IGV",
                 4: "FP-RENTA",
-                5: "FT-RENTA"
+                5: "FT-RENTA",
+                6: "CRUCE"
             };
 
             const tipoValue = tipoMap[data.id_tipo];
             if (tipoValue) {
                 document.getElementById('tipo').value = tipoValue;
+                toggleSections();
             }
         }
 
         if (data.id_estado) {
             estadoSelect.value = estadoMap[data.id_estado] || '';
+            
+            // Si hay fecha de presentación, asegurar que el estado sea "Presentado"
+            if (data.fecha_presentacion && estadoSelect.value !== "Presentado") {
+                estadoSelect.value = "Presentado";
+            }
+            
+            // Si hay fecha de prórroga, asegurar que el estado sea "Prorroga"
+            if (data.fecha_prorroga && estadoSelect.value !== "Prorroga") {
+                estadoSelect.value = "Prorroga";
+            }
+            
             toggleFechaFields();
         }
 
@@ -281,6 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         handleAgentesData(agentes);
+        showLoading(false);
     }
 
     function handleAgentesData(agentes) {
@@ -290,27 +514,58 @@ document.addEventListener('DOMContentLoaded', function () {
             supervisorIdInput.value = supervisor.id_personal || '';
         }
 
-        loadVerificadores(agentes.filter(a => a.cargo === 'verificador'));
+        // Cargar verificadores o funcionarios según el tipo
+        const tipo = document.getElementById('tipo').value;
+        if (tipo === 'CRUCE') {
+            loadFuncionarios(agentes.filter(a => a.cargo === 'funcionario'));
+        } else {
+            loadVerificadores(agentes.filter(a => a.cargo === 'verificador'));
+        }
     }
 
     function loadVerificadores(verificadores) {
-        verificadoresContainer.querySelectorAll('.verificador-container:not(.add-verificador)').forEach(c => c.remove());
+        // Limpiar verificadores existentes
+        const container = verificadoresContainer.querySelector('.verificador-container');
+        if (container) {
+            const items = container.querySelectorAll('.verificador-item');
+            items.forEach(item => item.remove());
+        }
         verificadoresCount = 0;
 
-        verificadores.forEach(v => modificarVerificador(v.nombre_completo, v.id_personal));
+        // Cargar nuevos verificadores
+        verificadores.forEach(v => agregarVerificador(v.nombre_completo, v.id_personal));
 
-        if (verificadores.length === 0 && !verificadoresContainer.querySelector('.verificador-container:not(.add-verificador)')) {
-            modificarVerificador();
+        // Agregar uno vacío si no hay verificadores
+        if (verificadores.length === 0) {
+            agregarVerificador();
+        }
+    }
+
+    function loadFuncionarios(funcionarios) {
+        // Limpiar funcionarios existentes
+        const container = funcionariosContainer.querySelector('.funcionarios-container');
+        if (container) {
+            const items = container.querySelectorAll('.funcionario-item');
+            items.forEach(item => item.remove());
+        }
+        funcionariosCount = 0;
+
+        // Cargar nuevos funcionarios
+        funcionarios.forEach(f => agregarFuncionario(f.nombre_completo, f.id_personal));
+
+        // Agregar uno vacío si no hay funcionarios
+        if (funcionarios.length === 0) {
+            agregarFuncionario();
         }
     }
 
     // ==================== FUNCIONES AUXILIARES ====================
-    function setValue(id, value) {
-        const element = document.getElementById(id);
-        if (element) element.value = value ?? '';
-    }
-
     function showLoading(show) {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.display = show ? 'flex' : 'none';
+        }
+        
         const submitButton = form.querySelector('.post');
         if (submitButton) {
             submitButton.disabled = show;
@@ -319,10 +574,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showMessage(type, message) {
+        // Limpiar mensajes anteriores
+        const existingAlerts = document.querySelectorAll('.alert');
+        existingAlerts.forEach(alert => alert.remove());
+
         const alertDiv = document.createElement('div');
         alertDiv.className = `alert alert-${type}`;
         alertDiv.textContent = message;
-        form.prepend(alertDiv);
+        alertDiv.style.padding = '10px';
+        alertDiv.style.margin = '10px 0';
+        alertDiv.style.borderRadius = '4px';
+        alertDiv.style.color = type === 'success' ? '#155724' : '#721c24';
+        alertDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+        alertDiv.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+        
+        form.parentNode.insertBefore(alertDiv, form);
         setTimeout(() => alertDiv.remove(), 3000);
     }
 
@@ -334,23 +600,51 @@ document.addEventListener('DOMContentLoaded', function () {
         showMessage('danger', message);
     }
 
-    function formatPeriodForInput(period) {
-        return period?.length === 6 ? `${period.substring(2, 6)}-${period.substring(0, 2)}` : '';
-    }
-
     window.toggleFechaFields = function () {
         const estado = estadoSelect?.value;
-        if (fechaPresentado) fechaPresentado.disabled = estado !== 'Presentado';
-        if (fechaProrroga) fechaProrroga.disabled = estado !== 'Prorroga';
+        const fechaPresentado = document.getElementById('fecha-presentado');
+        const fechaProrroga = document.getElementById('fecha-prórroga');
+        
+        if (fechaPresentado) {
+            fechaPresentado.disabled = estado !== 'Presentado';
+            // Si está deshabilitado pero tiene valor, mantener el valor
+            if (fechaPresentado.disabled && fechaPresentado.value) {
+                fechaPresentado.style.backgroundColor = '#f0f0f0';
+            } else {
+                fechaPresentado.style.backgroundColor = '';
+            }
+        }
+        
+        if (fechaProrroga) {
+            fechaProrroga.disabled = estado !== 'Prorroga';
+            // Si está deshabilitado pero tiene valor, mantener el valor
+            if (fechaProrroga.disabled && fechaProrroga.value) {
+                fechaProrroga.style.backgroundColor = '#f0f0f0';
+            } else {
+                fechaProrroga.style.backgroundColor = '';
+            }
+        }
+        
         if (estado === 'Anulado') {
-            if (fechaPresentado) fechaPresentado.disabled = true;
-            if (fechaProrroga) fechaProrroga.disabled = true;
+            if (fechaPresentado) {
+                fechaPresentado.disabled = true;
+                fechaPresentado.style.backgroundColor = '#f0f0f0';
+            }
+            if (fechaProrroga) {
+                fechaProrroga.disabled = true;
+                fechaProrroga.style.backgroundColor = '#f0f0f0';
+            }
         }
     };
 
     // ==================== INICIALIZACIÓN ====================
     function init() {
-        createEmployeeModal();
+        setupEmployeeModal();
+
+        // Configurar evento para cambio de tipo
+        if (tipoSelect) {
+            tipoSelect.addEventListener('change', toggleSections);
+        }
 
         // Evento para documento seleccionado
         document.addEventListener('documentSelected', async (e) => {
@@ -363,29 +657,41 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleFechaFields();
         }
 
-        if (!verificadoresContainer.querySelector('.add-verificador')) {
-            const plusContainer = document.createElement('div');
-            plusContainer.className = 'verificador-container add-verificador';
-            plusContainer.innerHTML = `
-                <div class="input-container">
-                    <button type="button" class="plus" onclick="modificarVerificador()">
-                        Agregar verificador
-                    </button>   
-                </div>
-            `;
-            verificadoresContainer.appendChild(plusContainer);
-        }
-
-        if (!verificadoresContainer.querySelector('.verificador-container:not(.add-verificador)')) {
-            modificarVerificador();
-        }
-
         if (supervisorSearchBtn) {  
             supervisorSearchBtn.addEventListener('click', () => {
                 currentContext = 'supervisor';
                 openEmployeeModal();
             });
         }
+
+        // Agregar eventos a los botones de búsqueda existentes
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('verificador-search')) {
+                currentContext = 'verificador';
+                const container = e.target.closest('.verificador-item');
+                if (container) {
+                    currentInput = {
+                        name: container.querySelector('.verificador-name'),
+                        id: container.querySelector('.verificador-id')
+                    };
+                    openEmployeeModal();
+                }
+            }
+            else if (e.target.classList.contains('funcionario-search')) {
+                currentContext = 'funcionario';
+                const container = e.target.closest('.funcionario-item');
+                if (container) {
+                    currentInput = {
+                        name: container.querySelector('.funcionario-name'),
+                        id: container.querySelector('.funcionario-id')
+                    };
+                    openEmployeeModal();
+                }
+            }
+        });
+
+        // Inicializar secciones
+        toggleSections();
     }
     
     init();

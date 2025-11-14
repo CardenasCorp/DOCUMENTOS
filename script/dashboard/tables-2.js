@@ -18,7 +18,7 @@ async function loadTable(tableType, tableId, page) {
 
     try {
         // Mostrar estado de carga
-        const columns = tableType === 'cerrar' ? 5 : 4;
+        const columns = tableType === 'cerrar' ? 6 : tableType === 'quejas' ? 6 : 5;
         tableElement.querySelector('tbody').innerHTML = `
             <tr>
                 <td colspan="${columns}" style="text-align: center; padding: 20px;">
@@ -61,7 +61,7 @@ async function loadTable(tableType, tableId, page) {
 
     } catch (error) {
         console.error(`Error al cargar ${tableType}:`, error);
-        const columns = tableType === 'cerrar' ? 5 : 4;
+        const columns = tableType === 'cerrar' ? 6 : tableType === 'quejas' ? 6 : 5;
         tableElement.querySelector('tbody').innerHTML = `
             <tr>
                 <td colspan="${columns}" style="text-align: center; color: red; padding: 20px;">
@@ -147,8 +147,8 @@ function renderTableData(tableElement, data, tableType) {
 
     if (!data || data.length === 0) {
         const columns = 
-            tableType === 'cerrar' ? 5 : 
-            tableType === 'quejas' ? 6 : 4;
+            tableType === 'cerrar' ? 6 : 
+            tableType === 'quejas' ? 6 : 5;
         
         tbody.innerHTML = `
             <tr>
@@ -180,6 +180,7 @@ function renderTableData(tableElement, data, tableType) {
         switch (tableType) {
             case 'cerrar':
                 row.innerHTML = `
+                    <td>${item.Empresa || '-'}</td>
                     <td>${item.Nro || '-'}</td>
                     <td>${item.Tipo || '-'}</td>
                     <td>${item.Etapa || '-'}</td>
@@ -191,6 +192,7 @@ function renderTableData(tableElement, data, tableType) {
             case 'reclamaciones':
             case 'apelaciones':
                 row.innerHTML = `
+                    <td>${item.Empresa || '-'}</td>
                     <td>${item.Nro || '-'}</td>
                     <td>${item.Tipo || '-'}</td>
                     <td>${formatDateWithWarning(item.FechaPresentar, item.DiasRestantes)}</td>
@@ -200,7 +202,7 @@ function renderTableData(tableElement, data, tableType) {
 
             case 'quejas':
                 row.innerHTML = `
-                    <td>${item.razon_social || item.Empresa || '-'}</td>
+                    <td>${item.Empresa || '-'}</td>
                     <td>${item.Requerimiento || '-'}</td>
                     <td>${item.id_fiscalizacion || '-'}</td>
                     <td>${item.Resumen || '-'}</td>
@@ -253,7 +255,7 @@ function renderQuejasData(tableElement, data) {
         row.innerHTML = `
             <td>${item.Empresa || '-'}</td>
             <td>${item.Requerimiento || '-'}</td>
-            <td>${item.NumeroQueja || '-'}</td>
+            <td>${item.id_fiscalizacion || '-'}</td>
             <td>${item.Resumen || '-'}</td>
             <td>${item.FechaPresentacion || '-'}</td>
             <td>${item.FechaMaximaRespuesta || '-'}</td>

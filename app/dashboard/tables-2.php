@@ -43,6 +43,7 @@ try {
         case 'cerrar':
             // Tabla "Por cerrar" - Etapa 1 sin hijos en etapa 5
             $query = "SELECT 
+                        c.razon_social AS Empresa,
                         f.id_fiscalizacion AS id,
                         f.numero AS Nro,
                         t.descripcion AS Tipo,
@@ -50,6 +51,7 @@ try {
                         es.descripcion AS Estado,
                         DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaCierre
                       FROM fiscalizacion f
+                      JOIN cliente c ON f.id_cliente = c.id_cliente
                       JOIN tipo t ON f.id_tipo = t.id_tipo
                       JOIN etapa e ON f.id_etapa = e.id_etapa
                       JOIN estado es ON f.id_estado = es.id_estado
@@ -66,6 +68,7 @@ try {
         case 'reclamaciones':
             // Tabla "Reclamaciones" - Etapa 6 con estado 2
             $query = "SELECT 
+                        c.razon_social AS Empresa,
                         f.id_fiscalizacion AS id,
                         f.numero AS Nro,
                         t.descripcion AS Tipo,
@@ -73,6 +76,7 @@ try {
                         DATE_FORMAT(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), '%d/%m/%Y') AS FechaMaxima,
                         DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
+                      JOIN cliente c ON f.id_cliente = c.id_cliente
                       JOIN tipo t ON f.id_tipo = t.id_tipo
                       WHERE f.id_etapa = '6' AND f.id_estado = '2'";
             $orderBy = "ORDER BY DiasRestantes ASC";
@@ -81,6 +85,7 @@ try {
         case 'apelaciones':
             // Tabla "Apelaciones" - Etapa 7 con estado 2
             $query = "SELECT 
+                        c.razon_social AS Empresa,
                         f.id_fiscalizacion AS id,
                         f.numero AS Nro,
                         t.descripcion AS Tipo,
@@ -88,6 +93,7 @@ try {
                         DATE_FORMAT(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), '%d/%m/%Y') AS FechaMaxima,
                         DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
+                      JOIN cliente c ON f.id_cliente = c.id_cliente
                       JOIN tipo t ON f.id_tipo = t.id_tipo
                       WHERE f.id_etapa = '7' AND f.id_estado = '2'";
             $orderBy = "ORDER BY DiasRestantes ASC";

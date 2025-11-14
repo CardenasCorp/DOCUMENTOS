@@ -13,12 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mapeos para tipos, estados y etapas
     const tipoMap = {
-        1: "Requerimiento",
-        2: "Esquela",
-        3: "Notificación",
-        4: "Otro"
+        1: "Esquela ",
+        2: "Fiscalización Parcial-IGV ",
+        3: "Fiscalización Total-IGV",
+        4: "Fiscalización Parcial-RENTA",
+        5: "Fiscalización Total-RENTA ",
+        6: "Cruce de Información  "
     };
-
     const estadoMap = {
         1: "Notificado",
         2: "Presentado",
@@ -154,23 +155,20 @@ document.addEventListener('DOMContentLoaded', function () {
             prevBtn.addEventListener('click', () => {
                 currentPage--;
                 renderCases();
-                updatePaginationButtons();
+                renderPagination(); // Recargar paginación
             });
             paginationContainer.appendChild(prevBtn);
         }
 
-        // Botones de página
-        const startPage = Math.max(1, currentPage - 2);
-        const endPage = Math.min(totalPages, currentPage + 2);
-
-        for (let i = startPage; i <= endPage; i++) {
+        // Botones de página - TODAS LAS PÁGINAS
+        for (let i = 1; i <= totalPages; i++) {
             const pageBtn = document.createElement('button');
             pageBtn.textContent = i;
             pageBtn.className = i === currentPage ? 'active' : '';
             pageBtn.addEventListener('click', () => {
                 currentPage = i;
                 renderCases();
-                updatePaginationButtons();
+                renderPagination(); // Recargar paginación
             });
             paginationContainer.appendChild(pageBtn);
         }
@@ -182,21 +180,10 @@ document.addEventListener('DOMContentLoaded', function () {
             nextBtn.addEventListener('click', () => {
                 currentPage++;
                 renderCases();
-                updatePaginationButtons();
+                renderPagination(); // Recargar paginación
             });
             paginationContainer.appendChild(nextBtn);
         }
-    }
-
-    // Actualizar estado de botones de paginación
-    function updatePaginationButtons() {
-        const buttons = paginationContainer.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-            if (button.textContent == currentPage && !isNaN(button.textContent)) {
-                button.classList.add('active');
-            }
-        });
     }
 
     // Función para agregar eventos a los botones

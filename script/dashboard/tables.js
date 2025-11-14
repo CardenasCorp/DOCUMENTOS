@@ -5,32 +5,39 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTable('apelar', 'apelar-table', 1);
     loadResumenTable(1);
 
-    // Evento para el buscador del resumen
-    document.querySelector('.buscar-resumen').addEventListener('input', function (e) {
-        loadResumenTable(1, e.target.value);
+    // Evento para el buscador del resumen (con debounce para mejor performance)
+    const searchInput = document.querySelector('.buscar-resumen');
+    let searchTimeout;
+
+    searchInput.addEventListener('input', function (e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            loadResumenTable(1, e.target.value.trim());
+        }, 300);
     });
 });
 
+// Constantes para configuración
+const TABLE_CONFIG = {
+    'vencer': { columns: 8, noDataMessage: 'No hay registros próximos a vencer' },
+    'reclamar': { columns: 5, noDataMessage: 'No hay registros por reclamar' },
+    'apelar': { columns: 5, noDataMessage: 'No hay registros por apelar' }
+};
+
 // ==============================================
-// Funciones para las tablas principales (vencer, reclamar, apelar)
+// Funciones para las tablas principales
 // ==============================================
 
 async function loadTable(tableType, tableId, page) {
     const tableElement = document.getElementById(tableId);
-    if (!tableElement) return;
+    if (!tableElement) {
+        console.error(`Tabla ${tableId} no encontrada`);
+        return;
+    }
 
     try {
-        // Mostrar estado de carga
-        const columns = tableType === 'vencer' ? 6 : 4;
-        tableElement.querySelector('tbody').innerHTML = `
-            <tr>
-                <td colspan="${columns}" style="text-align: center; padding: 20px;">
-                    Cargando datos...
-                </td>
-            </tr>
-        `;
+        showLoadingState(tableElement, TABLE_CONFIG[tableType].columns);
 
-        // Realizar petición al servidor
         const response = await fetch('/app/dashboard/tables.php', {
             method: 'POST',
             headers: {
@@ -44,39 +51,51 @@ async function loadTable(tableType, tableId, page) {
         });
 
         if (!response.ok) {
-            throw new Error(`Error ${response.status}`);
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const result = await response.json();
 
         if (!result.success) {
-            throw new Error(result.error || 'Error en los datos recibidos');
+            throw new Error(result.error || 'Error en la respuesta del servidor');
         }
 
-        // Renderizar los datos
         renderTableData(tableElement, result.data, tableType);
-
-        // Actualizar paginación
         updatePagination(tableType, tableId, result.pagination);
-
-        // Actualizar contador
         updateCounter(tableType, result.pagination.totalRecords);
 
     } catch (error) {
         console.error(`Error al cargar ${tableType}:`, error);
-        const columns = tableType === 'vencer' ? 6 : 4;
-        tableElement.querySelector('tbody').innerHTML = `
-            <tr>
-                <td colspan="${columns}" style="text-align: center; color: red; padding: 20px;">
-                    Error al cargar datos: ${error.message}
-                    <button onclick="loadTable('${tableType}', '${tableId}', 1)" 
-                            style="margin-top: 10px; padding: 5px 10px;">
-                        Reintentar
-                    </button>
-                </td>
-            </tr>
-        `;
+        showErrorState(tableElement, TABLE_CONFIG[tableType].columns, error.message, () => {
+            loadTable(tableType, tableId, 1);
+        });
     }
+}
+
+function showLoadingState(tableElement, columns) {
+    tableElement.querySelector('tbody').innerHTML = `
+        <tr>
+            <td colspan="${columns}" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Cargando datos...</p>
+            </td>
+        </tr>
+    `;
+}
+
+function showErrorState(tableElement, columns, errorMessage, retryCallback) {
+    tableElement.querySelector('tbody').innerHTML = `
+        <tr>
+            <td colspan="${columns}" class="error-state">
+                <p>Error al cargar datos: ${errorMessage}</p>
+                ${retryCallback ? `
+                <button onclick="(${retryCallback.toString()})()" class="retry-btn">
+                    Reintentar
+                </button>
+                ` : ''}
+            </td>
+        </tr>
+    `;
 }
 
 function renderTableData(tableElement, data, tableType) {
@@ -84,51 +103,79 @@ function renderTableData(tableElement, data, tableType) {
     tbody.innerHTML = '';
 
     if (!data || data.length === 0) {
-        const columns = tableType === 'vencer' ? 7 : 4;  // ← Cambiado de 6 a 7
         tbody.innerHTML = `
             <tr>
-                <td colspan="${columns}" style="text-align: center; padding: 20px;">
-                    No hay registros próximos a vencer
+                <td colspan="${TABLE_CONFIG[tableType].columns}" class="no-data">
+                    ${TABLE_CONFIG[tableType].noDataMessage}
                 </td>
             </tr>
         `;
         return;
     }
 
-    // Crear filas de la tabla con estilos según proximidad
+    // Usar DocumentFragment para mejor rendimiento
+    const fragment = document.createDocumentFragment();
+
     data.forEach(item => {
-        const row = document.createElement('tr');
-        const diasRestantes = item.DiasRestantes !== undefined ? parseInt(item.DiasRestantes) : null;
-
-        // Aplicar clases según días restantes
-        if (diasRestantes === 0) {
-            row.classList.add('due-today');
-        } else if (diasRestantes !== null && diasRestantes <= 3) {
-            row.classList.add('due-soon');
-        }
-
-        if (tableType === 'vencer') {
-            row.innerHTML = `
-                <td>${item.Nro || '-'}</td>
-                <td>${item.Tipo || '-'}</td>
-                <td>${item.Etapa || '-'}</td>
-                <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
-                <td>${item.NuevaFecha || '-'}</td>  <!-- ← NUEVA COLUMNA -->
-                <td>${item.Estado || '-'}</td>
-                <td>S/ ${item.IGV || '0.00'}</td>
-            `;
-        } else {
-            // Para las otras tablas (reclamar, apelar) mantienes el formato actual
-            row.innerHTML = `
-                <td>${item.Nro || '-'}</td>
-                <td>${item.Tipo || '-'}</td>
-                <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
-                <td>${item.Estado || '-'}</td>
-            `;
-        }
-
-        tbody.appendChild(row);
+        const row = createTableRow(item, tableType);
+        fragment.appendChild(row);
     });
+
+    tbody.appendChild(fragment);
+}
+
+function createTableRow(item, tableType) {
+    const row = document.createElement('tr');
+    const diasRestantes = item.DiasRestantes !== undefined ? parseInt(item.DiasRestantes) : null;
+
+    // Aplicar clases según días restantes
+    applyDateBasedStyling(row, diasRestantes);
+
+    if (tableType === 'vencer') {
+        row.innerHTML = `
+            <td>${escapeHtml(item.Empresa || '-')}</td>
+            <td>${escapeHtml(item.Nro || '-')}</td>
+            <td>${escapeHtml(item.Tipo || '-')}</td>
+            <td>${escapeHtml(item.Etapa || '-')}</td>
+            <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
+            <td>${escapeHtml(item.NuevaFecha || '-')}</td>
+            <td>${escapeHtml(item.Estado || '-')}</td>
+            <td>${formatCurrency(item.IGV)}</td> 
+        `;
+    } else {
+        // Para las otras tablas (reclamar, apelar)
+        row.innerHTML = `
+            <td>${escapeHtml(item.Empresa || '-')}</td>
+            <td>${escapeHtml(item.Nro || '-')}</td>
+            <td>${escapeHtml(item.Tipo || '-')}</td>
+            <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
+            <td>${escapeHtml(item.Estado || '-')}</td>
+        `;
+    }
+
+    return row;
+}
+
+function applyDateBasedStyling(row, diasRestantes) {
+    if (diasRestantes === 0) {
+        row.classList.add('due-today');
+    } else if (diasRestantes !== null && diasRestantes <= 3) {
+        row.classList.add('due-soon');
+    } else if (diasRestantes !== null && diasRestantes < 0) {
+        row.classList.add('overdue');
+    }
+}
+
+function formatCurrency(value) {
+    if (!value && value !== 0) return 'S/ 0.00';
+
+    const num = parseFloat(value);
+    return isNaN(num) ? 'S/ 0.00' : `S/ ${num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+}
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 function updatePagination(tableType, tableId, pagination) {
@@ -238,14 +285,7 @@ async function loadResumenTable(page, search = '') {
     if (!tableElement) return;
 
     try {
-        // Mostrar estado de carga
-        tableElement.querySelector('tbody').innerHTML = `
-            <tr>
-                <td colspan="9" style="text-align: center; padding: 20px;">
-                    Cargando datos...
-                </td>
-            </tr>
-        `;
+        showLoadingState(tableElement, 10); // 10 columnas para resumen
 
         // Configurar los datos a enviar
         const payload = {
@@ -267,13 +307,13 @@ async function loadResumenTable(page, search = '') {
         });
 
         if (!response.ok) {
-            throw new Error(`Error ${response.status}`);
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const result = await response.json();
 
         if (!result.success) {
-            throw new Error(result.error || 'Error en los datos recibidos');
+            throw new Error(result.error || 'Error en la respuesta del servidor');
         }
 
         // Renderizar los datos
@@ -287,17 +327,9 @@ async function loadResumenTable(page, search = '') {
 
     } catch (error) {
         console.error('Error al cargar resumen:', error);
-        tableElement.querySelector('tbody').innerHTML = `
-            <tr>
-                <td colspan="9" style="text-align: center; color: red; padding: 20px;">
-                    Error al cargar datos: ${error.message}
-                    <button onclick="loadResumenTable(1, document.querySelector('.buscar-resumen').value)" 
-                            style="margin-top: 10px; padding: 5px 10px;">
-                        Reintentar
-                    </button>
-                </td>
-            </tr>
-        `;
+        showErrorState(tableElement, 10, error.message, () => {
+            loadResumenTable(1, document.querySelector('.buscar-resumen').value);
+        });
     }
 }
 
@@ -308,7 +340,7 @@ function renderResumenData(tableElement, data) {
     if (!data || data.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="10" style="text-align: center; padding: 20px;">
+                <td colspan="10" class="no-data">
                     No se encontraron registros de primer requerimiento
                 </td>
             </tr>
@@ -316,32 +348,42 @@ function renderResumenData(tableElement, data) {
         return;
     }
 
-    // Crear filas de la tabla
+    // Usar DocumentFragment para mejor rendimiento
+    const fragment = document.createDocumentFragment();
+
     data.forEach(item => {
-        const row = document.createElement('tr');
-        const fechaPresentacion = item.FechaPresentacion ? parseDate(item.FechaPresentacion) : null;
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-
-        if (fechaPresentacion && fechaPresentacion < hoy) {
-            row.classList.add('vencido');
-        }
-
-        // ACTUALIZADO: Ahora con 10 columnas incluyendo NuevaFecha
-        row.innerHTML = `
-            <td>${item.Nro || '-'}</td>
-            <td>${item.Tipo || '-'}</td>
-            <td>${item.Etapa || '-'}</td>
-            <td>${item.Estado || '-'}</td>
-            <td>${item.FechaPresentacion || '-'}</td>
-            <td>${item.FechaPresentado || '-'}</td>
-            <td>${item.NuevaFecha || '-'}</td>  <!-- ← NUEVA COLUMNA -->
-            <td>${item.IGV || 'S/ 0.00'}</td>
-            <td>${item.SUNAT || '-'}</td>
-            <td><i class="bi bi-eye" onclick="viewDetail(${item.id})" style="cursor: pointer;"></i></td>
-        `;
-        tbody.appendChild(row);
+        const row = createResumenRow(item);
+        fragment.appendChild(row);
     });
+
+    tbody.appendChild(fragment);
+}
+
+function createResumenRow(item) {
+    const row = document.createElement('tr');
+    const fechaPresentacion = item.FechaPresentacion ? parseDate(item.FechaPresentacion) : null;
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    if (fechaPresentacion && fechaPresentacion < hoy) {
+        row.classList.add('vencido');
+    }
+
+    // Mantenemos 10 columnas como en el HTML original
+    row.innerHTML = `
+        <td>${escapeHtml(item.Nro || '-')}</td>
+        <td>${escapeHtml(item.Tipo || '-')}</td>
+        <td>${escapeHtml(item.Etapa || '-')}</td>
+        <td>${escapeHtml(item.Estado || '-')}</td>
+        <td>${escapeHtml(item.FechaPresentacion || '-')}</td>
+        <td>${escapeHtml(item.FechaPresentado || '-')}</td>
+        <td>${escapeHtml(item.NuevaFecha || '-')}</td>
+        <td>${formatCurrency(item.IGV)}</td>
+        <td>${escapeHtml(item.SUNAT || '-')}</td>
+        <td><i class="bi bi-eye view-detail" onclick="viewDetail(${item.id})"></i></td>
+    `;
+
+    return row;
 }
 
 function updateResumenPagination(pagination, search = '') {
@@ -436,8 +478,9 @@ function viewDetail(idFiscalizacion) {
     // Mostrar estado de carga
     document.getElementById('modalRequerimientosBody').innerHTML = `
         <tr>
-            <td colspan="5" style="text-align: center; padding: 20px;">
-                Cargando requerimientos relacionados...
+            <td colspan="7" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Cargando requerimientos relacionados...</p>
             </td>
         </tr>
     `;
@@ -472,7 +515,7 @@ async function fetchRequerimientosHijos(idPadre) {
         });
 
         if (!response.ok) {
-            throw new Error(`Error ${response.status}`);
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const result = await response.json();
@@ -486,7 +529,7 @@ async function fetchRequerimientosHijos(idPadre) {
         console.error('Error al cargar requerimientos hijos:', error);
         document.getElementById('modalRequerimientosBody').innerHTML = `
             <tr>
-                <td colspan="5" style="text-align: center; color: red; padding: 20px;">
+                <td colspan="7" class="error-state">
                     Error al cargar datos: ${error.message}
                 </td>
             </tr>
@@ -501,7 +544,7 @@ function renderRequerimientosHijos(data) {
     if (!data || data.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="7" style="text-align: center; padding: 20px;">
+                <td colspan="7" class="no-data">
                     No se encontraron requerimientos relacionados
                 </td>
             </tr>
@@ -509,30 +552,41 @@ function renderRequerimientosHijos(data) {
         return;
     }
 
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        const diasRestantes = item.dias_restantes || 0;
-        
-        // Aplicar estilos según días restantes
-        if (diasRestantes === 0) {
-            row.classList.add('due-today');
-        } else if (diasRestantes > 0 && diasRestantes <= 3) {
-            row.classList.add('due-soon');
-        } else if (diasRestantes < 0) {
-            row.classList.add('overdue');
-        }
+    // Usar DocumentFragment para mejor rendimiento
+    const fragment = document.createDocumentFragment();
 
-        row.innerHTML = `
-            <td>${item.numero || '-'}</td>
-            <td>${item.etapa || '-'}</td>
-            <td>${formatDateWithWarning(item.fecha_a_presentar, diasRestantes)}</td>
-            <td>${item.fecha_presentacion || '-'}</td>
-            <td>${item.nueva_fecha || '-'}</td>
-            <td>${item.estado || '-'}</td>
-            <td>S/ ${item.IGV ? parseFloat(item.IGV).toFixed(2) : '0.00'}</td>
-        `;
-        tbody.appendChild(row);
+    data.forEach(item => {
+        const row = createRequerimientoHijoRow(item);
+        fragment.appendChild(row);
     });
+
+    tbody.appendChild(fragment);
+}
+
+function createRequerimientoHijoRow(item) {
+    const row = document.createElement('tr');
+    const diasRestantes = item.dias_restantes || 0;
+
+    // Aplicar estilos según días restantes
+    if (diasRestantes === 0) {
+        row.classList.add('due-today');
+    } else if (diasRestantes > 0 && diasRestantes <= 3) {
+        row.classList.add('due-soon');
+    } else if (diasRestantes < 0) {
+        row.classList.add('overdue');
+    }
+
+    row.innerHTML = `
+        <td>${escapeHtml(item.numero || '-')}</td>
+        <td>${escapeHtml(item.etapa || '-')}</td>
+        <td>${formatDateWithWarning(item.fecha_a_presentar, diasRestantes)}</td>
+        <td>${escapeHtml(item.fecha_presentacion || '-')}</td>
+        <td>${escapeHtml(item.nueva_fecha || '-')}</td>
+        <td>${escapeHtml(item.estado || '-')}</td>
+        <td> ${formatCurrency(item.IGV)}</td>
+    `;
+
+    return row;
 }
 
 // ==============================================
@@ -541,7 +595,7 @@ function renderRequerimientosHijos(data) {
 
 function formatDateWithWarning(dateString, diasRestantes) {
     if (!dateString) return '-';
-    
+
     let warning = '';
     if (diasRestantes === 0) {
         warning = ' <span class="date-warning">(HOY)</span>';
@@ -550,20 +604,51 @@ function formatDateWithWarning(dateString, diasRestantes) {
     } else if (diasRestantes < 0) {
         warning = ` <span class="date-warning overdue">(+${Math.abs(diasRestantes)} días)</span>`;
     }
-    
-    return dateString + warning;
-}
 
+    return escapeHtml(dateString) + warning;
+}
 
 function parseDate(dateString) {
     if (!dateString) return null;
 
-    // Formato dd/mm/yyyy
-    const parts = dateString.split('/');
-    if (parts.length === 3) {
-        return new Date(parts[2], parts[1] - 1, parts[0]);
+    // Intentar diferentes formatos de fecha
+    const formats = [
+        // Formato dd/mm/yyyy
+        () => {
+            const parts = dateString.split('/');
+            if (parts.length === 3) {
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            return null;
+        },
+        // Formato yyyy-mm-dd
+        () => {
+            const parts = dateString.split('-');
+            if (parts.length === 3) {
+                return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+            return null;
+        },
+        // Formato ISO
+        () => new Date(dateString)
+    ];
+
+    for (const format of formats) {
+        try {
+            const date = format();
+            if (date && !isNaN(date.getTime())) {
+                return date;
+            }
+        } catch (e) {
+            // Continuar con el siguiente formato
+        }
     }
 
-    // Otros formatos
-    return new Date(dateString);
+    return null;
 }
+
+
+// Inyectar estilos
+const styleElement = document.createElement('style');
+styleElement.textContent = additionalStyles;
+document.head.appendChild(styleElement);

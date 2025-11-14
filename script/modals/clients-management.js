@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="client-actions">
                 <button class="edit-btn"><i class="bi bi-pencil"></i> Editar</button>
                 <button class="delete-btn"><i class="bi bi-trash"></i> Eliminar</button>
+                <button class="delete-btn"><i class="bi bi-trash"></i> Historial</button>
             </div>
         </div>
     `;

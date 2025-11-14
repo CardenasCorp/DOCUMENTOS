@@ -1,10 +1,27 @@
 <?php
+// session_check.php
 session_start();
 
+$inactivity_timeout = 3600; // 1 hora
+
+// Verificar si el usuario está logueado
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../app/login.php'); 
+    header('Location: app/login.php');
     exit();
 }
+
+// Verificar inactividad
+if (isset($_SESSION['last_activity'])) {
+    if (time() - $_SESSION['last_activity'] > $inactivity_timeout) {
+        session_unset();
+        session_destroy();
+        header('Location: app/login.php?expired=1');
+        exit();
+    }
+}
+
+// Actualizar timestamp de última actividad
+$_SESSION['last_activity'] = time();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +45,7 @@ if (!isset($_SESSION['user_id'])) {
                 <li><a href="/app/registrar-caso.php">Gestionar Casos</a></li>
             </div>
             <div>
-                <li><a href="/app/logout.php" class="close">Cerrar Sesion</a></li>
+                <li><a href="/app/logout.php" class="close">SUNAT</a></li>
             </div>  
         </ul>
 
@@ -52,6 +69,7 @@ if (!isset($_SESSION['user_id'])) {
             <table id="cerrar-table" class="cerrar-table">
                 <thead>
                     <tr>
+                        <th>Empresa</th>
                         <th>Nro</th>
                         <th>Tipo</th>
                         <th>Etapa</th>
@@ -81,6 +99,7 @@ if (!isset($_SESSION['user_id'])) {
                 <table id="reclamaciones-table" class="reclamaciones-table">
                     <thead>
                         <tr>
+                            <th>Empresa</th>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>
@@ -101,12 +120,13 @@ if (!isset($_SESSION['user_id'])) {
             <!-- Tabla Apelaciones -->
             <div class="apelaciones">
                 <div class="table-header apelaciones-header">
-                    <h2>Apelaciones</h2>g
+                    <h2>Apelaciones</h2>
                     <p>0</p>
                 </div>
                 <table id="apelaciones-table" class="apelaciones-table">
                     <thead>
                         <tr>
+                            <th>Empresa</th>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>

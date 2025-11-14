@@ -28,7 +28,7 @@ try {
         throw new Exception('Datos inválidos o vacíos');
     }
     
-    // Campos requeridos básicos
+    // Campos requeridos básicos (IGV REMOVIDO de los campos requeridos)
     $requiredFields = [
         'numero', 
         'id_cliente', 
@@ -37,8 +37,6 @@ try {
         'id_etapa', 
         'periodo_inicio', 
         'periodo_final', 
-        'IGV', 
-        'supervisor_id',
         'tipo'
     ];
     
@@ -64,23 +62,26 @@ try {
         throw new Exception('No se puede asignar requerimiento padre al 1er Requerimiento');
     }
     
-    // Validar y formatear IGV
-    $igv = str_replace(',', '.', $data['IGV']);
-    $igv = (float) $igv;
-    
-    if ($igv <= 0) {
-        throw new Exception('El IGV debe ser un valor mayor a 0');
+    // Validar y formatear IGV (ahora es opcional)
+    $igv = null;
+    if (!empty($data['IGV'])) {
+        $igv = str_replace(',', '.', $data['IGV']);
+        $igv = (float) $igv;
+        
+        if ($igv <= 0) {
+            throw new Exception('El IGV debe ser un valor mayor a 0');
+        }
+        
+        $igv = number_format($igv, 2, '.', '');
     }
     
-    $igv = number_format($igv, 2, '.', '');
-    
-    // Mapeo de tipos de fiscalización
     $tiposMap = [
         'esquela' => 1,
         'FP-IGV' => 2,
         'FT-IGV' => 3,
         'FP-RENTA' => 4,
-        'FT-RENTA' => 5
+        'FT-RENTA' => 5,
+        'CRUCE' => 6 
     ];
     
     if (!isset($tiposMap[$data['tipo']])) {
@@ -88,6 +89,17 @@ try {
     }
     
     $id_tipo = $tiposMap[$data['tipo']];
+    
+    // Validación específica según el tipo
+    if ($id_tipo == 6) { // 6 es el ID para CRUCE
+        if (empty($data['funcionarios_ids'])) {
+            throw new Exception('Debe asignar al menos un funcionario para el tipo CRUCE');
+        }
+    } else {
+        if (empty($data['supervisor_id'])) {
+            throw new Exception('Debe asignar un supervisor');
+        }
+    }
     
     $conn->beginTransaction();
     
@@ -127,14 +139,14 @@ try {
         ':id_etapa' => $data['id_etapa'],
         ':periodo_inicio' => $data['periodo_inicio'],
         ':periodo_final' => $data['periodo_final'],
-        ':IGV' => $igv,
+        ':IGV' => $igv, // Puede ser null
         ':id_tipo' => $id_tipo,
         ':id_fiscalizacion_padre' => ($data['id_etapa'] != 1) ? $data['id_fiscalizacion_padre'] : null
     ]);
     
     $id_fiscalizacion = $conn->lastInsertId();
     
-    // Insertar agentes SUNAT (supervisor y verificadores)
+    // Insertar agentes SUNAT (supervisor, verificadores o funcionarios según el tipo)
     $sqlAgente = "INSERT INTO agente_sunat (
         id_fiscalizacion, 
         id_personal, 
@@ -147,31 +159,50 @@ try {
     
     $stmtAgente = $conn->prepare($sqlAgente);
     
-    // Insertar supervisor
-    try {
-        $stmtAgente->execute([
-            ':id_fiscalizacion' => $id_fiscalizacion,
-            ':id_personal' => $data['supervisor_id'],
-            ':cargo' => 'supervisor'
-        ]);
-    } catch (PDOException $e) {
-        if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
-            throw $e;
+    if ($id_tipo == 6) {
+        // Para tipo CRUCE, insertar funcionarios
+        if (!empty($data['funcionarios_ids'])) {
+            foreach ($data['funcionarios_ids'] as $funcionario_id) {
+                try {
+                    $stmtAgente->execute([
+                        ':id_fiscalizacion' => $id_fiscalizacion,
+                        ':id_personal' => $funcionario_id,
+                        ':cargo' => 'funcionario'
+                    ]);
+                } catch (PDOException $e) {
+                    if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
+                        throw $e;
+                    }
+                }
+            }
         }
-    }
-    
-    // Insertar verificadores
-    if (!empty($data['verificadores_ids'])) {
-        foreach ($data['verificadores_ids'] as $verificador_id) {
-            try {
-                $stmtAgente->execute([
-                    ':id_fiscalizacion' => $id_fiscalizacion,
-                    ':id_personal' => $verificador_id,
-                    ':cargo' => 'verificador'
-                ]);
-            } catch (PDOException $e) {
-                if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
-                    throw $e;
+    } else {
+        // Para otros tipos, insertar supervisor
+        try {
+            $stmtAgente->execute([
+                ':id_fiscalizacion' => $id_fiscalizacion,
+                ':id_personal' => $data['supervisor_id'],
+                ':cargo' => 'supervisor'
+            ]);
+        } catch (PDOException $e) {
+            if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
+                throw $e;
+            }
+        }
+        
+        // Insertar verificadores
+        if (!empty($data['verificadores_ids'])) {
+            foreach ($data['verificadores_ids'] as $verificador_id) {
+                try {
+                    $stmtAgente->execute([
+                        ':id_fiscalizacion' => $id_fiscalizacion,
+                        ':id_personal' => $verificador_id,
+                        ':cargo' => 'verificador'
+                    ]);
+                } catch (PDOException $e) {
+                    if ($e->errorInfo[1] != 1062) { // Ignorar error de duplicado
+                        throw $e;
+                    }
                 }
             }
         }

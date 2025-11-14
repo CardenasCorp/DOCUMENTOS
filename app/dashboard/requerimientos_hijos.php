@@ -16,7 +16,7 @@ try {
     if (!$pdo) {
         throw new Exception("Error de conexión a la base de datos", 500);
     }
-
+    
     $input = json_decode(file_get_contents('php://input'), true);
     if ($input === null) {
         throw new Exception("Datos JSON inválidos", 400);

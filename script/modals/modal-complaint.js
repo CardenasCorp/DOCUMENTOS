@@ -1,181 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // =============================================
-    // SECCIÓN 1: GESTIÓN DE CASOS FISCALIZACIÓN
-    // =============================================
-    const searchClientInput = document.getElementById('searchClientInput');
-    const searchRUCInput = document.getElementById('searchRUCInput');
-    const employeeContainer = document.querySelector('.employee-container');
-    const paginationContainer = document.getElementById('pagination');
-    let currentPage = 1;
-    const itemsPerPage = 4;
-    let allCases = [];
-    let filteredCases = [];
-
-    // Mapeos para tipos, estados y etapas
-    const tipoMap = {
-        1: "Requerimiento",
-        2: "Esquela",
-        3: "Notificación",
-        4: "Otro"
-    };
-
-    const estadoMap = {
-        1: "Notificado",
-        2: "Presentado",
-        3: "Prórroga",
-        4: "Anulado",
-        5: "Eliminado"
-    };
-
-    const etapaMap = {
-        1: "1er Requerimiento",
-        2: "2do Requerimiento",
-        3: "3ro Requerimiento",
-        4: "4to Requerimiento",
-        5: "Cierre",
-        6: "Reclamación",
-        7: "Apelación",
-        8: "Proceso Contencioso",
-        10: "Finalizado"
-    };
-
-    // Cargar casos iniciales
-    loadCases();
-
-    // Función para cargar casos
-    async function loadCases() {
-        try {
-            showLoading(true);
-            const response = await fetch('../app/casos/get_cases.php');
-            const data = await response.json();
-
-            if (data.success) {
-                allCases = data.data;
-                filteredCases = allCases.filter(caso => caso.id_estado != 5);
-                renderCases();
-                renderPagination();
-            } else {
-                throw new Error(data.message || 'Error al cargar casos');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showError('Error al cargar casos: ' + error.message);
-        } finally {
-            showLoading(false);
-        }
-    }
-
-    // Función para renderizar casos
-    function renderCases() {
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const casesToShow = filteredCases.slice(start, end);
-
-        employeeContainer.innerHTML = '<h4>Lista de casos</h4>';
-
-        if (casesToShow.length === 0) {
-            employeeContainer.innerHTML += '<p class="no-results">No se encontraron casos</p>';
-            return;
-        }
-
-        casesToShow.forEach(caso => {
-            const caseElement = document.createElement('div');
-            caseElement.className = 'client-item';
-            caseElement.dataset.caseId = caso.id_fiscalizacion;
-
-            const awardIcon = caso.id_etapa == 1 ? '<i class="bi bi-award-fill"></i>' : '';
-
-            caseElement.innerHTML = `
-                <div class="client-info">
-                    <div class="client-details">
-                        <h3>${caso.razon_social || 'Sin nombre'} ${awardIcon}</h3>
-                        <p><strong>RUC:</strong> ${caso.RUC || 'Sin RUC'}</p>
-                        <p><strong>N° Doc:</strong> ${caso.numero}</p>
-                        <p><strong>Tipo:</strong> ${tipoMap[caso.id_tipo] || 'Desconocido'}</p>
-                        <p><strong>Estado:</strong> ${estadoMap[caso.id_estado] || 'Desconocido'}</p>
-                        <p><strong>Etapa:</strong> ${etapaMap[caso.id_etapa] || 'Desconocida'}</p>
-                        <p><strong>Periodo:</strong> ${formatPeriod(caso.periodo_inicio, caso.periodo_final)}</p>  
-                        <p><strong>Fecha Notif.:</strong> ${formatDate(caso.fecha_notificacion) || 'Sin fecha'}</p>
-                    </div>
-                    <div class="client-actions">
-                        <button class="edit-btn"><i class="bi bi-pencil"></i> Editar</button>
-                        ${caso.id_etapa == 1 ? '<button class="complaint-btn"><i class="bi bi-emoji-frown-fill"></i> Quejas</button>' : ''}
-                        <button class="delete-btn"><i class="bi bi-trash"></i> ${caso.id_estado == 5 ? 'Eliminado' : 'Eliminar'}</button>
-                    </div>
-                </div>
-            `;
-
-            employeeContainer.appendChild(caseElement);
-        });
-
-        addCaseEventListeners();
-    }
-
-    // Función para agregar eventos a los casos
-    function addCaseEventListeners() {
-        // Editar
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const caseId = this.closest('.client-item').dataset.caseId;
-                window.location.href = `modificar-caso.php?id=${caseId}`;
-            });
-        });
-
-        // Quejas
-        document.querySelectorAll('.complaint-btn').forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                const caseId = this.closest('.client-item').dataset.caseId;
-                openComplaintModal(caseId);
-            });
-        });
-
-        // Eliminar
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            if (!btn.textContent.includes('Eliminado')) {
-                btn.addEventListener('click', async function () {
-                    const caseId = this.closest('.client-item').dataset.caseId;
-                    if (confirm('¿Estás seguro de marcar este caso como eliminado?')) {
-                        await updateCaseStatus(caseId, 5);
-                    }
-                });
-            }
-        });
-    }
-
-    // Función para actualizar estado del caso
-    async function updateCaseStatus(caseId, status) {
-        try {
-            showLoading(true);
-            const response = await fetch('../app/casos/update_case_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    id_fiscalizacion: caseId,
-                    id_estado: status
-                })
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                loadCases();
-                showSuccess('Estado del caso actualizado correctamente');
-            } else {
-                throw new Error(result.message || 'Error al actualizar estado');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showError('Error: ' + error.message);
-        } finally {
-            showLoading(false);
-        }
-    }
-
-    // =============================================
-    // SECCIÓN 2: GESTIÓN DE QUEJAS (MODAL)
+    // SECCIÓN 2: GESTIÓN DE QUEJAS (MODAL) - FUNCIONES ÚNICAS
     // =============================================
     const modal = document.getElementById('myModalComplaint');
     const closeBtn = document.getElementById('closeModalEditBusiness');
@@ -450,24 +275,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // =============================================
     // FUNCIONES UTILITARIAS COMPARTIDAS
     // =============================================
+    
+    // Función para formatear fechas (mantenida por si se usa en el modal)
     function formatDate(dateString) {
         if (!dateString) return 'N/A';
         const date = new Date(dateString);
         return date.toLocaleDateString('es-PE');
     }
 
-    function formatPeriod(start, end) {
-        if (!start || !end) return 'Sin periodo';
-        return `${start} - ${end}`;
-    }
-
-    function showLoading(show) {
-        const loader = document.getElementById('loading-overlay');
-        if (loader) {
-            loader.style.display = show ? 'flex' : 'none';
-        }
-    }
-
+    // Función para mostrar mensaje de éxito
     function showSuccess(message) {
         const alert = document.createElement('div');
         alert.className = 'alert alert-success';
@@ -476,90 +292,12 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => alert.remove(), 3000);
     }
 
+    // Función para mostrar mensaje de error
     function showError(message) {
         const alert = document.createElement('div');
         alert.className = 'alert alert-error';
         alert.textContent = message;
         document.querySelector('.content-complaint').prepend(alert);
         setTimeout(() => alert.remove(), 5000);
-    }
-
-    // Event listeners para búsqueda
-    searchClientInput.addEventListener('input', filterCases);
-    searchRUCInput.addEventListener('input', filterCases);
-
-    // Función para filtrar casos
-    function filterCases() {
-        const clientSearch = searchClientInput.value.toLowerCase();
-        const rucSearch = searchRUCInput.value.toLowerCase();
-
-        filteredCases = allCases.filter(caso => {
-            const matchesClient = caso.razon_social?.toLowerCase().includes(clientSearch) || !clientSearch;
-            const matchesRUC = caso.RUC?.includes(rucSearch) || !rucSearch;
-            return matchesClient && matchesRUC;
-        });
-
-        currentPage = 1;
-        renderCases();
-        renderPagination();
-    }
-
-    // Función para renderizar paginación
-    function renderPagination() {
-        const totalPages = Math.ceil(filteredCases.length / itemsPerPage);
-        paginationContainer.innerHTML = '';
-
-        if (totalPages <= 1) return;
-
-        // Botón Anterior
-        if (currentPage > 1) {
-            const prevBtn = document.createElement('button');
-            prevBtn.innerHTML = '&laquo; Anterior';
-            prevBtn.addEventListener('click', () => {
-                currentPage--;
-                renderCases();
-                updatePaginationButtons();
-            });
-            paginationContainer.appendChild(prevBtn);
-        }
-
-        // Botones de página
-        const startPage = Math.max(1, currentPage - 2);
-        const endPage = Math.min(totalPages, currentPage + 2);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageBtn = document.createElement('button');
-            pageBtn.textContent = i;
-            pageBtn.className = i === currentPage ? 'active' : '';
-            pageBtn.addEventListener('click', () => {
-                currentPage = i;
-                renderCases();
-                updatePaginationButtons();
-            });
-            paginationContainer.appendChild(pageBtn);
-        }
-
-        // Botón Siguiente
-        if (currentPage < totalPages) {
-            const nextBtn = document.createElement('button');
-            nextBtn.innerHTML = 'Siguiente &raquo;';
-            nextBtn.addEventListener('click', () => {
-                currentPage++;
-                renderCases();
-                updatePaginationButtons();
-            });
-            paginationContainer.appendChild(nextBtn);
-        }
-    }
-
-    // Actualizar estado de botones de paginación
-    function updatePaginationButtons() {
-        const buttons = paginationContainer.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-            if (button.textContent == currentPage && !isNaN(button.textContent)) {
-                button.classList.add('active');
-            }
-        });
     }
 });

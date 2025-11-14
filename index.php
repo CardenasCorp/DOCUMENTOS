@@ -1,10 +1,27 @@
 <?php
+// session_check.php
 session_start();
 
+$inactivity_timeout = 3600; // 1 hora
+
+// Verificar si el usuario está logueado
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../app/login.php'); 
+    header('Location: app/login.php');
     exit();
 }
+
+// Verificar inactividad
+if (isset($_SESSION['last_activity'])) {
+    if (time() - $_SESSION['last_activity'] > $inactivity_timeout) {
+        session_unset();
+        session_destroy();
+        header('Location: app/login.php?expired=1');
+        exit();
+    }
+}
+
+// Actualizar timestamp de última actividad
+$_SESSION['last_activity'] = time();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="dashboard-header">
                 <a href="/dashboard.php" style="text-decoration: none; color: inherit;">
 
-                    <h3>Resumen de Casos <i class="bi bi-caret-right-square"></i></h3>
+                    <h3>SUNAT <i class="bi bi-caret-right-square"></i></h3>
                 </a>
             </div>
         </div>
@@ -54,6 +71,7 @@ if (!isset($_SESSION['user_id'])) {
             <table id="vencer-table" class="vencer-table">
                 <thead>
                     <tr>
+                        <th>Empresa</th>
                         <th>Nro</th>
                         <th>Tipo</th>
                         <th>Etapa</th>
@@ -85,6 +103,7 @@ if (!isset($_SESSION['user_id'])) {
                 <table id="reclamar-table" class="reclamar-table">
                     <thead>
                         <tr>
+                            <th>Empresa</th>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>
@@ -111,6 +130,7 @@ if (!isset($_SESSION['user_id'])) {
                 <table id="apelar-table" class="apelar-table">
                     <thead>
                         <tr>
+                            <th>Empresa</th>
                             <th>Nro</th>
                             <th>Tipo</th>
                             <th>Fecha a presentar</th>
@@ -144,7 +164,7 @@ if (!isset($_SESSION['user_id'])) {
                         <th>Etapa</th>
                         <th>Estado</th>
                         <th>Fecha a presentar</th>
-                        <th>Fecha de presentacion</th>
+                        <th>Inicio del computo</th>
                         <th>Nueva Fecha</th>
                         <th>IGV</th>
                         <th>SUNAT</th>
@@ -173,7 +193,7 @@ if (!isset($_SESSION['user_id'])) {
                 <th>Nro</th>
                 <th>Etapa</th>
                 <th>Fecha a Presentar</th>  
-                <th>Fecha de Presentación</th>
+                <th>Inicio del computo</th>
                 <th>Nueva Fecha</th>
                 <th>Estado</th>
                 <th>IGV</th>
@@ -189,5 +209,4 @@ if (!isset($_SESSION['user_id'])) {
     <script src="/script/dashboard/tables.js"></script>
 
 </body>
-
 </html>

@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Variables de estado
     let selectedRequest = null;
     let requestsData = [];
-    let verificadoresCount = 0;
+    let currentContext = null;
+    let currentInput = null;
 
     // URL base para las peticiones
     const BASE_URL = 'registrar';
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     requerimientoInput.parentNode.appendChild(idPadreInput);
                 }
                 idPadreInput.value = selectedRequest.id_fiscalizacion;
-                
+
                 // Llamar a la función para cargar datos del padre
                 cargarDatosPadre(selectedRequest.id_fiscalizacion);
             }
@@ -167,49 +168,118 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para llenar los campos con los datos del padre
+    // Función para llenar los campos con los datos del padre - CORREGIDA
     function llenarCamposConDatosPadre(datos) {
         const documento = datos.documento;
         const agentes = datos.agentes;
-        
+
         // Llenar IGV
         if (documento.IGV) {
             document.getElementById('IGV').value = documento.IGV;
         }
-        
+
         // Llenar periodos
         if (documento.periodo_inicio) {
             document.getElementById('periodo-inicio').value = formatPeriodForInput(documento.periodo_inicio);
         }
-        
+
         if (documento.periodo_final) {
             document.getElementById('periodo-fin').value = formatPeriodForInput(documento.periodo_final);
         }
-        
+
         // Llenar supervisor
         if (agentes.supervisor) {
             document.getElementById('supervisor').value = agentes.supervisor.nombre_completo || '';
             document.getElementById('supervisor_id').value = agentes.supervisor.id_personal || '';
         }
-        
-        // Llenar verificadores
+
+        // Llenar verificadores - USANDO LA MISMA ESTRUCTURA QUE registrar-caso.js
+        const verificadoresContainer = document.querySelector('#verificadores .verificador-container');
+
+        // Limpiar verificadores existentes
+        verificadoresContainer.innerHTML = '';
+
         if (agentes.verificadores && agentes.verificadores.length > 0) {
-            // Limpiar verificadores existentes
-            const verificadoresContainer = document.getElementById('verificadores');
-            const addButton = verificadoresContainer.querySelector('.add-verificador');
-            
-            verificadoresContainer.querySelectorAll('.verificador-container:not(.add-verificador)').forEach(c => c.remove());
-            
             // Agregar verificadores del padre
             agentes.verificadores.forEach(verificador => {
-                agregarVerificador(verificador.nombre_completo, verificador.id_personal);
+                agregarVerificadorDesdePadre(verificador.nombre_completo, verificador.id_personal);
             });
-            
-            // Asegurar que el botón de agregar esté al final
-            if (addButton) {
-                verificadoresContainer.appendChild(addButton);
+        } else {
+            // Si no hay verificadores, agregar un campo vacío usando la función existente
+            if (typeof window.agregarVerificador === 'function') {
+                window.agregarVerificador();
             }
         }
+    }
+
+    // Nueva función específica para agregar verificadores desde datos del padre
+    function agregarVerificadorDesdePadre(nombre, id) {
+        const verificadoresContainer = document.querySelector('#verificadores .verificador-container');
+        const verificadorCount = verificadoresContainer.querySelectorAll('.verificador-item').length + 1;
+
+        const nuevoVerificadorDiv = document.createElement('div');
+        nuevoVerificadorDiv.classList.add('verificador-item');
+        nuevoVerificadorDiv.style.marginBottom = '10px';
+
+        // Campo oculto para el ID
+        const hiddenIdInput = document.createElement('input');
+        hiddenIdInput.type = 'hidden';
+        hiddenIdInput.name = `verificadores[${verificadorCount}][id]`;
+        hiddenIdInput.className = 'verificador-id';
+        hiddenIdInput.value = id;
+
+        // Input para el nombre (solo lectura)
+        const inputVerificador = document.createElement('input');
+        inputVerificador.type = 'text';
+        inputVerificador.name = `verificadores[${verificadorCount}][nombre]`;
+        inputVerificador.placeholder = 'Nombre del verificador';
+        inputVerificador.readOnly = true;
+        inputVerificador.required = true;
+        inputVerificador.className = 'verificador-name';
+        inputVerificador.style.marginRight = '10px';
+        inputVerificador.style.padding = '8px';
+        inputVerificador.style.width = '200px';
+        inputVerificador.value = nombre;
+
+        // Botón de búsqueda
+        const searchButton = document.createElement('button');
+        searchButton.type = 'button';
+        searchButton.classList.add('search', 'verificador-search');
+        searchButton.innerHTML = '<i class="bi bi-search"></i>';
+        searchButton.style.marginRight = '5px';
+        searchButton.style.padding = '8px 12px';
+        searchButton.onclick = function () {
+            currentContext = 'verificador';
+            currentInput = {
+                name: inputVerificador,
+                id: hiddenIdInput
+            };
+            openEmployeeModal();
+        };
+
+        // Botón para eliminar
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.classList.add('delete');
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+        deleteButton.style.padding = '8px 12px';
+        deleteButton.onclick = function () {
+            nuevoVerificadorDiv.remove();
+        };
+
+        // Contenedor interno para los elementos del verificador
+        const itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.alignItems = 'center';
+        itemContainer.style.gap = '10px';
+
+        itemContainer.appendChild(hiddenIdInput);
+        itemContainer.appendChild(inputVerificador);
+        itemContainer.appendChild(searchButton);
+        itemContainer.appendChild(deleteButton);
+
+        nuevoVerificadorDiv.appendChild(itemContainer);
+        verificadoresContainer.appendChild(nuevoVerificadorDiv);
     }
 
     // Función auxiliar para formatear periodos
@@ -381,29 +451,107 @@ document.addEventListener('DOMContentLoaded', function () {
         modalContent.insertBefore(error, modalContent.querySelector('.table-container'));
     }
 
-    function debounce(func, wait) {
-        let timeout;
-        return function () {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(context, args), wait);
-        };
+    // Función para abrir modal de empleados
+    function openEmployeeModal() {
+        const modal = document.getElementById('employeeModal');
+        if (modal) {
+            modal.style.display = 'block';
+            loadEmployees();
+        } else {
+            console.error('Modal de empleados no encontrado');
+        }
     }
 
-    // Cerrar modal al presionar Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
-        }
-    });
+    // Cargar empleados desde el servidor
+    function loadEmployees() {
+        const tableBody = document.getElementById('employeeTableBody');
+        if (!tableBody) return;
 
-    // Cerrar al hacer clic fuera del contenido del modal
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            closeModal();
+        tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Cargando empleados...</td></tr>';
+
+        fetch('registrar/get_employees.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && data.success) {
+                    renderEmployees(data.data);
+                } else {
+                    throw new Error(data.message || 'Error al cargar empleados');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: red;">Error: ${error.message}</td></tr>`;
+            });
+    }
+
+    // Renderizar empleados en la tabla
+    function renderEmployees(employees) {
+        const tableBody = document.getElementById('employeeTableBody');
+        if (!tableBody) return;
+
+        tableBody.innerHTML = '';
+
+        if (!employees || employees.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No se encontraron empleados</td></tr>';
+            return;
         }
-    });
+
+        employees.forEach(employee => {
+            const row = document.createElement('tr');
+            row.innerHTML = `       
+                <td>${employee.id}</td>
+                <td>${employee.first_name}</td>
+                <td>${employee.last_name}</td>
+                <td>
+                    <button class="select-employee" data-id="${employee.id}" 
+                            data-name="${employee.first_name} ${employee.last_name}">
+                        Seleccionar
+                    </button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // Agregar eventos a los botones de selección
+        document.querySelectorAll('.select-employee').forEach(button => {
+            button.addEventListener('click', function () {
+                const employeeId = this.getAttribute('data-id');
+                const employeeName = this.getAttribute('data-name');
+                selectEmployee(employeeId, employeeName);
+            });
+        });
+    }
+
+    // Seleccionar empleado
+    function selectEmployee(employeeId, employeeName) {
+        if (currentContext === 'verificador' && currentInput) {
+            // Actualizar el input de texto con el nombre
+            currentInput.name.value = employeeName;
+            // Actualizar el campo oculto con el ID
+            currentInput.id.value = employeeId;
+        }
+        else if (currentContext === 'supervisor') {
+            // Actualizar el input de texto con el nombre
+            document.getElementById('supervisor').value = employeeName;
+            // Actualizar el campo oculto con el ID
+            document.getElementById('supervisor_id').value = employeeId;
+        }
+
+        closeEmployeeModal();
+    }
+
+    // Función para cerrar modal de empleados
+    function closeEmployeeModal() {
+        const modal = document.getElementById('employeeModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
 
     // Funciones para mostrar mensajes
     function showSuccess(message) {
@@ -424,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formSection = document.querySelector('.form-section');
         if (formSection) {
             formSection.insertBefore(alertDiv, formSection.firstChild);
-            
+
             // Remover después de 3 segundos
             setTimeout(() => {
                 if (alertDiv.parentNode) {
@@ -434,35 +582,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para agregar verificadores (debe ser global para que funcione onclick)
-    window.agregarVerificador = function(nombre = '', id = '') {
-        verificadoresCount++;
-        const container = document.createElement('div');
-        container.className = 'verificador-container';
-        
-
-        const addButton = document.querySelector('.add-verificador');
-        if (addButton) {
-            addButton.parentNode.insertBefore(container, addButton);
-        } else {
-            document.getElementById('verificadores').appendChild(container);
+    // Cerrar modal al presionar Escape
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
         }
+    });
 
-        // Agregar evento al botón de búsqueda del verificador recién creado
-        const searchBtn = container.querySelector('.verificador-search');
-        searchBtn.addEventListener('click', function() {
-            // Aquí deberías implementar la lógica para buscar verificadores
-            console.log('Búsqueda de verificador');
-        });
+    // Cerrar al hacer clic fuera del contenido del modal
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
 
-        // Agregar evento al botón de eliminar
-        const deleteBtn = container.querySelector('.delete');
-        deleteBtn.addEventListener('click', function() {
-            this.closest('.verificador-container').remove();
-            verificadoresCount--;
-        });
-    };
-
-    // Inicializar con al menos un verificador
-    agregarVerificador();
+    // Inicializar con al menos un verificador si no existe
+    document.addEventListener('DOMContentLoaded', function () {
+        const verificadoresContainer = document.querySelector('#verificadores .verificador-container');
+        if (verificadoresContainer && verificadoresContainer.querySelectorAll('.verificador-item').length === 0) {
+            if (typeof window.agregarVerificador === 'function') {
+                window.agregarVerificador();
+            }
+        }
+    });
 });

@@ -114,7 +114,25 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push('Debe seleccionar una empresa');
         }
 
-        // Agregar más validaciones según sea necesario...
+        // Validar según el tipo (CRUCE vs otros)
+        const tipo = document.getElementById('tipo').value;
+        if (tipo === 'CRUCE') {
+            // Validar funcionarios para CRUCE
+            const funcionariosIds = getFuncionariosIds();
+            if (funcionariosIds.length === 0) {
+                errors.push('Debe agregar al menos un funcionario para casos de tipo CRUCE');
+            }
+        } else {
+            // Validar supervisor y verificadores para otros tipos
+            if (!document.getElementById('supervisor_id').value) {
+                errors.push('Debe seleccionar un supervisor');
+            }
+            
+            const verificadoresIds = getVerificadoresIds();
+            if (verificadoresIds.length === 0) {
+                errors.push('Debe agregar al menos un verificador');
+            }
+        }
 
         return errors;
     }
@@ -122,8 +140,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Preparar los datos del formulario
     function prepareFormData() {
         const etapa = document.getElementById('etapa').value;
+        const tipo = document.getElementById('tipo').value;
 
-        return {
+        const data = {
             numero: document.getElementById('number').value,
             id_cliente: document.getElementById('empresa_id').value,
             fecha_notificacion: document.getElementById('fecha-notificacion').value,
@@ -131,14 +150,31 @@ document.addEventListener('DOMContentLoaded', function () {
             id_etapa: etapasMap[etapa],
             periodo_inicio: formatPeriod(document.getElementById('periodo-inicio').value),
             periodo_final: formatPeriod(document.getElementById('periodo-fin').value),
-            IGV: parseFloat(document.getElementById('IGV').value),
-            supervisor_id: document.getElementById('supervisor_id').value,
-            verificadores_ids: getVerificadoresIds(),
-            tipo: document.getElementById('tipo').value,
+            IGV: parseFloat(document.getElementById('IGV').value) || 0,
+            tipo: tipo,
             id_fiscalizacion_padre: (etapa !== '1er Requerimiento')
                 ? document.getElementById('id_fiscalizacion_padre').value
                 : null
         };
+
+        // Diferente manejo según el tipo
+        if (tipo === 'CRUCE') {
+            data.funcionarios_ids = getFuncionariosIds();
+        } else {
+            data.supervisor_id = document.getElementById('supervisor_id').value;
+            data.verificadores_ids = getVerificadoresIds();
+        }
+
+        return data;
+    }
+
+    // Obtener IDs de funcionarios
+    function getFuncionariosIds() {
+        const ids = [];
+        document.querySelectorAll('.funcionario-id').forEach(input => {
+            if (input.value) ids.push(input.value);
+        });
+        return ids;
     }
 
     // Obtener IDs de verificadores
@@ -177,38 +213,47 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
 
         errorContainer.scrollIntoView({ behavior: 'smooth' });
+        
+        // Restaurar el botón de enviar
+        const submitButton = form.querySelector('.post');
+        submitButton.innerHTML = 'Guardar';
+        submitButton.disabled = false;
     }
 
-    // Mostrar mensaje de éxito
+    // Mostrar mensaje de éxito (CORREGIDO)
     function showSuccess(message) {
+        // Limpiar errores previos
         const errorContainer = document.getElementById('validation-errors');
         if (errorContainer) errorContainer.remove();
 
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.innerHTML = `
-            <div class="success-header">
-                <i class="bi bi-check-circle"></i> ${message}
-            </div>
-        `;
-
-        form.parentNode.insertBefore(successMessage, form);
-        successMessage.scrollIntoView({ behavior: 'smooth' });
-
-        setTimeout(() => {
-            if (successMessage.parentNode) successMessage.remove();
-        }, 5000);
-    }
-
-    // Mostrar mensaje de error
-    function showSuccess(message) {
         // Mostrar alerta
-        alert("Registro guardado correctamente");
+        alert(message);
 
         // Redirigir al index después de 500ms (medio segundo)
         setTimeout(() => {
-            window.location.href = './index.php'; // Ajusta esta ruta según tu estructura
+            window.location.href = '../index.php'; // Ajusta esta ruta según tu estructura
         }, 500);
+    }
+
+    // Mostrar mensaje de error
+    function showError(message) {
+        // Limpiar errores previos
+        const errorContainer = document.getElementById('validation-errors');
+        if (errorContainer) errorContainer.remove();
+
+        // Crear mensaje de error
+        const errorMessage = document.createElement('div');
+        errorMessage.id = 'validation-errors';
+        errorMessage.className = 'validation-errors';
+        errorMessage.innerHTML = `
+            <div class="error-header">
+                <i class="bi bi-exclamation-circle"></i> Error
+            </div>
+            <div>${message}</div>
+        `;
+
+        form.parentNode.insertBefore(errorMessage, form);
+        errorMessage.scrollIntoView({ behavior: 'smooth' });
     }
 
     // Inicializar la aplicación

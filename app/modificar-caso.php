@@ -1,4 +1,12 @@
+<?php
+require_once 'session_check.php';
 
+// Generar token CSRF para protección
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'];
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +48,11 @@
                     <hr>
                     <br>
                 <h1>Modificar Caso</h1>
-                <form class="form-container">
+                <form class="form-container" id="mainForm" method="POST">
+                    <!-- Token CSRF para protección -->
+                    <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
+                    <input type="hidden" id="fiscalizacion_id" name="fiscalizacion_id">
+                    
                     <div class="form-group-2">
                         <div class="empresa form-control-2">
                             <label for="number"> Buscar documento</label>
@@ -56,12 +68,13 @@
                     <div class="form-group-4">
                         <div class="form-control ">
                             <label for="tipo">Tipo</label>
-                            <select id="tipo" name="tipo" required>
+                            <select id="tipo" name="tipo" required onchange="toggleSections()">
                                 <option value="esquela">Esquela</option>
                                 <option value="FP-IGV">Fiscalización Parcial - IGV</option>
                                 <option value="FT-IGV">Fiscalizacón Total - IGV</option>
                                 <option value="FP-RENTA">Fiscalización Parcial - Renta</option>
                                 <option value="FT-RENTA">Fiscalizacón Total - Renta</option>
+                                <option value="CRUCE">Cruce de información</option>
                             </select>
                         </div>
                     </div>
@@ -86,6 +99,7 @@
                             <div class="input-container">
                                 <input type="text" id="requerimiento" name="requerimiento"
                                     placeholder="Ingrese el requerimiento" required disabled>
+                                <input type="hidden" id="id_fiscalizacion_padre" name="id_fiscalizacion_padre">
                             </div>
                         </div>
                     </div>
@@ -136,14 +150,12 @@
                         <div class="fecha-presentado form-control">
                             <label for="fecha-presentado">Estado</label>
                             <select name="estado" id="estado-select" onchange="toggleFechaFields()">
-                                <option value="" disabled selected>Escoge el estado</option>
+                                <option value="" selected>Escoge el estado</option>
                                 <option value="Prorroga">Nueva fecha</option>
                                 <option value="Presentado">Presentado</option>
-                                <option value="Presentado">Anulado</option>
+                                <option value="Anulado">Anulado</option>
+                                <option value="Anulado">No presentar   </option>
                             </select>
-                        </div>
-                        <div class="">
-
                         </div>
                     </div>
                     <div class="form-group-8">
@@ -156,28 +168,48 @@
                             <input type="date" id="fecha-prórroga" name="fecha-prórroga" disabled>
                         </div>
                     </div>
-                    <div class="form-group-6">
-                        <div class="supervisor form-control-2">
-                            <label for="supervisor">Supervisor</label>
-                            <div class="input-container">
-                                <input type="text" id="supervisor" name="supervisor" placeholder="Nombre del supervisor" required readonly>
-                                <input type="hidden" id="supervisor_id" name="supervisor_id">
-                                <button type="button" class="search"><i class="bi bi-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="form-group-7">
-                            <div class="verificador form-control-2" id="verificadores">
-                                <label for="verificador">Verificadores</label>
-                                <!-- Verificador 1 -->
-                                <div class="verificador-container">
-                                    <div class="input-container">
-
-                                    </div>
+                    
+                    <!-- Sección para Supervisor y Verificadores -->
+                    <div id="supervisor-verificadores-section">
+                        <div class="form-group-6">
+                            <div class="supervisor form-control-2">
+                                <label for="supervisor">Supervisor</label>
+                                <div class="input-container">
+                                    <input type="text" id="supervisor" name="supervisor" placeholder="Nombre del supervisor" required readonly>
+                                    <input type="hidden" id="supervisor_id" name="supervisor_id">
+                                    <button type="button" class="search-employee search"><i class="bi bi-search"></i></button>
                                 </div>
                             </div>
                         </div>
-                    <button type="submit" class="post">Enviar</button>
+                        <div class="form-group-7">
+                            <div class="verificador form-control-2" id="verificadores">
+                                <label for="verificador">Verificadores</label>
+                                <div class="verificador-container">
+                                    <!-- Aquí se agregarán dinámicamente los verificadores -->
+                                </div>
+                            </div>
+                            <div class="input-container">    
+                                <button type="button" class="plus" onclick="agregarVerificador()">Agregar</button>      
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección para Funcionarios (oculta inicialmente) -->
+                    <div id="funcionarios-section" class="hidden">
+                        <div class="form-group-8">
+                            <div class="funcionarios form-control-2" id="funcionarios">
+                                <label for="funcionarios">Funcionarios</label>
+                                <div class="funcionarios-container">
+                                    <!-- Aquí se agregarán dinámicamente los funcionarios -->
+                                </div>
+                            </div>
+                            <div class="input-container">    
+                                <button type="button" class="plus-funcionarios" onclick="agregarFuncionario()">Agregar Funcionario</button>      
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="post">Guardar Cambios</button>
                 </form>
             </div>
         </div>
@@ -256,6 +288,31 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal de empleados -->
+    <div id="employeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEmployeeModal">&times;</span>
+            <h2>Seleccionar Empleado</h2>
+            <div class="search-container" style="margin-bottom: 20px;">
+                <input type="text" id="employeeSearch" placeholder="Buscar por nombre..." style="width: 100%; padding: 10px;">
+            </div>
+            <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 9999; justify-content: center; align-items: center;">
         <div style="text-align: center;">
             <div style="border: 4px solid #f3f3f3; border-top: 4px solid rgb(230, 144, 34); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
@@ -267,13 +324,52 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
         }
+        
+        .hidden {
+            display: none;
+        }
     </style>
+    
     <script src="../script/modals/modal-business.js"></script>
     <script src="../script/modals/modal-doc.js"></script>
     <script src="../script/modificar.js"></script>
     <script src="../script/modals/group-9.js"></script>
     <script src="../script/modals/modficar-fiscalizacion.js"></script>  
     <script src="../script/modals/direct_load.js"></script>
+    
+    <!-- Script para mostrar/ocultar secciones -->
+    <script>
+        // Función para mostrar/ocultar secciones según el tipo seleccionado
+        function toggleSections() {
+            const tipoSelect = document.getElementById('tipo');
+            const supervisorSection = document.getElementById('supervisor-verificadores-section');
+            const funcionariosSection = document.getElementById('funcionarios-section');
+            
+            if (tipoSelect.value === 'CRUCE') {
+                supervisorSection.classList.add('hidden');
+                funcionariosSection.classList.remove('hidden');
+            } else {
+                supervisorSection.classList.remove('hidden');
+                funcionariosSection.classList.add('hidden');
+            }
+        }
+        
+        // Inicializar el estado al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleSections();
+        });
+        
+        // Funciones globales para agregar verificadores y funcionarios
+        function agregarVerificador() {
+            // Esta función será implementada en select-employee.js
+            console.log('Agregar verificador');
+        }
+        
+        function agregarFuncionario() {
+            // Esta función será implementada en select-employee.js
+            console.log('Agregar funcionario');
+        }
+    </script>
 </body>
 
-</html> 
+</html>
