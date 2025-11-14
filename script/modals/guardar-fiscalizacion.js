@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "2do Requerimiento": 2,
         "3ro Requerimiento": 3,
         "4to Requerimiento": 4,
+        "5to Requerimiento": 11,
+        "6to Requerimiento": 12,
+        "7mo Requerimiento": 13,
         "Cierre": 5,
         "Reclamación": 6,
         "Apelación": 7,
@@ -122,18 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (funcionariosIds.length === 0) {
                 errors.push('Debe agregar al menos un funcionario para casos de tipo CRUCE');
             }
-        } else {
-            // Validar supervisor y verificadores para otros tipos
-            if (!document.getElementById('supervisor_id').value) {
-                errors.push('Debe seleccionar un supervisor');
-            }
-            
-            const verificadoresIds = getVerificadoresIds();
-            if (verificadoresIds.length === 0) {
-                errors.push('Debe agregar al menos un verificador');
-            }
-        }
-
+        } 
         return errors;
     }
 
@@ -145,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = {
             numero: document.getElementById('number').value,
             id_cliente: document.getElementById('empresa_id').value,
+            cliente: document.getElementById('cliente_input').value,
             fecha_notificacion: document.getElementById('fecha-notificacion').value,
             fecha_presentacion: document.getElementById('fecha-presentar').value,
             id_etapa: etapasMap[etapa],

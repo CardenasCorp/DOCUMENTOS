@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const openModalButton = document.getElementById('openModalButtonDoc');
   const closeModalButton = document.getElementById('closeModalDoc');
   const modal = document.getElementById('myModalDoc');
-  const tipoInput = document.getElementById('search-tipo');
-  const referenciaInput = document.getElementById('search-referencia');
+  const numeroInput = document.getElementById('search-numero');
+  const clienteInput = document.getElementById('search-cliente');
   const acceptButton = document.getElementById('acceptDoc');
   const tableBody = document.getElementById('doc-table-body');
 
@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
   acceptButton.addEventListener('click', handleAccept);
 
   // Search events with debounce
-  if (tipoInput) {
-    tipoInput.addEventListener('input', debounce(() => searchDocuments('tipo'), 300));
+  if (numeroInput) {
+    numeroInput.addEventListener('input', debounce(() => searchDocuments('numero'), 300));
   }
 
-  if (referenciaInput) {
-    referenciaInput.addEventListener('input', debounce(() => searchDocuments('referencia'), 300));
+  if (clienteInput) {
+    clienteInput.addEventListener('input', debounce(() => searchDocuments('cliente'), 300));
   }
 
   // Row selection handler
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
           documentId: selectedDocument.id_fiscalizacion,
           documentNumber: selectedDocument.numero,
           client: selectedDocument.cliente || selectedDocument.razon_social,
-          tipo: selectedDocument.tipo, // Nuevo campo agregado
+          tipo: selectedDocument.tipo,
           periodoInicio: selectedDocument.periodo_inicio,
           periodoFinal: selectedDocument.periodo_final,
           etapa: selectedDocument.id_etapa,
@@ -96,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function searchDocuments(field) {
-    const searchTerm = field === 'tipo'
-      ? tipoInput.value.trim()
-      : referenciaInput.value.trim();
+    const searchTerm = field === 'numero'
+      ? numeroInput.value.trim()
+      : clienteInput.value.trim();
 
     if (!searchTerm) {
       loadDocuments();
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       row.innerHTML = `
         <td>${doc.numero || 'N/A'}</td>
         <td>${doc.cliente || doc.razon_social || 'N/A'}</td>
-        <td>${doc.tipo || 'N/A'}</td> <!-- Nueva columna agregada -->
+        <td>${doc.tipo || 'N/A'}</td>
         <td>${formatPeriodo(doc.periodo_inicio, doc.periodo_final)}</td>
         <td><input type="radio" name="document-select" value="${doc.id_fiscalizacion}"></td>
       `;
@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function resetModal() {
-    if (tipoInput) tipoInput.value = '';
-    if (referenciaInput) referenciaInput.value = '';
+    if (numeroInput) numeroInput.value = '';
+    if (clienteInput) clienteInput.value = '';
     selectedDocument = null;
     tableBody.innerHTML = '';
   }

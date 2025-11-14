@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const estadoMap = {
         2: "Presentado",
         3: "Prorroga",
-        4: "Anulado"
+        4: "Anulado",
+        6: "No presentar"
     };
 
     const etapaMap = {
@@ -51,43 +52,51 @@ document.addEventListener('DOMContentLoaded', function () {
         6: "Reclamación",
         7: "Apelación",
         8: "Proceso Contencioso",
-        10: "Finalizado"
+        10: "Finalizado",
+        11: "5to Requerimiento",
+        12: "6to Requerimiento",
+        13: "7mo Requerimiento"
     };
 
     // ==================== FUNCIONES PARA MOSTRAR/OCULTAR SECCIONES ====================
     function toggleSections() {
-        if (!tipoSelect || !supervisorSection || !funcionariosSection) return;
-        
+        const tipoSelect = document.getElementById('tipo');
+        const supervisorSection = document.getElementById('supervisor-verificadores-section');
+        const funcionariosSection = document.getElementById('funcionarios-section');
+        const clienteSection = document.getElementById('cliente-section'); // NUEVO
+
         if (tipoSelect.value === 'CRUCE') {
             supervisorSection.classList.add('hidden');
             funcionariosSection.classList.remove('hidden');
+            clienteSection.classList.remove('hidden'); // MOSTRAR cliente
         } else {
             supervisorSection.classList.remove('hidden');
             funcionariosSection.classList.add('hidden');
+            clienteSection.classList.add('hidden'); // OCULTAR cliente
         }
     }
 
     // ==================== FUNCIONES DE UTILIDAD PARA FECHAS ====================
     function formatDateForInput(dateString) {
         if (!dateString) return '';
-        
+
         // Si ya está en formato YYYY-MM-DD
         if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
             return dateString;
         }
-        
+
         // Si está en formato DD/MM/YYYY
         if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
             const parts = dateString.split('/');
             return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
         }
-        
+
         // Si está en formato MM/DD/YYYY (menos común)
         if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
             const parts = dateString.split('/');
             return `${parts[2]}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
         }
-        
+
         return dateString; // Devolver tal cual si no se reconoce el formato
     }
 
@@ -107,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         employeeSearchInput.addEventListener('input', searchEmployees);
 
         // Cerrar modal al hacer clic fuera del contenido
-        employeeModal.addEventListener('click', function(event) {
+        employeeModal.addEventListener('click', function (event) {
             if (event.target === employeeModal) {
                 closeEmployeeModal();
             }
@@ -130,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function loadEmployees() {
         const tableBody = document.getElementById('employeeTableBody');
         if (!tableBody) return;
-        
+
         tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 20px;">Cargando empleados...</td></tr>';
 
         // Intentar diferentes rutas posibles
@@ -173,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderEmployees(employees) {
         const tableBody = document.getElementById('employeeTableBody');
         if (!tableBody) return;
-        
+
         tableBody.innerHTML = '';
 
         if (!employees || employees.length === 0) {
@@ -211,14 +220,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function searchEmployees() {
         const searchInput = document.getElementById('employeeSearch');
         if (!searchInput || !employeesData.length) return;
-        
+
         const searchTerm = searchInput.value.toLowerCase();
         const filtered = employeesData.filter(employee =>
             employee.first_name.toLowerCase().includes(searchTerm) ||
             employee.last_name.toLowerCase().includes(searchTerm) ||
             `${employee.first_name} ${employee.last_name}`.toLowerCase().includes(searchTerm)
         );
-        
+
         renderEmployees(filtered);
     }
 
@@ -235,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
             supervisorInput.value = employeeName;
             supervisorIdInput.value = employeeId;
         }
-        
+
         closeEmployeeModal();
     }
 
@@ -299,14 +308,14 @@ document.addEventListener('DOMContentLoaded', function () {
         itemContainer.style.display = 'flex';
         itemContainer.style.alignItems = 'center';
         itemContainer.style.gap = '10px';
-        
+
         itemContainer.appendChild(hiddenIdInput);
         itemContainer.appendChild(inputVerificador);
         itemContainer.appendChild(searchButton);
         itemContainer.appendChild(deleteButton);
 
         nuevoVerificadorDiv.appendChild(itemContainer);
-        
+
         // Agregar al contenedor de verificadores
         const container = verificadoresContainer.querySelector('.verificador-container');
         if (container) {
@@ -376,14 +385,14 @@ document.addEventListener('DOMContentLoaded', function () {
         itemContainer.style.display = 'flex';
         itemContainer.style.alignItems = 'center';
         itemContainer.style.gap = '10px';
-        
+
         itemContainer.appendChild(hiddenIdInput);
         itemContainer.appendChild(inputFuncionario);
         itemContainer.appendChild(searchButton);
         itemContainer.appendChild(deleteButton);
 
         nuevoFuncionarioDiv.appendChild(itemContainer);
-        
+
         // Agregar al contenedor de funcionarios
         const container = funcionariosContainer.querySelector('.funcionarios-container');
         if (container) {
@@ -429,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const element = document.getElementById(id);
         if (element) {
             element.value = value ?? '';
-            
+
             // Si el campo está deshabilitado pero tiene valor, cambiar el fondo
             if (element.disabled && element.value) {
                 element.style.backgroundColor = '#f0f0f0';
@@ -450,22 +459,14 @@ document.addEventListener('DOMContentLoaded', function () {
         setValue('empresa_ruc', data.RUC || '');
         setValue('empresa_direccion', data.direccion_fiscal || '');
         setValue('empresa_departamento', data.departamento || '');
-        setValue('fecha-notificacion', data.fecha_notificacion || '');
-        setValue('fecha-presentar', data.fecha_presentacion || '');
+        setValue('fecha-notificacion', formatDateForInput(data.fecha_notificacion) || '');
+        setValue('cliente_input', data.cliente_cruce || '');
+        setValue('fecha-presentar', formatDateForInput(data.fecha_presentacion) || '');
+        setValue('fecha-presentado', formatDateForInput(data.fecha_presentado) || '');
+        setValue('fecha-prórroga', formatDateForInput(data.fecha_prorroga) || '');
         setValue('IGV', data.IGV || '0');
         setValue('periodo-inicio', formatPeriodForInput(data.periodo_inicio) || '');
         setValue('periodo-fin', formatPeriodForInput(data.periodo_final) || '');
-
-        // Manejar fechas de presentado y prórroga
-        if (data.fecha_presentacion) {
-            setValue('fecha-presentado', formatDateForInput(data.fecha_presentacion));
-        }
-        
-        if (data.fecha_prorroga) {
-            setValue('fecha-prórroga', formatDateForInput(data.fecha_prorroga));
-        }
-
-        // Manejar el campo tipo
         if (data.id_tipo) {
             const tipoMap = {
                 1: "esquela",
@@ -483,19 +484,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
+        // CORRECCIÓN: La lógica del estado debe usar fecha_presentado (real)
         if (data.id_estado) {
             estadoSelect.value = estadoMap[data.id_estado] || '';
-            
-            // Si hay fecha de presentación, asegurar que el estado sea "Presentado"
-            if (data.fecha_presentacion && estadoSelect.value !== "Presentado") {
+
+            // Si hay fecha de presentación REAL, estado debe ser "Presentado"
+            if (data.fecha_presentado && estadoSelect.value !== "Presentado") {
                 estadoSelect.value = "Presentado";
             }
-            
-            // Si hay fecha de prórroga, asegurar que el estado sea "Prorroga"
+
+            // Si hay fecha de prórroga, estado debe ser "Prorroga"
             if (data.fecha_prorroga && estadoSelect.value !== "Prorroga") {
                 estadoSelect.value = "Prorroga";
             }
-            
+
             toggleFechaFields();
         }
 
@@ -565,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (loadingOverlay) {
             loadingOverlay.style.display = show ? 'flex' : 'none';
         }
-        
+
         const submitButton = form.querySelector('.post');
         if (submitButton) {
             submitButton.disabled = show;
@@ -587,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alertDiv.style.color = type === 'success' ? '#155724' : '#721c24';
         alertDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
         alertDiv.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
-        
+
         form.parentNode.insertBefore(alertDiv, form);
         setTimeout(() => alertDiv.remove(), 3000);
     }
@@ -604,7 +606,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const estado = estadoSelect?.value;
         const fechaPresentado = document.getElementById('fecha-presentado');
         const fechaProrroga = document.getElementById('fecha-prórroga');
-        
+
+        // CORRECCIÓN: fecha-presentado se habilita solo cuando estado es "Presentado"
         if (fechaPresentado) {
             fechaPresentado.disabled = estado !== 'Presentado';
             // Si está deshabilitado pero tiene valor, mantener el valor
@@ -614,7 +617,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 fechaPresentado.style.backgroundColor = '';
             }
         }
-        
+
+        // CORRECCIÓN: fecha-prórroga se habilita solo cuando estado es "Prorroga"
         if (fechaProrroga) {
             fechaProrroga.disabled = estado !== 'Prorroga';
             // Si está deshabilitado pero tiene valor, mantener el valor
@@ -624,8 +628,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 fechaProrroga.style.backgroundColor = '';
             }
         }
-        
-        if (estado === 'Anulado') {
+
+        // Para estado "Anulado" y "No presentar", ambos campos deben estar deshabilitados
+        if (estado === 'Anulado' || estado === 'No presentar') {
             if (fechaPresentado) {
                 fechaPresentado.disabled = true;
                 fechaPresentado.style.backgroundColor = '#f0f0f0';
@@ -657,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleFechaFields();
         }
 
-        if (supervisorSearchBtn) {  
+        if (supervisorSearchBtn) {
             supervisorSearchBtn.addEventListener('click', () => {
                 currentContext = 'supervisor';
                 openEmployeeModal();
@@ -665,7 +670,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Agregar eventos a los botones de búsqueda existentes
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.classList.contains('verificador-search')) {
                 currentContext = 'verificador';
                 const container = e.target.closest('.verificador-item');
@@ -693,6 +698,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Inicializar secciones
         toggleSections();
     }
-    
+
     init();
 });

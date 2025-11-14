@@ -53,7 +53,6 @@
                     <form class="form-container" id="mainForm" method="POST" action="procesar_registro.php">
                         <!-- Token CSRF para protección -->
                         <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-                        
                         <div class="form-group-4">
                             <div class="form-control ">
                                 <label for="tipo">Tipo</label>
@@ -67,7 +66,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group-1">
+                        
+                        <div class="form-group-1">  
                             <div class="etapa form-control">
                                 <label for="number">Número</label>
                                 <input type="text" id="number" name="number" placeholder="Ingrese el número de caso" required>
@@ -87,6 +87,19 @@
                                 <input type="hidden" id="empresa_direccion" name="empresa_direccion">
                                 <input type="hidden" id="empresa_departamento" name="empresa_departamento">
                             </div>
+                        </div>
+                        <div id="cliente-section" class="hidden">
+                            <div class="form-group-4">
+                                <div class="empresa form-control">
+                                    <label for="cliente">Cliente</label>
+                                    <div class="input-container"> 
+                                        <input type="text" id="cliente_input" name="cliente" placeholder="Ingrese el cliente" disabled>
+                                        <button type="button" class="search-business" id="openModalButtonClient">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
                         <div class="form-group-4">
                             <div class="etapa form-control ">
@@ -149,7 +162,7 @@
                                 <div class="supervisor form-control-2">
                                     <label for="supervisor">Supervisor</label>
                                     <div class="input-container">
-                                        <input type="text" id="supervisor" name="supervisor" placeholder="Nombre del supervisor" required readonly>
+                                        <input type="text" id="supervisor" name="supervisor" placeholder="Nombre del supervisor" readonly>
                                         <!-- Campo oculto para el ID del supervisor -->
                                         <input type="hidden" id="supervisor_id" name="supervisor_id">
                                         <button type="button" class="search-employee search"><i class="bi bi-search"></i></button>
@@ -301,13 +314,16 @@
                 const tipoSelect = document.getElementById('tipo');
                 const supervisorSection = document.getElementById('supervisor-verificadores-section');
                 const funcionariosSection = document.getElementById('funcionarios-section');
-                
+                const clienteSection = document.getElementById('cliente-section'); // Nueva línea
+                        
                 if (tipoSelect.value === 'CRUCE') {
                     supervisorSection.classList.add('hidden');
                     funcionariosSection.classList.remove('hidden');
+                    clienteSection.classList.remove('hidden'); // Mostrar cliente
                 } else {
                     supervisorSection.classList.remove('hidden');
                     funcionariosSection.classList.add('hidden');
+                    clienteSection.classList.add('hidden'); // Ocultar cliente
                 }
             }
             

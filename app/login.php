@@ -118,8 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['departamento']  = $user['departamento'];
                         $_SESSION['last_activity'] = time();
 
-                        error_log("DEBUG Login - Login successful for user: " . $user['usuario']);
-                        header('Location: /index.php');
+                        // Redirigir según el departamento
+                        if ($user['departamento'] === 'OPERACIONES') {
+                            header('Location: /app/empresas.php');
+                        } else {
+                            header('Location: /index.php');
+                        }
                         exit();
                     } else {
                         error_log("DEBUG Login - Wrong password for user: {$usuario}");

@@ -30,7 +30,7 @@ try {
     // Iniciar transacción
     $conn->beginTransaction();
 
-    // 1. Actualizar datos principales (QUITADO id_fiscalizacion_padre)
+    // 1. Actualizar datos principales - AGREGAR cliente_cruce
     $updateQuery = "UPDATE fiscalizacion SET
                     numero = :numero,
                     fecha_notificacion = :fecha_notificacion,
@@ -42,11 +42,14 @@ try {
                     periodo_final = :periodo_final,
                     IGV = :IGV,
                     fecha_presentado = :fecha_presentado,
-                    id_tipo = :id_tipo
+                    id_tipo = :id_tipo,
+                    cliente_cruce = :cliente_cruce  
                     WHERE id_fiscalizacion = :id_fiscalizacion";
     
     $stmt = $conn->prepare($updateQuery);
-    $stmt->execute([
+    
+    // DEFINIR SIEMPRE el parámetro cliente_cruce, incluso si no viene en los datos
+    $params = [
         ':numero' => $data['numero'],
         ':fecha_notificacion' => $data['fecha_notificacion'],
         ':fecha_presentacion' => $data['fecha_presentacion'],
@@ -58,9 +61,11 @@ try {
         ':IGV' => $data['IGV'] ?? 0,
         ':fecha_presentado' => $data['fecha_presentado'] ?? null,
         ':id_tipo' => $data['id_tipo'],
-        // ← SE ELIMINÓ id_fiscalizacion_padre para que no se modifique
+        ':cliente_cruce' => $data['cliente_cruce'] ?? null, 
         ':id_fiscalizacion' => $data['id_fiscalizacion']
-    ]);
+    ];
+    
+    $stmt->execute($params);
 
     // 2. ELIMINAR TODOS LOS AGENTES EXISTENTES para este documento
     $deleteQuery = "DELETE FROM agente_sunat WHERE id_fiscalizacion = ?";
@@ -128,6 +133,7 @@ try {
     
     error_log("Error en update_document.php: " . $e->getMessage());
     error_log("Datos recibidos: " . json_encode($data));
+    error_log("Parámetros ejecutados: " . json_encode($params ?? []));
     
     echo json_encode([
         'success' => false,
@@ -148,3 +154,4 @@ try {
         'message' => $e->getMessage()
     ]);
 }
+?>

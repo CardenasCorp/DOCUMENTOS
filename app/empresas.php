@@ -86,7 +86,80 @@ require_once 'session_check.php';
             </form>
         </div>
     </div>
+    <!-- Modal para Historial de Direcciones Y Gerentes -->
+    <div id="myModalHistory" class="myModalHistory">
+        <div class="modal-content">
+            <span class="close" id="closeModalHistory">&times;</span>
+            <h2>Historial de la Empresa</h2>
+            
+            <!-- Pestañas para navegar entre historiales -->
+            <div class="history-tabs">
+                <button class="tab-button active" data-tab="direcciones">Direcciones</button>
+                <button class="tab-button" data-tab="gerentes">Gerentes</button>
+            </div>
+    
+            <!-- Contenedor de Direcciones -->
+            <div class="tab-content active" id="direccionesTab">
+                <div class="modal-header">
+                    <button id="addAddressButton" class="add-address-btn">
+                        <i class="bi bi-plus-circle"></i> Agregar Dirección
+                    </button>
+                </div>
+                <div class="addresses-container" id="addressesContainer">
+                    <div class="loading-message">Cargando direcciones...</div>
+                </div>
+            </div>
+    
+            <!-- Contenedor de Gerentes -->
+            <div class="tab-content" id="gerentesTab">
+                <div class="modal-header">
+                    <button id="addManagerButton" class="add-manager-btn">
+                        <i class="bi bi-plus-circle"></i> Agregar Gerente
+                    </button>
+                </div>
+                <div class="managers-container" id="managersContainer">
+                    <div class="loading-message">Cargando gerentes...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para Agregar/Editar Gerente -->
+    <div id="myModalManager" class="myModalManager">
+        <div class="modal-content">
+            <span class="close" id="closeModalManager">&times;</span>
+            <h2 id="managerModalTitle">Agregar Gerente</h2>
+            
+            <form id="managerForm" class="modal-form-manager">
+                <input type="hidden" id="managerId" name="id">
+                <input type="hidden" id="managerClientId" name="id_cliente">
+                
+                <div class="form-modal">
+                    <label for="gerente">Nombre del Gerente</label>
+                    <input type="text" id="gerente" name="gerente" placeholder="Nombre completo del gerente" required>
+                </div>
+                
+                <div class="form-modal">
+                    <label for="dni">DNI del Gerente</label>
+                    <input type="number" id="dni" name="dni" placeholder="DNI del Gerente">
+                </div>
 
+                <div class="form-modal">
+                    <label for="fecha_inicio_gerente">Fecha de Inicio</label>
+                    <input type="date" id="fecha_inicio_gerente" name="fecha_inicio" required>
+                </div>
+                
+                <div class="form-modal">
+                    <label for="fecha_fin_gerente">Fecha de Fin (Opcional)</label>
+                    <input type="date" id="fecha_fin_gerente" name="fecha_fin">
+                </div>
+                
+                <div class="modal-button">
+                    <button type="submit" class="accept-modal">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="../script/modals/clients-management.js"></script>
 </body>
 

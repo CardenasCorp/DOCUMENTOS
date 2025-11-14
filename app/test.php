@@ -18,9 +18,9 @@ try {
     // Define también 'departamento' porque es NOT NULL
     $users = [
         [
-            'usuario'      => 'Alexis',
-            'password'     => 'Alexis$1!',
-            'departamento' => 'AUDITORIA',  // ajusta según tu catálogo
+            'usuario'      => 'DirecAdmin',
+            'password'     => 'Direc@dmin$1',
+            'departamento' => 'OPERACIONES',  
             'activo'       => 1
         ],
         // agrega más usuarios aquí...

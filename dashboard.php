@@ -31,6 +31,7 @@ $_SESSION['last_activity'] = time();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/style/modals/navbar.css">
+    <link rel="stylesheet" href="/style/modals/n.css">
     <link rel="stylesheet" href="/style/dashboard/dashboard-2.css">
     <link rel="icon" href="/img/favicon.ico" >
     <title>Document</title>
@@ -45,7 +46,7 @@ $_SESSION['last_activity'] = time();
                 <li><a href="/app/registrar-caso.php">Gestionar Casos</a></li>
             </div>
             <div>
-                <li><a href="/app/logout.php" class="close">SUNAT</a></li>
+                <li><a href="/app/logout.php" class="close">Cerrar Sesion</a></li>
             </div>  
         </ul>
 

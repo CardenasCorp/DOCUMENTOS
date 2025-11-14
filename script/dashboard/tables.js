@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Constantes para configuración
 const TABLE_CONFIG = {
-    'vencer': { columns: 8, noDataMessage: 'No hay registros próximos a vencer' },
+    'vencer': { columns: 9, noDataMessage: 'No hay registros próximos a vencer' },
     'reclamar': { columns: 5, noDataMessage: 'No hay registros por reclamar' },
     'apelar': { columns: 5, noDataMessage: 'No hay registros por apelar' }
 };
@@ -140,10 +140,16 @@ function createTableRow(item, tableType) {
             <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
             <td>${escapeHtml(item.NuevaFecha || '-')}</td>
             <td>${escapeHtml(item.Estado || '-')}</td>
-            <td>${formatCurrency(item.IGV)}</td> 
+            <td>${formatCurrency(item.IGV)}</td>
+            <td>
+                <button class="preview-btn" onclick="openCasePreview(${item.id_fiscalizacion})" 
+                        title="Ver vista previa del caso">
+                    <i class="bi bi-eye"></i>
+                </button>
+            </td>
         `;
     } else {
-        // Para las otras tablas (reclamar, apelar)
+        // Para las otras tablas (reclamar, apelar) - sin cambios
         row.innerHTML = `
             <td>${escapeHtml(item.Empresa || '-')}</td>
             <td>${escapeHtml(item.Nro || '-')}</td>
@@ -587,6 +593,205 @@ function createRequerimientoHijoRow(item) {
     `;
 
     return row;
+}
+
+// ==============================================
+// Función para Vista Previa de Casos
+// ==============================================
+
+function openCasePreview(caseId) {
+    console.log('Abriendo vista previa del caso:', caseId);
+
+    // Modal simple temporal para testing
+    const modalHTML = `
+        <div id="casePreviewModal" class="modal" style="display: flex;">
+            <div class="modal-content" style="max-width: 700px;">
+                <span class="close" onclick="closeCasePreview()">&times;</span>
+                <h2>Vista Previa del Caso #${caseId}</h2>
+                <div class="preview-details">
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando detalles del caso ID: ${caseId}...</p>
+                        <p><small>Verifica la consola para detalles de depuración</small></p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button onclick="closeCasePreview()" class="btn-secondary">Cerrar</button>
+                    <button onclick="window.location.href='app/modificar-caso.php?id=${caseId}'" class="btn-primary">Modificar</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    document.getElementById('casePreviewModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeCasePreview();
+        }
+    });
+
+    // Cargar detalles
+    loadCaseDetails(caseId);
+}
+
+// Función para testing directo
+async function testDirectRequest(caseId) {
+    try {
+        console.log('=== TEST DIRECTO ===');
+        const response = await fetch('/app/dashboard/get_case_details.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id_fiscalizacion: caseId })
+        });
+        console.log('Response:', response);
+        const text = await response.text();
+        console.log('Response text:', text);
+    } catch (error) {
+        console.error('Test error:', error);
+    }
+}
+
+function closeCasePreview() {
+    const modal = document.getElementById('casePreviewModal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+async function loadCaseDetails(caseId) {
+    try {
+        console.log('Solicitando detalles para caso ID:', caseId);
+
+        const requestBody = {
+            id_fiscalizacion: caseId
+        };
+
+        console.log('Enviando request body:', requestBody);
+
+        const response = await fetch('/app/dashboard/get_case_details.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        console.log('Respuesta HTTP:', response.status, response.statusText);
+
+        if (!response.ok) {
+            // Obtener más detalles del error
+            const errorText = await response.text();
+            console.error('Error response:', errorText);
+            throw new Error(`HTTP ${response.status}: ${response.statusText}. Response: ${errorText}`);
+        }
+
+        const result = await response.json();
+        console.log('Resultado JSON:', result);
+
+        if (result.success) {
+            updatePreviewModal(result.data);
+        } else {
+            throw new Error(result.message || 'Error al cargar detalles');
+        }
+    } catch (error) {
+        console.error('Error completo al cargar detalles:', error);
+        const previewDetails = document.querySelector('#casePreviewModal .preview-details');
+        previewDetails.innerHTML = `
+            <div class="error-state">
+                <p><strong>Error al cargar detalles:</strong></p>
+                <p>${error.message}</p>
+                <button onclick="loadCaseDetails(${caseId})" class="retry-btn">Reintentar</button>
+                <button onclick="closeCasePreview()" class="btn-secondary">Cerrar</button>
+            </div>
+        `;
+    }
+}
+
+function updatePreviewModal(caseData) {
+    const previewDetails = document.querySelector('#casePreviewModal .preview-details');
+
+    // Función para formatear fechas
+    const formatDate = (dateString) => {
+        if (!dateString) return 'N/A';
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-PE');
+        } catch (e) {
+            return dateString;
+        }
+    };
+
+    // Función para formatear periodo (MMAAAA)
+    const formatPeriod = (start, end) => {
+        if (!start || !end) return 'Sin periodo';
+
+        // Asumiendo formato MMMAAA (ej: 012024, 022024)
+        const formatPeriodo = (periodo) => {
+            if (!periodo || periodo.length !== 6) return periodo;
+            const mes = periodo.substring(0, 2);
+            const año = periodo.substring(2, 6);
+            return `${mes}/${año}`;
+        };
+
+        return `${formatPeriodo(start)} - ${formatPeriodo(end)}`;
+    };
+
+    previewDetails.innerHTML = `
+        <div class="preview-sections">
+            <div class="preview-section">
+                <h3>📋 Información Básica</h3>
+                <p><strong>Número:</strong> ${caseData.numero || 'N/A'}</p>
+                <p><strong>Razón Social:</strong> ${caseData.razon_social || 'N/A'}</p>
+                <p><strong>RUC:</strong> ${caseData.RUC || 'N/A'}</p>
+                <p><strong>Tipo:</strong> ${caseData.tipo_descripcion || 'N/A'}</p>
+                ${caseData.numero_padre ? `<p><strong>Caso Padre:</strong> ${caseData.numero_padre}</p>` : ''}
+            </div>
+            
+            <div class="preview-section">
+                <h3>📅 Fechas</h3>
+                <p><strong>Fecha Notificación:</strong> ${formatDate(caseData.fecha_notificacion) || 'N/A'}</p>
+                <p><strong>Fecha Presentación:</strong> ${formatDate(caseData.fecha_presentacion) || 'N/A'}</p>
+                <p><strong>Fecha Prórroga:</strong> ${formatDate(caseData.fecha_prorroga) || 'N/A'}</p>
+                <p><strong>Fecha Presentado:</strong> ${formatDate(caseData.fecha_presentado) || 'N/A'}</p>
+            </div>
+            
+            <div class="preview-section">
+                <h3>📊 Estado y Proceso</h3>
+                <p><strong>Estado:</strong> ${caseData.estado_descripcion || 'N/A'}</p>
+                <p><strong>Etapa:</strong> ${caseData.etapa_descripcion || 'N/A'}</p>
+                <p><strong>Periodo:</strong> ${formatPeriod(caseData.periodo_inicio, caseData.periodo_final)}</p>
+                <p><strong>IGV:</strong> ${formatCurrency(caseData.IGV)}</p>
+            </div>
+            
+            ${caseData.agentes_sunat && caseData.agentes_sunat.length > 0 ? `
+            <div class="preview-section">
+                <h3>👥 Agentes SUNAT</h3>
+                <div class="agentes-list">
+                    ${caseData.agentes_sunat.map(agente => `
+                        <div class="agente-item">
+                            <strong>${agente.cargo || 'Agente'}:</strong> ${agente.nombre_completo || 'N/A'}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : `
+            <div class="preview-section">
+                <h3>👥 Agentes SUNAT</h3>
+                <p style="color: #7f8c8d; font-style: italic;">No hay agentes asignados</p>
+            </div>
+            `}
+            
+            ${caseData.cliente_cruce ? `
+            <div class="preview-section">
+                <h3>🔗 Información Adicional</h3>
+                <p><strong>Cliente Cruce:</strong> ${caseData.cliente_cruce}</p>
+            </div>
+            ` : ''}
+        </div>
+    `;
 }
 
 // ==============================================

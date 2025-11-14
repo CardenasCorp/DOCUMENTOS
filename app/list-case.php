@@ -41,9 +41,42 @@ require_once 'session_check.php';
                 <h1>Lista de casos</h1> 
                 <div class="complaint-list">
                     <div class="search-business">
-                        <input type="text" id="searchClientInput" placeholder="Buscar por nombre... "
-                            class="search-input">
-                        <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... " class="search-input">
+                        <div class="search-business">
+                            <input type="text" id="searchClientInput" placeholder="Buscar por razón social..." class="search-input">
+                            <input type="text" id="searchRUCInput" placeholder="Buscar por RUC..." class="search-input">
+                            <input type="text" id="searchNumberInput" placeholder="Buscar por N° documento..." class="search-input">
+                            <input type="text" id="searchAgentInput" placeholder="Buscar por agente SUNAT..." class="search-input">
+                            <select id="filterType" class="filter-select">
+                                <option value="">Todos los tipos</option>
+                                <option value="1">Esquela</option>
+                                <option value="2">Fiscalización Parcial-IGV</option>
+                                <option value="3">Fiscalizacón Total-IGV</option>
+                                <option value="4">Fiscalización Parcial-Renta</option>
+                                <option value="5">Fiscalizacón Total-Renta</option>
+                                <option value="6">Cruce de información</option>
+                            </select>
+                            <select id="filterStatus" class="filter-select">
+                                <option value="">Todos los estados</option>
+                                <option value="1">Notificado</option>
+                                <option value="2">Presentado</option>
+                                <option value="3">Nueva Fecha</option>
+                            </select>
+                            <select id="filterStage" class="filter-select">
+                                <option value="">Todas las etapas</option>
+                                <option value="1">1er Requerimiento</option>
+                                <option value="2">2do Requerimiento</option>
+                                <option value="3">3ro Requerimiento</option>
+                                <option value="4">4to Requerimiento</option>
+                                <option value="11">5to Requerimiento</option>
+                                <option value="12">6to Requerimiento</option>
+                                <option value="13">7mo Requerimiento</option>
+                                <option value="5">Cierre</option>
+                                <option value="6">Reclamación</option>
+                                <option value="7">Apelación</option>
+                                <option value="8">Proceso Contencioso</option>
+                                <option value="10">Finalizado</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="employee-container">
                         <h4>Lista de casos</h4>
@@ -63,7 +96,7 @@ require_once 'session_check.php';
             <div id="listComplaint" class="listComplaint">
                 <div class="complaint-item">
                     <div class="complaint-info">
-                        <button>Agregrar    </button>
+                        <button>Agregrar</button>
                         <table>
                             <tr>
                                 <th>Numero</th>

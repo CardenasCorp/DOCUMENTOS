@@ -64,6 +64,7 @@ try {
     // CONSULTA PRINCIPAL CORREGIDA - IGV SIN FORMATEO EN SQL
     $query = "SELECT 
             f.id_fiscalizacion AS id,
+            f.id_fiscalizacion AS id_fiscalizacion, 
             c.razon_social AS Empresa,
             f.numero AS Nro,
             t.descripcion AS Tipo,

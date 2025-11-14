@@ -24,7 +24,7 @@ try {
         throw new Exception('ID de documento no proporcionado');
     }
 
-    // 1. Consulta principal del documento
+    // 1. Consulta principal del documento - AGREGAR cliente_cruce
     $query = "SELECT 
                 f.id_fiscalizacion,
                 f.numero,
@@ -32,6 +32,7 @@ try {
                 f.fecha_presentacion,
                 f.id_estado,
                 f.fecha_prorroga,
+                f.fecha_presentado,
                 f.id_etapa,
                 f.periodo_inicio,
                 f.periodo_final,
@@ -39,6 +40,7 @@ try {
                 f.id_cliente,
                 f.id_fiscalizacion_padre,
                 f.id_tipo, 
+                f.cliente_cruce,
                 c.razon_social,
                 c.RUC,
                 c.direccion_fiscal,

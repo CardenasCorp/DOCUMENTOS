@@ -64,4 +64,22 @@ try {
     error_log("Error verifying user in session_check: " . $e->getMessage());
     // Continuar la sesión aunque falle la verificación para no interrumpir al usuario
 }
+
+// RESTRICCIÓN EXCLUSIVA PARA OPERACIONES
+// Solo pueden acceder a empresas.php, cualquier otra página los redirige a empresas.php
+if (isset($_SESSION['departamento']) && $_SESSION['departamento'] === 'OPERACIONES') {
+    $current_page = basename($_SERVER['PHP_SELF']);
+    
+    // ÚNICAS páginas permitidas para OPERACIONES
+    $allowed_pages = ['empresas.php', 'logout.php'];
+    
+    // Si intenta acceder a cualquier otra página, lo redirigimos a app/empresas.php
+    if (!in_array($current_page, $allowed_pages)) {
+        header('Location: /app/empresas.php');
+        exit();
+    }
+}
+
+// Los demás departamentos (ADMIN, CONTABILIDAD, etc.) NO tienen restricciones
+// Pueden navegar libremente por todas las páginas
 ?>

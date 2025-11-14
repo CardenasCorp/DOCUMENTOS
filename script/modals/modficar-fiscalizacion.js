@@ -4,10 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mapeos para estados y etapas
     const estadoMap = {
-
+        "": 1,
         "Presentado": 2,
         "Prorroga": 3,
-        "Anulado": 4
+        "Anulado": 4,
+        "No presentar": 6
     };
 
     const etapaMap = {
@@ -15,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "2do Requerimiento": 2,
         "3ro Requerimiento": 3,
         "4to Requerimiento": 4,
+        "5to Requerimiento": 11,
+        "6to Requerimiento": 12,
+        "7mo Requerimiento": 13,
         "Cierre": 5,
         "Reclamación": 6,
         "Apelación": 7,
@@ -22,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         "Finalizado": 10
     };
 
-    // Mapeo para tipos
     const tipoMap = {
         "esquela": 1,
         "FP-IGV": 2,
@@ -155,14 +158,21 @@ document.addEventListener('DOMContentLoaded', function () {
         // Recolectar agentes según el tipo
         const agentes = recolectarAgentes();
         const tipo = document.getElementById('tipo').value;
+        const estadoSeleccionado = document.getElementById('estado-select').value;
+
+        // Obtener cliente_cruce solo si el tipo es CRUCE
+        let clienteCruce = null;
+        if (tipo === 'CRUCE') {
+            clienteCruce = document.getElementById('cliente_input').value;
+        }
 
         // Preparar payload
-        const payload = {
+        const payload = {       
             id_fiscalizacion: currentDocumentId,
             numero: document.getElementById('number').value,
             fecha_notificacion: document.getElementById('fecha-notificacion').value,
             fecha_presentacion: document.getElementById('fecha-presentar').value,
-            id_estado: estadoMap[document.getElementById('estado-select').value],
+            id_estado: estadoMap[estadoSeleccionado],
             fecha_prorroga: document.getElementById('fecha-prórroga').value || null,
             id_etapa: etapaMap[document.getElementById('etapa').value],
             periodo_inicio: formatPeriodToDB(document.getElementById('periodo-inicio').value),
@@ -176,7 +186,13 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         };
 
-        if (document.getElementById('estado-select').value === 'Presentado') {
+
+        if (tipo === 'CRUCE') {
+            payload.cliente_cruce = clienteCruce || ''; // Permite string vacío
+        }
+
+        // Solo validar fecha si se seleccionó "Presentado"
+        if (estadoSeleccionado === 'Presentado') {
             const fechaPresentado = document.getElementById('fecha-presentado').value;
             if (fechaPresentado) {
                 payload.fecha_presentado = fechaPresentado;
@@ -185,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
         }
+
         // Validaciones adicionales
         if (tipo !== 'CRUCE') {
             if (!payload.agentes.supervisor) {

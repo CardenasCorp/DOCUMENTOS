@@ -115,7 +115,8 @@ try {
         IGV,
         id_estado,
         id_tipo,
-        id_fiscalizacion_padre
+        id_fiscalizacion_padre,
+        cliente_cruce
     ) VALUES (
         :numero, 
         :id_cliente,
@@ -127,7 +128,8 @@ try {
         :IGV,
         1,  -- Estado activo
         :id_tipo,
-        :id_fiscalizacion_padre
+        :id_fiscalizacion_padre,
+        :cliente_cruce
     )";
     
     $stmtFiscal = $conn->prepare($sqlFiscalizacion);
@@ -141,7 +143,8 @@ try {
         ':periodo_final' => $data['periodo_final'],
         ':IGV' => $igv, // Puede ser null
         ':id_tipo' => $id_tipo,
-        ':id_fiscalizacion_padre' => ($data['id_etapa'] != 1) ? $data['id_fiscalizacion_padre'] : null
+        ':id_fiscalizacion_padre' => ($data['id_etapa'] != 1) ? $data['id_fiscalizacion_padre'] : null,
+        ':cliente_cruce' => $data['cliente']
     ]);
     
     $id_fiscalizacion = $conn->lastInsertId();

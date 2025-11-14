@@ -22,6 +22,12 @@ if (isset($_SESSION['last_activity'])) {
 
 // Actualizar timestamp de última actividad
 $_SESSION['last_activity'] = time();
+
+// Si el usuario es de OPERACIONES, redirigir inmediatamente a app/empresas.php
+if (isset($_SESSION['departamento']) && $_SESSION['departamento'] === 'OPERACIONES') {
+    header('Location: /app/empresas.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,9 +82,10 @@ $_SESSION['last_activity'] = time();
                         <th>Tipo</th>
                         <th>Etapa</th>
                         <th>Fecha a presentar</th>
-                        <th>Nueva Fecha</th>  <!-- ← NUEVA COLUMNA -->
+                        <th>Nueva Fecha</th>
                         <th>Estado</th>
                         <th>IGV</th>
+                        <th>Vista Previa</th>  <!-- ← NUEVA COLUMNA AQUÍ -->
                     </tr>
                 </thead>
                 <tbody>

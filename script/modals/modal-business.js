@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Elementos del DOM para el modal de empresas
-    const openModalButton = document.getElementById('openModalButtonBusiness');
+    const openModalButtonBusiness = document.getElementById('openModalButtonBusiness');
+    const openModalButtonClient = document.getElementById('openModalButtonClient');
     const closeModalButton = document.getElementById('closeModalBusiness');
     const modal = document.getElementById('myModalBusiness');
     const searchRucInput = document.getElementById('search-ruc');
@@ -8,24 +9,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const acceptButton = document.getElementById('acceptBusiness');
     const tableBody = document.getElementById('business-table-body');
 
-    // Campos del formulario principal
+    // Campos del formulario principal - EMPRESA
     const empresaInput = document.getElementById('empresa_input');
     const empresaIdInput = document.getElementById('empresa_id');
     const empresaRucInput = document.getElementById('empresa_ruc');
     const empresaDireccionInput = document.getElementById('empresa_direccion');
     const empresaDepartamentoInput = document.getElementById('empresa_departamento');
 
+    // Campo del formulario principal - CLIENTE
+    const clienteInput = document.getElementById('cliente_input');
+
     // Variables de estado
     let selectedCompany = null;
     let companiesData = [];
+    let currentMode = 'empresa'; // 'empresa' o 'cliente'
 
     // URL base para las peticiones
     const BASE_URL = '/app/registrar';
 
-
     // Event Listeners
-    if (openModalButton) {
-        openModalButton.addEventListener('click', openModal);
+    if (openModalButtonBusiness) {
+        openModalButtonBusiness.addEventListener('click', function() {
+            currentMode = 'empresa';
+            openModal();
+        });
+    }
+
+    if (openModalButtonClient) {
+        openModalButtonClient.addEventListener('click', function() {
+            currentMode = 'cliente';
+            openModal();
+        });
     }
 
     if (closeModalButton) {
@@ -44,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (searchRazonInput) {
         searchRazonInput.addEventListener('input', function () {
-            debounceSearch('nombre', this.value.trim()); // Cambiado a 'nombre'
+            debounceSearch('nombre', this.value.trim());
         });
     }
 
@@ -72,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 300);
     }
+
     // Funciones principales
     function openModal() {
         if (modal) {
@@ -89,13 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function handleAccept() {
         if (selectedCompany) {
-            // Actualizar campos en el formulario principal
-            if (empresaInput) empresaInput.value = selectedCompany.razon_social;
-            if (empresaIdInput) empresaIdInput.value = selectedCompany.id_cliente;
-            if (empresaRucInput) empresaRucInput.value = selectedCompany.RUC;
-            if (empresaDireccionInput) empresaDireccionInput.value = selectedCompany.direccion_fiscal;
-            if (empresaDepartamentoInput) empresaDepartamentoInput.value = selectedCompany.departamento;
-
+            if (currentMode === 'empresa') {
+                // Llenar campos de EMPRESA (completo)
+                if (empresaInput) empresaInput.value = selectedCompany.razon_social;
+                if (empresaIdInput) empresaIdInput.value = selectedCompany.id_cliente;
+                if (empresaRucInput) empresaRucInput.value = selectedCompany.RUC;
+                if (empresaDireccionInput) empresaDireccionInput.value = selectedCompany.direccion_fiscal;
+                if (empresaDepartamentoInput) empresaDepartamentoInput.value = selectedCompany.departamento;
+            } else if (currentMode === 'cliente') {
+                // Llenar solo el campo visible de CLIENTE
+                if (clienteInput) clienteInput.value = selectedCompany.razon_social;
+            }
+            
             closeModal();
         } else {
             showAlert('Por favor seleccione una empresa');
@@ -135,13 +155,12 @@ document.addEventListener('DOMContentLoaded', function () {
             : searchRazonInput.value.trim();
 
         if (!searchTerm) {
-            loadCompanies(); // Recargar todos si no hay término
+            loadCompanies();
             return;
         }
 
         showLoader();
 
-        // Construir parámetros según el PHP
         const params = new URLSearchParams();
         if (field === 'ruc') {
             params.append('ruc', searchTerm);
@@ -222,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const modalContent = document.querySelector('#myModalBusiness .modal-content');
         if (!modalContent) return;
 
-        // Eliminar alertas anteriores
         const existingAlerts = modalContent.querySelectorAll('.alert');
         existingAlerts.forEach(alert => alert.remove());
 
@@ -250,7 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function showLoader() {
         if (!tableBody || !tableBody.parentNode) return;
 
-        // Eliminar loaders anteriores
         const existingLoaders = document.querySelectorAll('#myModalBusiness .loader');
         existingLoaders.forEach(loader => loader.remove());
 
@@ -297,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const modalContent = document.querySelector('#myModalBusiness .modal-content');
         if (!modalContent) return;
 
-        // Eliminar errores anteriores
         const existingErrors = modalContent.querySelectorAll('.error');
         existingErrors.forEach(error => error.remove());
 
@@ -333,16 +349,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 departamento: "Arequipa"
             }
         ];
-    }
-
-    function debounce(func, wait) {
-        let timeout;
-        return function () {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(context, args), wait);
-        };
     }
 
     // Cerrar modal al presionar Escape

@@ -35,16 +35,16 @@ try {
                 f.fecha_notificacion,
                 f.fecha_presentacion,
                 f.IGV
-              FROM fiscalizacion f
-              JOIN cliente c ON f.id_cliente = c.id_cliente
-              LEFT JOIN tipo t ON f.id_tipo = t.id_tipo  -- Nueva JOIN agregada
-              WHERE 1=1 AND f.id_estado != '5'";
+            FROM fiscalizacion f
+            JOIN cliente c ON f.id_cliente = c.id_cliente
+            LEFT JOIN tipo t ON f.id_tipo = t.id_tipo
+            WHERE 1=1 AND f.id_estado != '5'";
     
-    // Añadir condiciones de búsqueda si hay parámetros
+    // Condiciones de búsqueda si hay parámetros
     if (!empty($search)) {
-        if ($field === 'tipo') {
-            $query .= " AND t.nombre LIKE :search";
-        } elseif ($field === 'referencia') {
+        if ($field === 'numero') {
+            $query .= " AND f.numero LIKE :search";
+        } elseif ($field === 'cliente') {
             $query .= " AND c.razon_social LIKE :search";
         }
     }
