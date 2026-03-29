@@ -6,4 +6,4 @@ try {
     print_r($pdo->query("SHOW TABLES")->fetchAll());
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
-}
+}   

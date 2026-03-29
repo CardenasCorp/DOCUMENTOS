@@ -203,7 +203,13 @@ async function populateForm(data) {
             6: "Reclamación",
             7: "Apelación",
             8: "Proceso Contencioso",
-            10: "Finalizado"
+            10: "Finalizado",
+            11: "5to Requerimiento",
+            12: "6to Requerimiento",
+            13: "7mo Requerimiento",
+            14: "Coactiva x R",
+            15: "Coactiva x TF",
+            16: "Coactiva sin R"
         };
         
         const etapaValue = etapaMap[caso.id_etapa];

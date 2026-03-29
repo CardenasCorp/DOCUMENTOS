@@ -1,191 +1,296 @@
-/* Estilos base del modal */
+/* ========================================
+   MODAL EMPLEADO — Refinado y moderno
+   Hereda variables de empleados.css
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+
+/* Variables locales (fallback si el CSS principal no está cargado) */
+:root {
+    --gold:       rgb(230, 144, 34);
+    --gold-deep:  #c8780f;
+    --gold-light: rgba(230, 144, 34, 0.12);
+    --gold-glow:  rgba(230, 144, 34, 0.25);
+    --ink:        #1a1d23;
+    --ink-muted:  #4a4f5c;
+    --ink-faint:  #8a909e;
+    --surface:    #ffffff;
+    --surface-2:  #f7f7f8;
+    --border:     #e8e8ec;
+    --radius-sm:  8px;
+    --radius-md:  14px;
+    --radius-lg:  20px;
+    --shadow-lg:  0 16px 40px rgba(0,0,0,0.13);
+    --font-main:  'Plus Jakarta Sans', sans-serif;
+    --font-body:  'DM Sans', sans-serif;
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Backdrop ── */
 .myModalEditEmpoyee {
     display: none;
     position: fixed;
     z-index: 1050;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    animation: fadeIn 0.3s ease-out;
+    background: rgba(15, 17, 22, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: backdropIn 0.2s ease;
+    align-items: center;
+    justify-content: center;
 }
 
-@keyframes fadeIn {
+@keyframes backdropIn {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to   { opacity: 1; }
 }
 
-/* Contenido del modal */
+/* ── Panel del modal ── */
 .modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 500px;
+    background: var(--surface);
+    margin: 6% auto;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 8px 24px rgba(0,0,0,0.10),
+        0 24px 56px rgba(0,0,0,0.16);
+    width: 92%;
+    max-width: 480px;
     position: relative;
-    animation: slideDown 0.4s ease-out;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(255,255,255,0.8);
+    overflow: hidden;
+    font-family: var(--font-main);
 }
 
-@keyframes slideDown {
-    from { 
-        transform: translateY(-50px);
+@keyframes modalIn {
+    from {
+        transform: translateY(-20px) scale(0.97);
         opacity: 0;
     }
-    to { 
-        transform: translateY(0); 
+    to {
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
 
-/* Botón de cerrar */
+/* ── Franja decorativa superior ── */
+.modal-content::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, #f5a623 50%, var(--gold-deep) 100%);
+}
+
+/* ── Header del modal ── */
+.modal-content > h2 {
+    font-family: var(--font-main);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+    padding: 24px 32px 20px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content > h2::before {
+    content: "👤";
+    font-size: 1.1em;
+}
+
+/* ── Botón de cerrar ── */
 .close {
     position: absolute;
-    right: 25px;
-    top: 20px;
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+    right: 20px;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+    font-size: 20px;
+    font-weight: 400;
     cursor: pointer;
-    transition: color 0.2s;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
+    line-height: 1;
 }
 
 .close:hover {
-    color: #333;
+    background: var(--surface-2);
+    color: var(--ink);
 }
 
-/* Título del modal */
-.modal-content h2 {
-    color: #2c3e50;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #f1f1f1;
-    font-size: 1.8rem;
-    text-align: center;
-}
-
-/* Formulario del modal */
+/* ── Formulario ── */
 .modal-form-EditEmpoyee {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+    padding: 24px 32px 28px;
 }
 
 .form-modal {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .form-modal label {
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
 }
 
 .form-modal input {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s;
-    background-color: #f9f9f9;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.97rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--surface-2);
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
     width: 100%;
+    box-sizing: border-box;
+}
+
+.form-modal input::placeholder {
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
+.form-modal input:hover {
+    border-color: #c8c8d0;
 }
 
 .form-modal input:focus {
     outline: none;
-    border-color: rgb(230, 144, 34);
-    box-shadow: 0 0 0 3px rgba(230, 144, 34, 0.2);
-    background-color: #fff;
+    border-color: var(--gold);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px var(--gold-light);
 }
 
-/* Botón de aceptar */
+/* Validación visual — sin colores llamativos en estado vacío */
+.form-modal input:valid:not(:placeholder-shown) {
+    border-left: 3px solid var(--gold);
+}
+
+.form-modal input:invalid:not(:placeholder-shown) {
+    border-left: 3px solid #e74c3c;
+}
+
+/* ── Footer / Botón principal ── */
 .modal-button {
-    margin-top: 15px;
+    margin-top: 6px;
     display: flex;
-    justify-content: center;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
 .accept-modal {
-    background-color: rgb(230, 144, 34);
+    background: var(--gold);
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
+    padding: 12px 28px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s;
-    min-width: 150px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    letter-spacing: 0.2px;
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+    min-width: 130px;
     text-align: center;
 }
 
 .accept-modal:hover {
-    background-color: rgb(200, 144, 34);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(230, 144, 34, 0.2);
+    background: var(--gold-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px var(--gold-glow);
 }
 
 .accept-modal:active {
     transform: translateY(0);
+    box-shadow: none;
 }
 
-/* Validación visual */
-.form-modal input:invalid {
-    border-left: 4px solid #6f6f6f;
+/* Botón cancelar opcional (si lo agregas) */
+.cancel-modal {
+    background: transparent;
+    color: var(--ink-muted);
+    border: 1.5px solid var(--border);
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    transition: all var(--transition);
 }
 
-.form-modal input:valid {
-    border-left: 4px solid rgb(230, 144, 34);
+.cancel-modal:hover {
+    background: var(--surface-2);
+    border-color: #c8c8d0;
+    color: var(--ink);
 }
 
-/* Responsive Design */
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .modal-content {
-        margin: 10% auto;
-        padding: 25px;
-        width: 85%;
+        margin: 12% auto;
+        width: 88%;
     }
-    
+
+    .modal-content > h2 {
+        padding: 20px 24px 16px;
+        font-size: 1.15rem;
+    }
+
     .modal-form-EditEmpoyee {
-        gap: 15px;
-    }
-    
-    .form-modal input {
-        padding: 10px 12px;
+        padding: 20px 24px 24px;
+        gap: 14px;
     }
 }
 
 @media (max-width: 480px) {
     .modal-content {
-        margin: 15% auto;
-        padding: 20px;
-        width: 90%;
+        margin: 16% auto;
+        width: 93%;
+        border-radius: var(--radius-md);
     }
-    
-    .modal-content h2 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
+
+    .modal-content > h2 {
+        padding: 18px 20px 14px;
+        font-size: 1.1rem;
     }
-    
-    .close {
-        right: 15px;
-        top: 15px;
-        font-size: 24px;
+
+    .modal-form-EditEmpoyee {
+        padding: 16px 20px 20px;
     }
-    
-    .form-modal label {
-        font-size: 0.9rem;
+
+    .modal-button {
+        flex-direction: column-reverse;
     }
-    
-    .accept-modal {
-        padding: 10px 20px;
+
+    .accept-modal,
+    .cancel-modal {
         width: 100%;
+        justify-content: center;
     }
 }

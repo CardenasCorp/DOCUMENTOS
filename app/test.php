@@ -18,8 +18,8 @@ try {
     // Define también 'departamento' porque es NOT NULL
     $users = [
         [
-            'usuario'      => 'DirecAdmin',
-            'password'     => 'Direc@dmin$1',
+            'usuario'      => 'Grace',
+            'password'     => 'Gr4ce&&26',
             'departamento' => 'OPERACIONES',  
             'activo'       => 1
         ],

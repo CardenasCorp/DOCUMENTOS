@@ -28,19 +28,22 @@
     <body>
         <div class="container">
             <!-- Sidebar -->
-            <div class="sidebar">
+                <div class="sidebar">
                 <h2><a href="">Menú Principal</a></h2>
                 <hr>
                 <ul>
                     <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
                     <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
                     <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
+                    <li><a href="tabla-casos.php"><i class="bi bi-table"></i> <span>Coactiva</span></a></li>
+                    <li><a href="lista-empresas.php"><i class="bi bi-building-check"></i> <span>Lista de Empresas (Coactivas)</span></a></li>
                     <hr>
                     <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                     <hr>
                     <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
                 </ul>
             </div>
+
             <!-- Formulario -->
             <div class="main-content">
                 <div class="form-section">
@@ -129,8 +132,11 @@
                                     <option value="6to Requerimiento">6to Requerimiento</option>
                                     <option value="7mo Requerimiento">7mo Requerimiento</option>
                                     <option value="Cierre">Cierre / Valores</option>
+                                    <option value="Coactiva sin R">Coactiva sin R.</option>
                                     <option value="Reclamación">R. Reclamación</option>
                                     <option value="Apelación">R. Apelación</option>
+                                    <option value="Coactiva x R">Coactiva x R.</option>
+                                    <option value="Coactiva x TF">Coactiva x T.F.</option>
                                     <option value="Proceso">Proceso Contencioso</option>
                                     <option value="Finalizado">Finalizado</option>
                                 </select>
@@ -171,7 +177,7 @@
                                     <option value="Prorroga">Nueva fecha</option>
                                     <option value="Presentado">Presentado</option>
                                     <option value="Anulado">Anulado</option>
-                                    <option value="Anulado">No presentar   </option>
+                                    <option value="No presentar">No presentar   </option>
                                 </select>
                             </div>
                         </div>

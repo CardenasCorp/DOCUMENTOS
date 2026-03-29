@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadTable('apelar', 'apelar-table', 1);
     loadResumenTable(1);
 
-    // Evento para el buscador del resumen (con debounce para mejor performance)
+    // Evento para el buscador del resumen (con debounce mejorado)
     const searchInput = document.querySelector('.buscar-resumen');
     let searchTimeout;
 
@@ -23,6 +23,138 @@ const TABLE_CONFIG = {
     'reclamar': { columns: 5, noDataMessage: 'No hay registros por reclamar' },
     'apelar': { columns: 5, noDataMessage: 'No hay registros por apelar' }
 };
+
+// ==============================================
+// Funciones Auxiliares
+// ==============================================
+
+function applyDateBasedStyling(row, diasRestantes) {
+    if (diasRestantes === 0) {
+        row.classList.add('due-today');
+    } else if (diasRestantes !== null && diasRestantes <= 3) {
+        row.classList.add('due-soon');
+    } else if (diasRestantes !== null && diasRestantes < 0) {
+        row.classList.add('overdue');
+    }
+}
+
+function formatCurrency(value) {
+    if (!value && value !== 0) return 'S/ 0.00';
+
+    const num = parseFloat(value);
+    return isNaN(num) ? 'S/ 0.00' : `S/ ${num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+}
+
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '-';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// FUNCIÓN CORREGIDA: Formatear fechas de manera confiable
+function formatDate(dateString) {
+    if (!dateString) return 'N/A';
+    
+    // Si ya es una fecha formateada, devolverla directamente
+    if (typeof dateString === 'string' && dateString.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+        return dateString;
+    }
+    
+    // Si es "0000-00-00" o fecha inválida, retornar N/A
+    if (dateString === '0000-00-00' || dateString === '0000-00-00 00:00:00') {
+        return 'N/A';
+    }
+    
+    try {
+        let date;
+        
+        // Intentar diferentes formatos de fecha
+        if (dateString.includes('/')) {
+            // Formato dd/mm/yyyy
+            const parts = dateString.split('/');
+            if (parts.length === 3) {
+                date = new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+        } else if (dateString.includes('-')) {
+            // Formato yyyy-mm-dd
+            const parts = dateString.split('-');
+            if (parts.length === 3) {
+                date = new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+        } else {
+            // Intentar parsear directamente
+            date = new Date(dateString);
+        }
+        
+        if (!date || isNaN(date.getTime())) {
+            return 'N/A';
+        }
+        
+        // Formatear a dd/mm/yyyy
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return `${day}/${month}/${year}`;
+        
+    } catch (e) {
+        console.error('Error formateando fecha:', dateString, e);
+        return 'N/A';
+    }
+}
+
+// FUNCIÓN CORREGIDA: Formatear fecha con advertencia
+function formatDateWithWarning(dateString, diasRestantes) {
+    if (!dateString) return '-';
+
+    // Formatear fecha correctamente
+    const formattedDate = formatDate(dateString);
+    if (formattedDate === 'N/A') return '-';
+    
+    let warning = '';
+    if (diasRestantes === 0) {
+        warning = ' <span class="date-warning">(HOY)</span>';
+    } else if (diasRestantes > 0 && diasRestantes <= 3) {
+        warning = ` <span class="date-warning">(${diasRestantes} días)</span>`;
+    } else if (diasRestantes < 0) {
+        warning = ` <span class="date-warning overdue">(+${Math.abs(diasRestantes)} días)</span>`;
+    }
+
+    return formattedDate + warning;
+}
+
+// FUNCIÓN CORREGIDA: Parsear fechas para cálculos
+function parseDate(dateString) {
+    if (!dateString) return null;
+
+    try {
+        let date;
+        
+        if (dateString.includes('/')) {
+            // Formato dd/mm/yyyy
+            const parts = dateString.split('/');
+            if (parts.length === 3) {
+                date = new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+        } else if (dateString.includes('-')) {
+            // Formato yyyy-mm-dd
+            const parts = dateString.split('-');
+            if (parts.length === 3) {
+                date = new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+        } else {
+            // Intentar parsear directamente
+            date = new Date(dateString);
+        }
+        
+        return date && !isNaN(date.getTime()) ? date : null;
+        
+    } catch (e) {
+        console.error('Error parseando fecha:', dateString, e);
+        return null;
+    }
+}
 
 // ==============================================
 // Funciones para las tablas principales
@@ -73,33 +205,41 @@ async function loadTable(tableType, tableId, page) {
 }
 
 function showLoadingState(tableElement, columns) {
-    tableElement.querySelector('tbody').innerHTML = `
-        <tr>
-            <td colspan="${columns}" class="loading-state">
-                <div class="loading-spinner"></div>
-                <p>Cargando datos...</p>
-            </td>
-        </tr>
-    `;
+    const tbody = tableElement.querySelector('tbody');
+    if (tbody) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="${columns}" class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando datos...</p>
+                </td>
+            </tr>
+        `;
+    }
 }
 
 function showErrorState(tableElement, columns, errorMessage, retryCallback) {
-    tableElement.querySelector('tbody').innerHTML = `
-        <tr>
-            <td colspan="${columns}" class="error-state">
-                <p>Error al cargar datos: ${errorMessage}</p>
-                ${retryCallback ? `
-                <button onclick="(${retryCallback.toString()})()" class="retry-btn">
-                    Reintentar
-                </button>
-                ` : ''}
-            </td>
-        </tr>
-    `;
+    const tbody = tableElement.querySelector('tbody');
+    if (tbody) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="${columns}" class="error-state">
+                    <p>Error al cargar datos: ${errorMessage}</p>
+                    ${retryCallback ? `
+                    <button onclick="(${retryCallback.toString()})()" class="retry-btn">
+                        Reintentar
+                    </button>
+                    ` : ''}
+                </td>
+            </tr>
+        `;
+    }
 }
 
 function renderTableData(tableElement, data, tableType) {
     const tbody = tableElement.querySelector('tbody');
+    if (!tbody) return;
+    
     tbody.innerHTML = '';
 
     if (!data || data.length === 0) {
@@ -126,7 +266,22 @@ function renderTableData(tableElement, data, tableType) {
 
 function createTableRow(item, tableType) {
     const row = document.createElement('tr');
-    const diasRestantes = item.DiasRestantes !== undefined ? parseInt(item.DiasRestantes) : null;
+    let diasRestantes = item.DiasRestantes !== undefined ? parseInt(item.DiasRestantes) : null;
+
+    // Si no viene DiasRestantes del servidor, calcularlo
+    if (diasRestantes === null && item.FechaPresentacion) {
+        const fechaPresentacion = parseDate(item.FechaPresentacion);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        
+        if (fechaPresentacion) {
+            const fechaNormalizada = new Date(fechaPresentacion);
+            fechaNormalizada.setHours(0, 0, 0, 0);
+            
+            const diffTime = fechaNormalizada.getTime() - hoy.getTime();
+            diasRestantes = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+    }
 
     // Aplicar clases según días restantes
     applyDateBasedStyling(row, diasRestantes);
@@ -138,7 +293,7 @@ function createTableRow(item, tableType) {
             <td>${escapeHtml(item.Tipo || '-')}</td>
             <td>${escapeHtml(item.Etapa || '-')}</td>
             <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
-            <td>${escapeHtml(item.NuevaFecha || '-')}</td>
+            <td>${formatDate(item.NuevaFecha) || '-'}</td>
             <td>${escapeHtml(item.Estado || '-')}</td>
             <td>${formatCurrency(item.IGV)}</td>
             <td>
@@ -149,7 +304,7 @@ function createTableRow(item, tableType) {
             </td>
         `;
     } else {
-        // Para las otras tablas (reclamar, apelar) - sin cambios
+        // Para las otras tablas (reclamar, apelar)
         row.innerHTML = `
             <td>${escapeHtml(item.Empresa || '-')}</td>
             <td>${escapeHtml(item.Nro || '-')}</td>
@@ -160,28 +315,6 @@ function createTableRow(item, tableType) {
     }
 
     return row;
-}
-
-function applyDateBasedStyling(row, diasRestantes) {
-    if (diasRestantes === 0) {
-        row.classList.add('due-today');
-    } else if (diasRestantes !== null && diasRestantes <= 3) {
-        row.classList.add('due-soon');
-    } else if (diasRestantes !== null && diasRestantes < 0) {
-        row.classList.add('overdue');
-    }
-}
-
-function formatCurrency(value) {
-    if (!value && value !== 0) return 'S/ 0.00';
-
-    const num = parseFloat(value);
-    return isNaN(num) ? 'S/ 0.00' : `S/ ${num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-}
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
 }
 
 function updatePagination(tableType, tableId, pagination) {
@@ -266,7 +399,10 @@ function updatePagination(tableType, tableId, pagination) {
             if (!isNaN(page)) {
                 loadTable(tableType, tableId, page);
                 // Scroll suave hacia la parte superior de la tabla
-                document.getElementById(tableId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const tableElement = document.getElementById(tableId);
+                if (tableElement) {
+                    tableElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });
@@ -334,13 +470,16 @@ async function loadResumenTable(page, search = '') {
     } catch (error) {
         console.error('Error al cargar resumen:', error);
         showErrorState(tableElement, 10, error.message, () => {
-            loadResumenTable(1, document.querySelector('.buscar-resumen').value);
+            const searchInput = document.querySelector('.buscar-resumen');
+            loadResumenTable(1, searchInput ? searchInput.value : '');
         });
     }
 }
 
 function renderResumenData(tableElement, data) {
     const tbody = tableElement.querySelector('tbody');
+    if (!tbody) return;
+    
     tbody.innerHTML = '';
 
     if (!data || data.length === 0) {
@@ -367,26 +506,49 @@ function renderResumenData(tableElement, data) {
 
 function createResumenRow(item) {
     const row = document.createElement('tr');
-    const fechaPresentacion = item.FechaPresentacion ? parseDate(item.FechaPresentacion) : null;
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-
-    if (fechaPresentacion && fechaPresentacion < hoy) {
-        row.classList.add('vencido');
+    
+    // Calcular días restantes CORREGIDO
+    let diasRestantes = null;
+    
+    if (item.FechaPresentacion) {
+        const fechaPresentacion = parseDate(item.FechaPresentacion);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        
+        if (fechaPresentacion) {
+            // Normalizar ambas fechas para comparación
+            const fechaNormalizada = new Date(fechaPresentacion);
+            fechaNormalizada.setHours(0, 0, 0, 0);
+            
+            const diffTime = fechaNormalizada.getTime() - hoy.getTime();
+            diasRestantes = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            console.log('Fecha cálculo:', {
+                fechaPresentacion: item.FechaPresentacion,
+                fechaParseada: fechaPresentacion,
+                hoy: hoy,
+                diasRestantes: diasRestantes
+            });
+            
+            // Aplicar clases según días restantes usando la misma función
+            applyDateBasedStyling(row, diasRestantes);
+        }
     }
 
-    // Mantenemos 10 columnas como en el HTML original
+    // CORREGIDO: Usar id_fiscalizacion en lugar de id
+    const idFiscalizacion = item.id_fiscalizacion || item.id;
+
     row.innerHTML = `
         <td>${escapeHtml(item.Nro || '-')}</td>
         <td>${escapeHtml(item.Tipo || '-')}</td>
         <td>${escapeHtml(item.Etapa || '-')}</td>
         <td>${escapeHtml(item.Estado || '-')}</td>
-        <td>${escapeHtml(item.FechaPresentacion || '-')}</td>
-        <td>${escapeHtml(item.FechaPresentado || '-')}</td>
-        <td>${escapeHtml(item.NuevaFecha || '-')}</td>
+        <td>${formatDateWithWarning(item.FechaPresentacion, diasRestantes)}</td>
+        <td>${formatDate(item.FechaPresentado) || '-'}</td>
+        <td>${formatDate(item.NuevaFecha) || '-'}</td>
         <td>${formatCurrency(item.IGV)}</td>
         <td>${escapeHtml(item.SUNAT || '-')}</td>
-        <td><i class="bi bi-eye view-detail" onclick="viewDetail(${item.id})"></i></td>
+        <td><i class="bi bi-eye view-detail" onclick="viewDetail(${idFiscalizacion})" title="Ver requerimientos relacionados"></i></td>
     `;
 
     return row;
@@ -477,31 +639,46 @@ function updateResumenCounter(totalRecords) {
 // ==============================================
 
 function viewDetail(idFiscalizacion) {
+    console.log('Abriendo modal para id_fiscalizacion:', idFiscalizacion);
+    
     // Mostrar modal
     const modal = document.getElementById('requerimientosModal');
+    if (!modal) {
+        console.error('Modal requerimientosModal no encontrado');
+        return;
+    }
+    
     modal.style.display = 'block';
 
     // Mostrar estado de carga
-    document.getElementById('modalRequerimientosBody').innerHTML = `
-        <tr>
-            <td colspan="7" class="loading-state">
-                <div class="loading-spinner"></div>
-                <p>Cargando requerimientos relacionados...</p>
-            </td>
-        </tr>
-    `;
-
-    // Cerrar modal al hacer clic en la X
-    document.querySelector('.close-modal').onclick = function () {
-        modal.style.display = 'none';
+    const modalBody = document.getElementById('modalRequerimientosBody');
+    if (modalBody) {
+        modalBody.innerHTML = `
+            <tr>
+                <td colspan="7" class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Cargando requerimientos relacionados...</p>
+                </td>
+            </tr>
+        `;
     }
 
-    // Cerrar modal al hacer clic fuera del contenido
-    window.onclick = function (event) {
-        if (event.target == modal) {
+    // Configurar cierre del modal
+    const closeBtn = document.querySelector('.close-modal');
+    if (closeBtn) {
+        closeBtn.onclick = function () {
             modal.style.display = 'none';
         }
     }
+
+    // Cerrar modal al hacer clic fuera del contenido
+    const clickHandler = function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            window.removeEventListener('click', clickHandler);
+        }
+    };
+    window.addEventListener('click', clickHandler);
 
     // Obtener requerimientos hijos
     fetchRequerimientosHijos(idFiscalizacion);
@@ -533,18 +710,24 @@ async function fetchRequerimientosHijos(idPadre) {
         renderRequerimientosHijos(result.data);
     } catch (error) {
         console.error('Error al cargar requerimientos hijos:', error);
-        document.getElementById('modalRequerimientosBody').innerHTML = `
-            <tr>
-                <td colspan="7" class="error-state">
-                    Error al cargar datos: ${error.message}
-                </td>
-            </tr>
-        `;
+        const modalBody = document.getElementById('modalRequerimientosBody');
+        if (modalBody) {
+            modalBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="error-state">
+                        Error al cargar datos: ${error.message}
+                        <button onclick="fetchRequerimientosHijos(${idPadre})" class="retry-btn">Reintentar</button>
+                    </td>
+                </tr>
+            `;
+        }
     }
 }
 
 function renderRequerimientosHijos(data) {
     const tbody = document.getElementById('modalRequerimientosBody');
+    if (!tbody) return;
+    
     tbody.innerHTML = '';
 
     if (!data || data.length === 0) {
@@ -586,10 +769,10 @@ function createRequerimientoHijoRow(item) {
         <td>${escapeHtml(item.numero || '-')}</td>
         <td>${escapeHtml(item.etapa || '-')}</td>
         <td>${formatDateWithWarning(item.fecha_a_presentar, diasRestantes)}</td>
-        <td>${escapeHtml(item.fecha_presentacion || '-')}</td>
-        <td>${escapeHtml(item.nueva_fecha || '-')}</td>
+        <td>${formatDate(item.fecha_presentacion) || '-'}</td>
+        <td>${formatDate(item.nueva_fecha) || '-'}</td>
         <td>${escapeHtml(item.estado || '-')}</td>
-        <td> ${formatCurrency(item.IGV)}</td>
+        <td>${formatCurrency(item.IGV)}</td>
     `;
 
     return row;
@@ -601,6 +784,9 @@ function createRequerimientoHijoRow(item) {
 
 function openCasePreview(caseId) {
     console.log('Abriendo vista previa del caso:', caseId);
+
+    // Cerrar modal existente si hay uno
+    closeCasePreview();
 
     // Modal simple temporal para testing
     const modalHTML = `
@@ -617,7 +803,7 @@ function openCasePreview(caseId) {
                 </div>
                 <div class="modal-actions">
                     <button onclick="closeCasePreview()" class="btn-secondary">Cerrar</button>
-                    <button onclick="window.location.href='app/modificar-caso.php?id=${caseId}'" class="btn-primary">Modificar</button>
+                    <button onclick="window.location.href='/app/modificar-caso.php?id=${caseId}'" class="btn-primary">Modificar</button>
                 </div>
             </div>
         </div>
@@ -625,6 +811,7 @@ function openCasePreview(caseId) {
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 
+    // Cerrar modal al hacer clic fuera
     document.getElementById('casePreviewModal').addEventListener('click', function (e) {
         if (e.target === this) {
             closeCasePreview();
@@ -633,25 +820,6 @@ function openCasePreview(caseId) {
 
     // Cargar detalles
     loadCaseDetails(caseId);
-}
-
-// Función para testing directo
-async function testDirectRequest(caseId) {
-    try {
-        console.log('=== TEST DIRECTO ===');
-        const response = await fetch('/app/dashboard/get_case_details.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id_fiscalizacion: caseId })
-        });
-        console.log('Response:', response);
-        const text = await response.text();
-        console.log('Response text:', text);
-    } catch (error) {
-        console.error('Test error:', error);
-    }
 }
 
 function closeCasePreview() {
@@ -682,7 +850,6 @@ async function loadCaseDetails(caseId) {
         console.log('Respuesta HTTP:', response.status, response.statusText);
 
         if (!response.ok) {
-            // Obtener más detalles del error
             const errorText = await response.text();
             console.error('Error response:', errorText);
             throw new Error(`HTTP ${response.status}: ${response.statusText}. Response: ${errorText}`);
@@ -699,36 +866,28 @@ async function loadCaseDetails(caseId) {
     } catch (error) {
         console.error('Error completo al cargar detalles:', error);
         const previewDetails = document.querySelector('#casePreviewModal .preview-details');
-        previewDetails.innerHTML = `
-            <div class="error-state">
-                <p><strong>Error al cargar detalles:</strong></p>
-                <p>${error.message}</p>
-                <button onclick="loadCaseDetails(${caseId})" class="retry-btn">Reintentar</button>
-                <button onclick="closeCasePreview()" class="btn-secondary">Cerrar</button>
-            </div>
-        `;
+        if (previewDetails) {
+            previewDetails.innerHTML = `
+                <div class="error-state">
+                    <p><strong>Error al cargar detalles:</strong></p>
+                    <p>${error.message}</p>
+                    <button onclick="loadCaseDetails(${caseId})" class="retry-btn">Reintentar</button>
+                    <button onclick="closeCasePreview()" class="btn-secondary">Cerrar</button>
+                </div>
+            `;
+        }
     }
 }
 
+// FUNCIÓN CORREGIDA: Actualizar modal de vista previa con fechas correctas
 function updatePreviewModal(caseData) {
     const previewDetails = document.querySelector('#casePreviewModal .preview-details');
-
-    // Función para formatear fechas
-    const formatDate = (dateString) => {
-        if (!dateString) return 'N/A';
-        try {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('es-PE');
-        } catch (e) {
-            return dateString;
-        }
-    };
+    if (!previewDetails) return;
 
     // Función para formatear periodo (MMAAAA)
     const formatPeriod = (start, end) => {
         if (!start || !end) return 'Sin periodo';
 
-        // Asumiendo formato MMMAAA (ej: 012024, 022024)
         const formatPeriodo = (periodo) => {
             if (!periodo || periodo.length !== 6) return periodo;
             const mes = periodo.substring(0, 2);
@@ -793,67 +952,3 @@ function updatePreviewModal(caseData) {
         </div>
     `;
 }
-
-// ==============================================
-// Funciones auxiliares compartidas
-// ==============================================
-
-function formatDateWithWarning(dateString, diasRestantes) {
-    if (!dateString) return '-';
-
-    let warning = '';
-    if (diasRestantes === 0) {
-        warning = ' <span class="date-warning">(HOY)</span>';
-    } else if (diasRestantes > 0 && diasRestantes <= 3) {
-        warning = ` <span class="date-warning">(${diasRestantes} días)</span>`;
-    } else if (diasRestantes < 0) {
-        warning = ` <span class="date-warning overdue">(+${Math.abs(diasRestantes)} días)</span>`;
-    }
-
-    return escapeHtml(dateString) + warning;
-}
-
-function parseDate(dateString) {
-    if (!dateString) return null;
-
-    // Intentar diferentes formatos de fecha
-    const formats = [
-        // Formato dd/mm/yyyy
-        () => {
-            const parts = dateString.split('/');
-            if (parts.length === 3) {
-                return new Date(parts[2], parts[1] - 1, parts[0]);
-            }
-            return null;
-        },
-        // Formato yyyy-mm-dd
-        () => {
-            const parts = dateString.split('-');
-            if (parts.length === 3) {
-                return new Date(parts[0], parts[1] - 1, parts[2]);
-            }
-            return null;
-        },
-        // Formato ISO
-        () => new Date(dateString)
-    ];
-
-    for (const format of formats) {
-        try {
-            const date = format();
-            if (date && !isNaN(date.getTime())) {
-                return date;
-            }
-        } catch (e) {
-            // Continuar con el siguiente formato
-        }
-    }
-
-    return null;
-}
-
-
-// Inyectar estilos
-const styleElement = document.createElement('style');
-styleElement.textContent = additionalStyles;
-document.head.appendChild(styleElement);

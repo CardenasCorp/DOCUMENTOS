@@ -36,6 +36,7 @@ try {
         f.id_cliente,
         f.id_fiscalizacion_padre,
         f.cliente_cruce,
+        f.fecha_presentado,
         c.razon_social,
         fp.numero AS numero_padre  -- NUEVO: Número del caso padre
         FROM fiscalizacion f

@@ -1,6 +1,18 @@
+/**
+ * script/guardar-fiscalizacion-integrado.js
+ * Maneja el guardado en BD y subida a Drive en secuencia
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('mainForm');
-
+    /*
+    // ⚠️ Configuración Drive - Actualiza con tus valores reales
+    const DRIVE_CONFIG = {
+        ngrokUrl: 'https://beula-aortal-undiscernably.ngrok-free.dev',
+        apiToken: 'aB3xK9mP2qR7sT4vW8yZ1nL5jH6gF0dC'
+    };
+    */
+    
     // Mapa de etapas a IDs
     const etapasMap = {
         "1er Requerimiento": 1,
@@ -10,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "5to Requerimiento": 11,
         "6to Requerimiento": 12,
         "7mo Requerimiento": 13,
+        "Coactiva x R": 14,
+        "Coactiva x TF": 15,
+        "Coactiva sin R": 16,
         "Cierre": 5,
         "Reclamación": 6,
         "Apelación": 7,
@@ -24,12 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const requerimientoBtn = document.getElementById('openModalButtonRequest');
 
         if (etapa !== '1er Requerimiento') {
-            // Mostrar campo para etapas que NO son 1er Requerimiento
             requerimientoContainer.style.display = 'block';
             requerimientoBtn.disabled = false;
             document.getElementById('requerimiento').required = true;
         } else {
-            // Ocultar campo para 1er Requerimiento
             requerimientoContainer.style.display = 'none';
             requerimientoBtn.disabled = true;
             document.getElementById('requerimiento').required = false;
@@ -41,34 +54,140 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializar y configurar event listeners
     function init() {
         toggleRequerimientoField(); // Estado inicial
-
         document.getElementById('etapa').addEventListener('change', toggleRequerimientoField);
-
-        form.addEventListener('submit', handleSubmit);
+        /*
+        // Agregar campo de archivos si no existe
+        addFileInputField();
+        */
+        // Configurar el único manejador del formulario
+        form.addEventListener('submit', handleSubmitIntegrated);
     }
 
-    // Manejar el envío del formulario
-    async function handleSubmit(e) {
+    /* Agregar campo para subir archivos
+    function addFileInputField() {
+        // Verificar si ya existe
+        if (document.getElementById('documentos')) return;
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        
+        const fileUploadSection = document.createElement('div');
+        fileUploadSection.className = 'form-group-4';
+        fileUploadSection.innerHTML = `
+            <div class="form-control file-upload">
+                <label for="documentos">
+                    📎 Documentos (Opcional)
+                    <small style="color: #666; font-weight: normal;">
+                        - Puedes seleccionar uno o varios archivos
+                    </small>
+                </label>
+                <input type="file" 
+                       id="documentos" 
+                       name="documentos[]" 
+                       accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                       multiple
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <small style="color: #999; display: block; margin-top: 5px;">
+                    Los archivos se subirán automáticamente a Google Drive después de guardar
+                </small>
+                <div id="filePreview" style="margin-top: 10px;"></div>
+            </div>
+        `;
+
+        form.insertBefore(fileUploadSection, submitButton);
+        
+        // Configurar preview de archivos
+        document.getElementById('documentos').addEventListener('change', showFilePreview);
+    }
+    */
+    // Mostrar preview de archivos seleccionados
+    /*function showFilePreview() {
+        const fileInput = document.getElementById('documentos');
+        const previewDiv = document.getElementById('filePreview');
+        
+        if (!fileInput.files || fileInput.files.length === 0) {
+            previewDiv.innerHTML = '';
+            return;
+        }
+
+        let html = '<div style="background: #f8f9fa; padding: 10px; border-radius: 5px;">';
+        html += `<strong>Archivos seleccionados (${fileInput.files.length}):</strong><ul style="margin: 5px 0; padding-left: 20px;">`;
+        
+        for (let i = 0; i < fileInput.files.length; i++) {
+            const file = fileInput.files[i];
+            const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+            html += `<li>${file.name} <small style="color: #666;">(${sizeMB} MB)</small></li>`;
+        }
+        
+        html += '</ul></div>';
+        previewDiv.innerHTML = html;
+    }
+    */
+    // Manejador integrado del formulario
+    async function handleSubmitIntegrated(e) {
         e.preventDefault();
 
         // Mostrar indicador de carga
         const submitButton = form.querySelector('.post');
         const originalButtonText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Guardando...';
+        submitButton.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Validando...';
         submitButton.disabled = true;
 
         try {
-            // Validar antes de enviar
+            // 1. Validar datos del formulario
             const validationErrors = validateBeforeSubmit();
             if (validationErrors.length > 0) {
                 showValidationErrors(validationErrors);
                 return;
             }
 
-            // Recoger datos del formulario
-            const formData = prepareFormData();
+            // 2. Preparar datos para BD
+            const formDataForDB = prepareFormDataForDB();
+            
+            // 3. Guardar en Base de Datos
+            submitButton.innerHTML = '<i class="bi bi-database"></i> Guardando en BD...';
+            
+            const dbResult = await saveToDatabase(formDataForDB);
+            
+            if (!dbResult.success) {
+                throw new Error(dbResult.message || 'Error al guardar en base de datos');
+            }
 
-            // Enviar al servidor
+            console.log('✅ Registro guardado en BD. ID:', dbResult.id_fiscalizacion);
+
+            /*
+           // 4. Subir archivos a Drive (si hay)
+            const fileInput = document.getElementById('documentos');
+            if (fileInput.files && fileInput.files.length > 0) {
+                submitButton.innerHTML = '<i class="bi bi-cloud-upload"></i> Subiendo archivos...';
+                
+                // Obtener el RUC del campo oculto
+                const ruc = document.getElementById('empresa_ruc').value;
+                if (!ruc) {
+                    throw new Error('No se encontró el RUC de la empresa');
+                }
+                
+                const driveResult = await uploadFilesToDrive(fileInput.files, formDataForDB, ruc);
+                
+                // Mostrar resultado combinado
+                showFinalResult(dbResult, driveResult);
+            } else {
+                // Solo mostrar resultado de BD
+                showFinalResult(dbResult, null);
+            }
+            */
+        } catch (error) {
+            console.error('❌ Error en el proceso:', error);
+            
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+            
+            showError('Error: ' + error.message);
+        }
+    }
+
+    // Guardar en base de datos
+    async function saveToDatabase(formData) {
+        try {
             const response = await fetch('registrar/guardar_fiscalizacion.php', {
                 method: 'POST',
                 headers: {
@@ -77,29 +196,86 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(formData)
             });
 
-            const result = await response.json();
-
-            if (result.success) {
-                showSuccess('Fiscalización guardada correctamente. ID: ' + result.id_fiscalizacion);
-            } else {
-                showError(result.message || 'Error al guardar la fiscalización');
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
             }
+
+            return await response.json();
         } catch (error) {
-            console.error('Error:', error);
-            showError('Error de conexión: ' + error.message);
-        } finally {
-            submitButton.innerHTML = originalButtonText;
-            submitButton.disabled = false;
+            throw new Error('Error de conexión con la base de datos: ' + error.message);
         }
     }
+    /*
+    // Subir archivos a Drive
+    async function uploadFilesToDrive(files, formData, ruc) {
+        // Preparar FormData para Drive
+        const driveFormData = new FormData();
+        
+        // Agregar TODOS los archivos
+        for (let i = 0; i < files.length; i++) {
+            driveFormData.append('files', files[i]);
+        }
+        
+        // Agregar datos necesarios para la estructura de carpetas
+        // Usar el RUC del campo oculto en lugar de id_cliente
+        driveFormData.append('ruc', ruc);
+        driveFormData.append('etapa', getEtapaName(formData.id_etapa));
+        driveFormData.append('numero_requerimiento', formData.numero);
+        
+        if (formData.id_fiscalizacion_padre) {
+            driveFormData.append('requerimiento_principal', formData.id_fiscalizacion_padre);
+        }
 
-    // Validar antes de enviar
+        console.log(`📤 Subiendo ${files.length} archivo(s) a Drive...`);
+        console.log('📋 Datos para Drive:', {
+            ruc: ruc,
+            etapa: getEtapaName(formData.id_etapa),
+            numero_requerimiento: formData.numero
+        });
+
+        try {
+            const response = await fetch(`${DRIVE_CONFIG.ngrokUrl}/api/v1/create-and-upload`, {
+                method: 'POST',
+                headers: {
+                    'api_token': DRIVE_CONFIG.apiToken
+                },
+                body: driveFormData
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.detail || `Error ${response.status}: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            
+            if (!result.success) {
+                throw new Error(result.message || 'Error al subir archivos');
+            }
+
+            return result;
+
+        } catch (error) {
+            console.error('❌ Error al subir a Drive:', error);
+            throw error;
+        }
+    }
+    */
+    // Obtener nombre de etapa a partir del ID
+    function getEtapaName(etapaId) {
+        for (const [name, id] of Object.entries(etapasMap)) {
+            if (id == etapaId) return name;
+        }
+        return 'Sin Etapa';
+    }
+
+    // Validar antes de enviar - MODIFICADA: Sin verificador obligatorio
     function validateBeforeSubmit() {
         const errors = [];
         const etapa = document.getElementById('etapa').value;
         const idPadre = document.getElementById('id_fiscalizacion_padre').value;
 
-        // Validación específica para requerimiento padre
+        // Validación de requerimiento padre
         if (etapa !== '1er Requerimiento' && !idPadre) {
             errors.push('Debe seleccionar un requerimiento padre para esta etapa');
         }
@@ -108,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push('No se puede asignar requerimiento padre al 1er Requerimiento');
         }
 
-        // Otras validaciones básicas
+        // Validaciones básicas
         if (!document.getElementById('number').value) {
             errors.push('El número de caso es requerido');
         }
@@ -117,20 +293,25 @@ document.addEventListener('DOMContentLoaded', function () {
             errors.push('Debe seleccionar una empresa');
         }
 
-        // Validar según el tipo (CRUCE vs otros)
         const tipo = document.getElementById('tipo').value;
         if (tipo === 'CRUCE') {
-            // Validar funcionarios para CRUCE
             const funcionariosIds = getFuncionariosIds();
             if (funcionariosIds.length === 0) {
                 errors.push('Debe agregar al menos un funcionario para casos de tipo CRUCE');
             }
-        } 
+        } else {
+            // MODIFICACIÓN: El supervisor sigue siendo obligatorio, pero verificadores es opcional
+            if (!document.getElementById('supervisor_id').value) {
+                errors.push('Debe seleccionar un supervisor');
+            }
+            // Verificadores es opcional, no hay validación
+        }
+
         return errors;
     }
 
-    // Preparar los datos del formulario
-    function prepareFormData() {
+    // Preparar datos para BD
+    function prepareFormDataForDB() {
         const etapa = document.getElementById('etapa').value;
         const tipo = document.getElementById('tipo').value;
 
@@ -150,12 +331,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 : null
         };
 
-        // Diferente manejo según el tipo
         if (tipo === 'CRUCE') {
             data.funcionarios_ids = getFuncionariosIds();
         } else {
             data.supervisor_id = document.getElementById('supervisor_id').value;
-            data.verificadores_ids = getVerificadoresIds();
+            data.verificadores_ids = getVerificadoresIds(); // Puede estar vacío
         }
 
         return data;
@@ -186,12 +366,57 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${month}${year}`;
     }
 
+    // Mostrar resultado final combinado
+    
+    function showFinalResult(dbResult, driveResult) {
+        let message = `✅ Fiscalización guardada correctamente\n`;
+        message += `📋 ID del caso: ${dbResult.id_fiscalizacion}\n\n`;
+        /*
+        if (driveResult) {
+            const uploadedFiles = driveResult.uploaded_files || [];
+            message += `☁️ ${uploadedFiles.length} archivo(s) subido(s) a Google Drive\n`;
+            
+            if (driveResult.folders && driveResult.folders.etapa) {
+                message += `📁 Carpeta: ${driveResult.folders.final_folder_path}\n`;
+                
+                // Mostrar archivos subidos
+                if (uploadedFiles.length > 0) {
+                    message += '\nArchivos subidos:\n';
+                    uploadedFiles.forEach((file, index) => {
+                        message += `  ${index + 1}. ${file.name}\n`;
+                    });
+                }
+                
+                message += '\n¿Desea ver los archivos en Google Drive?';
+                
+                if (confirm(message)) {
+                    // Abrir carpeta en nueva pestaña
+                    window.open(driveResult.folders.etapa.webViewLink, '_blank');
+                    
+                    // Redirigir después de un momento
+                    setTimeout(() => {
+                        window.location.href = 'list-case.php';
+                    }, 1000);
+                    return;
+                }
+            }
+        } else {
+            message += '📎 No se subieron archivos a Drive\n';
+        }
+        */
+        // Si no hay Drive o usuario no quiere ver archivos
+        alert(message);
+        setTimeout(() => {
+            window.location.href = 'list-case.php';
+        }, 1000);
+    }
+    
     // Mostrar errores de validación
     function showValidationErrors(errors) {
         let errorContainer = document.getElementById('validation-errors');
         if (!errorContainer) {
             errorContainer = document.createElement('div');
-            errorContainer.id = 'validation-errors';
+            errorContainer.id = 'validation-errors';    
             errorContainer.className = 'validation-errors';
             form.parentNode.insertBefore(errorContainer, form);
         }
@@ -213,28 +438,11 @@ document.addEventListener('DOMContentLoaded', function () {
         submitButton.disabled = false;
     }
 
-    // Mostrar mensaje de éxito (CORREGIDO)
-    function showSuccess(message) {
-        // Limpiar errores previos
-        const errorContainer = document.getElementById('validation-errors');
-        if (errorContainer) errorContainer.remove();
-
-        // Mostrar alerta
-        alert(message);
-
-        // Redirigir al index después de 500ms (medio segundo)
-        setTimeout(() => {
-            window.location.href = '../index.php'; // Ajusta esta ruta según tu estructura
-        }, 500);
-    }
-
     // Mostrar mensaje de error
     function showError(message) {
-        // Limpiar errores previos
         const errorContainer = document.getElementById('validation-errors');
         if (errorContainer) errorContainer.remove();
 
-        // Crear mensaje de error
         const errorMessage = document.createElement('div');
         errorMessage.id = 'validation-errors';
         errorMessage.className = 'validation-errors';

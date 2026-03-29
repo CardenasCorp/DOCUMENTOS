@@ -55,7 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         10: "Finalizado",
         11: "5to Requerimiento",
         12: "6to Requerimiento",
-        13: "7mo Requerimiento"
+        13: "7mo Requerimiento",
+        14: "Coactiva x R",
+        15: "Coactiva x TF",
+        16: "Coactiva sin R"
     };
 
     // ==================== FUNCIONES PARA MOSTRAR/OCULTAR SECCIONES ====================

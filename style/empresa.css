@@ -256,7 +256,6 @@
     overflow: hidden;
 }
 
-
 .edit-btn {
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     color: white;
@@ -329,6 +328,181 @@
     transform: translateY(-2px);
 }
 
+/* ========== MODAL DE DIRECCIONES - ESTILOS FALTANTES ========== */
+.myModalAddress {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.myModalAddress .modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 85%;
+    max-width: 550px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.myModalAddress .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(230, 144, 34, 0.2);
+}
+
+.myModalAddress .modal-header h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgb(230, 144, 34) 0%, #e67e22 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.myModalAddress .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.myModalAddress .close:hover,
+.myModalAddress .close:focus {
+    color: rgb(230, 144, 34);
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+/* Formulario de dirección - ESTILOS FALTANTES */
+#addressForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.form-group select,
+.form-group input {
+    padding: 14px 18px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: white;
+    box-shadow: 
+        0 3px 10px rgba(0, 0, 0, 0.05),
+        inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: rgb(230, 144, 34);
+    box-shadow: 
+        0 0 0 4px rgba(230, 144, 34, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-group select:hover,
+.form-group input:hover{
+    border-color: #ced4da;
+    transform: translateY(-1px);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, rgb(230, 144, 34) 0%, #e67e22 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 
+        0 4px 15px rgba(230, 144, 34, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(230, 144, 34, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 
+        0 4px 15px rgba(108, 117, 125, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(108, 117, 125, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ========== FIN ESTILOS MODAL DIRECCIONES ========== */
+
 /* Estilos para el modal de historial mejorado */
 .myModalHistory {
     display: none;
@@ -352,33 +526,6 @@
     max-width: 950px;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.myModalAddress {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    animation: fadeIn 0.4s ease-out;
-}
-
-.myModalAddress .modal-content {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 20px;
-    width: 85%;
-    max-width: 550px;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -468,8 +615,13 @@
     color: white;
 }
 
-.address-type.anexo {
+.address-type.comercial {
     background: linear-gradient(135deg, #8b3009 0%, #cd5c5c 100%);
+    color: white;
+}
+
+.address-type.sucursal {
+    background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
     color: white;
 }
 
@@ -541,29 +693,6 @@
 .delete-address-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
-}
-
-/* Estilos para el formulario de dirección mejorado */
-.modal-form-address {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.modal-form-address select {
-    padding: 14px;
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.modal-form-address select:focus {
-    outline: none;
-    border-color: rgb(230, 144, 34);
-    box-shadow: 0 0 0 3px rgba(230, 144, 34, 0.15);
 }
 
 /* Estados de dirección mejorados */
@@ -996,106 +1125,6 @@
     font-size: 0.9em;
 }
 
-/* Responsive Design para nuevas funcionalidades */
-@media (max-width: 768px) {
-    .history-tabs {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .tab-button {
-        padding: 14px 20px;
-    }
-    
-    .manager-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    
-    .manager-dates {
-        align-self: stretch;
-        justify-content: center;
-    }
-    
-    .manager-actions {
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .edit-manager-btn,
-    .delete-manager-btn {
-        flex: 1;
-        justify-content: center;
-    }
-    
-    .myModalManager .modal-content {
-        width: 95%;
-        margin: 2% auto;
-        padding: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tab-button {
-        padding: 12px 16px;
-        font-size: 0.9em;
-    }
-    
-    .manager-item {
-        padding: 15px;
-    }
-    
-    .manager-name {
-        font-size: 1.1rem;
-    }
-    
-    .manager-dates {
-        font-size: 0.8em;
-        padding: 5px 10px;
-    }
-    
-    .edit-manager-btn,
-    .delete-manager-btn {
-        padding: 8px 12px;
-        font-size: 0.85em;
-    }
-    
-    .add-manager-btn {
-        padding: 10px 16px;
-        font-size: 0.9em;
-    }
-}
-
-/* Mejoras visuales para scroll suave */
-.addresses-container,
-.managers-container {
-    scroll-behavior: smooth;
-}
-
-/* Efectos de profundidad mejorados */
-.modal-content {
-    position: relative;
-}
-
-.modal-content::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, rgba(230, 144, 34, 0.1), rgba(52, 152, 219, 0.1), rgba(23, 162, 184, 0.1));
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.modal-content:hover::before {
-    opacity: 1;
-}
-
 /* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -1128,123 +1157,41 @@
     animation: slideIn 0.5s ease-out;
 }
 
-/* Responsive Design Mejorado */
-@media (max-width: 1200px) {
-    .content-business {
-        margin: 20px;
-        padding: 25px;
-    }
-}
-
-@media (max-width: 992px) {
-    .content-business {
-        padding: 20px;
-    }
-    
-    .client-info {
-        gap: 25px;
-    }
-    
-    .search-business {
-        padding: 20px;
-    }
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    .client-info {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .client-actions {
-        width: 100%;
-        justify-content: stretch;
-        margin-top: 25px;
-    }
-    
-    .edit-btn, 
-    .delete-btn {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .search-business {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 15px;
-    }
-    
-    .search-input, 
-    #addClientButton {
-        width: 100%;
-    }
-    
-    .modal-header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: stretch;
-    }
-    
-    .address-header {
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-    }
-    
-    .address-actions {
-        justify-content: center;
-    }
-    
-    .myModalHistory .modal-content,
     .myModalAddress .modal-content {
         width: 95%;
         margin: 2% auto;
         padding: 20px;
     }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .history-tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .tab-button {
+        padding: 14px 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    .content-business {
-        padding: 15px 10px;
-        margin: 10px;
-        border-radius: 12px;
+    .myModalAddress .modal-content {
+        padding: 15px;
     }
     
-    .content-business h1 {
-        font-size: 1.8rem;
-        text-align: left;
-    }
-    
-    .client-item {
-        padding: 20px 15px;
-    }
-    
-    .client-details {
-        min-width: 100%;
-    }
-    
-    .client-details strong {
-        min-width: 120px;
-        font-size: 0.9em;
-    }
-    
-    .pagination-btn {
-        padding: 12px 16px;
-        min-width: 45px;
-        font-size: 0.9em;
-    }
-    
-    .search-input {
-        padding: 14px 18px;
-    }
-    
-    #addClientButton {
-        padding: 14px 20px;
-    }
-    
-    .edit-btn,
-    .delete-btn {
-        padding: 12px 18px;
-        font-size: 0.9em;
+    .form-group select,
+    .form-group input {
+        padding: 12px 15px;
     }
 }

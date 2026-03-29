@@ -61,7 +61,6 @@ try {
         throw new Exception("Número de página no válido", 400);
     }
 
-    // CONSULTA PRINCIPAL CORREGIDA - IGV SIN FORMATEO EN SQL
     $query = "SELECT 
             f.id_fiscalizacion AS id,
             f.id_fiscalizacion AS id_fiscalizacion, 
@@ -72,16 +71,13 @@ try {
             DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
             DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
             es.descripcion AS Estado,
-            -- IGV SIN FORMATEAR - lo formatearemos en PHP
             f.IGV AS IGV_Raw,
-            -- Cálculo de días restantes considerando PRÓRROGA
             CASE 
                 WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
                     DATEDIFF(f.fecha_prorroga, CURDATE())
                 ELSE 
                     DATEDIFF(f.fecha_presentacion, CURDATE())
             END AS DiasRestantes,
-            -- Campo para saber qué fecha se está usando
             CASE 
                 WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 'prorroga'
                 ELSE 'original'
@@ -91,17 +87,16 @@ try {
           JOIN etapa e ON f.id_etapa = e.id_etapa
           JOIN estado es ON f.id_estado = es.id_estado
           JOIN cliente c ON f.id_cliente = c.id_cliente
-          WHERE (f.fecha_presentacion >= CURDATE() 
-                 OR f.fecha_prorroga >= CURDATE())
-          AND f.id_estado IN ('1', '3')";
+          WHERE f.id_estado IN ('1', '3')
+          AND f.id_etapa NOT IN (10, 14, 15, 16)";
 
     // Aplicar mismos filtros que en countQuery
     switch ($tableType) {
         case 'reclamar':
-            $query .= " AND f.id_etapa = 6";
+            $query .= " AND f.id_etapa = 5 AND f.id_estado in ('1', '3')";
             break;
         case 'apelar':
-            $query .= " AND f.id_etapa = 7";
+            $query .= " AND f.id_etapa = 6 ";
             break;
     }
 

@@ -118,44 +118,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (totalPages <= 1) return;
 
-        // Botón Anterior
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.className = 'pagination-btn';
-            prevButton.innerHTML = '&laquo; Anterior';
-            prevButton.addEventListener('click', () => {
-                currentPage--;
+        const addBtn = (label, page, active = false, disabled = false) => {
+            const btn = document.createElement('button');
+            btn.className = 'pagination-btn' + (active ? ' active' : '');
+            btn.innerHTML = label;
+            if (disabled) btn.disabled = true;
+            btn.addEventListener('click', () => {
+                if (disabled) return;
+                currentPage = page;
                 displayEmployees();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            paginationContainer.appendChild(prevButton);
+            paginationContainer.appendChild(btn);
+        };
+
+        const addEllipsis = () => {
+            const span = document.createElement('span');
+            span.textContent = '…';
+            span.style.cssText = 'padding:6px 4px;color:#999;align-self:center;';
+            paginationContainer.appendChild(span);
+        };
+
+        addBtn('&laquo;', currentPage - 1, false, currentPage === 1);
+        addBtn(1, 1, currentPage === 1);
+        if (currentPage > 4) addEllipsis();
+
+        const start = Math.max(2, currentPage - 2);
+        const end   = Math.min(totalPages - 1, currentPage + 2);
+        for (let i = start; i <= end; i++) {
+            addBtn(i, i, i === currentPage);
         }
 
-        // Botones de página
-        for (let i = 1; i <= totalPages; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.className = 'pagination-btn';
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active');
-            }
-            pageButton.addEventListener('click', () => {
-                currentPage = i;
-                displayEmployees();
-            });
-            paginationContainer.appendChild(pageButton);
-        }
-
-        // Botón Siguiente
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.className = 'pagination-btn';
-            nextButton.innerHTML = 'Siguiente &raquo;';
-            nextButton.addEventListener('click', () => {
-                currentPage++;
-                displayEmployees();
-            });
-            paginationContainer.appendChild(nextButton);
-        }
+        if (currentPage < totalPages - 3) addEllipsis();
+        if (totalPages > 1) addBtn(totalPages, totalPages, currentPage === totalPages);
+        addBtn('&raquo;', currentPage + 1, false, currentPage === totalPages);
     }
 
     // Función para eliminar empleado

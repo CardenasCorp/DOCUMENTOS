@@ -1,13 +1,27 @@
 <?php
 require_once 'session_check.php';
+
 ?>
+<?php if (isset($_SESSION['departamento']) && in_array($_SESSION['departamento'], ['OPERACIONES', 'CONSULTING'])): ?>
+<style>
+    .sidebar ul li:nth-child(1), /* Registrar */
+    .sidebar ul li:nth-child(2), /* Modificar */
+    .sidebar ul li:nth-child(3), /* Lista de casos */
+    .sidebar ul li:nth-child(6), /* SUNAT */
+    .sidebar hr:nth-of-type(2),  /* HR antes de SUNAT */
+    .sidebar hr:nth-of-type(3)   /* HR después de SUNAT */
+    {
+        display: none;
+    }
+</style>
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta RUC="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../style/modals/sidebar.css">
     <link rel="stylesheet" href="../style/modals/menu-container.css">
@@ -18,6 +32,7 @@ require_once 'session_check.php';
 </head>
 
 <body>
+
     <div class="container">
         <div class="sidebar">
             <h2><a href="">Menú Principal</a></h2>
@@ -26,26 +41,28 @@ require_once 'session_check.php';
                 <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
                 <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
                 <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
+                <li><a href="tabla-casos.php"><i class="bi bi-table"></i> <span>Coactiva</span></a></li>
+                <li><a href="lista-empresas.php"><i class="bi bi-building-check"></i> <span>Lista de Empresas (Coactivas)</span></a></li>
                 <hr>
                 <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                 <hr>
                 <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
             </ul>
         </div>
+
         <div class="main-content">
             <a href="../index.php"><i class="bi bi-arrow-left-square-fill"></i></a>
-                    <hr>
-                    <br>
+            <hr>
+            <br>
             <div class="content-business">
                 <h1>Lista de Empresas</h1> 
                 <div class="business-list">
                     <div class="search-business">
                         <input type="text" id="searchClientInput" placeholder="Buscar por nombre... " class="search-input">
                         <input type="text" id="searchRUCInput" placeholder="Buscar por RUC... " class="search-input">
-                        <button id="addClientButton">Agregar Empresa</button>  <!-- Cambiado el ID para consistencia -->
+                        <button id="addClientButton">Agregar Empresa</button>
                     </div>
-                    <div class="business-container" id="clientContainer">  <!-- Añadido ID -->
-                        <!-- Los clientes/empresas se cargarán aquí -->
+                    <div class="business-container" id="clientContainer">
                         <div class="loading-message">Cargando empresas...</div>
                     </div>
                 </div>
@@ -55,6 +72,8 @@ require_once 'session_check.php';
             </div>
         </div>
     </div>
+
+    <!-- Modal para Editar/Empresa -->
     <div id="myModalEditBusiness" class="myModalEditBusiness">
         <div class="modal-content">
             <span class="close" id="closeModalEditBusiness">&times;</span>
@@ -86,6 +105,7 @@ require_once 'session_check.php';
             </form>
         </div>
     </div>
+
     <!-- Modal para Historial de Direcciones Y Gerentes -->
     <div id="myModalHistory" class="myModalHistory">
         <div class="modal-content">
@@ -156,6 +176,57 @@ require_once 'session_check.php';
                 
                 <div class="modal-button">
                     <button type="submit" class="accept-modal">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="myModalAddress" class="myModalAddress">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="addressModalTitle">Agregar Dirección</h2>
+                <span class="close" id="closeModalAddress">&times;</span>
+            </div>
+            <form id="addressForm">
+                <input type="hidden" id="addressId" name="addressId">
+                <input type="hidden" id="clientId" name="clientId">
+                
+                <div class="form-group">
+                    <label for="tipo_direccion">Tipo de Dirección:</label>
+                    <select id="tipo_direccion" name="tipo_direccion" required>
+                        <option value="">Seleccionar tipo</option>
+                        <option value="fiscal">Fiscal</option>
+                        <option value="anexo">Anexo</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input id="direccion" name="direccion" required></input>
+                </div>
+                
+                <div class="form-group">
+                    <label for="provincia">Provincia:</label>
+                    <input type="text" id="provincia" name="provincia" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="departamento">Departamento:</label>
+                    <input type="text" id="departamento" name="departamento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_inicio">Fecha de Inicio:</label>
+                    <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_fin">Fecha de Fin (opcional):</label>
+                    <input type="date" id="fecha_fin" name="fecha_fin">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Guardar</button>
+                    <button type="button" class="btn-secondary" id="closeModalAddressBtn">Cancelar</button>
                 </div>
             </form>
         </div>

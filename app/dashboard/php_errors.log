@@ -32108,3 +32108,4004 @@ Array
         
 [10-Nov-2025 16:57:50 UTC] === IGV DEBUGGING ===
 [10-Nov-2025 16:57:51 UTC] === IGV DEBUGGING ===
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Raw: 184703.97, Type: string
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Float: 184703.97
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Formatted: 184703.97
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Raw: , Type: NULL
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Raw: , Type: NULL
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Raw: , Type: NULL
+[21-Nov-2025 21:06:14 UTC] IGV Processing - Raw: , Type: NULL
+[21-Nov-2025 21:06:14 UTC] === IGV DEBUGGING ===
+[21-Nov-2025 21:06:14 UTC] Registro 0: 
+            ID: 133
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[21-Nov-2025 21:06:14 UTC] Registro 1: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[21-Nov-2025 21:06:14 UTC] Registro 2: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[21-Nov-2025 21:06:14 UTC] Registro 3: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[21-Nov-2025 21:06:14 UTC] Registro 4: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[21-Nov-2025 21:06:15 UTC] === IGV DEBUGGING ===
+[21-Nov-2025 21:06:16 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:13:20 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Float: 7993319
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Formatted: 7993319.00
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:13:22 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:13:22 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:13:22 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:13:22 UTC] Registro 1: 
+            ID: 138
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[22-Nov-2025 14:13:22 UTC] Registro 2: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:13:22 UTC] Registro 3: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:13:22 UTC] Registro 4: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:13:23 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Float: 7993319
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Formatted: 7993319.00
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:19:48 UTC] IGV Processing - Raw: , Type: NULL
+[22-Nov-2025 14:19:48 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:19:48 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:19:48 UTC] Registro 1: 
+            ID: 138
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[22-Nov-2025 14:19:48 UTC] Registro 2: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:19:48 UTC] Registro 3: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:19:48 UTC] Registro 4: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[22-Nov-2025 14:19:50 UTC] === IGV DEBUGGING ===
+[22-Nov-2025 14:19:51 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 14:30:43 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 14:30:43 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:30:43 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:30:43 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:30:43 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:30:43 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:30:43 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 14:30:44 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:30:45 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 14:33:25 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 14:33:25 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:33:25 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:33:25 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:33:25 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:33:25 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:33:25 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 14:33:27 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:33:28 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 14:37:43 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 14:37:43 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:37:43 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:37:43 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:37:43 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:37:43 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 14:37:43 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 14:37:44 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 14:37:45 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 19:32:22 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 19:32:22 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:32:22 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:32:22 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:32:22 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:32:22 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:32:22 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 19:32:24 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:32:25 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 19:57:18 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 19:57:18 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:57:18 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:57:18 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:57:18 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:57:18 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 19:57:18 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 19:57:19 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 19:57:20 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:14:06 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:14:06 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:14:06 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:14:06 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:14:06 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:14:06 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:14:06 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:14:07 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:14:08 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:01 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:19:02 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:19:02 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:02 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:02 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:02 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:02 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:02 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:19:03 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:19:23 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:19:23 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:23 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:23 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:23 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:23 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:19:23 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:19:24 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:19:25 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:20:01 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:20:01 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:20:01 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:20:01 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:20:01 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:20:01 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:20:01 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:20:02 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:20:04 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:34:58 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:34:59 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:34:59 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:34:59 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:34:59 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:34:59 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:34:59 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:34:59 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:35:00 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Raw: 17302.00, Type: string
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Float: 17302
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Formatted: 17302.00
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:24 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:24 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:24 UTC] Registro 0: 
+            ID: 131
+            Empresa: FERRETERIA LA ORMIGUITA CONSTRUCTORA S.A.C.
+            IGV_Raw: 17302.00
+            IGV_Formatted: 17302.00
+        
+[24-Nov-2025 20:35:24 UTC] Registro 1: 
+            ID: 139
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:24 UTC] Registro 2: 
+            ID: 140
+            Empresa: LOMAZ INDUSTRIES S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:24 UTC] Registro 3: 
+            ID: 141
+            Empresa: SERGELNORT E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:24 UTC] Registro 4: 
+            ID: 142
+            Empresa: SERVICIOS INTEGRALES D & G E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:27 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:27 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:27 UTC] IGV Processing - Raw: 1298813.67, Type: string
+[24-Nov-2025 20:35:27 UTC] IGV Processing - Float: 1298813.67
+[24-Nov-2025 20:35:27 UTC] IGV Processing - Formatted: 1298813.67
+[24-Nov-2025 20:35:27 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:27 UTC] Registro 0: 
+            ID: 149
+            Empresa: INDUALE S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:27 UTC] Registro 1: 
+            ID: 150
+            Empresa: INVERSIONES DEL NORTE YM E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:27 UTC] Registro 2: 
+            ID: 143
+            Empresa: DIITEC CONTRATISTAS GENERALES S.A.C.
+            IGV_Raw: 1298813.67
+            IGV_Formatted: 1298813.67
+        
+[24-Nov-2025 20:35:34 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:34 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:34 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:34 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:34 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:34 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:34 UTC] Registro 0: 
+            ID: 144
+            Empresa: INTEGRADOS BUSINESS CORPORATION E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:34 UTC] Registro 1: 
+            ID: 145
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:34 UTC] Registro 2: 
+            ID: 146
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:34 UTC] Registro 3: 
+            ID: 147
+            Empresa: COMERCIALIZACION Y TRANSPORTES SANDOVAL EIRL
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:34 UTC] Registro 4: 
+            ID: 148
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Raw: 17302.00, Type: string
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Float: 17302
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Formatted: 17302.00
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:43 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:43 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:43 UTC] Registro 0: 
+            ID: 131
+            Empresa: FERRETERIA LA ORMIGUITA CONSTRUCTORA S.A.C.
+            IGV_Raw: 17302.00
+            IGV_Formatted: 17302.00
+        
+[24-Nov-2025 20:35:43 UTC] Registro 1: 
+            ID: 139
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:43 UTC] Registro 2: 
+            ID: 140
+            Empresa: LOMAZ INDUSTRIES S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:43 UTC] Registro 3: 
+            ID: 141
+            Empresa: SERGELNORT E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:43 UTC] Registro 4: 
+            ID: 142
+            Empresa: SERVICIOS INTEGRALES D & G E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:35:45 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:35:45 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:35:45 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:45 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:45 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:45 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:35:45 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 20:43:49 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 20:43:49 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:43:49 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:43:49 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:43:49 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:43:49 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 20:43:49 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 20:43:50 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 20:43:51 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Raw: , Type: NULL
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Float: 8809268
+[24-Nov-2025 21:39:41 UTC] IGV Processing - Formatted: 8809268.00
+[24-Nov-2025 21:39:41 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 21:39:41 UTC] Registro 0: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 21:39:41 UTC] Registro 1: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 21:39:41 UTC] Registro 2: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 21:39:41 UTC] Registro 3: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[24-Nov-2025 21:39:41 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[24-Nov-2025 21:39:42 UTC] === IGV DEBUGGING ===
+[24-Nov-2025 21:39:44 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Float: 8809268
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Formatted: 8809268.00
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Raw: 17302.00, Type: string
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Float: 17302
+[25-Nov-2025 13:30:51 UTC] IGV Processing - Formatted: 17302.00
+[25-Nov-2025 13:30:51 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 13:30:51 UTC] Registro 0: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 13:30:51 UTC] Registro 1: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 13:30:51 UTC] Registro 2: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 13:30:51 UTC] Registro 3: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[25-Nov-2025 13:30:51 UTC] Registro 4: 
+            ID: 131
+            Empresa: FERRETERIA LA ORMIGUITA CONSTRUCTORA S.A.C.
+            IGV_Raw: 17302.00
+            IGV_Formatted: 17302.00
+        
+[25-Nov-2025 13:30:52 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 13:30:54 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Raw: , Type: NULL
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Float: 8809268
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Formatted: 8809268.00
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Raw: 17302.00, Type: string
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Float: 17302
+[25-Nov-2025 16:28:37 UTC] IGV Processing - Formatted: 17302.00
+[25-Nov-2025 16:28:37 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 16:28:37 UTC] Registro 0: 
+            ID: 134
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 16:28:37 UTC] Registro 1: 
+            ID: 135
+            Empresa: C & A CALIDAD TOTAL E.I.R.L
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 16:28:37 UTC] Registro 2: 
+            ID: 136
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[25-Nov-2025 16:28:37 UTC] Registro 3: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[25-Nov-2025 16:28:37 UTC] Registro 4: 
+            ID: 131
+            Empresa: FERRETERIA LA ORMIGUITA CONSTRUCTORA S.A.C.
+            IGV_Raw: 17302.00
+            IGV_Formatted: 17302.00
+        
+[25-Nov-2025 16:28:38 UTC] === IGV DEBUGGING ===
+[25-Nov-2025 16:28:39 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 14:41:18 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 14:41:19 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 14:41:19 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 14:41:19 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 14:41:19 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 14:41:19 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 14:41:20 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 15:57:01 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 15:57:02 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 15:57:02 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 15:57:02 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 15:57:03 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 15:57:04 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 15:57:05 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:07:54 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 17:07:54 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 17:07:54 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 17:07:54 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:07:54 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 17:07:55 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:07:57 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:53:08 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 17:53:08 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 17:53:08 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 17:53:08 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:53:08 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 17:53:10 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:53:12 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:57:43 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 17:57:43 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 17:57:43 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 17:57:43 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:57:43 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 17:57:45 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:57:47 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:58:04 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 17:58:04 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 17:58:04 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 17:58:04 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:58:04 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 17:58:07 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 17:58:09 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:02:42 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:02:42 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:02:42 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:02:42 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:02:42 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:02:44 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:02:47 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:03:43 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:03:43 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:03:43 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:03:43 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:03:43 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:03:45 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:03:46 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:05:48 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:05:48 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:05:48 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:05:48 UTC] Registro 1: 
+            ID: 133
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:05:48 UTC] Registro 2: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:05:49 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:05:49 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:05:49 UTC] Registro 0: 
+            ID: 133
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:05:49 UTC] Registro 1: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:05:51 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:10:14 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:10:14 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:10:14 UTC] Registro 0: 
+            ID: 133
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:10:14 UTC] Registro 1: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:10:14 UTC] Registro 2: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:10:16 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:10:16 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:10:16 UTC] Registro 0: 
+            ID: 133
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:10:16 UTC] Registro 1: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:10:18 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:11:32 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:11:32 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:11:32 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:11:32 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:11:34 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:11:34 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:11:34 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:11:34 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:11:34 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:11:36 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:15:24 UTC] Error PDO detallado:
+Array
+(
+    [error] => Database Error
+    [message] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE f.id_tipo IN ('1', ''6') ORDER BY 
+                -- Prioridad 1: Fechas' at line 33
+    [code] => 42000
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php
+    [line] => 133
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(133): PDO->prepare()
+#1 {main}
+    [query] => SELECT 
+            f.id_fiscalizacion AS id,
+            f.id_fiscalizacion AS id_fiscalizacion, 
+            c.razon_social AS Empresa,
+            f.numero AS Nro,
+            t.descripcion AS Tipo,
+            e.descripcion AS Etapa,
+            DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+            DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
+            es.descripcion AS Estado,
+            -- IGV SIN FORMATEAR - lo formatearemos en PHP
+            f.IGV AS IGV_Raw,
+            -- Cálculo de días restantes considerando PRÓRROGA
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                    DATEDIFF(f.fecha_prorroga, CURDATE())
+                ELSE 
+                    DATEDIFF(f.fecha_presentacion, CURDATE())
+            END AS DiasRestantes,
+            -- Campo para saber qué fecha se está usando
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 'prorroga'
+                ELSE 'original'
+            END AS TipoFecha
+          FROM fiscalizacion f
+          JOIN tipo t ON f.id_tipo = t.id_tipo
+          JOIN etapa e ON f.id_etapa = e.id_etapa
+          JOIN estado es ON f.id_estado = es.id_estado
+          JOIN cliente c ON f.id_cliente = c.id_cliente
+          WHERE (f.fecha_presentacion >= CURDATE() 
+                 OR f.fecha_prorroga >= CURDATE())
+          AND f.id_estado IN ('1', '3') AND f.id_etapa = 
+            WHERE f.id_tipo IN ('1', ''6') ORDER BY 
+                -- Prioridad 1: Fechas que vencen HOY
+                CASE 
+                    WHEN (f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga = CURDATE()) 
+                         OR f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                -- Prioridad 2: Proximidad (usando la fecha activa)
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                        ABS(DATEDIFF(f.fecha_prorroga, CURDATE()))
+                    ELSE 
+                        ABS(DATEDIFF(f.fecha_presentacion, CURDATE()))
+                END ASC,
+                -- Prioridad 3: Preferir prórrogas sobre fechas originales
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL THEN 0
+                    ELSE 1
+                END,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+    [params] => Array
+        (
+            [offset] => 
+            [perPage] => 5
+        )
+
+)
+
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:15:26 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:15:26 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:15:26 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:15:26 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:15:27 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:16:04 UTC] Error PDO detallado:
+Array
+(
+    [error] => Database Error
+    [message] => SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '6') ORDER BY 
+                -- Prioridad 1: Fechas que vencen HOY
+          ' at line 32
+    [code] => 42000
+    [file] => C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php
+    [line] => 132
+    [trace] => #0 C:\Users\Cardenas Corp Think\Documents\CardenasCorp\Documentos\app\dashboard\tables.php(132): PDO->prepare()
+#1 {main}
+    [query] => SELECT 
+            f.id_fiscalizacion AS id,
+            f.id_fiscalizacion AS id_fiscalizacion, 
+            c.razon_social AS Empresa,
+            f.numero AS Nro,
+            t.descripcion AS Tipo,
+            e.descripcion AS Etapa,
+            DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentacion,
+            DATE_FORMAT(f.fecha_prorroga, '%d/%m/%Y') AS NuevaFecha,  
+            es.descripcion AS Estado,
+            -- IGV SIN FORMATEAR - lo formatearemos en PHP
+            f.IGV AS IGV_Raw,
+            -- Cálculo de días restantes considerando PRÓRROGA
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                    DATEDIFF(f.fecha_prorroga, CURDATE())
+                ELSE 
+                    DATEDIFF(f.fecha_presentacion, CURDATE())
+            END AS DiasRestantes,
+            -- Campo para saber qué fecha se está usando
+            CASE 
+                WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 'prorroga'
+                ELSE 'original'
+            END AS TipoFecha
+          FROM fiscalizacion f
+          JOIN tipo t ON f.id_tipo = t.id_tipo
+          JOIN etapa e ON f.id_etapa = e.id_etapa
+          JOIN estado es ON f.id_estado = es.id_estado
+          JOIN cliente c ON f.id_cliente = c.id_cliente
+          WHERE (f.fecha_presentacion >= CURDATE() 
+                 OR f.fecha_prorroga >= CURDATE())
+          AND f.id_estado IN ('1', '3') AND f.id_etapa = 6 AND f.id_tipo IN ('1', ''6') ORDER BY 
+                -- Prioridad 1: Fechas que vencen HOY
+                CASE 
+                    WHEN (f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga = CURDATE()) 
+                         OR f.fecha_presentacion = CURDATE() THEN 0
+                    ELSE 1
+                END,
+                -- Prioridad 2: Proximidad (usando la fecha activa)
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL AND f.fecha_prorroga >= CURDATE() THEN 
+                        ABS(DATEDIFF(f.fecha_prorroga, CURDATE()))
+                    ELSE 
+                        ABS(DATEDIFF(f.fecha_presentacion, CURDATE()))
+                END ASC,
+                -- Prioridad 3: Preferir prórrogas sobre fechas originales
+                CASE 
+                    WHEN f.fecha_prorroga IS NOT NULL THEN 0
+                    ELSE 1
+                END,
+                f.fecha_presentacion ASC
+               LIMIT :offset, :perPage
+    [params] => Array
+        (
+            [offset] => 
+            [perPage] => 5
+        )
+
+)
+
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:16:07 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:16:07 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:16:07 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:16:07 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:16:11 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:16:16 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:16:16 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:16:16 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:16:16 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:16:26 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:16:37 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:17:25 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:17:25 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:17:25 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:17:25 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:17:27 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:17:28 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:19:07 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:19:09 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:19:09 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:19:09 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 18:19:09 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:19:11 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:36:28 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:36:28 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:36:28 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:36:28 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:36:28 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:36:31 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:36:33 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:50:31 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:50:31 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:50:31 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:50:31 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:50:31 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:50:33 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:50:35 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:55:16 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 18:55:16 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 18:55:16 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 18:55:16 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:55:16 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 18:55:18 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 18:55:19 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:16:40 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:16:40 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:16:40 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:16:40 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:16:40 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:16:42 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:16:44 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:19:31 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:19:31 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:19:31 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:19:31 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:19:31 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:19:33 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:19:34 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:31:44 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:31:44 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:31:44 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:31:44 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:31:44 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:31:46 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:31:47 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:32:46 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:32:46 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:32:46 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:32:46 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:32:46 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:32:49 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:32:51 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:41:17 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:41:17 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:41:17 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:41:17 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:41:17 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:41:19 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:41:20 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:43:50 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:43:50 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:43:50 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:43:50 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:43:50 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:43:52 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:43:53 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:45:49 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 21:45:49 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 21:45:49 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 21:45:49 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:45:49 UTC] Registro 0: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 21:45:50 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 21:45:52 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:21:25 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:21:25 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 22:21:25 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 22:21:25 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 22:21:25 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:21:25 UTC] Registro 0: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:21:25 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 22:21:26 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:21:28 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:23:53 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:23:53 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 22:23:53 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 22:23:53 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 22:23:53 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:23:53 UTC] Registro 0: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:23:53 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 22:23:55 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:23:56 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:38:57 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:38:57 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 22:38:57 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 22:38:57 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 22:38:57 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:38:57 UTC] Registro 0: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:38:57 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 22:38:58 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:38:59 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:39:06 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:39:06 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 22:39:06 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 22:39:06 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 22:39:06 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:39:06 UTC] Registro 0: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:39:06 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 22:39:07 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:39:08 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:00 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:40:00 UTC] IGV Processing - Raw: 8383.00, Type: string
+[03-Dec-2025 22:40:00 UTC] IGV Processing - Float: 8383
+[03-Dec-2025 22:40:00 UTC] IGV Processing - Formatted: 8383.00
+[03-Dec-2025 22:40:00 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:00 UTC] Registro 0: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:40:00 UTC] Registro 1: 
+            ID: 152
+            Empresa: MINERALES DEL NORTE S & C S.A.C.
+            IGV_Raw: 8383.00
+            IGV_Formatted: 8383.00
+        
+[03-Dec-2025 22:40:01 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:03 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:40:24 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:40:24 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:24 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 22:40:24 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 22:40:24 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:40:25 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:40:25 UTC] Registro 4: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:40:26 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:40:27 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:40:27 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:40:27 UTC] Registro 0: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:40:27 UTC] Registro 1: 
+            ID: 80
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:47:32 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:47:32 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:47:32 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 22:47:32 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 22:47:32 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:47:32 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:47:32 UTC] Registro 4: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:47:33 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:47:33 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:47:33 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:47:33 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:47:33 UTC] Registro 0: 
+            ID: 80
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:47:34 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:47:34 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:47:34 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:47:34 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:47:34 UTC] Registro 0: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:51:21 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:51:21 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:51:21 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 22:51:21 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 22:51:21 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:51:21 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:51:21 UTC] Registro 4: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:51:22 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:51:23 UTC] IGV Processing - Raw: 2261298.00, Type: string
+[03-Dec-2025 22:51:23 UTC] IGV Processing - Float: 2261298
+[03-Dec-2025 22:51:23 UTC] IGV Processing - Formatted: 2261298.00
+[03-Dec-2025 22:51:23 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:51:23 UTC] Registro 0: 
+            ID: 160
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2261298.00
+            IGV_Formatted: 2261298.00
+        
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 22:55:54 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 22:55:55 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:55:55 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 22:55:55 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 22:55:55 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 22:55:55 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 22:55:55 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:55:55 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 22:55:55 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 22:55:55 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:55:55 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 22:55:55 UTC] Registro 4: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 22:55:56 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 22:55:57 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:22:32 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 23:22:33 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 23:22:33 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:22:33 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 23:22:33 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 23:22:33 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 23:22:33 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 23:22:33 UTC] Registro 4: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 23:22:34 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:22:35 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Raw: 184703.97, Type: string
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Float: 184703.97
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Formatted: 184703.97
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Raw: , Type: NULL
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Float: 8809268
+[03-Dec-2025 23:44:11 UTC] IGV Processing - Formatted: 8809268.00
+[03-Dec-2025 23:44:11 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:44:11 UTC] Registro 0: 
+            ID: 154
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 184703.97
+            IGV_Formatted: 184703.97
+        
+[03-Dec-2025 23:44:11 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 23:44:11 UTC] Registro 2: 
+            ID: 132
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 23:44:11 UTC] Registro 3: 
+            ID: 159
+            Empresa: EMPRESA DE TRANSPORTES Y SERVICIOS JGG S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[03-Dec-2025 23:44:11 UTC] Registro 4: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[03-Dec-2025 23:44:13 UTC] === IGV DEBUGGING ===
+[03-Dec-2025 23:44:14 UTC] === IGV DEBUGGING ===
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Raw: , Type: NULL
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Float: 8809268
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Formatted: 8809268.00
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Raw: , Type: NULL
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Raw: , Type: NULL
+[04-Dec-2025 20:59:54 UTC] IGV Processing - Raw: , Type: NULL
+[04-Dec-2025 20:59:54 UTC] === IGV DEBUGGING ===
+[04-Dec-2025 20:59:54 UTC] Registro 0: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[04-Dec-2025 20:59:54 UTC] Registro 1: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[04-Dec-2025 20:59:54 UTC] Registro 2: 
+            ID: 168
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[04-Dec-2025 20:59:54 UTC] Registro 3: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[04-Dec-2025 20:59:54 UTC] Registro 4: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[04-Dec-2025 20:59:55 UTC] === IGV DEBUGGING ===
+[04-Dec-2025 20:59:56 UTC] === IGV DEBUGGING ===
+[10-Dec-2025 16:13:47 UTC] IGV Processing - Raw: , Type: NULL
+[10-Dec-2025 16:13:47 UTC] IGV Processing - Raw: , Type: NULL
+[10-Dec-2025 16:13:47 UTC] IGV Processing - Raw: , Type: NULL
+[10-Dec-2025 16:13:47 UTC] IGV Processing - Raw: , Type: NULL
+[10-Dec-2025 16:13:48 UTC] IGV Processing - Raw: , Type: NULL
+[10-Dec-2025 16:13:48 UTC] === IGV DEBUGGING ===
+[10-Dec-2025 16:13:48 UTC] Registro 0: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[10-Dec-2025 16:13:48 UTC] Registro 1: 
+            ID: 168
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[10-Dec-2025 16:13:48 UTC] Registro 2: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[10-Dec-2025 16:13:48 UTC] Registro 3: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[10-Dec-2025 16:13:48 UTC] Registro 4: 
+            ID: 163
+            Empresa: CORPORACION CONSULTING CR EIRL
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[10-Dec-2025 16:13:49 UTC] === IGV DEBUGGING ===
+[10-Dec-2025 16:13:50 UTC] === IGV DEBUGGING ===
+[29-Dec-2025 20:17:13 UTC] IGV Processing - Raw: , Type: NULL
+[29-Dec-2025 20:17:13 UTC] IGV Processing - Raw: , Type: NULL
+[29-Dec-2025 20:17:13 UTC] IGV Processing - Raw: , Type: NULL
+[29-Dec-2025 20:17:13 UTC] IGV Processing - Raw: , Type: NULL
+[29-Dec-2025 20:17:13 UTC] IGV Processing - Raw: , Type: NULL
+[29-Dec-2025 20:17:13 UTC] === IGV DEBUGGING ===
+[29-Dec-2025 20:17:13 UTC] Registro 0: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Dec-2025 20:17:13 UTC] Registro 1: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Dec-2025 20:17:13 UTC] Registro 2: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Dec-2025 20:17:13 UTC] Registro 3: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Dec-2025 20:17:13 UTC] Registro 4: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Dec-2025 20:17:14 UTC] === IGV DEBUGGING ===
+[29-Dec-2025 20:17:15 UTC] === IGV DEBUGGING ===
+[02-Jan-2026 14:02:24 UTC] IGV Processing - Raw: , Type: NULL
+[02-Jan-2026 14:02:24 UTC] IGV Processing - Raw: , Type: NULL
+[02-Jan-2026 14:02:24 UTC] IGV Processing - Raw: , Type: NULL
+[02-Jan-2026 14:02:24 UTC] IGV Processing - Raw: , Type: NULL
+[02-Jan-2026 14:02:24 UTC] IGV Processing - Raw: , Type: NULL
+[02-Jan-2026 14:02:24 UTC] === IGV DEBUGGING ===
+[02-Jan-2026 14:02:24 UTC] Registro 0: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[02-Jan-2026 14:02:24 UTC] Registro 1: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[02-Jan-2026 14:02:24 UTC] Registro 2: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[02-Jan-2026 14:02:24 UTC] Registro 3: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[02-Jan-2026 14:02:24 UTC] Registro 4: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[02-Jan-2026 14:02:26 UTC] === IGV DEBUGGING ===
+[02-Jan-2026 14:02:27 UTC] === IGV DEBUGGING ===
+[05-Jan-2026 15:06:59 UTC] IGV Processing - Raw: , Type: NULL
+[05-Jan-2026 15:06:59 UTC] IGV Processing - Raw: , Type: NULL
+[05-Jan-2026 15:06:59 UTC] IGV Processing - Raw: , Type: NULL
+[05-Jan-2026 15:06:59 UTC] IGV Processing - Raw: , Type: NULL
+[05-Jan-2026 15:06:59 UTC] IGV Processing - Raw: , Type: NULL
+[05-Jan-2026 15:06:59 UTC] === IGV DEBUGGING ===
+[05-Jan-2026 15:06:59 UTC] Registro 0: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[05-Jan-2026 15:06:59 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[05-Jan-2026 15:06:59 UTC] Registro 2: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[05-Jan-2026 15:06:59 UTC] Registro 3: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[05-Jan-2026 15:06:59 UTC] Registro 4: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[05-Jan-2026 15:07:00 UTC] === IGV DEBUGGING ===
+[05-Jan-2026 15:07:01 UTC] === IGV DEBUGGING ===
+[13-Jan-2026 21:54:02 UTC] === IGV DEBUGGING ===
+[13-Jan-2026 21:54:03 UTC] IGV Processing - Raw: , Type: NULL
+[13-Jan-2026 21:54:03 UTC] IGV Processing - Raw: , Type: NULL
+[13-Jan-2026 21:54:03 UTC] IGV Processing - Raw: , Type: NULL
+[13-Jan-2026 21:54:03 UTC] IGV Processing - Raw: , Type: NULL
+[13-Jan-2026 21:54:03 UTC] IGV Processing - Raw: , Type: NULL
+[13-Jan-2026 21:54:03 UTC] === IGV DEBUGGING ===
+[13-Jan-2026 21:54:03 UTC] Registro 0: 
+            ID: 177
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[13-Jan-2026 21:54:03 UTC] Registro 1: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[13-Jan-2026 21:54:03 UTC] Registro 2: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[13-Jan-2026 21:54:03 UTC] Registro 3: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[13-Jan-2026 21:54:03 UTC] Registro 4: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[13-Jan-2026 21:54:04 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:37:27 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:37:27 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:37:27 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:37:27 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:37:27 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:37:27 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:37:27 UTC] Registro 0: 
+            ID: 177
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:37:27 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:37:27 UTC] Registro 2: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:37:27 UTC] Registro 3: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:37:27 UTC] Registro 4: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:37:32 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:37:44 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:38:02 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:38:02 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:38:02 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:38:02 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:38:02 UTC] IGV Processing - Raw: , Type: NULL
+[15-Jan-2026 13:38:02 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:38:02 UTC] Registro 0: 
+            ID: 177
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:38:02 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:38:02 UTC] Registro 2: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:38:02 UTC] Registro 3: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:38:02 UTC] Registro 4: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[15-Jan-2026 13:38:07 UTC] === IGV DEBUGGING ===
+[15-Jan-2026 13:38:16 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:23:40 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:23:40 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:23:40 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:23:40 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:23:40 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:23:40 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:23:40 UTC] Registro 0: 
+            ID: 177
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:23:40 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:23:40 UTC] Registro 2: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:23:40 UTC] Registro 3: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:23:40 UTC] Registro 4: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:23:41 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:23:43 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:26:34 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:26:34 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:26:34 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:26:34 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:26:34 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:26:34 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:26:34 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:26:34 UTC] Registro 1: 
+            ID: 175
+            Empresa: GRUPO DISMAF E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:26:34 UTC] Registro 2: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:26:34 UTC] Registro 3: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:26:34 UTC] Registro 4: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:26:35 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:26:37 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 14:32:28 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 14:32:28 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:32:28 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:32:28 UTC] Registro 1: 
+            ID: 164
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:32:28 UTC] Registro 2: 
+            ID: 166
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:32:28 UTC] Registro 3: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:32:28 UTC] Registro 4: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 14:32:29 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:32:31 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Float: 7993319
+[16-Jan-2026 14:34:44 UTC] IGV Processing - Formatted: 7993319.00
+[16-Jan-2026 14:34:44 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:34:44 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:34:44 UTC] Registro 1: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 14:34:44 UTC] Registro 2: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 14:34:44 UTC] Registro 3: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 14:34:44 UTC] Registro 4: 
+            ID: 130
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[16-Jan-2026 14:34:45 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 14:34:47 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Float: 7993319
+[16-Jan-2026 15:57:33 UTC] IGV Processing - Formatted: 7993319.00
+[16-Jan-2026 15:57:33 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 15:57:33 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 15:57:33 UTC] Registro 1: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 15:57:33 UTC] Registro 2: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 15:57:33 UTC] Registro 3: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 15:57:33 UTC] Registro 4: 
+            ID: 130
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[16-Jan-2026 15:57:39 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 15:57:43 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Float: 7993319
+[16-Jan-2026 19:30:19 UTC] IGV Processing - Formatted: 7993319.00
+[16-Jan-2026 19:30:19 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 19:30:19 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 19:30:19 UTC] Registro 1: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 19:30:19 UTC] Registro 2: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 19:30:19 UTC] Registro 3: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 19:30:19 UTC] Registro 4: 
+            ID: 130
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[16-Jan-2026 19:30:21 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 19:30:23 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Raw: , Type: NULL
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Raw: 8809268.00, Type: string
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Float: 8809268
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Formatted: 8809268.00
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Raw: 7993319.00, Type: string
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Float: 7993319
+[16-Jan-2026 20:06:51 UTC] IGV Processing - Formatted: 7993319.00
+[16-Jan-2026 20:06:51 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 20:06:51 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 20:06:51 UTC] Registro 1: 
+            ID: 165
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[16-Jan-2026 20:06:51 UTC] Registro 2: 
+            ID: 137
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 20:06:51 UTC] Registro 3: 
+            ID: 129
+            Empresa: MULTISERVICIOS DINTEC E.I.R.L.
+            IGV_Raw: 8809268.00
+            IGV_Formatted: 8809268.00
+        
+[16-Jan-2026 20:06:51 UTC] Registro 4: 
+            ID: 130
+            Empresa: INNOVUS CONTRATISTAS E.I.R.L.
+            IGV_Raw: 7993319.00
+            IGV_Formatted: 7993319.00
+        
+[16-Jan-2026 20:06:52 UTC] === IGV DEBUGGING ===
+[16-Jan-2026 20:06:53 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Raw: 0.00, Type: string
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Float: 0
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Formatted: 0.00
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Raw: , Type: NULL
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Raw: 0.00, Type: string
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Float: 0
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Formatted: 0.00
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Float: 2771477
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Formatted: 2771477.00
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Float: 3332744.17
+[23-Jan-2026 17:35:14 UTC] IGV Processing - Formatted: 3332744.17
+[23-Jan-2026 17:35:14 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:35:14 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:35:14 UTC] Registro 1: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:35:14 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:35:14 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[23-Jan-2026 17:35:14 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[23-Jan-2026 17:35:15 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:35:16 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Raw: 0.00, Type: string
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Float: 0
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Formatted: 0.00
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Raw: , Type: NULL
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Raw: 0.00, Type: string
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Float: 0
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Formatted: 0.00
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Float: 2771477
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Formatted: 2771477.00
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Float: 3332744.17
+[23-Jan-2026 17:36:17 UTC] IGV Processing - Formatted: 3332744.17
+[23-Jan-2026 17:36:17 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:36:17 UTC] Registro 0: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:36:17 UTC] Registro 1: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:36:17 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[23-Jan-2026 17:36:17 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[23-Jan-2026 17:36:17 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[23-Jan-2026 17:36:18 UTC] === IGV DEBUGGING ===
+[23-Jan-2026 17:36:19 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Raw: , Type: NULL
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Raw: 0.00, Type: string
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Float: 0
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Formatted: 0.00
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Raw: 0.00, Type: string
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Float: 0
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Formatted: 0.00
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Float: 2771477
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Formatted: 2771477.00
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Float: 3332744.17
+[28-Jan-2026 16:09:33 UTC] IGV Processing - Formatted: 3332744.17
+[28-Jan-2026 16:09:33 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 16:09:33 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 16:09:33 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 16:09:33 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 16:09:33 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[28-Jan-2026 16:09:33 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[28-Jan-2026 16:09:34 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 16:09:36 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Raw: , Type: NULL
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Raw: 0.00, Type: string
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Float: 0
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Formatted: 0.00
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Raw: 0.00, Type: string
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Float: 0
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Formatted: 0.00
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Float: 2771477
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Formatted: 2771477.00
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Float: 3332744.17
+[28-Jan-2026 19:38:53 UTC] IGV Processing - Formatted: 3332744.17
+[28-Jan-2026 19:38:53 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 19:38:53 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 19:38:53 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 19:38:53 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[28-Jan-2026 19:38:53 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[28-Jan-2026 19:38:53 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[28-Jan-2026 19:38:54 UTC] === IGV DEBUGGING ===
+[28-Jan-2026 19:38:55 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Raw: , Type: NULL
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Float: 2771477
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Formatted: 2771477.00
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Float: 3332744.17
+[29-Jan-2026 17:07:27 UTC] IGV Processing - Formatted: 3332744.17
+[29-Jan-2026 17:07:27 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:07:27 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:07:27 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:07:27 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:07:27 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[29-Jan-2026 17:07:27 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[29-Jan-2026 17:07:28 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:07:29 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Raw: , Type: NULL
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Raw: 120.00, Type: string
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Float: 120
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Formatted: 120.00
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Float: 2771477
+[29-Jan-2026 17:36:15 UTC] IGV Processing - Formatted: 2771477.00
+[29-Jan-2026 17:36:15 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:36:15 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:36:15 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:36:15 UTC] Registro 2: 
+            ID: 179
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 120.00
+            IGV_Formatted: 120.00
+        
+[29-Jan-2026 17:36:15 UTC] Registro 3: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:36:15 UTC] Registro 4: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[29-Jan-2026 17:36:16 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:36:17 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Raw: , Type: NULL
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Raw: 123.00, Type: string
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Float: 123
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Formatted: 123.00
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Float: 0
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Float: 2771477
+[29-Jan-2026 17:39:43 UTC] IGV Processing - Formatted: 2771477.00
+[29-Jan-2026 17:39:43 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:39:43 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:39:43 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:39:43 UTC] Registro 2: 
+            ID: 180
+            Empresa: ALIANZA MULTISERVICIOS E.I.R.L.
+            IGV_Raw: 123.00
+            IGV_Formatted: 123.00
+        
+[29-Jan-2026 17:39:43 UTC] Registro 3: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 17:39:43 UTC] Registro 4: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[29-Jan-2026 17:39:44 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 17:39:45 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Raw: , Type: NULL
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Float: 0
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Float: 0
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Float: 2771477
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Formatted: 2771477.00
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Float: 3332744.17
+[29-Jan-2026 21:01:56 UTC] IGV Processing - Formatted: 3332744.17
+[29-Jan-2026 21:01:56 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:01:56 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:01:56 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:01:56 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:01:56 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[29-Jan-2026 21:01:56 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[29-Jan-2026 21:01:57 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:01:58 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Raw: , Type: NULL
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Float: 0
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Raw: 0.00, Type: string
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Float: 0
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Formatted: 0.00
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Float: 2771477
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Formatted: 2771477.00
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Float: 3332744.17
+[29-Jan-2026 21:14:09 UTC] IGV Processing - Formatted: 3332744.17
+[29-Jan-2026 21:14:09 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:14:09 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:14:09 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:14:09 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[29-Jan-2026 21:14:09 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[29-Jan-2026 21:14:09 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[29-Jan-2026 21:14:10 UTC] === IGV DEBUGGING ===
+[29-Jan-2026 21:14:11 UTC] === IGV DEBUGGING ===
+[30-Jan-2026 16:03:14 UTC] === IGV DEBUGGING ===
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Raw: , Type: NULL
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Raw: 0.00, Type: string
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Float: 0
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Formatted: 0.00
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Raw: 0.00, Type: string
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Float: 0
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Formatted: 0.00
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Float: 2771477
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Formatted: 2771477.00
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Float: 3332744.17
+[30-Jan-2026 16:03:16 UTC] IGV Processing - Formatted: 3332744.17
+[30-Jan-2026 16:03:16 UTC] === IGV DEBUGGING ===
+[30-Jan-2026 16:03:16 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[30-Jan-2026 16:03:16 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[30-Jan-2026 16:03:16 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[30-Jan-2026 16:03:16 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[30-Jan-2026 16:03:16 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[30-Jan-2026 16:03:18 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Raw: 0.00, Type: string
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Float: 0
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Formatted: 0.00
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 14:29:24 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 14:29:24 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:29:24 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:29:24 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:29:24 UTC] Registro 2: 
+            ID: 184
+            Empresa: ALPHA CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:29:24 UTC] Registro 3: 
+            ID: 185
+            Empresa: ALPHA CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:29:24 UTC] Registro 4: 
+            ID: 186
+            Empresa: ALPHA CONTRATISTAS E.I.R.L.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:29:25 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:29:26 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Raw: 0.00, Type: string
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Float: 0
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Formatted: 0.00
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Raw: 0.00, Type: string
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Float: 0
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Formatted: 0.00
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Float: 2771477
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Formatted: 2771477.00
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Float: 3332744.17
+[31-Jan-2026 14:31:22 UTC] IGV Processing - Formatted: 3332744.17
+[31-Jan-2026 14:31:22 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:31:22 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:31:22 UTC] Registro 1: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:31:22 UTC] Registro 2: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 14:31:22 UTC] Registro 3: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[31-Jan-2026 14:31:22 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[31-Jan-2026 14:31:23 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 14:31:24 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Raw: 0.00, Type: string
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Float: 0
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Formatted: 0.00
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Raw: , Type: NULL
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Raw: 0.00, Type: string
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Float: 0
+[31-Jan-2026 16:33:37 UTC] IGV Processing - Formatted: 0.00
+[31-Jan-2026 16:33:37 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 16:33:37 UTC] Registro 0: 
+            ID: 178
+            Empresa: V & S METALS S.A.C
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 16:33:37 UTC] Registro 1: 
+            ID: 190
+            Empresa: CONSTRUCTION COMPANY CABANILLAS S.A.C
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 16:33:37 UTC] Registro 2: 
+            ID: 191
+            Empresa: OLEOCENTRO NAELYD S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 16:33:37 UTC] Registro 3: 
+            ID: 192
+            Empresa: NEGOCIOS PLASENCIA S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 16:33:37 UTC] Registro 4: 
+            ID: 176
+            Empresa: R & R INVENTA S.A.C.
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[31-Jan-2026 16:33:38 UTC] === IGV DEBUGGING ===
+[31-Jan-2026 16:33:39 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:00 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Float: 0
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Float: 2771477
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Formatted: 2771477.00
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Float: 3332744.17
+[18-Feb-2026 14:59:01 UTC] IGV Processing - Formatted: 3332744.17
+[18-Feb-2026 14:59:01 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:01 UTC] Registro 0: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:01 UTC] Registro 1: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[18-Feb-2026 14:59:01 UTC] Registro 2: 
+            ID: 196
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:01 UTC] Registro 3: 
+            ID: 195
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:01 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[18-Feb-2026 14:59:02 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Float: 0
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Raw: 344385.55, Type: string
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Float: 344385.55
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Formatted: 344385.55
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Float: 0
+[18-Feb-2026 14:59:14 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 14:59:14 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:14 UTC] Registro 0: 
+            ID: 63
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:14 UTC] Registro 1: 
+            ID: 69
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 344385.55
+            IGV_Formatted: 344385.55
+        
+[18-Feb-2026 14:59:14 UTC] Registro 2: 
+            ID: 60
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Float: 0
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Float: 2771477
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Formatted: 2771477.00
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Float: 3332744.17
+[18-Feb-2026 14:59:17 UTC] IGV Processing - Formatted: 3332744.17
+[18-Feb-2026 14:59:17 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 14:59:17 UTC] Registro 0: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:17 UTC] Registro 1: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[18-Feb-2026 14:59:17 UTC] Registro 2: 
+            ID: 196
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:17 UTC] Registro 3: 
+            ID: 195
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 14:59:17 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Float: 0
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Raw: 2771477.00, Type: string
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Float: 2771477
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Formatted: 2771477.00
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Raw: , Type: NULL
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Raw: 3332744.17, Type: string
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Float: 3332744.17
+[18-Feb-2026 16:52:40 UTC] IGV Processing - Formatted: 3332744.17
+[18-Feb-2026 16:52:40 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:52:40 UTC] Registro 0: 
+            ID: 84
+            Empresa: ALCAORO S.A.C. (QUILICHE)
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 16:52:40 UTC] Registro 1: 
+            ID: 105
+            Empresa: WKD TRADING S.A.C.
+            IGV_Raw: 2771477.00
+            IGV_Formatted: 2771477.00
+        
+[18-Feb-2026 16:52:40 UTC] Registro 2: 
+            ID: 196
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 16:52:40 UTC] Registro 3: 
+            ID: 195
+            Empresa: DEAL MINING S.A.C.
+            IGV_Raw: 
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 16:52:40 UTC] Registro 4: 
+            ID: 36
+            Empresa: REYNA SIMEON ANA FERNANDA
+            IGV_Raw: 3332744.17
+            IGV_Formatted: 3332744.17
+        
+[18-Feb-2026 16:52:41 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:52:42 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:56:09 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Float: 0
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Raw: 344385.55, Type: string
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Float: 344385.55
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Formatted: 344385.55
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Raw: 0.00, Type: string
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Float: 0
+[18-Feb-2026 16:56:12 UTC] IGV Processing - Formatted: 0.00
+[18-Feb-2026 16:56:12 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:56:12 UTC] Registro 0: 
+            ID: 63
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 16:56:12 UTC] Registro 1: 
+            ID: 69
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 344385.55
+            IGV_Formatted: 344385.55
+        
+[18-Feb-2026 16:56:12 UTC] Registro 2: 
+            ID: 60
+            Empresa: MUÑOZ LLATAS KEYLI TALIA
+            IGV_Raw: 0.00
+            IGV_Formatted: 0.00
+        
+[18-Feb-2026 16:57:47 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:57:48 UTC] === IGV DEBUGGING ===
+[18-Feb-2026 16:57:49 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 20:00:59 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 20:01:00 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 20:01:01 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 22:11:36 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[03-Mar-2026 22:11:36 UTC] IGV Processing - Float: 2071473
+[03-Mar-2026 22:11:36 UTC] IGV Processing - Formatted: 2071473.00
+[03-Mar-2026 22:11:36 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 22:11:36 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[03-Mar-2026 22:11:37 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 22:11:38 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[03-Mar-2026 22:11:38 UTC] IGV Processing - Float: 2071473
+[03-Mar-2026 22:11:38 UTC] IGV Processing - Formatted: 2071473.00
+[03-Mar-2026 22:11:38 UTC] === IGV DEBUGGING ===
+[03-Mar-2026 22:11:38 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Float: 3536925
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Formatted: 3536925.00
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Float: 2071473
+[04-Mar-2026 16:19:02 UTC] IGV Processing - Formatted: 2071473.00
+[04-Mar-2026 16:19:02 UTC] === IGV DEBUGGING ===
+[04-Mar-2026 16:19:02 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[04-Mar-2026 16:19:03 UTC] Registro 1: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[04-Mar-2026 16:19:04 UTC] === IGV DEBUGGING ===
+[04-Mar-2026 16:19:05 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[04-Mar-2026 16:19:05 UTC] IGV Processing - Float: 2071473
+[04-Mar-2026 16:19:05 UTC] IGV Processing - Formatted: 2071473.00
+[04-Mar-2026 16:19:05 UTC] === IGV DEBUGGING ===
+[04-Mar-2026 16:19:05 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Float: 3536925
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Formatted: 3536925.00
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 13:36:17 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 13:36:17 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 13:36:17 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[05-Mar-2026 13:36:18 UTC] Registro 1: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 13:36:19 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 13:36:20 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 13:36:20 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 13:36:20 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 13:36:20 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 13:36:20 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Raw: 216787.00, Type: string
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Float: 216787
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Formatted: 216787.00
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Float: 3536925
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Formatted: 3536925.00
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Raw: 216787.00, Type: string
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Float: 216787
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Formatted: 216787.00
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Raw: 216787.00, Type: string
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Float: 216787
+[05-Mar-2026 15:51:53 UTC] IGV Processing - Formatted: 216787.00
+[05-Mar-2026 15:51:53 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 15:51:53 UTC] Registro 0: 
+            ID: 241
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[05-Mar-2026 15:51:53 UTC] Registro 1: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[05-Mar-2026 15:51:53 UTC] Registro 2: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 15:51:53 UTC] Registro 3: 
+            ID: 238
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[05-Mar-2026 15:51:53 UTC] Registro 4: 
+            ID: 239
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[05-Mar-2026 15:51:54 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 15:51:55 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 15:51:55 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 15:51:56 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 15:51:56 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 15:51:56 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Float: 3536925
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Formatted: 3536925.00
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Raw: 216787.00, Type: string
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Float: 216787
+[05-Mar-2026 19:52:09 UTC] IGV Processing - Formatted: 216787.00
+[05-Mar-2026 19:52:09 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 19:52:09 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[05-Mar-2026 19:52:09 UTC] Registro 1: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 19:52:09 UTC] Registro 2: 
+            ID: 240
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[05-Mar-2026 19:52:10 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 19:52:11 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 19:52:11 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 19:52:11 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 19:52:11 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 19:52:11 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Float: 3536925
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Formatted: 3536925.00
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Raw: 216787.00, Type: string
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Float: 216787
+[05-Mar-2026 22:09:18 UTC] IGV Processing - Formatted: 216787.00
+[05-Mar-2026 22:09:18 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 22:09:18 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[05-Mar-2026 22:09:18 UTC] Registro 1: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[05-Mar-2026 22:09:18 UTC] Registro 2: 
+            ID: 240
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[05-Mar-2026 22:09:19 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 22:09:21 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[05-Mar-2026 22:09:21 UTC] IGV Processing - Float: 2071473
+[05-Mar-2026 22:09:21 UTC] IGV Processing - Formatted: 2071473.00
+[05-Mar-2026 22:09:21 UTC] === IGV DEBUGGING ===
+[05-Mar-2026 22:09:21 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[21-Mar-2026 14:04:20 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[21-Mar-2026 14:04:22 UTC] IGV Processing - Float: 3536925
+[21-Mar-2026 14:04:25 UTC] IGV Processing - Formatted: 3536925.00
+[21-Mar-2026 14:04:26 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[21-Mar-2026 14:04:27 UTC] IGV Processing - Float: 3173375
+[21-Mar-2026 14:04:29 UTC] IGV Processing - Formatted: 3173375.00
+[21-Mar-2026 14:04:30 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[21-Mar-2026 14:04:32 UTC] IGV Processing - Float: 3159249
+[21-Mar-2026 14:04:34 UTC] IGV Processing - Formatted: 3159249.00
+[21-Mar-2026 14:04:35 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[21-Mar-2026 14:04:36 UTC] IGV Processing - Float: 2071473
+[21-Mar-2026 14:04:37 UTC] IGV Processing - Formatted: 2071473.00
+[21-Mar-2026 14:04:39 UTC] IGV Processing - Raw: 737501.00, Type: string
+[21-Mar-2026 14:04:40 UTC] IGV Processing - Float: 737501
+[21-Mar-2026 14:04:40 UTC] IGV Processing - Formatted: 737501.00
+[21-Mar-2026 14:04:41 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:04:42 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[21-Mar-2026 14:04:43 UTC] Registro 1: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[21-Mar-2026 14:04:45 UTC] Registro 2: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[21-Mar-2026 14:04:46 UTC] Registro 3: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[21-Mar-2026 14:04:46 UTC] Registro 4: 
+            ID: 264
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 737501.00
+            IGV_Formatted: 737501.00
+        
+[21-Mar-2026 14:04:49 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:04:52 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[21-Mar-2026 14:04:52 UTC] IGV Processing - Float: 2071473
+[21-Mar-2026 14:04:54 UTC] IGV Processing - Formatted: 2071473.00
+[21-Mar-2026 14:04:54 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:04:55 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[21-Mar-2026 14:30:41 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[21-Mar-2026 14:30:41 UTC] IGV Processing - Float: 3536925
+[21-Mar-2026 14:30:42 UTC] IGV Processing - Formatted: 3536925.00
+[21-Mar-2026 14:30:42 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[21-Mar-2026 14:30:43 UTC] IGV Processing - Float: 3173375
+[21-Mar-2026 14:30:44 UTC] IGV Processing - Formatted: 3173375.00
+[21-Mar-2026 14:30:44 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[21-Mar-2026 14:30:46 UTC] IGV Processing - Float: 3159249
+[21-Mar-2026 14:30:47 UTC] IGV Processing - Formatted: 3159249.00
+[21-Mar-2026 14:30:48 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[21-Mar-2026 14:30:48 UTC] IGV Processing - Float: 2071473
+[21-Mar-2026 14:30:49 UTC] IGV Processing - Formatted: 2071473.00
+[21-Mar-2026 14:30:50 UTC] IGV Processing - Raw: 737501.00, Type: string
+[21-Mar-2026 14:30:50 UTC] IGV Processing - Float: 737501
+[21-Mar-2026 14:30:51 UTC] IGV Processing - Formatted: 737501.00
+[21-Mar-2026 14:30:51 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:30:52 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[21-Mar-2026 14:30:53 UTC] Registro 1: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[21-Mar-2026 14:30:54 UTC] Registro 2: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[21-Mar-2026 14:30:55 UTC] Registro 3: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[21-Mar-2026 14:30:56 UTC] Registro 4: 
+            ID: 264
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 737501.00
+            IGV_Formatted: 737501.00
+        
+[21-Mar-2026 14:30:57 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:30:58 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[21-Mar-2026 14:30:59 UTC] IGV Processing - Float: 2071473
+[21-Mar-2026 14:30:59 UTC] IGV Processing - Formatted: 2071473.00
+[21-Mar-2026 14:31:00 UTC] === IGV DEBUGGING ===
+[21-Mar-2026 14:31:01 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Float: 3536925
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Formatted: 3536925.00
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Float: 3173375
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Formatted: 3173375.00
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Float: 3159249
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Formatted: 3159249.00
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Raw: 737501.00, Type: string
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Float: 737501
+[23-Mar-2026 06:16:02 UTC] IGV Processing - Formatted: 737501.00
+[23-Mar-2026 06:16:02 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 06:16:02 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[23-Mar-2026 06:16:02 UTC] Registro 1: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[23-Mar-2026 06:16:02 UTC] Registro 2: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[23-Mar-2026 06:16:02 UTC] Registro 3: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 06:16:02 UTC] Registro 4: 
+            ID: 264
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 737501.00
+            IGV_Formatted: 737501.00
+        
+[23-Mar-2026 06:16:03 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 06:16:04 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 06:16:05 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 06:16:05 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 06:16:05 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 06:16:05 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Float: 3536925
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Formatted: 3536925.00
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Float: 3173375
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Formatted: 3173375.00
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Float: 3159249
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Formatted: 3159249.00
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Raw: 737501.00, Type: string
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Float: 737501
+[23-Mar-2026 13:22:48 UTC] IGV Processing - Formatted: 737501.00
+[23-Mar-2026 13:22:48 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:22:48 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[23-Mar-2026 13:22:48 UTC] Registro 1: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[23-Mar-2026 13:22:48 UTC] Registro 2: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[23-Mar-2026 13:22:48 UTC] Registro 3: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 13:22:48 UTC] Registro 4: 
+            ID: 264
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 737501.00
+            IGV_Formatted: 737501.00
+        
+[23-Mar-2026 13:22:49 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:22:51 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 13:22:51 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 13:22:51 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 13:22:51 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:22:51 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Float: 3536925
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Formatted: 3536925.00
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Float: 3173375
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Formatted: 3173375.00
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Float: 3159249
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Formatted: 3159249.00
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Raw: 737501.00, Type: string
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Float: 737501
+[23-Mar-2026 13:50:58 UTC] IGV Processing - Formatted: 737501.00
+[23-Mar-2026 13:50:58 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:50:58 UTC] Registro 0: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[23-Mar-2026 13:50:58 UTC] Registro 1: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[23-Mar-2026 13:50:58 UTC] Registro 2: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[23-Mar-2026 13:50:58 UTC] Registro 3: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[23-Mar-2026 13:50:58 UTC] Registro 4: 
+            ID: 264
+            Empresa: GRUPO FERROCONS E.I.R.L.
+            IGV_Raw: 737501.00
+            IGV_Formatted: 737501.00
+        
+[23-Mar-2026 13:51:00 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:51:02 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[23-Mar-2026 13:51:02 UTC] IGV Processing - Float: 2071473
+[23-Mar-2026 13:51:02 UTC] IGV Processing - Formatted: 2071473.00
+[23-Mar-2026 13:51:02 UTC] === IGV DEBUGGING ===
+[23-Mar-2026 13:51:02 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Raw: 10835.00, Type: string
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Float: 10835
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Formatted: 10835.00
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Float: 3536925
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Formatted: 3536925.00
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Float: 3173375
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Formatted: 3173375.00
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Float: 3159249
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Formatted: 3159249.00
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 06:51:33 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 06:51:33 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:51:33 UTC] Registro 0: 
+            ID: 266
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 10835.00
+            IGV_Formatted: 10835.00
+        
+[24-Mar-2026 06:51:33 UTC] Registro 1: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[24-Mar-2026 06:51:33 UTC] Registro 2: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[24-Mar-2026 06:51:33 UTC] Registro 3: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[24-Mar-2026 06:51:33 UTC] Registro 4: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 06:51:34 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:51:36 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 06:51:36 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 06:51:36 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 06:51:36 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:51:36 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Raw: 10835.00, Type: string
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Float: 10835
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Formatted: 10835.00
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Raw: 3536925.00, Type: string
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Float: 3536925
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Formatted: 3536925.00
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Raw: 3173375.00, Type: string
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Float: 3173375
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Formatted: 3173375.00
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Raw: 3159249.00, Type: string
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Float: 3159249
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Formatted: 3159249.00
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 06:59:23 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 06:59:23 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:59:23 UTC] Registro 0: 
+            ID: 266
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 10835.00
+            IGV_Formatted: 10835.00
+        
+[24-Mar-2026 06:59:23 UTC] Registro 1: 
+            ID: 227
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 3536925.00
+            IGV_Formatted: 3536925.00
+        
+[24-Mar-2026 06:59:23 UTC] Registro 2: 
+            ID: 262
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 3173375.00
+            IGV_Formatted: 3173375.00
+        
+[24-Mar-2026 06:59:23 UTC] Registro 3: 
+            ID: 254
+            Empresa: CORPORACION CGL E.I.R.L.
+            IGV_Raw: 3159249.00
+            IGV_Formatted: 3159249.00
+        
+[24-Mar-2026 06:59:23 UTC] Registro 4: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 06:59:25 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:59:26 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 06:59:26 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 06:59:26 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 06:59:26 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 06:59:26 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Raw: 216787.00, Type: string
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Float: 216787
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Formatted: 216787.00
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 07:02:34 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 07:02:34 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 07:02:34 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 07:02:34 UTC] Registro 1: 
+            ID: 240
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[24-Mar-2026 07:02:34 UTC] Registro 2: 
+            ID: 250
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 07:02:34 UTC] Registro 3: 
+            ID: 249
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 07:02:36 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 07:02:37 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 07:02:37 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 07:02:37 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 07:02:37 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 07:02:37 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Raw: 216787.00, Type: string
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Float: 216787
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Formatted: 216787.00
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 13:55:46 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 13:55:46 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 13:55:46 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 13:55:46 UTC] Registro 1: 
+            ID: 240
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[24-Mar-2026 13:55:46 UTC] Registro 2: 
+            ID: 250
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 13:55:46 UTC] Registro 3: 
+            ID: 249
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 13:55:48 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 13:55:49 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 13:55:49 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 13:55:49 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 13:55:49 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 13:55:49 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Raw: 216787.00, Type: string
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Float: 216787
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Formatted: 216787.00
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Raw: 1871269.00, Type: string
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Float: 1871269
+[24-Mar-2026 15:12:01 UTC] IGV Processing - Formatted: 1871269.00
+[24-Mar-2026 15:12:01 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 15:12:01 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 15:12:01 UTC] Registro 1: 
+            ID: 240
+            Empresa: LEON & MELLIZOS E.I.R.L.
+            IGV_Raw: 216787.00
+            IGV_Formatted: 216787.00
+        
+[24-Mar-2026 15:12:01 UTC] Registro 2: 
+            ID: 250
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 15:12:01 UTC] Registro 3: 
+            ID: 249
+            Empresa: CORPORACION MAFENOR E.I.R.L.
+            IGV_Raw: 1871269.00
+            IGV_Formatted: 1871269.00
+        
+[24-Mar-2026 15:12:02 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 15:12:03 UTC] IGV Processing - Raw: 2071473.00, Type: string
+[24-Mar-2026 15:12:03 UTC] IGV Processing - Float: 2071473
+[24-Mar-2026 15:12:03 UTC] IGV Processing - Formatted: 2071473.00
+[24-Mar-2026 15:12:03 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 15:12:03 UTC] Registro 0: 
+            ID: 226
+            Empresa: PIEDRA AZUL DISTRIBUIDORA E.I.R.L.
+            IGV_Raw: 2071473.00
+            IGV_Formatted: 2071473.00
+        
+[24-Mar-2026 20:57:41 UTC] IGV Processing - Raw: 1492964.96, Type: string
+[24-Mar-2026 20:57:41 UTC] IGV Processing - Float: 1492964.96
+[24-Mar-2026 20:57:41 UTC] IGV Processing - Formatted: 1492964.96
+[24-Mar-2026 20:57:41 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 20:57:41 UTC] Registro 0: 
+            ID: 272
+            Empresa: SERVICIOS E INVERSIONES DEL MONTE E.I.R.L.
+            IGV_Raw: 1492964.96
+            IGV_Formatted: 1492964.96
+        
+[24-Mar-2026 20:57:42 UTC] === IGV DEBUGGING ===
+[24-Mar-2026 20:57:44 UTC] === IGV DEBUGGING ===

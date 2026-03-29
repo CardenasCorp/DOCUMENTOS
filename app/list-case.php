@@ -15,6 +15,14 @@ require_once 'session_check.php';
     <link rel="stylesheet" href="../style/modals/modal-complaint.css">
     <link rel="icon" href="../img/favicon.ico" >
     <title>Lista de documentos</title>
+    <style>
+        .pagination button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,12 +34,15 @@ require_once 'session_check.php';
                 <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
                 <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
                 <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
+                <li><a href="tabla-casos.php"><i class="bi bi-table"></i> <span>Coactiva</span></a></li>
+                <li><a href="lista-empresas.php"><i class="bi bi-building-check"></i> <span>Lista de Empresas (Coactivas)</span></a></li>
                 <hr>
                 <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                 <hr>
                 <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
             </ul>
         </div>
+
         <div class="main-content">
             <a href="../index.php"><i class="bi bi-arrow-left-square-fill"></i></a>
             <hr>
@@ -55,12 +66,6 @@ require_once 'session_check.php';
                                 <option value="5">Fiscalizacón Total-Renta</option>
                                 <option value="6">Cruce de información</option>
                             </select>
-                            <select id="filterStatus" class="filter-select">
-                                <option value="">Todos los estados</option>
-                                <option value="1">Notificado</option>
-                                <option value="2">Presentado</option>
-                                <option value="3">Nueva Fecha</option>
-                            </select>
                             <select id="filterStage" class="filter-select">
                                 <option value="">Todas las etapas</option>
                                 <option value="1">1er Requerimiento</option>
@@ -70,12 +75,26 @@ require_once 'session_check.php';
                                 <option value="11">5to Requerimiento</option>
                                 <option value="12">6to Requerimiento</option>
                                 <option value="13">7mo Requerimiento</option>
-                                <option value="5">Cierre</option>
-                                <option value="6">Reclamación</option>
-                                <option value="7">Apelación</option>
+                                <option value="5">Cierre/Valores</option>
+                                <option value="16">Coactiva sin R.</option>
+                                <option value="6">R. Reclamación</option>
+                                <option value="14">Coactiva x R.</option>
+                                <option value="7">R. Apelación</option>
+                                <option value="15">Coactiva x T.F.</option>
                                 <option value="8">Proceso Contencioso</option>
                                 <option value="10">Finalizado</option>
                             </select>
+                            <select id="filterStatus" class="filter-select">
+                                <option value="">Todos los estados</option>
+                                <option value="1">Notificado</option>
+                                <option value="2">Presentado</option>
+                                <option value="3">Nueva Fecha</option>
+                            </select>
+                            <select id="filterPeriodo" class="filter-select">
+                                <option value="">Todos los periodos</option>
+                                <!-- Se pobla dinámicamente -->
+                            </select>
+                            
                         </div>
                     </div>
                     <div class="employee-container">

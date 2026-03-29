@@ -44,7 +44,7 @@ function conectarDB() {
     }
 }
 
-// Opcional: Verificar que el usuario todavía existe en la base de datos
+// Verificar que el usuario todavía existe en la base de datos
 try {
     $pdo = conectarDB();
     if ($pdo) {
@@ -65,13 +65,15 @@ try {
     // Continuar la sesión aunque falle la verificación para no interrumpir al usuario
 }
 
-// RESTRICCIÓN EXCLUSIVA PARA OPERACIONES
-// Solo pueden acceder a empresas.php, cualquier otra página los redirige a empresas.php
-if (isset($_SESSION['departamento']) && $_SESSION['departamento'] === 'OPERACIONES') {
+// RESTRICCIÓN PARA OPERACIONES Y CONSULTING
+// Solo pueden acceder a empresas.php y tabla-casos.php
+$departamentos_restringidos = ['OPERACIONES', 'CONSULTING'];
+
+if (isset($_SESSION['departamento']) && in_array($_SESSION['departamento'], $departamentos_restringidos)) {
     $current_page = basename($_SERVER['PHP_SELF']);
     
-    // ÚNICAS páginas permitidas para OPERACIONES
-    $allowed_pages = ['empresas.php', 'logout.php'];
+    // ÚNICAS páginas permitidas para estos departamentos
+    $allowed_pages = ['empresas.php', 'logout.php', 'tabla-casos.php', 'lista-empresas.php'];
     
     // Si intenta acceder a cualquier otra página, lo redirigimos a app/empresas.php
     if (!in_array($current_page, $allowed_pages)) {

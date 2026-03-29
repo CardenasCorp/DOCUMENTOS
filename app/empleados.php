@@ -15,6 +15,14 @@ require_once 'session_check.php';
     <link rel="stylesheet" href="../style/modals/modal-edit.css">
     <link rel="icon" href="../img/favicon.ico" >
     <title>Empleados</title>
+    <style>
+        .pagination-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;    
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,12 +34,15 @@ require_once 'session_check.php';
                 <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
                 <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
                 <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
+                <li><a href="tabla-casos.php"><i class="bi bi-table"></i> <span>Coactiva</span></a></li>
+                <li><a href="lista-empresas.php"><i class="bi bi-building-check"></i> <span>Lista de Empresas (Coactivas)</span></a></li>
                 <hr>
                 <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                 <hr>
                 <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
             </ul>
         </div>
+
         <div class="main-content">
             <a href="../index.php"><i class="bi bi-arrow-left-square-fill"></i></a>
                     <hr>

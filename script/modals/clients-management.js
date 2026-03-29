@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Estilo para botones de paginación deshabilitados
+    const s = document.createElement('style');
+    s.textContent = '.pagination-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; box-shadow: none !important; }';
+    document.head.appendChild(s);
+
     // Variables globales
     let currentPage = 1;
     const clientsPerPage = 6;
@@ -28,23 +33,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeHistoryModalButton = document.getElementById('closeModalHistory');
     const addressesContainer = document.getElementById('addressesContainer');
     const addAddressButton = document.getElementById('addAddressButton');
+    const managersContainer = document.getElementById('managersContainer');
+    const addManagerButton = document.getElementById('addManagerButton');
+    const historyTabs = document.querySelectorAll('.history-tabs .tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Elementos del DOM - Modal de Direcciones
     const addressModal = document.getElementById('myModalAddress');
     const closeAddressModalButton = document.getElementById('closeModalAddress');
+    const closeAddressModalBtn = document.getElementById('closeModalAddressBtn');
     const addressForm = document.getElementById('addressForm');
     const addressModalTitle = document.getElementById('addressModalTitle');
 
-    // Elementos del DOM - Gerentes
-    const managersContainer = document.getElementById('managersContainer');
-    const addManagerButton = document.getElementById('addManagerButton');
+    // Elementos del DOM - Modal de Gerentes
     const managerModal = document.getElementById('myModalManager');
     const closeManagerModalButton = document.getElementById('closeModalManager');
     const managerForm = document.getElementById('managerForm');
     const managerModalTitle = document.getElementById('managerModalTitle');
-    const historyTabs = document.querySelectorAll('.history-tabs .tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
 
     // Función para inicializar event listeners
     function initializeEventListeners() {
+        console.log('Inicializando event listeners...');
+
         // Verificar elementos críticos
         if (!clientContainer) {
             console.error('CRITICAL: clientContainer no encontrado');
@@ -52,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Event Listeners - Clientes
-        closeModalButton?.addEventListener('click', closeModal);
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', closeModal);
+        }
+        
         window.addEventListener('click', (event) => {
             if (event.target === modal) closeModal();
         });
@@ -73,18 +86,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Event Listeners - Historial de Direcciones
-        closeHistoryModalButton?.addEventListener('click', closeHistoryModal);
+        if (closeHistoryModalButton) {
+            closeHistoryModalButton.addEventListener('click', closeHistoryModal);
+        }
+        
         window.addEventListener('click', (event) => {
             if (event.target === historyModal) closeHistoryModal();
         });
 
-        closeAddressModalButton?.addEventListener('click', closeAddressModal);
+        // Event Listeners - Modal de Direcciones (CORREGIDOS)
+        if (closeAddressModalButton) {
+            closeAddressModalButton.addEventListener('click', closeAddressModal);
+        }
+        if (closeAddressModalBtn) {
+            closeAddressModalBtn.addEventListener('click', closeAddressModal);
+        }
         window.addEventListener('click', (event) => {
             if (event.target === addressModal) closeAddressModal();
         });
 
         if (addAddressButton) {
-            addAddressButton.addEventListener('click', () => openAddressModal());
+            console.log('Botón agregar dirección encontrado, agregando event listener');
+            addAddressButton.addEventListener('click', function() {
+                console.log('Botón agregar dirección clickeado, currentClientId:', currentClientId);
+                openAddressModal();
+            });
+        } else {
+            console.error('ERROR: Botón agregar dirección NO encontrado en el DOM');
         }
 
         if (addressForm) {
@@ -92,7 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Event Listeners - Gerentes
-        closeManagerModalButton?.addEventListener('click', closeManagerModal);
+        if (closeManagerModalButton) {
+            closeManagerModalButton.addEventListener('click', closeManagerModal);
+        }
+        
         window.addEventListener('click', (event) => {
             if (event.target === managerModal) closeManagerModal();
         });
@@ -113,10 +144,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        console.log('Event listeners inicializados correctamente');
         return true;
     }
 
-    // Función CORREGIDA para formatear fechas
+    // Función para formatear fechas
     function formatDate(dateString) {
         if (!dateString) return 'N/A';
 
@@ -131,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para cambiar entre pestañas
     function switchTab(tabName) {
+        console.log('Cambiando a pestaña:', tabName);
+        
         // Remover clase active de todos los tabs y contenidos
         historyTabs.forEach(tab => tab.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
@@ -177,17 +211,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para abrir el modal de historial
     function openHistoryModal(clientId) {
+        console.log('Abriendo historial para cliente:', clientId);
+        
         if (!historyModal) {
             console.error('Modal de historial no encontrado');
             return;
         }
 
-        currentClientId = clientId;
+        // Asegurar que clientId sea un número
+        currentClientId = parseInt(clientId);
+        console.log('currentClientId establecido:', currentClientId);
+        
         historyModal.style.display = 'block';
 
         // Cargar ambos historiales
-        loadAddresses(clientId);
-        loadManagers(clientId);
+        loadAddresses(currentClientId);
+        loadManagers(currentClientId);
 
         // Resetear a la pestaña de direcciones por defecto
         switchTab('direcciones');
@@ -201,10 +240,23 @@ document.addEventListener('DOMContentLoaded', function () {
         currentClientId = null;
     }
 
-    // Función para abrir el modal de dirección (agregar/editar)
+    // Función para abrir el modal de dirección (agregar/editar) - CORREGIDA
     function openAddressModal(address = null) {
+        console.log('=== ABRIR MODAL DIRECCIÓN ===');
+        console.log('currentClientId:', currentClientId);
+        console.log('addressModal disponible:', !!addressModal);
+        console.log('address data:', address);
+
         if (!addressModal) {
-            console.error('Modal de dirección no encontrado');
+            console.error('Modal de dirección no encontrado en el DOM');
+            alert('Error: No se puede abrir el modal de dirección');
+            return;
+        }
+
+        // VERIFICACIÓN CRÍTICA - Asegurar que currentClientId esté definido
+        if (!currentClientId) {
+            console.error('ERROR: currentClientId no está definido');
+            alert('Error: No se ha seleccionado una empresa. Por favor, abra el historial de una empresa primero.');
             return;
         }
 
@@ -229,7 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Establecer fecha de inicio por defecto como hoy
             document.getElementById('fecha_inicio').value = new Date().toISOString().split('T')[0];
         }
+        
         addressModal.style.display = 'block';
+        console.log('Modal de dirección abierto exitosamente');
     }
 
     // Función para cerrar el modal de dirección
@@ -306,6 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Event listener para el botón de historial
         clientItem.querySelector('.history-btn').addEventListener('click', () => {
+            console.log('Botón historial clickeado para cliente:', client.id);
             openHistoryModal(client.id);
         });
 
@@ -351,6 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Event listeners para los botones
         addressItem.querySelector('.edit-address-btn').addEventListener('click', () => {
+            console.log('Editando dirección:', address.id);
             openAddressModal(address);
         });
 
@@ -388,8 +444,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="manager-actions">
             <button class="edit-manager-btn">
                 <i class="bi bi-pencil"></i> Editar
-            </button>
-            <button class="delete-manager-btn">
+                </button>
+                <button class="delete-manager-btn">
                 <i class="bi bi-trash"></i> Eliminar
             </button>
         </div>
@@ -416,41 +472,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (totalPages <= 1) return;
 
-        // Botón Anterior
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.className = 'pagination-btn';
-            prevButton.innerHTML = '&laquo; Anterior';
-            prevButton.addEventListener('click', () => {
-                currentPage--;
+        const addBtn = (label, page, active = false, disabled = false) => {
+            const btn = document.createElement('button');
+            btn.className = 'pagination-btn' + (active ? ' active' : '');
+            btn.innerHTML = label;
+            if (disabled) btn.disabled = true;
+            btn.addEventListener('click', () => {
+                if (disabled) return;
+                currentPage = page;
                 displayClients();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            paginationContainer.appendChild(prevButton);
+            paginationContainer.appendChild(btn);
+        };
+
+        const addEllipsis = () => {
+            const span = document.createElement('span');
+            span.textContent = '…';
+            span.style.cssText = 'padding:6px 4px;color:#999;align-self:center;';
+            paginationContainer.appendChild(span);
+        };
+
+        addBtn('&laquo;', currentPage - 1, false, currentPage === 1);
+        addBtn(1, 1, currentPage === 1);
+        if (currentPage > 4) addEllipsis();
+
+        const start = Math.max(2, currentPage - 2);
+        const end   = Math.min(totalPages - 1, currentPage + 2);
+        for (let i = start; i <= end; i++) {
+            addBtn(i, i, i === currentPage);
         }
 
-        // Botones de página
-        for (let i = 1; i <= totalPages; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.className = 'pagination-btn' + (i === currentPage ? ' active' : '');
-            pageButton.textContent = i;
-            pageButton.addEventListener('click', () => {
-                currentPage = i;
-                displayClients();
-            });
-            paginationContainer.appendChild(pageButton);
-        }
-
-        // Botón Siguiente
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.className = 'pagination-btn';
-            nextButton.innerHTML = 'Siguiente &raquo;';
-            nextButton.addEventListener('click', () => {
-                currentPage++;
-                displayClients();
-            });
-            paginationContainer.appendChild(nextButton);
-        }
+        if (currentPage < totalPages - 3) addEllipsis();
+        if (totalPages > 1) addBtn(totalPages, totalPages, currentPage === totalPages);
+        addBtn('&raquo;', currentPage + 1, false, currentPage === totalPages);
     }
 
     // Función para cargar clientes
@@ -950,6 +1005,22 @@ document.addEventListener('DOMContentLoaded', function () {
         paginationContainer,
         historyModal,
         addressModal,
-        managerModal
+        managerModal,
+        addAddressButton: document.getElementById('addAddressButton')
     });
+
+    // Función de debug temporal
+    window.debugOpenAddressModal = function() {
+        console.log('=== DEBUG MODAL DIRECCIÓN ===');
+        console.log('addressModal:', document.getElementById('myModalAddress'));
+        console.log('currentClientId:', currentClientId);
+        console.log('addAddressButton:', document.getElementById('addAddressButton'));
+        
+        // Forzar apertura para testing
+        const modal = document.getElementById('myModalAddress');
+        if (modal) {
+            modal.style.display = 'block';
+            console.log('Modal abierto forzadamente');
+        }
+    };
 });

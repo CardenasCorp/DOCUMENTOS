@@ -85,7 +85,7 @@ if (isset($_SESSION['departamento']) && $_SESSION['departamento'] === 'OPERACION
                         <th>Nueva Fecha</th>
                         <th>Estado</th>
                         <th>IGV</th>
-                        <th>Vista Previa</th>  <!-- ← NUEVA COLUMNA AQUÍ -->
+                        <th>Vista Previa</th>  
                     </tr>
                 </thead>
                 <tbody>

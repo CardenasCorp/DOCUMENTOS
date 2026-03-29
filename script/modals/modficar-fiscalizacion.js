@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "5to Requerimiento": 11,
         "6to Requerimiento": 12,
         "7mo Requerimiento": 13,
+        "Coactiva x R": 14,
+        "Coactiva x TF": 15,
+        "Coactiva sin R": 16,
         "Cierre": 5,
         "Reclamación": 6,
         "Apelación": 7,
@@ -261,29 +264,5 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDocumentId = e.detail.documentId;
     });
 
-    // Validar requerimiento padre para etapas que no son 1er Requerimiento
-    function validarRequerimientoPadre() {
-        const etapa = document.getElementById('etapa').value;
-        const idPadre = document.getElementById('id_fiscalizacion_padre').value;
 
-        if (etapa !== '1er Requerimiento' && !idPadre) {
-            alert('Para esta etapa debe seleccionar un requerimiento padre');
-            return false;
-        }
-
-        if (etapa === '1er Requerimiento' && idPadre) {
-            alert('No se puede asignar requerimiento padre al 1er Requerimiento');
-            return false;
-        }
-
-        return true;
-    }
-
-    // Agregar validación antes del envío
-    form.addEventListener('submit', function (e) {
-        if (!validarRequerimientoPadre()) {
-            e.preventDefault();
-            return false;
-        }
-    });
 });

@@ -36,12 +36,15 @@
                     <li><a href="registrar-caso.php"><i class="bi bi-file-earmark-plus"></i> <span>Registrar</span></a></li>
                     <li><a href="modificar-caso.php"><i class="bi bi-pencil-square"></i> <span>Modificar</span></a></li>
                     <li><a href="list-case.php"><i class="bi bi-list-ul"></i> <span>Lista de casos</span></a></li>
+                    <li><a href="tabla-casos.php"><i class="bi bi-table"></i> <span>Coactiva</span></a></li>
+                    <li><a href="lista-empresas.php"><i class="bi bi-building-check"></i> <span>Lista de Empresas (Coactivas)</span></a></li>
                     <hr>
                     <li><a href="empleados.php"><i class="bi bi-building"></i> <span>SUNAT</span></a></li>
                     <hr>
                     <li><a href="empresas.php"><i class="bi bi-briefcase"></i> <span>Empresa</span></a></li>
                 </ul>
             </div>
+
             <!-- Formulario -->
             <div class="main-content">
                 <div class="form-section">
@@ -50,7 +53,7 @@
                     <hr>
                     <br>
                     <h1>Registrar caso</h1>
-                    <form class="form-container" id="mainForm" method="POST" action="procesar_registro.php">
+                    <form class="form-container" id="mainForm" method="POST">
                         <!-- Token CSRF para protección -->
                         <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                         <div class="form-group-4">
@@ -109,9 +112,15 @@
                                     <option value="2do Requerimiento">2do Requerimiento</option>
                                     <option value="3ro Requerimiento">3ro Requerimiento</option>
                                     <option value="4to Requerimiento">4to Requerimiento</option>
+                                    <option value="5to Requerimiento">5to Requerimiento</option>
+                                    <option value="6to Requerimiento">6to Requerimiento</option>
+                                    <option value="7mo Requerimiento">7mo Requerimiento</option>
                                     <option value="Cierre">Cierre / Valores</option>
+                                    <option value="Coactiva sin R">Coactiva sin R.</option>
                                     <option value="Reclamación">R. Reclamación</option>
                                     <option value="Apelación">R. Apelación</option>
+                                    <option value="Coactiva x R">Coactiva x R.</option>
+                                    <option value="Coactiva x TF">Coactiva x T.F.</option>
                                     <option value="Proceso">Proceso Contencioso</option>
                                     <option value="Finalizado">Finalizado</option>
                                 </select>
@@ -144,6 +153,19 @@
                                 <label for="IGV">IGV</label>
                                 <input type="number" step="0.01" inputmode="decimal" id="IGV" name="IGV" placeholder="IGV">
                             </div>
+                            
+                            <!-- 
+                            <div class="IGV form-control">
+                                <label for="legal">Encargado Legal</label>
+                                <select id="legal" name="legal" required>
+                                    <option value="Ninguno">Ninguno</option>
+                                    <option value="Lucero">Lucero</option>
+                                    <option value="Yamile">Yamile</option>
+                                    <option value="Jhan Pier">Jhan Pier</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>  
+                             -->
                         </div>
                         <div class="form-group-5">
                             <div class="periodo-inicio form-control">
@@ -277,7 +299,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Modal de empleados -->
         <div id="employeeModal" class="modal">
             <div class="modal-content">
@@ -306,6 +327,7 @@
         <script src="../script/modals/modal-request.js"></script>
         <script src="../script/registrar-caso.js"></script>
         <script src="../script/modals/guardar-fiscalizacion.js"></script>
+        <script src="../script/upload-to-drive.js"></script>
         
         <!-- Script para mostrar/ocultar secciones -->
         <script>

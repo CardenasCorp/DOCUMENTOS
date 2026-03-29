@@ -57,6 +57,7 @@ try {
                       JOIN estado es ON f.id_estado = es.id_estado
                       WHERE f.id_etapa = 1 
                       AND f.id_estado != '5'
+                      AND f.id_tipo != '6'
                       AND NOT EXISTS (
                           SELECT 1 FROM fiscalizacion f2 
                           WHERE f2.id_fiscalizacion_padre = f.id_fiscalizacion 
@@ -66,19 +67,25 @@ try {
             break;
 
         case 'reclamaciones':
-            // Tabla "Reclamaciones" - Etapa 6 con estado 2
+            // Tabla "Reclamaciones" - Etapa 5 con estado 2
             $query = "SELECT 
                         c.razon_social AS Empresa,
                         f.id_fiscalizacion AS id,
                         f.numero AS Nro,
                         t.descripcion AS Tipo,
-                        DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentar,
-                        DATE_FORMAT(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), '%d/%m/%Y') AS FechaMaxima,
-                        DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
+                        DATE_FORMAT(f.fecha_presentado, '%d/%m/%Y') AS FechaPresentar,
+                        DATE_FORMAT(DATE_ADD(f.fecha_presentado, INTERVAL 365 DAY), '%d/%m/%Y') AS FechaMaxima,
+                        DATEDIFF(DATE_ADD(f.fecha_presentado, INTERVAL 365 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
                       JOIN cliente c ON f.id_cliente = c.id_cliente
                       JOIN tipo t ON f.id_tipo = t.id_tipo
-                      WHERE f.id_etapa = '6' AND f.id_estado = '2'";
+                      WHERE f.id_etapa = '5' AND f.id_estado = '2'
+                      AND NOT EXISTS (
+                          SELECT 1 FROM fiscalizacion f3 
+                          WHERE f3.id_fiscalizacion_padre = f.id_fiscalizacion_padre
+                          AND f3.id_etapa = '6'
+                      )";
+
             $orderBy = "ORDER BY DiasRestantes ASC";
             break;
 
@@ -89,13 +96,18 @@ try {
                         f.id_fiscalizacion AS id,
                         f.numero AS Nro,
                         t.descripcion AS Tipo,
-                        DATE_FORMAT(f.fecha_presentacion, '%d/%m/%Y') AS FechaPresentar,
-                        DATE_FORMAT(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), '%d/%m/%Y') AS FechaMaxima,
-                        DATEDIFF(DATE_ADD(f.fecha_presentacion, INTERVAL 90 DAY), CURDATE()) AS DiasRestantes
+                        DATE_FORMAT(f.fecha_presentado, '%d/%m/%Y') AS FechaPresentar,
+                        DATE_FORMAT(DATE_ADD(f.fecha_presentado, INTERVAL 365 DAY), '%d/%m/%Y') AS FechaMaxima,
+                        DATEDIFF(DATE_ADD(f.fecha_presentado, INTERVAL 365 DAY), CURDATE()) AS DiasRestantes
                       FROM fiscalizacion f
                       JOIN cliente c ON f.id_cliente = c.id_cliente
                       JOIN tipo t ON f.id_tipo = t.id_tipo
-                      WHERE f.id_etapa = '7' AND f.id_estado = '2'";
+                      WHERE f.id_etapa = '6' AND f.id_estado = '2'
+                      AND NOT EXISTS (
+                          SELECT 1 FROM fiscalizacion f4 
+                          WHERE f4.id_fiscalizacion_padre = f.id_fiscalizacion_padre
+                          AND f4.id_etapa = '7'
+                      )";
             $orderBy = "ORDER BY DiasRestantes ASC";
             break;
 
